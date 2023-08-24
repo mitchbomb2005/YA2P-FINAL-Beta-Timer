@@ -1,5 +1,14 @@
-console.log(3)
-import * as num from "./lib/var.js"
-console.log(num.num)
-num.num++
-console.log(num.num)
+//moduleA.js
+let object = {
+    a: 5,
+};
+
+export { object };
+
+import { object } from './moduleA'
+
+
+
+console.log(object.a)
+object.a++
+console.log(object.a)
