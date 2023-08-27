@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d");
 
 bean(800, 400, 50, 100) 
 
-// please just upload, i want this to work, it's just not working
+// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 
 function bean(x, y, width, height) {
