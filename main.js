@@ -1,6 +1,8 @@
 const canvas = document.getElementById("game_screen");
 const ctx = canvas.getContext("2d");
 
+bean()
+
 function bean(x, y, width, height) {
     ctx.beginPath();
     ctx.rect(0, 20, 1676, 878);
