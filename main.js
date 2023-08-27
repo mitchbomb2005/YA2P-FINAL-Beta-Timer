@@ -3,6 +3,9 @@ const ctx = canvas.getContext("2d");
 
 bean() 
 
+// please just upload, i want this to work, it's just not working
+
+
 function bean(x, y, width, height) {
     ctx.beginPath();
     ctx.rect(0, 20, 1676, 878);
