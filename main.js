@@ -13,12 +13,12 @@ function bean(x, y, width, height) {
     ctx.closePath();
 
     ctx.beginPath();
-    ctx.arc(x + (width / 2) - 5, y + (height - (width / 2)) - 5 , width / 2 + 10, 0, Math.PI * 2, false);
+    ctx.arc(x + (width / 2) , y + (height - (width / 2))  , width / 2 + 5, 0, Math.PI * 2, false);
     ctx.fill();
     ctx.closePath();
 
     ctx.beginPath();
-    ctx.arc(x + (width / 2)- 5, y-5, width / 2 +10, 0, Math.PI * 2, false);
+    ctx.arc(x + (width / 2), y, width / 2 +5, 0, Math.PI * 2, false);
     ctx.fill();
     ctx.closePath();
 
