@@ -2,6 +2,7 @@ const canvas = document.getElementById("game_screen");
 const ctx = canvas.getContext("2d");
 
 bean(800, 400, 50, 100) 
+bean(1000, 400, 100, 150)
 // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 // i hate this
 
