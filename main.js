@@ -4,7 +4,8 @@ const ctx = canvas.getContext("2d");
 bean(800, 400, 50, 100) 
 
 // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-
+bean(900, 400, 50, 100)
+bean(700, 400, 50, 100)
 
 function bean(x, y, width, height) {
     ctx.beginPath();
