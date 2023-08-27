@@ -1,7 +1,7 @@
 const canvas = document.getElementById("game_screen");
 const ctx = canvas.getContext("2d");
 
-bean()
+bean() 
 
 function bean(x, y, width, height) {
     ctx.beginPath();
