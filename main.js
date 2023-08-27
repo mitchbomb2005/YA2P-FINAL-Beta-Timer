@@ -14,7 +14,7 @@ function bean(x, y, width, height) {
     ctx.closePath();
 
     ctx.beginPath();
-    ctx.arc(x, y + (height - (width / 2)), width / 2, 0, Math.PI * 2, false);
+    ctx.arc(x + (width / 2), y + (height - (width / 2)), width / 2, 0, Math.PI * 2, false);
     ctx.fillStyle = "#afbfaf";
     ctx.fill();
     ctx.closePath();
