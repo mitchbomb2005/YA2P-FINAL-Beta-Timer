@@ -8,7 +8,7 @@ function bean(x, y, width, height) {
 
     ctx.beginPath();
     ctx.arc(x + (width / 2) - 5, y + 5, width / 2 +5, 0, Math.PI * 2, false);
-    ctx.fillStyle = "rgba(0, 0, 0, .1)";
+    ctx.fillStyle = "#808080";
     ctx.fill();
     ctx.closePath();
 
