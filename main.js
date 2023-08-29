@@ -1,11 +1,17 @@
-import { GameDisplayer } from ".\\system\\GameDisplayer.js"
+const canvas = document.getElementById("game_screen");
+const ctx = canvas.getContext("2d");
+
+import { GameDisplayer } from "./system/GameDisplayer.js"
 
 'use strict';
 
-new TestingStuff();
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 class TestingStuff {
 
+    // System
     displayer;
 
     constructor() {
@@ -13,8 +19,19 @@ class TestingStuff {
         this.startGame();
     }
 
-    startGame() {
-        this.displayer.drawGameFrame();
+    async startGame() {
+        while (true) {
+            this.updateGame();
+            this.displayer.drawGameFrame();
+            await sleep(1000/60)
+            // Wait here
+        }
+    } 
+
+    updateGame() {
+        
     }
 
 }
+
+new TestingStuff();
