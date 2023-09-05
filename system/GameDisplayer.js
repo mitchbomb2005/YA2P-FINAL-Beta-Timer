@@ -2,6 +2,10 @@
 
 const canvas = document.getElementById("game_screen");
 const ctx = canvas.getContext("2d");
+const originalWidth = canvas.width;
+const originalHeight = canvas.height;
+var scaleX = 0;
+var scaleY = 0;
 
 export class GameDisplayer {
 
