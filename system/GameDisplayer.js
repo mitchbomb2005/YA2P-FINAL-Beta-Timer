@@ -78,26 +78,40 @@ export class GameDisplayer {
 
         const originalWidth = canvas.width;
         const originalHeight = canvas.height;
-    
+        var scaleX = 0;
+        var scaleY = 0;
+
+        var currentWidth = canvas.width;
+        var currentHeight = canvas.height;
+  
         // Get the current window dimensions
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
+        var windowWidth = window.innerWidth;
+        var windowHeight = window.innerHeight;
     
         // Calculate the desired width and height based on the window's dimensions
-        const desiredWidth = windowWidth;
-        const aspectRatio = originalWidth / originalHeight;
-        const desiredHeight = desiredWidth / aspectRatio;
-    
-        // Set the canvas element's width and height
+        
+        var desiredWidth = windowWidth;
+        var aspectRatio = originalWidth / originalHeight;
+        var desiredHeight = desiredWidth / aspectRatio;
         canvas.width = desiredWidth;
         canvas.height = desiredHeight;
-    
-        // Resize the canvas drawing area to maintain the aspect ratio
-        const scaleX = desiredWidth / originalWidth;
-        const scaleY = desiredHeight / originalHeight;
-    
-        // Apply the scaling transformation to maintain the aspect ratio
-        ctx.setTransform(scaleX, 0, 0, scaleY, 0, 0)
+        scaleX = (desiredWidth / originalWidth);
+        scaleY = (desiredHeight / originalHeight);
+        ctx.setTransform(scaleY, 0, 0, scaleX, 0, 0)
+  
+         currentWidth = canvas.width;
+         currentHeight = canvas.height;
+  
+        if (currentHeight >= windowHeight) {
+           desiredHeight = windowHeight;
+           aspectRatio = originalWidth / originalHeight;
+           desiredWidth = desiredHeight * aspectRatio;
+          canvas.width = desiredWidth;
+          canvas.height = desiredHeight;
+          scaleX = (desiredWidth / originalWidth);
+          scaleY = (desiredHeight / originalHeight);
+          ctx.setTransform(scaleY, 0, 0, scaleX, 0, 0)
+        }
     }
 
 }
