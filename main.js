@@ -9,6 +9,11 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+const originalWidth = canvas.width;
+const originalHeight = canvas.height;
+var scaleX = 0;
+var scaleY = 0;
+
 class TestingStuff {
 
     // System

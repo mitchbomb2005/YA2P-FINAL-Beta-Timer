@@ -76,10 +76,7 @@ export class GameDisplayer {
 
     resizeCanvasForWindowSize() {
 
-        const originalWidth = canvas.width;
-        const originalHeight = canvas.height;
-        var scaleX = 0;
-        var scaleY = 0;
+
 
         var currentWidth = canvas.width;
         var currentHeight = canvas.height;
