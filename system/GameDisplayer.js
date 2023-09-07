@@ -21,7 +21,7 @@ export class GameDisplayer {
 
     // methods (functions)
     drawGameFrame() {
-        this.game.player.draw();
+        this.game.player.draw(ctx);
         this.resizeCanvasForWindowSize();
         this.drawBean(originalWidth / 2, originalHeight / 2, 50, 100) 
      // this.drawBean(1000, 400, 100, 150)
