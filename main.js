@@ -17,7 +17,7 @@ class TestingStuff {
     displayer;
 
     // fields
-    player;
+    player = new Player(0, 0);
 
     constructor() {
         this.displayer = new GameDisplayer(this);
