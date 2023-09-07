@@ -96,12 +96,12 @@ export class GameDisplayer {
         // Calculate the desired width and height based on the window's dimensions
         
         var desiredWidth = windowWidth;
-        var aspectRatio = originalWidth / originalHeight;
+        var aspectRatio = this.originalWidth / this.originalHeight;
         var desiredHeight = desiredWidth / aspectRatio;
         canvas.width = desiredWidth;
         canvas.height = desiredHeight;
-        scaleX = (desiredWidth / originalWidth);
-        scaleY = (desiredHeight / originalHeight);
+        scaleX = (desiredWidth / this.originalWidth);
+        scaleY = (desiredHeight / this.originalHeight);
         ctx.setTransform(scaleY, 0, 0, scaleX, 0, 0)
   
          currentWidth = canvas.width;
@@ -109,12 +109,12 @@ export class GameDisplayer {
   
         if (currentHeight >= windowHeight) {
            desiredHeight = windowHeight;
-           aspectRatio = originalWidth / originalHeight;
+           aspectRatio = this.originalWidth / this.originalHeight;
            desiredWidth = desiredHeight * aspectRatio;
           canvas.width = desiredWidth;
           canvas.height = desiredHeight;
-          scaleX = (desiredWidth / originalWidth);
-          scaleY = (desiredHeight / originalHeight);
+          scaleX = (desiredWidth / this.originalWidth);
+          scaleY = (desiredHeight / this.originalHeight);
           ctx.setTransform(scaleY, 0, 0, scaleX, 0, 0)
         }
     }
