@@ -2,36 +2,18 @@
 
 const canvas = document.getElementById("game_screen");
 const ctx = canvas.getContext("2d");
-const originalWidth = canvas.width;
-const originalHeight = canvas.height;
 var scaleX = 0;
 var scaleY = 0;
-
-export class map {
-
-    x;
-    y;
-
-    constructor(x, y) {
-        this.x = 0
-        this.y = 0
-    }
-
-    draw(x, y) {
-
-        ctx.fillStyle = "#0f0f0f";
-        ctx.fillRect(x, y, 50, 50);
-        
-        this.x++
-        this.y--
-
-    }
-}
 
 export class GameDisplayer {
 
     // fields
     game;
+    map;
+
+    originalWidth = canvas.width;
+    originalHeight = canvas.height;
+    map = new Map();
 
     constructor(game) {
         this.game = game;
@@ -42,7 +24,7 @@ export class GameDisplayer {
         this.resizeCanvasForWindowSize();
         this.drawBean(originalWidth / 2, originalHeight / 2, 50, 100) 
      // this.drawBean(1000, 400, 100, 150)
-        map.draw(map.x, map.y)
+        Map.draw(Map.x, Map.y)
     }
     
     drawBean(x, y, width, height) {

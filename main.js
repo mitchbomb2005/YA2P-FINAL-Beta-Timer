@@ -16,6 +16,9 @@ class TestingStuff {
     // System
     displayer;
 
+    // fields
+    player;
+
     constructor() {
         this.displayer = new GameDisplayer(this);
         this.startGame();
