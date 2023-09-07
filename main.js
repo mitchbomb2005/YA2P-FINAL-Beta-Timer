@@ -2,6 +2,7 @@ const canvas = document.getElementById("game_screen");
 const ctx = canvas.getContext("2d");
 
 import { GameDisplayer } from "./system/GameDisplayer.js"
+import { Player } from "./system/Player.js"
 
 'use strict';
 
