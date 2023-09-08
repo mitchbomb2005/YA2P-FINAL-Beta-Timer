@@ -13,7 +13,7 @@ export class GameDisplayer {
 
     originalWidth = canvas.width;
     originalHeight = canvas.height;
-    map = new Map();
+    Map = new Map();
 
     constructor(game) {
         this.game = game;
