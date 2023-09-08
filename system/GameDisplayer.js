@@ -25,7 +25,7 @@ export class GameDisplayer {
         this.resizeCanvasForWindowSize();
         this.drawBean(this.originalWidth / 2, this.originalHeight / 2, 50, 100) 
      // this.drawBean(1000, 400, 100, 150)
-        Map.draw(Map.x, Map.y)
+        this.Map.draw(this.Map.x, this.Map.y)
     }
     
     drawBean(x, y, width, height) {
