@@ -25,7 +25,7 @@ export class Map {
         ctx.fillRect(x + 555, y + 561, 150, 50);
         
         //console.log(x, y)
-        this.move(60, 0, 10)
+        //this.move(60, 0, 10)
         console.log(this.x, this.y)
     }
 }
