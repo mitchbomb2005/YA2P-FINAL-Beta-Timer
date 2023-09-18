@@ -4,16 +4,18 @@ const canvas = document.getElementById("game_screen");
 const ctx = canvas.getContext("2d");
 var scaleX = 0;
 var scaleY = 0;
+import { Map } from "./Map.js"
 
 export class GameDisplayer {
 
+    
     // fields
     game;
-    map;
 
     originalWidth = canvas.width;
     originalHeight = canvas.height;
-    Map = new Map();
+
+    Map = new Map(0, 0);
 
     constructor(game) {
         this.game = game;
@@ -82,19 +84,15 @@ export class GameDisplayer {
         ctx.closePath();
     }
 
+
+    // don't alter this, just ignore it
+    // we don't kow how it works, it just does
+
     resizeCanvasForWindowSize() {
-
-
-
         var currentWidth = canvas.width;
         var currentHeight = canvas.height;
-  
-        // Get the current window dimensions
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
-    
-        // Calculate the desired width and height based on the window's dimensions
-        
         var desiredWidth = windowWidth;
         var aspectRatio = this.originalWidth / this.originalHeight;
         var desiredHeight = desiredWidth / aspectRatio;
@@ -103,10 +101,8 @@ export class GameDisplayer {
         scaleX = (desiredWidth / this.originalWidth);
         scaleY = (desiredHeight / this.originalHeight);
         ctx.setTransform(scaleY, 0, 0, scaleX, 0, 0)
-  
          currentWidth = canvas.width;
          currentHeight = canvas.height;
-  
         if (currentHeight >= windowHeight) {
            desiredHeight = windowHeight;
            aspectRatio = this.originalWidth / this.originalHeight;
