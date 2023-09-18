@@ -12,20 +12,20 @@ export class Map {
         
     }
 
-    move(x, y) {
-        for(let i = 0; i >= 60; i++)
+    move(x, y, frames = 60) {
+        for(let i = 0; i >= frames; i++)
         return new Promise(resolve => setTimeout(resolve, ms));
-        this.x = this.x + (x / 60)
-        this.y = this.y + (y / 60)
+        this.x = this.x + (x / frames)
+        this.y = this.y + (y / frames)
     }
 
-    draw(x, y) {
+    draw(x, y,) {
 
         ctx.fillStyle = "#0f0f0f";
         ctx.fillRect(x + 555, y + 561, 150, 50);
         
         //console.log(x, y)
-        this.move(60, 0)
+        this.move(60, 0, 10)
         console.log(this.x, this.y)
     }
 }
