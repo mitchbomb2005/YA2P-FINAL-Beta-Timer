@@ -4,7 +4,6 @@ const ctx = canvas.getContext("2d");
 import { GameDisplayer } from "./system/GameDisplayer.js"
 import { Player } from "./system/Player.js"
 import { keyManager } from "./system/KeyMan.js"
-// import { keyManager } from "./system/KeyMan.js"
 
 'use strict';
 
@@ -14,7 +13,7 @@ function sleep(ms) {
 
 
 
-class TestingStuff {
+class Main {
 
     // System
     displayer;
@@ -31,9 +30,9 @@ class TestingStuff {
     async startGame() {
         while (true) {
             this.updateGame();
-            this.displayer.drawGameFrame();
             this.keyManager.doActionsFromKeyInput();
             this.keyManager.onTick();
+            this.displayer.drawGameFrame();
             await sleep(1000/60)
             // Wait here
         }
@@ -43,6 +42,21 @@ class TestingStuff {
         
     }
 
+    
+
 }
 
-new TestingStuff();
+new Main();
+
+
+var keyMan = new (keyManager);
+
+document.addEventListener('keydown', (event) => {
+    var code = event.code;
+    keyMan.setKeyPressed(code, true)
+  }, false);
+
+document.addEventListener('keyup', (event) => {
+    var code = event.code;
+    keyMan.setKeyPressed(code, false)
+}, false);

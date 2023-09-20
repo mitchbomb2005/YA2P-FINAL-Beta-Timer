@@ -1,4 +1,4 @@
-import { Map } from "./Map.js"
+import { Camera } from "./map-camera/Camera.js"
 
 export class keyManager {
     /*
@@ -6,7 +6,7 @@ export class keyManager {
      */
     keysPressed;
     keysJustPressed;
-    Map = new (Map);
+    Cam = new (Camera);
 
     constructor() {
       this.keysPressed = new Array(1);
@@ -34,8 +34,10 @@ export class keyManager {
     }
 
     doActionsFromKeyInput() {
+      console.log("doActionsFromKeyInput called")
       if (this.isKeyPressed("KeyD")) {
-        this.Map.move(10, 0, 5)
+        console.log("it should move")
+        this.Cam.move(10, 0, 5)
       }
     }
 

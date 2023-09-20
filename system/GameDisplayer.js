@@ -4,7 +4,9 @@ const canvas = document.getElementById("game_screen");
 const ctx = canvas.getContext("2d");
 var scaleX = 0;
 var scaleY = 0;
-import { Map } from "./Map.js"
+import { Map } from "./map-camera/Map.js"
+import { Camera } from "./map-camera/Camera.js"
+import { Draw } from "./map-camera/Saved_Shapes.js"
 
 export class GameDisplayer {
 
@@ -15,7 +17,9 @@ export class GameDisplayer {
     originalWidth = canvas.width;
     originalHeight = canvas.height;
 
-    Map = new Map(0, 0);
+    Map = new Map();
+    Cam = new Camera(0, 0);
+    Draw = new Draw()
 
     constructor(game) {
         this.game = game;
@@ -25,11 +29,12 @@ export class GameDisplayer {
     drawGameFrame() {
         this.game.player.draw(ctx);
         this.resizeCanvasForWindowSize();
-        this.drawBean(this.originalWidth / 2, this.originalHeight / 2, 50, 100) 
+        this.Draw.Bean(this.originalWidth / 2, this.originalHeight / 2, 50, 100) 
      // this.drawBean(1000, 400, 100, 150)
-        this.Map.draw(this.Map.x, this.Map.y)
+        this.Map.draw(this.Cam.x, this.Cam.y)
     }
     
+    /*
     drawBean(x, y, width, height) {
 
         ctx.beginPath();
@@ -83,7 +88,7 @@ export class GameDisplayer {
         ctx.fill();
         ctx.closePath();
     }
-
+*/
 
     // don't alter this, just ignore it
     // we don't kow how it works, it just does
