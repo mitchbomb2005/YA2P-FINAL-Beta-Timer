@@ -5,7 +5,7 @@ export class Draw {
     Bean(x, y, width, height) {
 
         ctx.beginPath();
-        ctx.arc(x + (width / 2) - 5, y + 5, width / 2 +5, 0, Math.PI, false);
+        ctx.arc(x + (width / 2) - 5, y + 5, width / 2 +5, 0, ( Math.PI/180 ) * 190, ( Math.PI/180 ) * 180,  false);
         ctx.fillStyle = "rgba(0, 0, 0, .1)";
         ctx.fill();
         ctx.closePath();
