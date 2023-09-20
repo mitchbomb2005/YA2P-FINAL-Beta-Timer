@@ -7,6 +7,7 @@ var scaleY = 0;
 import { Map } from "./map-camera/Map.js"
 import { Camera } from "./map-camera/Camera.js"
 import { Draw } from "./map-camera/Saved_Shapes.js"
+import { Bg } from "./map-camera/Background.js"
 
 export class GameDisplayer {
 
@@ -20,6 +21,7 @@ export class GameDisplayer {
     Map = new Map();
     Cam = new Camera(0, 0);
     Draw = new Draw()
+    Bg = new Bg()
 
     constructor(game) {
         this.game = game;
@@ -33,6 +35,7 @@ export class GameDisplayer {
         ctx.fillStyle = "#90b0c0";
         ctx.rect(0, 0, 10000, 10000) 
         ctx.fill()
+        this.Bg.Layer_1(this.Cam.x, this.Cam.y)
         this.Draw.Bean(this.originalWidth / 2, this.originalHeight / 2, 50, 100) 
      // this.drawBean(1000, 400, 100, 150)
         this.Map.draw(this.Cam.x, this.Cam.y)
