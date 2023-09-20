@@ -29,15 +29,22 @@ export class GameDisplayer {
 
     // methods (functions)
     drawGameFrame() {
+        this.Cam.move(-5, 0, 3)
+
 
         this.game.player.draw(ctx);
         this.resizeCanvasForWindowSize();
-        ctx.fillStyle = "#90b0c0";
+
+        ctx.fillStyle = "#a7c7d8";
         ctx.rect(0, 0, 10000, 10000) 
         ctx.fill()
+
+        this.Bg.Layer_2(this.Cam.x, this.Cam.y)
         this.Bg.Layer_1(this.Cam.x, this.Cam.y)
+
         this.Draw.Bean(this.originalWidth / 2, this.originalHeight / 2, 50, 100) 
      // this.drawBean(1000, 400, 100, 150)
+     
         this.Map.draw(this.Cam.x, this.Cam.y)
     }
     

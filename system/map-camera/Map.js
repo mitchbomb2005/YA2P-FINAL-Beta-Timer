@@ -8,8 +8,8 @@ export class Map {
         ctx.fillStyle = "#0f0f0f";
         //ctx.fillRect(x + 555, y + 561, 600, 150);
         //ctx.fillRect(x + 555, y + 161, 600, 150);
-        ctx.fillRect(x, y + 561, 2000, 1000);
-        ctx.fillRect(x, y + 0, 2000, 300);
+        ctx.fillRect(x - 10, y + 561, 1696, 1000);
+        ctx.fillRect(x - 10, y + 0, 1696, 300);
         
     }
 }
