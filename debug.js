@@ -2,34 +2,44 @@ export class Debug {
 
     debugMode = false
     bean = true
+    noClip = false
+    keyManager;
 
-    constructor(KeyMan) {
-        keyManager = KeyMan
+    constructor(keyMan) {
+        this.keyManager = keyMan
     }
 
-    Update() {
+    update() {
 
-        if(!debugMode) {
+        if(!this.debugMode) {
             this.debugCheck()
-        }
-        if(debugMode) {
-            this.hidebean()
+        }else{
+            this.hideBean();
+            this.flipNoClip();
         }
 
     }
 
     debugCheck() {
         
-        if (this.keyManager.isKeyPressed("Slash")){
-            debugMode = true
+        if (this.keyManager.isKeyPressed("Backslash")) {
+            this.debugMode = true
             console.log("debug mode enabled");
         }
 
     }
 
     hideBean() {
-        if (this.keyManager.isKeyPressed(KeyH)) {
+        if (this.keyManager.wasKeyJustPressed("KeyH")) {
+            console.log("hide")
             this.bean = !this.bean
+        }
+    }
+
+    flipNoClip() {
+        if (this.keyManager.wasKeyJustPressed("KeyN")) {
+            console.log("noClip")
+            this.noClip = !this.noClip
         }
     }
 

@@ -31,7 +31,7 @@ export class GameDisplayer {
         this.game = Game;
         this.map = Map;
         this.camera = Camera;
-        //this.debug = Debug
+        this.debug = Debug
     }
 
     // methods (functions)
@@ -45,9 +45,9 @@ export class GameDisplayer {
 
         this.background.Draw(this.camera.x, this.camera.y)
 
-        //if(this.debug.bean) {
+        if(this.debug.bean) {
             this.drawUtils.Bean(this.originalWidth / 2, this.originalHeight / 2, 50, 100) 
-        //}
+        }
      
         this.map.draw(this.camera.x, this.camera.y);
     }
