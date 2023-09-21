@@ -7,12 +7,15 @@ export class KeyManager {
       KeyS = 2;
       KeyD = 3;
      */
-    keysPressed;
-    keysJustPressed;
+
+    keyBuffer;
+    keysCurrentlyPressed;
+    keysPressedLastFrame;
 
     constructor() {
-      this.keysPressed = new Array(6);
-      this.keysJustPressed = new Array(6);
+      this.keyBuffer = new Array(6);
+      this.keysCurrentlyPressed = new Array(6);
+      this.keysPressedLastFrame = new Array(6);
 
       document.addEventListener('keydown', (event) => {
         var code = event.code;
@@ -27,57 +30,50 @@ export class KeyManager {
 
     wasKeyJustPressed(code) {
       switch (code) {
-        case "KeyW": return this.keysJustPressed[0];
-        case "KeyA": return this.keysJustPressed[1];
-        case "KeyS": return this.keysJustPressed[2];
-        case "KeyD": return this.keysJustPressed[3];
-        case "Backslash": return this.keysJustPressed[4];
-        case "KeyH": return this.keysJustPressed[5];
-        case "KeyN": return this.keysJustPressed[6];
+        case "KeyW": return !this.keysPressedLastFrame[0] && this.keysCurrentlyPressed[0];
+        case "KeyA": return !this.keysPressedLastFrame[1] && this.keysCurrentlyPressed[1];
+        case "KeyS": return !this.keysPressedLastFrame[2] && this.keysCurrentlyPressed[2];
+        case "KeyD": return !this.keysPressedLastFrame[3] && this.keysCurrentlyPressed[3];
+        case "Backslash": return !this.keysPressedLastFrame[4] && this.keysCurrentlyPressed[4];
+        case "KeyH": return !this.keysPressedLastFrame[5] && this.keysCurrentlyPressed[5];
+        case "KeyN": return !this.keysPressedLastFrame[6] && this.keysCurrentlyPressed[6];
       }
     }
 
     isKeyPressed(code) {
       switch (code) {
-        case "KeyW": return this.keysPressed[0];
-        case "KeyA": return this.keysPressed[1];
-        case "KeyS": return this.keysPressed[2];
-        case "KeyD": return this.keysPressed[3];
-        case "Backslash": return this.keysPressed[4];
-        case "KeyH": return this.keysPressed[5];
-        case "KeyN": return this.keysPressed[6];
+        case "KeyW": return this.keysCurrentlyPressed[0];
+        case "KeyA": return this.keysCurrentlyPressed[1];
+        case "KeyS": return this.keysCurrentlyPressed[2];
+        case "KeyD": return this.keysCurrentlyPressed[3];
+        case "Backslash": return this.keysCurrentlyPressed[4];
+        case "KeyH": return this.keysCurrentlyPressed[5];
+        case "KeyN": return this.keysCurrentlyPressed[6];
       }
     }
 
     setKeyPressed(code, pressed) {
       switch (code) {
         case "KeyW":
-          this.keysPressed[0] = pressed;
-          this.keysJustPressed[0] = pressed;
+          this.keyBuffer[0] = pressed;
           break;
         case "KeyA":
-          this.keysPressed[1] = pressed;
-          this.keysJustPressed[1] = pressed;
+          this.keyBuffer[1] = pressed;
           break;
         case "KeyS":
-          this.keysPressed[2] = pressed;
-          this.keysJustPressed[2] = pressed;
+          this.keyBuffer[2] = pressed;
           break;
         case "KeyD":
-          this.keysPressed[3] = pressed;
-          this.keysJustPressed[3] = pressed;
+          this.keyBuffer[3] = pressed;
           break;
         case "Backslash":
-          this.keysPressed[4] = pressed;
-          this.keysJustPressed[4] = pressed;
+          this.keyBuffer[4] = pressed;
           break;
         case "KeyH":
-          this.keysPressed[5] = pressed;
-          this.keysJustPressed[5] = pressed;
+          this.keyBuffer[5] = pressed;
           break;
         case "KeyN":
-          this.keysPressed[6] = pressed;
-          this.keysJustPressed[6] = pressed;
+          this.keyBuffer[6] = pressed;
           break;
         default:
           console.log("Unexpected key code: " + code);
@@ -85,36 +81,11 @@ export class KeyManager {
     }
 
     update() {
-      for (let i = 0; i < this.keysJustPressed.length; i++) {
-        this.keysJustPressed[i] = false;
+      for (let i = 0; i < this.keyBuffer.length; i++) {
+        this.keysPressedLastFrame[i] = this.keysCurrentlyPressed[i];
+        this.keysCurrentlyPressed[i] = this.keyBuffer[i];
+        // this.keyBuffer[i] = false;
       }
     }
 
 }
-
-/*
-export class KeyManager {
-
-  keyBuffer;
-  keysCurrentlyPressed;
-  keysPressedLastFrame;
-
-  constructor() {
-    this.keysPressed = new Array(6);
-    this.keysJustPressed = new Array(6);
-
-      document.addEventListener('keydown', (event) => {
-        var code = event.code;
-        this.setKeyPressed(code, true)
-      }, false);
-    
-      document.addEventListener('keyup', (event) => {
-        var code = event.code;
-        this.setKeyPressed(code, false)
-      }, false);
-  }
-
-  
-}
-}
-*/
