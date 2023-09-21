@@ -13,7 +13,7 @@ export class Map {
     constructor() {
         this.#createHitboxes();
     }
-
+    
     #createHitboxes() {
         this.hitboxes[0] = new Hitbox(-10, 561, 2096, 400);
         this.hitboxes[1] = new Hitbox(-10, 0, 1696, 300);
