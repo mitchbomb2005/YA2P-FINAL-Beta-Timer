@@ -4,7 +4,7 @@ import { Map } from "./system/map-camera/Map.js"
 import { GameDisplayer } from "./system/GameDisplayer.js"
 import { Camera } from "./system/map-camera/Camera.js"
 import { KeyManager } from "./system/KeyMan.js"
-import { Debug } from "./Debug.js"
+import { Debug } from "./debug.js"
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
