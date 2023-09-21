@@ -31,6 +31,7 @@ export class KeyManager {
         case "KeyA": return this.keysJustPressed[1];
         case "KeyS": return this.keysJustPressed[2];
         case "KeyD": return this.keysJustPressed[3];
+        case "Slash": return this.keysJustPressed[4];
       }
     }
 
@@ -40,6 +41,7 @@ export class KeyManager {
         case "KeyA": return this.keysPressed[1];
         case "KeyS": return this.keysPressed[2];
         case "KeyD": return this.keysPressed[3];
+        case "Slash": return this.keysPressed[4];
       }
     }
 
@@ -60,6 +62,10 @@ export class KeyManager {
         case "KeyD":
           this.keysPressed[3] = pressed;
           this.keysJustPressed[3] = pressed;
+          break;
+        case "Slash":
+          this.keysPressed[4] = pressed;
+          this.keysJustPressed[4] = pressed;
           break;
       }
     }

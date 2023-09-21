@@ -4,6 +4,7 @@ import { Map } from "./system/map-camera/Map.js"
 import { GameDisplayer } from "./system/GameDisplayer.js"
 import { Camera } from "./system/map-camera/Camera.js"
 import { KeyManager } from "./system/KeyMan.js"
+//import { Debug } from "./debug.js"
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -18,6 +19,7 @@ class Main {
     map = new Map();
     keyManager = new KeyManager();
     camera = new Camera(0, 0, this.keyManager);
+    //debug = new Debug(this.keyManager);
 
     constructor() {
         this.gameDisplayer = new GameDisplayer(this, this.map, this.camera);
@@ -37,6 +39,7 @@ class Main {
 
         // Update variables
         this.camera.update();
+        //this.debug.update
     }
 
 }
