@@ -14,6 +14,7 @@ export class Camera {
     // Constant
     maxVelX = 100;
     maxVelY = 100;
+    velChange = 10;
 
     constructor(x, y, keyManager) {
         this.keyManager = keyManager;
@@ -28,28 +29,28 @@ export class Camera {
     
     #updateVelocity() {
         if (this.keyManager.isKeyPressed("KeyD")) {
-            this.velX -= 10;
+            this.velX -= this.velChange;
             if (Math.abs(this.velX) > this.maxVelX) {
                 velX = -maxVelX;
             }
 
         }
         if (this.keyManager.isKeyPressed("KeyA")) {
-              this.velX += 10;
+              this.velX += this.velChange;
               if (this.velX > this.maxVelX) {
                 velX = maxVelX;
             }
               
         }
         if (this.keyManager.isKeyPressed("KeyW")) {
-            this.velY += 10;
+            this.velY += this.velChange;
             if (this.velY > this.maxVelY) {
               velY = maxVelY;
           }
             
         }
         if (this.keyManager.isKeyPressed("KeyS")) {
-            this.velY -= 10;
+            this.velY -= this.velChange;
             if (Math.abs(this.velY) > this.maxVelY) {
                 velY = -maxVelY;
             }

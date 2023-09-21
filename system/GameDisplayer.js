@@ -33,7 +33,6 @@ export class GameDisplayer {
 
     // methods (functions)
     drawGameFrame() {
-       // this.camera.move(5, 3, 3)
 
         this.resizeCanvasForWindowSize();
 
@@ -44,7 +43,6 @@ export class GameDisplayer {
         this.background.Draw(this.camera.x, this.camera.y)
 
         this.drawUtils.Bean(this.originalWidth / 2, this.originalHeight / 2, 50, 100) 
-     // this.drawBean(1000, 400, 100, 150)
      
         this.map.draw(this.camera.x, this.camera.y);
     }
