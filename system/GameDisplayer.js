@@ -4,109 +4,55 @@ const canvas = document.getElementById("game_screen");
 const ctx = canvas.getContext("2d");
 var scaleX = 0;
 var scaleY = 0;
-import { Map } from "./map-camera/Map.js"
-import { Camera } from "./map-camera/Camera.js"
-import { Draw } from "./map-camera/Saved_Shapes.js"
-import { Bg } from "./map-camera/Background.js"
+
+// import { Map }
+// import { Camera }
+import { DrawUtils } from "../utils/DrawUtils.js"
+import { Background } from "./map-camera/Background.js"
 
 export class GameDisplayer {
 
+    // system
+    game;
+    map;
+    camera;
+    background = new Background();
     
     // fields
-    game;
-
     originalWidth = canvas.width;
     originalHeight = canvas.height;
 
-    Map = new Map();
-    Cam = new Camera(0, 0);
-    Draw = new Draw()
-    Bg = new Bg()
+    drawUtils = new DrawUtils();
+    background = new Background();
 
-    constructor(game) {
+    constructor(game, map, camera) {
         this.game = game;
+        this.map = map;
+        this.camera = camera;
     }
 
     // methods (functions)
     drawGameFrame() {
-        this.Cam.move(-5, 0, 3)
+       // this.camera.move(5, 3, 3)
 
-
-        this.game.player.draw(ctx);
         this.resizeCanvasForWindowSize();
 
         ctx.fillStyle = "#a7c7d8";
         ctx.rect(0, 0, 10000, 10000) 
         ctx.fill()
 
-        this.Bg.Layer_2(this.Cam.x, this.Cam.y)
-        this.Bg.Layer_1(this.Cam.x, this.Cam.y)
+        this.background.Draw(this.camera.x, this.camera.y)
 
-        this.Draw.Bean(this.originalWidth / 2, this.originalHeight / 2, 50, 100) 
+        this.drawUtils.Bean(this.originalWidth / 2, this.originalHeight / 2, 50, 100) 
      // this.drawBean(1000, 400, 100, 150)
      
-        this.Map.draw(this.Cam.x, this.Cam.y)
+        this.map.draw(this.camera.x, this.camera.y);
     }
-    
-    /*
-    drawBean(x, y, width, height) {
 
-        ctx.beginPath();
-        ctx.arc(x + (width / 2) - 5, y + 5, width / 2 +5, 0, Math.PI * 2, false);
-        ctx.fillStyle = "#e0e0e0";
-        ctx.fill();
-        ctx.closePath();
-    
-        ctx.beginPath();
-        ctx.arc(x + (width / 2) - 5, y+ (height - (width / 2)) + 5, width / 2 +5, 0, Math.PI * 2, false);
-        ctx.fill();
-        ctx.closePath();
-    
-        ctx.beginPath();
-        ctx.rect(x - 10, y, width + 10 , height - width / 2 + 10);
-        ctx.fill();
-        ctx.closePath();    
-    
-    
-        ctx.beginPath();
-        ctx.rect(x - 5, y - 5, width + 10 , height - width / 2 + 10);
-        ctx.fillStyle = "#000000";
-        ctx.fill();
-        ctx.closePath();
-    
-        ctx.beginPath();
-        ctx.arc(x + (width / 2) , y + (height - (width / 2))  , width / 2 + 5, 0, Math.PI * 2, false);
-        ctx.fill();
-        ctx.closePath();
-    
-        ctx.beginPath();
-        ctx.arc(x + (width / 2), y, width / 2 +5, 0, Math.PI * 2, false);
-        ctx.fill();
-        ctx.closePath();
-    
-    //--------------------------------------------------------------------------------------------------------------------
-    
-        ctx.beginPath();
-        ctx.rect(x, y, width, height - width / 2);
-        ctx.fillStyle = "#afbfaf";
-        ctx.fill();
-        ctx.closePath();
-    
-        ctx.beginPath();
-        ctx.arc(x + (width / 2), y + (height - (width / 2)), width / 2, 0, Math.PI * 2, false);
-        ctx.fill();
-        ctx.closePath();
-    
-        ctx.beginPath();
-        ctx.arc(x + (width / 2), y, width / 2, 0, Math.PI * 2, false);
-        ctx.fill();
-        ctx.closePath();
-    }
-*/
 
+    
     // don't alter this, just ignore it
     // we don't kow how it works, it just does
-
     resizeCanvasForWindowSize() {
         var currentWidth = canvas.width;
         var currentHeight = canvas.height;

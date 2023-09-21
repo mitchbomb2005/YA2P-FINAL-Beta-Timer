@@ -1,7 +1,10 @@
+'use strict';
+
 const canvas = document.getElementById("game_screen");
 const ctx = canvas.getContext("2d");
 
-export class Draw {
+export class DrawUtils {
+        
     Bean(x, y, width, height) {
 
         ctx.beginPath();
@@ -37,7 +40,7 @@ export class Draw {
         ctx.fill();
         ctx.closePath();
 
-//--------------------------------------------------------------------------------------------------------------------
+        // Draw inside color of bean
 
         ctx.beginPath();
         ctx.rect(x, y, width, height - width / 2);
@@ -54,5 +57,7 @@ export class Draw {
         ctx.arc(x + (width / 2), y, width / 2, 0, Math.PI * 2, false);
         ctx.fill();
         ctx.closePath();
-}
+        
+    }
+
 }

@@ -1,49 +1,73 @@
-import { Camera } from "./map-camera/Camera.js"
+'use strict';
 
-export class keyManager {
+export class KeyManager {
     /*
-        KeyD = 0
+      KeyW = 0;
+      KeyA = 1;
+      KeyS = 2;
+      KeyD = 3;
      */
     keysPressed;
     keysJustPressed;
-    Cam = new (Camera);
 
     constructor() {
       this.keysPressed = new Array(1);
       this.keysJustPressed = new Array(1);
+
+      document.addEventListener('keydown', (event) => {
+        var code = event.code;
+        this.setKeyPressed(code, true)
+      }, false);
+    
+      document.addEventListener('keyup', (event) => {
+        var code = event.code;
+        this.setKeyPressed(code, false)
+      }, false);
     }
 
     wasKeyJustPressed(code) {
       switch (code) {
-        case "KeyD": return this.keysJustPressed[0]
+        case "KeyW": return this.keysJustPressed[0];
+        case "KeyA": return this.keysJustPressed[1];
+        case "KeyS": return this.keysJustPressed[2];
+        case "KeyD": return this.keysJustPressed[3];
       }
     }
 
     isKeyPressed(code) {
       switch (code) {
-        case "KeyD": return this.keysPressed[0]
+        case "KeyW": return this.keysPressed[0];
+        case "KeyA": return this.keysPressed[1];
+        case "KeyS": return this.keysPressed[2];
+        case "KeyD": return this.keysPressed[3];
       }
     }
 
     setKeyPressed(code, pressed) {
       switch (code) {
+        case "KeyW":
+          this.keysPressed[0] = pressed;
+          this.keysJustPressed[0] = pressed;
+          break;
+        case "KeyA":
+          this.keysPressed[1] = pressed;
+          this.keysJustPressed[1] = pressed;
+          break;
+        case "KeyS":
+          this.keysPressed[2] = pressed;
+          this.keysJustPressed[2] = pressed;
+          break;
         case "KeyD":
-        this.keysPressed[0] = pressed
-        this.keysJustPressed[0] = pressed
+          this.keysPressed[3] = pressed;
+          this.keysJustPressed[3] = pressed;
+          break;
       }
     }
 
-    doActionsFromKeyInput() {
-      console.log("doActionsFromKeyInput called")
-      if (this.isKeyPressed("KeyD")) {
-        console.log("it should move")
-        this.Cam.move(10, 0, 5)
-      }
-    }
-
-    onTick() {
+    update() {
       for (let i = 0; i < this.keysJustPressed.length; i++) {
         this.keysJustPressed[i] = false;
       }
     }
+
 }

@@ -1,9 +1,12 @@
+'use strict';
+
 const canvas = document.getElementById("game_screen");
 const ctx = canvas.getContext("2d");
 
+import { Map } from "./system/map-camera/Map.js"
 import { GameDisplayer } from "./system/GameDisplayer.js"
-import { Player } from "./system/Player.js"
-import { keyManager } from "./system/KeyMan.js"
+import { Camera } from "./system/map-camera/Camera.js"
+import { KeyManager } from "./system/KeyMan.js"
 
 'use strict';
 
@@ -16,47 +19,37 @@ function sleep(ms) {
 class Main {
 
     // System
-    displayer;
+    gameDisplayer;
 
     // fields
-    player = new Player(0, 0);
-    keyManager = new (keyManager);
+    map = new Map();
+    keyManager = new KeyManager();
+    camera = new Camera(0, 0, this.keyManager);
 
     constructor() {
-        this.displayer = new GameDisplayer(this);
+        this.gameDisplayer = new GameDisplayer(this, this.map, this.camera);
         this.startGame();
     }
 
     async startGame() {
         while (true) {
             this.updateGame();
-            this.keyManager.doActionsFromKeyInput();
-            this.keyManager.onTick();
-            this.displayer.drawGameFrame();
+            this.gameDisplayer.drawGameFrame();
             await sleep(1000/60)
+            // console.log(this.camera.x, this.camera.y)            
+           
             // Wait here
         }
     } 
 
     updateGame() {
-        
-    }
+        // Update input
+        this.keyManager.update();
 
-    
+        // Update variables
+        this.camera.update();
+    }
 
 }
 
 new Main();
-
-
-var keyMan = new (keyManager);
-
-document.addEventListener('keydown', (event) => {
-    var code = event.code;
-    keyMan.setKeyPressed(code, true)
-  }, false);
-
-document.addEventListener('keyup', (event) => {
-    var code = event.code;
-    keyMan.setKeyPressed(code, false)
-}, false);
