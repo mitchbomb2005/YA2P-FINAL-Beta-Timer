@@ -26,6 +26,7 @@ class Main {
     }
 
     async startGame() {
+        this.autoDebug()
         while (true) {
             this.updateGame();
             this.gameDisplayer.drawGameFrame();
@@ -42,6 +43,12 @@ class Main {
 
         // Update input
         this.keyManager.update();
+    }
+
+    autoDebug() {
+        this.debug.debugMode = true
+        this.debug.bean = false
+        this.debug.noClip = true
     }
 
 }
