@@ -114,17 +114,18 @@ export class Camera {
 
     #move() {
         this.velX = this.velX * .8
-        this.velY = this.velY - 5
-        this.velY = this.velY * .95
+        this.velY = this.velY - 1
+        this.velY = this.velY * .997
         this.#collisionCheck()
         this.x += this.velX;
         this.y += this.velY;
+        console.log(this.x, this.y)
     }
 
     #collisionCheck() {
         for (let i = 0; i < 4; i++) {
 
-            if ((this.y < this.map.hitboxes[i].y && this.y > this.map.hitboxes[i].y - this.map.hitboxes[i].height) && (this.x < this.map.hitboxes[i].x && this.x > this.map.hitboxes[i].x - this.map.hitboxes[i].width)){
+            if ((-this.x < this.map.hitboxes[i].y && -this.x > this.map.hitboxes[i].y - this.map.hitboxes[i].height) && (-this.y < this.map.hitboxes[i].x && -this.y > this.map.hitboxes[i].x - this.map.hitboxes[i].width)){
                 this.velY = 0
                 for(let s = 0; s < 1; s++) {
                     this.y = this.y + 1
