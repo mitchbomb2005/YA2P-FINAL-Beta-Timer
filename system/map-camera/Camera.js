@@ -125,13 +125,17 @@ export class Camera {
     #collisionCheck() {
         for (let i = 0; i < 4; i++) {
 
-            if ((-this.x < this.map.hitboxes[i].y && -this.x > this.map.hitboxes[i].y - this.map.hitboxes[i].height) && (-this.y < this.map.hitboxes[i].x && -this.y > this.map.hitboxes[i].x - this.map.hitboxes[i].width)){
-                this.velY = 0
-                for(let s = 0; s < 1; s++) {
+            if ((-this.y + (459 + 50) > this.map.hitboxes[i].y && -this.y + (459 + 50) < this.map.hitboxes[i].y + this.map.hitboxes[i].height) && (-this.x + 838 > this.map.hitboxes[i].x && -this.x + 838 < this.map.hitboxes[i].x + this.map.hitboxes[i].width)){
+                if(this.velY < 0) {
+                    this.velY = 0
+                }
+                var y = this.y 
+                var hitY = this.map.hitboxes[i].y
+                for(let s = 0; s < (hitY - y); s++) {
                     this.y = this.y + 1
-                    if (this.y < this.map.hitboxes[i].y && this.y > this.map.hitboxes[i].y + this.map.hitboxes[i].height){
-                        this.y--
-                    }
+                    //if (this.y < this.map.hitboxes[i].y && this.y > this.map.hitboxes[i].y + this.map.hitboxes[i].height){
+                    //    this.y =this.y
+                    //}
                 }
             }
         }
