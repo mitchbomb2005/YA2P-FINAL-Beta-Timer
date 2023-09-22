@@ -18,8 +18,8 @@ class Main {
     // fields
     map = new Map();
     keyManager = new KeyManager();
-    camera = new Camera(0, 0, this.keyManager);
     debug = new Debug(this.keyManager);
+    camera = new Camera(0, 0, this.keyManager, this.debug);
 
     constructor() {
         this.gameDisplayer = new GameDisplayer(this, this.map, this.camera, this.debug);
