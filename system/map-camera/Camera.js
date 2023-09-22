@@ -13,6 +13,7 @@ export class Camera {
     x;
     y;
     debug;
+    map;
 
     // Constant
     maxVelX = 100;
@@ -21,11 +22,12 @@ export class Camera {
     velChange = 5;
     jumpVel = 70
 
-    constructor(x, y, keyManager, debug) {
+    constructor(x, y, keyManager, debug, map) {
         this.keyManager = keyManager;
         this.x = x;
         this.y = y;
         this.debug = debug
+        this.map = map
     }
 
     update() {
@@ -114,16 +116,24 @@ export class Camera {
         this.velX = this.velX * .8
         this.velY = this.velY - 5
         this.velY = this.velY * .95
-        if (this.#collisionCheck()) {
-            this.velY = 0
-        }
+        this.#collisionCheck()
         this.x += this.velX;
         this.y += this.velY;
     }
 
     #collisionCheck() {
-        //for (let i = 0; i < this.hitboxes.length; i++) {}
-        return(false)
+        for (let i = 0; i < 4; i++) {
+
+            if ((this.y < this.map.hitboxes[i].y && this.y > this.map.hitboxes[i].y - this.map.hitboxes[i].height) && (this.x < this.map.hitboxes[i].x && this.x > this.map.hitboxes[i].x - this.map.hitboxes[i].width)){
+                this.velY = 0
+                for(let s = 0; s < 1; s++) {
+                    this.y = this.y + 1
+                    if (this.y < this.map.hitboxes[i].y && this.y > this.map.hitboxes[i].y + this.map.hitboxes[i].height){
+                        this.y--
+                    }
+                }
+            }
+        }
     }
     
 }

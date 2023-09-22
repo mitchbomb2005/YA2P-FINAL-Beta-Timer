@@ -19,7 +19,7 @@ class Main {
     map = new Map();
     keyManager = new KeyManager();
     debug = new Debug(this.keyManager);
-    camera = new Camera(0, 0, this.keyManager, this.debug);
+    camera = new Camera(0, 0, this.keyManager, this.debug, this.map);
 
     constructor() {
         this.gameDisplayer = new GameDisplayer(this, this.map, this.camera, this.debug);
