@@ -14,6 +14,7 @@ export class Camera {
     y;
     debug;
     map;
+    jump = false;
 
     // Constant
     maxVelX = 100;
@@ -35,8 +36,8 @@ export class Camera {
             this.#updateVelocityNoclip();
             this.#moveNoclip();
         } else {
-            this.#updateVelocity()
             this.#move()
+            this.#updateVelocity()
         }
 
     }
@@ -87,15 +88,17 @@ export class Camera {
             }
 
         }
+        
         if (this.keyManager.isKeyPressed("KeyA")) {
-              this.velX += this.velChange;
-              if (this.velX > this.maxVelX) {
+            this.velX += this.velChange;
+            if (this.velX > this.maxVelX) {
                 this.velX = this.maxVelX;
-            }
-              
+            }    
         }
-        if (this.keyManager.wasKeyJustPressed("KeyW")) {
-            this.velY = this.jumpVel;          
+        if (this.jump == true) {
+            if (this.keyManager.wasKeyJustPressed("KeyW")) {
+                this.velY = this.jumpVel;          
+            }
         }
         if (this.velY > this.maxVelY) {
             velY = maxVelY;
@@ -123,8 +126,8 @@ export class Camera {
     }
 
     #collisionCheck(offset) {
+        this.jump = false
         for (let i = 0; i < 5; i++) {
-
             if ((-this.y + (459 + offset) > this.map.hitboxes[i].y && -this.y + (459 + offset) < this.map.hitboxes[i].y + this.map.hitboxes[i].height) && (-this.x + 838 > this.map.hitboxes[i].x && -this.x + 838 < this.map.hitboxes[i].x + this.map.hitboxes[i].width)){
                 if(this.velY < 0) {
                     this.velY = 0
@@ -132,6 +135,7 @@ export class Camera {
                 var y = this.y 
                 var hitY = this.map.hitboxes[i].y
                 this.y = -hitY + 459 + offset
+                this.jump = true
             }
         }
     }
