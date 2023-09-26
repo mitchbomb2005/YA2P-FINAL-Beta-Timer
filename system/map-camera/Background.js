@@ -26,6 +26,8 @@ export class Background {
         ctx.fillRect((x/xOffset) + 175, (y/yOffset) + 450, 500, 40);
         ctx.fillRect((x/xOffset) + 670, (y/yOffset) + 250, 50, 550);
         ctx.fillRect((x/xOffset) + 1000, (y/yOffset) + 0, 950, 50);
+        ctx.fillRect((x/xOffset) + 1900, (y/yOffset) + 0, 50, 400);
+        ctx.fillRect((x/xOffset) + 1900, (y/yOffset) + 350, 650, 50);
     }
 
     #DrawLayer2(x, y, xOffset = 3, yOffset = 3) {
