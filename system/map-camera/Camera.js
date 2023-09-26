@@ -20,7 +20,7 @@ export class Camera {
     maxVelY = 100;
     noclipVelChange = 10;
     velChange = 5;
-    jumpVel = 70
+    jumpVel = 30
 
     constructor(x, y, keyManager, debug, map) {
         this.keyManager = keyManager;
@@ -123,7 +123,7 @@ export class Camera {
     }
 
     #collisionCheck(offset) {
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 5; i++) {
 
             if ((-this.y + (459 + offset) > this.map.hitboxes[i].y && -this.y + (459 + offset) < this.map.hitboxes[i].y + this.map.hitboxes[i].height) && (-this.x + 838 > this.map.hitboxes[i].x && -this.x + 838 < this.map.hitboxes[i].x + this.map.hitboxes[i].width)){
                 if(this.velY < 0) {
@@ -131,9 +131,7 @@ export class Camera {
                 }
                 var y = this.y 
                 var hitY = this.map.hitboxes[i].y
-                for(let s = 0; s < (hitY - y); s++) {
-                    this.y = this.y + 1
-                }
+                this.y = -hitY + 459 + offset
             }
         }
     }
