@@ -26,7 +26,7 @@ class Main {
     }
 
     async startGame() {
-        this.autoDebug()
+        //this.autoDebug()
         while (true) {
             this.updateGame();
             this.gameDisplayer.drawGameFrame();
