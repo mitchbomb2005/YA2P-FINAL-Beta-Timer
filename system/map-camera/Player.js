@@ -41,8 +41,8 @@ export class Player {
             this.#move()
             this.#updateVelocity()
         }
-        this.camera.x = this.camera.x - (((this.camera.x /*+ 838*/) - this.x) / 2)
-        this.camera.y = this.camera.y - (((this.camera.y this.y /*- 509*/
+        this.camera.x = this.camera.x - (((this.camera.x /*+ 838*/) - this.x) / 5)
+        this.camera.y = this.camera.y - (((this.camera.y /*- 509*/) - this.y) / 5) 
 
     }
     

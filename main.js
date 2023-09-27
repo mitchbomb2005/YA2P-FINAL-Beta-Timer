@@ -25,7 +25,7 @@ class Main {
     player = new Player(0, 0, this.keyManager, this.debug, this.map, this.camera);
 
     constructor() {
-        this.gameDisplayer = new GameDisplayer(this, this.map, this.camera, this.debug);
+        this.gameDisplayer = new GameDisplayer(this, this.map, this.camera, this.player, this.debug);
     }
 
     async startGame() {

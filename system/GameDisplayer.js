@@ -17,6 +17,7 @@ export class GameDisplayer {
     map;
     camera;
     debug;
+    player; 
 
     background = new Background();
     
@@ -27,11 +28,12 @@ export class GameDisplayer {
     drawUtils = new DrawUtils();
     background = new Background();
 
-    constructor(Game, Map, Camera, Debug = 0) {
+    constructor(Game, Map, Camera, Player, Debug = 0) {
         this.game = Game;
         this.map = Map;
         this.camera = Camera;
         this.debug = Debug
+        this.player = Player
     }
 
     // methods (functions)
@@ -44,7 +46,7 @@ export class GameDisplayer {
         ctx.fill()
         this.background.Draw(this.camera.x, this.camera.y)
         if(this.debug.bean) {
-            this.drawUtils.Bean(this.originalWidth / 2, this.originalHeight / 2, 50, 100) 
+            this.drawUtils.Bean(-this.player.x + this.camera.x + 838, -this.player.y + this.camera.y +459, 50, 100) 
         }
         this.map.draw(this.camera.x, this.camera.y);
     }
