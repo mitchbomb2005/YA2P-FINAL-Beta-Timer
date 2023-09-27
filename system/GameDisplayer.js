@@ -46,7 +46,7 @@ export class GameDisplayer {
         ctx.fill()
         this.background.Draw(this.camera.x, this.camera.y)
         if(this.debug.bean) {
-            this.drawUtils.Bean(-this.player.x + this.camera.x + 838, -this.player.y + this.camera.y +459, 50, 100) 
+            this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50, 100) 
         }
         this.map.draw(this.camera.x, this.camera.y);
     }

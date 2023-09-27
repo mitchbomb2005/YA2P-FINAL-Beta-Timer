@@ -21,8 +21,8 @@ class Main {
     keyManager = new KeyManager();
     debug = new Debug(this.keyManager);
 
-    camera = new Camera(0, 0)
-    player = new Player(0, 0, this.keyManager, this.debug, this.map, this.camera);
+    camera = new Camera(300, -1000)
+    player = new Player(-838, -509, this.keyManager, this.debug, this.map, this.camera);
 
     constructor() {
         this.gameDisplayer = new GameDisplayer(this, this.map, this.camera, this.player, this.debug);

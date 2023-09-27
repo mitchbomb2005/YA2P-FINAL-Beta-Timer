@@ -41,8 +41,8 @@ export class Player {
             this.#move()
             this.#updateVelocity()
         }
-        this.camera.x = this.camera.x - (((this.camera.x /*+ 838*/) - this.x) / 10)
-        this.camera.y = this.camera.y - (((this.camera.y /*- 509*/) - this.y) / 10) 
+        this.camera.x = this.camera.x - (((this.camera.x - 838) - this.x) / 10)
+        this.camera.y = this.camera.y - (((this.camera.y - 509) - this.y) / 10) 
 
     }
     
@@ -132,13 +132,13 @@ export class Player {
     #collisionCheck(offset) {
         this.jump = false
         for (let i = 0; i < 5; i++) {
-            if ((-this.y + (459 + offset) > this.map.hitboxes[i].y && -this.y + (459 + offset) < this.map.hitboxes[i].y + this.map.hitboxes[i].height) && (-this.x + 838 > this.map.hitboxes[i].x && -this.x + 838 < this.map.hitboxes[i].x + this.map.hitboxes[i].width)){
+            if ((-this.y + (offset) > this.map.hitboxes[i].y && -this.y + (offset) < this.map.hitboxes[i].y + this.map.hitboxes[i].height) && (-this.x > this.map.hitboxes[i].x && -this.x < this.map.hitboxes[i].x + this.map.hitboxes[i].width)){
                 if(this.velY < 0) {
                     this.velY = 0
                 }
                 var y = this.y 
                 var hitY = this.map.hitboxes[i].y
-                this.y = -hitY + 459 + offset
+                this.y = -hitY + offset
                 this.jump = true
             }
         }
