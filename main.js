@@ -2,7 +2,7 @@
 
 import { Map } from "./system/map-camera/Map.js"
 import { GameDisplayer } from "./system/GameDisplayer.js"
-import { Camera } from "./system/map-camera/Camera.js"
+import { Player } from "./system/map-camera/Player.js"
 import { KeyManager } from "./system/KeyMan.js"
 import { Debug } from "./debug.js"
 
@@ -19,7 +19,7 @@ class Main {
     map = new Map();
     keyManager = new KeyManager();
     debug = new Debug(this.keyManager);
-    camera = new Camera(0, 0, this.keyManager, this.debug, this.map);
+    camera = new Player(0, 0, this.keyManager, this.debug, this.map);
 
     constructor() {
         this.gameDisplayer = new GameDisplayer(this, this.map, this.camera, this.debug);
