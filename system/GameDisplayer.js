@@ -42,13 +42,10 @@ export class GameDisplayer {
         ctx.fillStyle = "#a7c7d8";
         ctx.rect(0, 0, 10000, 10000) 
         ctx.fill()
-
         this.background.Draw(this.camera.x, this.camera.y)
-
         if(this.debug.bean) {
             this.drawUtils.Bean(this.originalWidth / 2, this.originalHeight / 2, 50, 100) 
         }
-     
         this.map.draw(this.camera.x, this.camera.y);
     }
 

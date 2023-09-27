@@ -14,6 +14,7 @@ export class Player {
     y;
     debug;
     map;
+    camera
     jump = false;
 
     // Constant
@@ -23,12 +24,13 @@ export class Player {
     velChange = 5;
     jumpVel = 30
 
-    constructor(x, y, keyManager, debug, map) {
+    constructor(x, y, keyManager, debug, map, camera) {
         this.keyManager = keyManager;
         this.x = x;
         this.y = y;
         this.debug = debug
         this.map = map
+        this.camera = camera
     }
 
     update() {
@@ -39,6 +41,8 @@ export class Player {
             this.#move()
             this.#updateVelocity()
         }
+        this.camera.x = this.camera.x - (((this.camera.x /*+ 838*/) - this.x) / 2)
+        this.camera.y = this.camera.y - (((this.camera.y this.y /*- 509*/
 
     }
     
