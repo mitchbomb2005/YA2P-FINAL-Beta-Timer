@@ -4,7 +4,7 @@ export class Debug {
     bean = true
     noClip = false
     playerHitbox = false
-    freeCamState = false
+    freeCam = false
     keyManager;
 
     constructor(keyMan) {
@@ -19,6 +19,7 @@ export class Debug {
             this.hideBean();
             this.flipNoClip();
             this.flipPlayerHitbox();
+            this.flipFreeCam();
         }
 
     }
@@ -53,10 +54,11 @@ export class Debug {
         }
     }
 
-    freeCam() {
+    flipFreeCam() {
+        console.log("freecam called")
         if (this.keyManager.wasKeyJustPressed("KeyF")) {
             console.log("free Camera")
-            this.playerHitbox = !this.freeCamState
+            this.playerHitbox = !this.freeCam
         }
     }
 

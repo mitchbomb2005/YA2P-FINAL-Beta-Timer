@@ -56,8 +56,10 @@ export class Player {
             this.#move()
             this.#updateVelocity()
         }
-        this.camera.x = this.camera.x - (((this.camera.x - 838) - this.x) / 10)
-        this.camera.y = this.camera.y - (((this.camera.y - 509) - this.y) / 10) 
+        if (this.debug.freeCam) {
+            this.camera.x = this.camera.x - (((this.camera.x - 838) - this.x) / 10)
+            this.camera.y = this.camera.y - (((this.camera.y - 509) - this.y) / 10) 
+        }
 
     }
     
