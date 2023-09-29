@@ -1,8 +1,14 @@
+'use strict';
+
+// rename this to Player.js
+
 export class Camera {
+
     x;
     y;
-    constructor(X, Y) {
-        this.x = X
-        this.y = Y
+    constructor(x, y) {
+        this.x = x
+        this.y = y
     }
+    
 }

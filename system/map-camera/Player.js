@@ -65,33 +65,33 @@ export class Player {
         if (this.keyManager.isKeyPressed("KeyD")) {
             this.velX -= this.noclipVelChange;
             if (Math.abs(this.velX) > this.maxVelX) {
-                velX = -maxVelX;
+                this.velX = -this.maxVelX;
             }
 
         }
         if (this.keyManager.isKeyPressed("KeyA")) {
               this.velX += this.noclipVelChange;
               if (this.velX > this.maxVelX) {
-                velX = maxVelX;
+                this.velX = this.maxVelX;
             }
               
         }
         if (this.keyManager.isKeyPressed("KeyW")) {
             this.velY += this.noclipVelChange;
             if (this.velY > this.maxVelY) {
-              velY = maxVelY;
+                this.velY = this.maxVelY;
           }
             
         }
         if (this.keyManager.isKeyPressed("KeyS")) {
             this.velY -= this.noclipVelChange;
             if (Math.abs(this.velY) > this.maxVelY) {
-                velY = -maxVelY;
+                this.velY = -this.maxVelY;
             }
 
         }
         if (this.velY < -this.maxVelY) {
-            velY = -maxVelY;
+            this.velY = -this.maxVelY;
         }
     }
 
@@ -119,12 +119,16 @@ export class Player {
         }
         if (this.jump == true) {
             if (this.keyManager.wasKeyJustPressed("KeyW")) {
-                this.velY = this.jumpVel;          
+                this.velY += this.jumpVel;          
             }
         }
         if (this.velY > this.maxVelY) {
-            velY = maxVelY;
+            this.velY += this.maxVelY;
         }
+        if (this.velY < -this.maxVelY) {
+            this.velY = -this.maxVelY;
+        }
+
         /*
         if (this.keyManager.isKeyPressed("KeyS")) {
             this.velY -= this.velChange;
@@ -234,8 +238,8 @@ export class Player {
                 this.jump = true
             }
         }
-
-        for (let i = 0; i < this.map.hitboxes.length; i++) /* left hit */ { 
+/*
+        for (let i = 0; i < this.map.hitboxes.length; i++) /* left hit / { 
             if(this.#collisionCheck(4, i, this.map)) {
                 var offset = 25
                 console.log("hit!")
@@ -250,7 +254,7 @@ export class Player {
             }
         }
 
-        for (let i = 0; i < this.map.hitboxes.length; i++) /* right hit */ { 
+        for (let i = 0; i < this.map.hitboxes.length; i++) /* right hit / { 
             if(this.#collisionCheck(5, i, this.map)) {
                 var offset = 25
                 console.log("hit!")
@@ -264,5 +268,6 @@ export class Player {
                 //this.wallJumpRight = true
             }
         }
+*/
     }
 }
