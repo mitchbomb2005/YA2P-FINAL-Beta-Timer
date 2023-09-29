@@ -40,6 +40,8 @@ export class Player {
     #buildHitbox(x, y, width, height) {
         this.playerHitbox[0] = new Hitbox(x + 5, y + (height - 10), width - 10, 10); // bottom of hitbox
         this.playerHitbox[1] = new Hitbox(x + 5, y, width - 10, 10)
+        this.playerHitbox[2] = new Hitbox(x, y + 30, 10, height - 60)
+        this.playerHitbox[3] = new Hitbox(x + width - 10, y + 30, 10, height - 60)
 
         this.playerHitbox[100] = new Hitbox(x, y, width, height)
     }
@@ -146,6 +148,7 @@ export class Player {
 
         this.playerHitbox[0].draw(-this.x + this.camera.x, -this.y + this.camera.y, "#f0f0f0");
         this.playerHitbox[1].draw(-this.x + this.camera.x, -this.y + this.camera.y, "#f0f0f0");
+        this.playerHitbox[2].draw(-this.x + this.camera.x, -this.y + this.camera.y, "#f0f0f0");
     }
 
     #collisionCheck(part, i) {
@@ -165,6 +168,35 @@ export class Player {
         return (hit);
     }
     #colide() {
+
+        for (let i = 0; i < this.map.hitboxes.length; i++) /* left hit */ { 
+            if(this.#collisionCheck(2, i)) {
+                var offset = 25
+                console.log("hit!")
+                if (this.velX > 0) {
+                    this.velX = 0
+                }
+                var hitW = this.map.hitboxes[i].width
+                var hitX = this.map.hitboxes[i].x
+
+                this.x = (-hitX - (offset)) - hitW
+            }
+        }
+
+        for (let i = 0; i < this.map.hitboxes.length; i++) /* right hit */ { 
+            if(this.#collisionCheck(3, i)) {
+                var offset = 25
+                console.log("hit!")
+                if (this.velX > 0) {
+                    this.velX = 0
+                }
+                var hitW = this.map.hitboxes[i].width
+                var hitX = this.map.hitboxes[i].x
+
+                this.x = -hitX + offset
+            }
+        }
+
         for (let i = 0; i < this.map.hitboxes.length; i++) /* ground hit */ {  
             if(this.#collisionCheck(0, i)) {
                 var offset = 50
