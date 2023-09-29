@@ -33,6 +33,9 @@ class Main {
         while (true) {
             this.updateGame();
             this.gameDisplayer.drawGameFrame();
+            if (this.debug.playerHitbox) {
+                this.player.drawHitbox()
+            }
             await sleep(1000/60);
         }
     } 

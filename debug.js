@@ -3,6 +3,7 @@ export class Debug {
     debugMode = false
     bean = true
     noClip = false
+    playerHitbox = false
     keyManager;
 
     constructor(keyMan) {
@@ -16,6 +17,7 @@ export class Debug {
         }else{
             this.hideBean();
             this.flipNoClip();
+            this.flipPlayerHitbox();
         }
 
     }
@@ -42,5 +44,14 @@ export class Debug {
             this.noClip = !this.noClip
         }
     }
+
+    flipPlayerHitbox() {
+        if (this.keyManager.wasKeyJustPressed("KeyP")) {
+            console.log("playerHitbox")
+            this.playerHitbox = !this.playerHitbox
+        }
+    }
+
+    
 
 }

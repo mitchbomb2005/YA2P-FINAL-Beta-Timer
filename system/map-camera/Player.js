@@ -2,6 +2,8 @@
 
 // rename this to Player.js
 
+import { Hitbox } from "./Hitbox.js";
+
 export class Player {
 
     // System
@@ -14,7 +16,8 @@ export class Player {
     y;
     debug;
     map;
-    camera
+    camera;
+    playerHitbox = new Array()
     jump = false;
 
     // Constant
@@ -31,6 +34,11 @@ export class Player {
         this.debug = debug
         this.map = map
         this.camera = camera
+        this.#buildHitbox(-25, -75, 50, 125)
+    }
+
+    #buildHitbox(x, y, width, height) {
+        this.playerHitbox[0] = new Hitbox(x + 5, y + (height - 10), width - 10, 10); // bottom of hitbox
     }
 
     update() {
@@ -125,11 +133,30 @@ export class Player {
         this.velY = this.velY * .997
         this.x += this.velX;
         this.y += this.velY;
-        this.#collisionCheck(50)
+        if(this.#collisionCheck(0)) {
+            console.log("hit!")
+        }
         console.log(this.x, this.y)
     }
 
-    #collisionCheck(offset) {
+    drawHitbox() {
+        this.playerHitbox[0].draw(-this.x + this.camera.x, -this.y + this.camera.y, "#f0f0f0");
+    }
+
+    #collisionCheck(part) {
+
+        for (let i = 0; i < this.map.hitboxes.length; i++) {
+            if ((this.playerHitbox[part].y + this.playerHitbox[part].height <= this.map.hitboxes[i].y ||
+                this.playerHitbox[part].y + this.playerHitbox[part].height >= this.map.hitboxes[i].y + this.map.hitboxes[i].height) && (
+                this.playerHitbox[part].x + this.playerHitbox[part].height <= this.map.hitboxes[i].y )) {
+                var hit = true
+            }
+            return (hit);
+        }
+
+
+
+        /*
         this.jump = false
         for (let i = 0; i < 5; i++) {
             if ((-this.y + (offset) > this.map.hitboxes[i].y && -this.y + (offset) < this.map.hitboxes[i].y + this.map.hitboxes[i].height) && (-this.x > this.map.hitboxes[i].x && -this.x < this.map.hitboxes[i].x + this.map.hitboxes[i].width)){
@@ -140,8 +167,10 @@ export class Player {
                 var hitY = this.map.hitboxes[i].y
                 this.y = -hitY + offset
                 this.jump = true
+                
             }
         }
+        */
     }
     
 }

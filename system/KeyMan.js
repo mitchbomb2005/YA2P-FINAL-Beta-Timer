@@ -37,6 +37,7 @@ export class KeyManager {
         case "Backslash": return !this.keysPressedLastFrame[4] && this.keysCurrentlyPressed[4];
         case "KeyH": return !this.keysPressedLastFrame[5] && this.keysCurrentlyPressed[5];
         case "KeyN": return !this.keysPressedLastFrame[6] && this.keysCurrentlyPressed[6];
+        case "KeyP": return !this.keysPressedLastFrame[7] && this.keysCurrentlyPressed[7];
       }
     }
 
@@ -49,6 +50,7 @@ export class KeyManager {
         case "Backslash": return this.keysCurrentlyPressed[4];
         case "KeyH": return this.keysCurrentlyPressed[5];
         case "KeyN": return this.keysCurrentlyPressed[6];
+        case "KeyP": return this.keysCurrentlyPressed[7];
       }
     }
 
@@ -74,6 +76,9 @@ export class KeyManager {
           break;
         case "KeyN":
           this.keyBuffer[6] = pressed;
+          break;
+        case "KeyP":
+          this.keyBuffer[7] = pressed;
           break;
         default:
           console.log("Unexpected key code: " + code);
