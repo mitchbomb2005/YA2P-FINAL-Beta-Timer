@@ -133,8 +133,19 @@ export class Player {
         this.velY = this.velY * .997
         this.x += this.velX;
         this.y += this.velY;
-        if(this.#collisionCheck(0)) {
-            console.log("hit!")
+        this.jump = false
+        for (let i = 0; i < this.map.hitboxes.length; i++) {
+            if(this.#collisionCheck(0, 50, i)) {
+                var offset = 50
+                console.log("hit!")
+                if(this.velY < 0) {
+                    this.velY = 0
+                }
+                var y = this.y 
+                var hitY = this.map.hitboxes[i].y
+                this.y = -hitY + offset
+                this.jump = true
+            }
         }
         console.log(this.x, this.y)
     }
@@ -143,34 +154,35 @@ export class Player {
         this.playerHitbox[0].draw(-this.x + this.camera.x, -this.y + this.camera.y, "#f0f0f0");
     }
 
-    #collisionCheck(part) {
+    #collisionCheck(part, offset = 50, i) {
 
-        for (let i = 0; i < this.map.hitboxes.length; i++) {
-            if ((this.playerHitbox[part].y + this.playerHitbox[part].height <= this.map.hitboxes[i].y ||
+        //*
+        
+            if  //((-this.y + (offset) > this.map.hitboxes[i].y && -this.y + (offset) < this.map.hitboxes[i].y + this.map.hitboxes[i].height) && (-this.x > this.map.hitboxes[i].x && -this.x < this.map.hitboxes[i].x + this.map.hitboxes[i].width)){
+ 
+            
+            //*
+            ((this.playerHitbox[part].y + this.playerHitbox[part].height <= this.map.hitboxes[i].y &&
                 this.playerHitbox[part].y + this.playerHitbox[part].height >= this.map.hitboxes[i].y + this.map.hitboxes[i].height) && (
-                this.playerHitbox[part].x + this.playerHitbox[part].height <= this.map.hitboxes[i].y )) {
+                this.playerHitbox[part].x + this.playerHitbox[part].height <= this.map.hitboxes[i].x &&
+                this.playerHitbox[part].x + this.playerHitbox[part].height >= this.map.hitboxes[i].x + this.map.hitboxes[i].width)) {
                 var hit = true
             }
             return (hit);
         }
-
+        //*/
 
 
         /*
-        this.jump = false
+        
         for (let i = 0; i < 5; i++) {
             if ((-this.y + (offset) > this.map.hitboxes[i].y && -this.y + (offset) < this.map.hitboxes[i].y + this.map.hitboxes[i].height) && (-this.x > this.map.hitboxes[i].x && -this.x < this.map.hitboxes[i].x + this.map.hitboxes[i].width)){
-                if(this.velY < 0) {
-                    this.velY = 0
-                }
-                var y = this.y 
-                var hitY = this.map.hitboxes[i].y
-                this.y = -hitY + offset
-                this.jump = true
+
                 
+                }
             }
-        }
         */
-    }
+        
     
 }
+//}
