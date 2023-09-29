@@ -159,13 +159,14 @@ export class Player {
         //*
         
             if  //((-this.y + (offset) > this.map.hitboxes[i].y && -this.y + (offset) < this.map.hitboxes[i].y + this.map.hitboxes[i].height) && (-this.x > this.map.hitboxes[i].x && -this.x < this.map.hitboxes[i].x + this.map.hitboxes[i].width)){
- 
-            
-            //*
-            ((this.playerHitbox[part].y + this.playerHitbox[part].height <= this.map.hitboxes[i].y &&
-                this.playerHitbox[part].y + this.playerHitbox[part].height >= this.map.hitboxes[i].y + this.map.hitboxes[i].height) && (
-                this.playerHitbox[part].x + this.playerHitbox[part].height <= this.map.hitboxes[i].x &&
-                this.playerHitbox[part].x + this.playerHitbox[part].height >= this.map.hitboxes[i].x + this.map.hitboxes[i].width)) {
+ //*
+            ((  this.playerHitbox[part].y + this.playerHitbox[part].height -this.y >= this.map.hitboxes[i].y &&
+                this.playerHitbox[part].y + this.playerHitbox[part].height -this.y <= this.map.hitboxes[i].y + this.map.hitboxes[i].height && 
+                ((this.playerHitbox[part].x -this.x >= this.map.hitboxes[i].x &&
+                this.playerHitbox[part].x -this.x <= this.map.hitboxes[i].x + this.map.hitboxes[i].width) ||
+                this.playerHitbox[part].x + this.playerHitbox[part].width -this.x >= this.map.hitboxes[i].x &&
+                this.playerHitbox[part].x + this.playerHitbox[part].width -this.x <= this.map.hitboxes[i].x + this.map.hitboxes[i].width
+                ))) {
                 var hit = true
             }
             return (hit);
