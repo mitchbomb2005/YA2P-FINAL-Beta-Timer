@@ -180,6 +180,7 @@ export class Player {
                 var hitX = this.map.hitboxes[i].x
 
                 this.x = (-hitX - (offset)) - hitW
+                //this.wallJumpLeft = true
             }
         }
 
@@ -194,6 +195,7 @@ export class Player {
                 var hitX = this.map.hitboxes[i].x
 
                 this.x = -hitX + offset
+                //this.wallJumpRight = true
             }
         }
 
