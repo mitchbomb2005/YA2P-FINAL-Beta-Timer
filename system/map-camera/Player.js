@@ -150,14 +150,16 @@ export class Player {
 
     #collisionCheck(part, i) {
         
-        if  ((  
-            this.playerHitbox[part].y + this.playerHitbox[part].height -this.y >= this.map.hitboxes[i].y &&
-            this.playerHitbox[part].y + this.playerHitbox[part].height -this.y <= this.map.hitboxes[i].y + this.map.hitboxes[i].height && 
+        if  (  
+        ((  this.playerHitbox[part].y -this.y >= this.map.hitboxes[i].y &&
+            this.playerHitbox[part].y -this.y <= this.map.hitboxes[i].y + this.map.hitboxes[i].height) || 
+        (   this.playerHitbox[part].y + this.playerHitbox[part].height -this.y >= this.map.hitboxes[i].y &&
+            this.playerHitbox[part].y + this.playerHitbox[part].height -this.y <= this.map.hitboxes[i].y + this.map.hitboxes[i].height)) &&
         ((  this.playerHitbox[part].x -this.x >= this.map.hitboxes[i].x &&
             this.playerHitbox[part].x -this.x <= this.map.hitboxes[i].x + this.map.hitboxes[i].width) ||
-            this.playerHitbox[part].x + this.playerHitbox[part].width -this.x >= this.map.hitboxes[i].x &&
-            this.playerHitbox[part].x + this.playerHitbox[part].width -this.x <= this.map.hitboxes[i].x + this.map.hitboxes[i].width
-            ))) {
+        (   this.playerHitbox[part].x + this.playerHitbox[part].width -this.x >= this.map.hitboxes[i].x &&
+            this.playerHitbox[part].x + this.playerHitbox[part].width -this.x <= this.map.hitboxes[i].x + this.map.hitboxes[i].width))
+            ) {
             var hit = true
         }
         return (hit);
@@ -177,7 +179,7 @@ export class Player {
             }
         }
 
-        for (let i = 0; i < this.map.hitboxes.length; i++) /* ciling hit */ { 
+        for (let i = 0; i < this.map.hitboxes.length; i++) /* ceilling hit */ { 
             if(this.#collisionCheck(1, i)) {
                 var offset = 75
                 console.log("hit!")
