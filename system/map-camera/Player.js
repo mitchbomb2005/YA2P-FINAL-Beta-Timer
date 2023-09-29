@@ -128,6 +128,9 @@ export class Player {
         if (this.velY < -this.maxVelY) {
             this.velY = -this.maxVelY;
         }
+        this.velX = this.velX * .8
+        this.velY = this.velY - 1
+        this.velY = this.velY * .997
 
         /*
         if (this.keyManager.isKeyPressed("KeyS")) {
@@ -142,9 +145,6 @@ export class Player {
     }
 
     #move() {
-        this.velX = this.velX * .8
-        this.velY = this.velY - 1
-        this.velY = this.velY * .997
         this.x += this.velX;
         this.y += this.velY;
         this.jump = false
