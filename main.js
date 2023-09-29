@@ -45,6 +45,7 @@ class Main {
         // Update variables
         this.player.update();
         this.debug.update();
+        this.camera.update();
         
 
         // Update input

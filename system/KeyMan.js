@@ -39,6 +39,10 @@ export class KeyManager {
         case "KeyN": return !this.keysPressedLastFrame[6] && this.keysCurrentlyPressed[6];
         case "KeyP": return !this.keysPressedLastFrame[7] && this.keysCurrentlyPressed[7];
         case "Keyf": return !this.keysPressedLastFrame[8] && this.keysCurrentlyPressed[8];
+        case "ArrowUp": return !this.keysPressedLastFrame[9] && this.keysCurrentlyPressed[9];
+        case "ArrowDown": return !this.keysPressedLastFrame[10] && this.keysCurrentlyPressed[10];
+        case "ArrowLeft": return !this.keysPressedLastFrame[11] && this.keysCurrentlyPressed[11];
+        case "ArrowRight": return !this.keysPressedLastFrame[12] && this.keysCurrentlyPressed[12];
       }
     }
 
@@ -53,6 +57,10 @@ export class KeyManager {
         case "KeyN": return this.keysCurrentlyPressed[6];
         case "KeyP": return this.keysCurrentlyPressed[7];
         case "Keyf": return this.keysCurrentlyPressed[8];
+        case "ArrowUp": return this.keysCurrentlyPressed[9];
+        case "ArrowDown": return this.keysCurrentlyPressed[10];
+        case "ArrowLeft": return this.keysCurrentlyPressed[11];
+        case "ArrowRight": return this.keysCurrentlyPressed[12];
       }
     }
 
@@ -84,6 +92,18 @@ export class KeyManager {
           break;
         case "KeyF":
           this.keyBuffer[8] = pressed;
+          break;
+        case "ArrowUp":
+          this.keyBuffer[9] = pressed;
+          break;
+        case "ArrowDown":
+          this.keyBuffer[10] = pressed;            
+          break;
+        case "ArrowLeft":
+          this.keyBuffer[11] = pressed;
+          break;
+        case "ArrowRight":
+          this.keyBuffer[12] = pressed;
           break;
         default:
           console.log("Unexpected key code: " + code);
