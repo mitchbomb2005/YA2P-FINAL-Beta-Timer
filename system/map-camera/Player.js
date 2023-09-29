@@ -39,6 +39,9 @@ export class Player {
 
     #buildHitbox(x, y, width, height) {
         this.playerHitbox[0] = new Hitbox(x + 5, y + (height - 10), width - 10, 10); // bottom of hitbox
+        this.playerHitbox[1] = new Hitbox(x + 5, y, width - 10, 10)
+
+        this.playerHitbox[100] = new Hitbox(x, y, width, height)
     }
 
     update() {
@@ -134,8 +137,34 @@ export class Player {
         this.x += this.velX;
         this.y += this.velY;
         this.jump = false
-        for (let i = 0; i < this.map.hitboxes.length; i++) {
-            if(this.#collisionCheck(0, 50, i)) {
+        this.#colide()
+        console.log(this.x, this.y)
+    }
+
+    drawHitbox() {
+        this.playerHitbox[100].draw(-this.x + this.camera.x, -this.y + this.camera.y, "#909090");
+
+        this.playerHitbox[0].draw(-this.x + this.camera.x, -this.y + this.camera.y, "#f0f0f0");
+        this.playerHitbox[1].draw(-this.x + this.camera.x, -this.y + this.camera.y, "#f0f0f0");
+    }
+
+    #collisionCheck(part, i) {
+        
+        if  ((  
+            this.playerHitbox[part].y + this.playerHitbox[part].height -this.y >= this.map.hitboxes[i].y &&
+            this.playerHitbox[part].y + this.playerHitbox[part].height -this.y <= this.map.hitboxes[i].y + this.map.hitboxes[i].height && 
+        ((  this.playerHitbox[part].x -this.x >= this.map.hitboxes[i].x &&
+            this.playerHitbox[part].x -this.x <= this.map.hitboxes[i].x + this.map.hitboxes[i].width) ||
+            this.playerHitbox[part].x + this.playerHitbox[part].width -this.x >= this.map.hitboxes[i].x &&
+            this.playerHitbox[part].x + this.playerHitbox[part].width -this.x <= this.map.hitboxes[i].x + this.map.hitboxes[i].width
+            ))) {
+            var hit = true
+        }
+        return (hit);
+    }
+    #colide() {
+        for (let i = 0; i < this.map.hitboxes.length; i++) /* ground hit */ {  
+            if(this.#collisionCheck(0, i)) {
                 var offset = 50
                 console.log("hit!")
                 if(this.velY < 0) {
@@ -147,43 +176,19 @@ export class Player {
                 this.jump = true
             }
         }
-        console.log(this.x, this.y)
-    }
 
-    drawHitbox() {
-        this.playerHitbox[0].draw(-this.x + this.camera.x, -this.y + this.camera.y, "#f0f0f0");
-    }
-
-    #collisionCheck(part, offset = 50, i) {
-
-        //*
-        
-            if  //((-this.y + (offset) > this.map.hitboxes[i].y && -this.y + (offset) < this.map.hitboxes[i].y + this.map.hitboxes[i].height) && (-this.x > this.map.hitboxes[i].x && -this.x < this.map.hitboxes[i].x + this.map.hitboxes[i].width)){
- //*
-            ((  this.playerHitbox[part].y + this.playerHitbox[part].height -this.y >= this.map.hitboxes[i].y &&
-                this.playerHitbox[part].y + this.playerHitbox[part].height -this.y <= this.map.hitboxes[i].y + this.map.hitboxes[i].height && 
-                ((this.playerHitbox[part].x -this.x >= this.map.hitboxes[i].x &&
-                this.playerHitbox[part].x -this.x <= this.map.hitboxes[i].x + this.map.hitboxes[i].width) ||
-                this.playerHitbox[part].x + this.playerHitbox[part].width -this.x >= this.map.hitboxes[i].x &&
-                this.playerHitbox[part].x + this.playerHitbox[part].width -this.x <= this.map.hitboxes[i].x + this.map.hitboxes[i].width
-                ))) {
-                var hit = true
-            }
-            return (hit);
-        }
-        //*/
-
-
-        /*
-        
-        for (let i = 0; i < 5; i++) {
-            if ((-this.y + (offset) > this.map.hitboxes[i].y && -this.y + (offset) < this.map.hitboxes[i].y + this.map.hitboxes[i].height) && (-this.x > this.map.hitboxes[i].x && -this.x < this.map.hitboxes[i].x + this.map.hitboxes[i].width)){
-
-                
+        for (let i = 0; i < this.map.hitboxes.length; i++) /* ciling hit */ { 
+            if(this.#collisionCheck(1, i)) {
+                var offset = 75
+                console.log("hit!")
+                if(this.velY > 0) {
+                    this.velY = 0
                 }
+                var hitH = this.map.hitboxes[i].height
+                var hitY = this.map.hitboxes[i].y
+                this.y = (-hitY - (offset)) - hitH
+                this.jump = true
             }
-        */
-        
-    
+        }
+    }
 }
-//}
