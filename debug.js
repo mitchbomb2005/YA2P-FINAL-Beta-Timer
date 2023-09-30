@@ -21,7 +21,7 @@ export class Debug {
             this.flipPlayerHitbox();
             this.flipFreeCam();
         }
-
+        
     }
 
     debugCheck() {
@@ -29,6 +29,7 @@ export class Debug {
         if (this.keyManager.isKeyPressed("Backslash")) {
             this.debugMode = true
             console.log("debug mode enabled");
+            this.debugMsg()
         }
 
     }
@@ -37,6 +38,7 @@ export class Debug {
         if (this.keyManager.wasKeyJustPressed("KeyH")) {
             console.log("hide")
             this.bean = !this.bean
+            this.debugMsg()
         }
     }
 
@@ -44,6 +46,7 @@ export class Debug {
         if (this.keyManager.wasKeyJustPressed("KeyN")) {
             console.log("noClip")
             this.noClip = !this.noClip
+            this.debugMsg()
         }
     }
 
@@ -51,15 +54,21 @@ export class Debug {
         if (this.keyManager.wasKeyJustPressed("KeyP")) {
             console.log("playerHitbox")
             this.playerHitbox = !this.playerHitbox
+            this.debugMsg()
         }
     }
 
     flipFreeCam() {
-        console.log("freecam called")
-        if (this.keyManager.wasKeyJustPressed("KeyF")) {
+        if (this.keyManager.wasKeyJustPressed("Keyf")) {
             console.log("free Camera")
-            this.playerHitbox = !this.freeCam
+            this.freeCam = !this.freeCam
+            this.debugMsg()
         }
+    }
+
+    debugMsg() {
+
+        console.log("debug mode, " + this.debugMode, " ; bean visibilaty, " + this.bean, " ; noclip, " + this.noClip, " ; hitbox, " + this.playerHitbox, " ; free camera, " + this.freeCam)
     }
 
     

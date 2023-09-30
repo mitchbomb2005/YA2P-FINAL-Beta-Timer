@@ -13,9 +13,9 @@ export class KeyManager {
     keysPressedLastFrame;
 
     constructor() {
-      this.keyBuffer = new Array(6);
-      this.keysCurrentlyPressed = new Array(6);
-      this.keysPressedLastFrame = new Array(6);
+      this.keyBuffer = new Array();
+      this.keysCurrentlyPressed = new Array();
+      this.keysPressedLastFrame = new Array();
 
       document.addEventListener('keydown', (event) => {
         var code = event.code;

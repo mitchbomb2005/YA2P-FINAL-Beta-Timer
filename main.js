@@ -21,7 +21,7 @@ class Main {
     keyManager = new KeyManager();
     debug = new Debug(this.keyManager);
 
-    camera = new Camera(300, -1000)
+    camera = new Camera(300, -1000, this.debug)
     player = new Player(-838, -509, this.keyManager, this.debug, this.map, this.camera);
 
     constructor() {
@@ -36,7 +36,7 @@ class Main {
             if (this.debug.playerHitbox) {
                 this.player.drawHitbox()
             }
-            await sleep(1000/60);
+            await sleep(1000/70);
         }
     } 
 

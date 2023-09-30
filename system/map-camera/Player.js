@@ -22,7 +22,7 @@ export class Player {
 
     // Constant
     maxVelX = 100;
-    maxVelY = 100;
+    maxVelY = 90;
     noclipVelChange = 10;
     velChange = 5;
     jumpVel = 30
@@ -56,7 +56,7 @@ export class Player {
             this.#move()
             this.#updateVelocity()
         }
-        if (this.debug.freeCam) {
+        if (!this.debug.freeCam) {
             this.camera.x = this.camera.x - (((this.camera.x - 838) - this.x) / 10)
             this.camera.y = this.camera.y - (((this.camera.y - 509) - this.y) / 10) 
         }
@@ -125,7 +125,7 @@ export class Player {
             }
         }
         if (this.velY > this.maxVelY) {
-            this.velY += this.maxVelY;
+            this.velY = this.maxVelY;
         }
         if (this.velY < -this.maxVelY) {
             this.velY = -this.maxVelY;
@@ -151,7 +151,7 @@ export class Player {
         this.y += this.velY;
         this.jump = false
         this.#colide()
-        console.log(this.x, this.y)
+        //console.log(this.x, this.y)
     }
 
     drawHitbox() {
@@ -186,7 +186,7 @@ export class Player {
         for (let i = 0; i < this.map.hitboxes.length; i++) /* left hit */ { 
             if(this.#collisionCheck(2, i, this.map)) {
                 var offset = 25
-                console.log("hit!")
+                //console.log("hit!")
                 if (this.velX > 0) {
                     this.velX = 0
                 }
@@ -201,7 +201,7 @@ export class Player {
         for (let i = 0; i < this.map.hitboxes.length; i++) /* right hit */ { 
             if(this.#collisionCheck(3, i, this.map)) {
                 var offset = 25
-                console.log("hit!")
+                //console.log("hit!")
                 if (this.velX > 0) {
                     this.velX = 0
                 }
@@ -216,7 +216,7 @@ export class Player {
         for (let i = 0; i < this.map.hitboxes.length; i++) /* ground hit */ {  
             if(this.#collisionCheck(0, i, this.map)) {
                 var offset = 50
-                console.log("hit!")
+                //console.log("hit!")
                 if(this.velY < 0) {
                     this.velY = 0
                 }
@@ -230,7 +230,7 @@ export class Player {
         for (let i = 0; i < this.map.hitboxes.length; i++) /* ceilling hit */ { 
             if(this.#collisionCheck(1, i, this.map)) {
                 var offset = 75
-                console.log("hit!")
+                //console.log("hit!")
                 if(this.velY > 0) {
                     this.velY = 0
                 }
@@ -244,7 +244,7 @@ export class Player {
         for (let i = 0; i < this.map.hitboxes.length; i++) /* left hit / { 
             if(this.#collisionCheck(4, i, this.map)) {
                 var offset = 25
-                console.log("hit!")
+                //console.log("hit!")
                 if (this.velX > 0) {
                     this.velX = 0
                 }
@@ -259,7 +259,7 @@ export class Player {
         for (let i = 0; i < this.map.hitboxes.length; i++) /* right hit / { 
             if(this.#collisionCheck(5, i, this.map)) {
                 var offset = 25
-                console.log("hit!")
+                //console.log("hit!")
                 if (this.velX > 0) {
                     this.velX = 0
                 }

@@ -6,13 +6,18 @@ export class Camera {
 
     x;
     y;
-    constructor(x, y, debug, ) {
+    debug;
+
+    constructor(x, y, debug) {
         this.x = x
         this.y = y
+        this.debug = debug
     }
 
     update() {
-        if (true) {}
+        if (true) {
+            
+        }
     }
 
     freeCamMove( ) {}
