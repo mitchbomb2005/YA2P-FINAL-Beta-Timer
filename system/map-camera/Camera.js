@@ -7,19 +7,21 @@ export class Camera {
     x;
     y;
     debug;
+    keyMan;
 
-    constructor(x, y, debug) {
+    constructor(x, y, debug, keyman) {
         this.x = x
         this.y = y
         this.debug = debug
+        this.keyMan = keyman
     }
 
     update() {
-        if (true) {
-            
+        if (this.debug.freeCam) {
+            this.freeCamMove()
         }
     }
 
-    freeCamMove( ) {}
+    freeCamMove() {}
     
 }

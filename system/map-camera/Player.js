@@ -39,11 +39,11 @@ export class Player {
 
     #buildHitbox(x, y, width, height) {
         this.playerHitbox[0] = new Hitbox(x + 5, y + (height - 10), width - 10, 10); // bottom of hitbox
-        this.playerHitbox[1] = new Hitbox(x + 5, y, width - 10, 10)
-        this.playerHitbox[2] = new Hitbox(x, y + 50, 10, height - 100)
-        this.playerHitbox[3] = new Hitbox(x + width - 10, y + 50, 10, height - 100)
-        this.playerHitbox[4] = new Hitbox(x, y + 30, 10, height - 60)
-        this.playerHitbox[5] = new Hitbox(x + width - 10, y + 30, 10, height - 60)
+        this.playerHitbox[1] = new Hitbox(x + 5, y, width - 10, 10) // top of hitbox
+        this.playerHitbox[2] = new Hitbox(x, y + 50, 10, height - 100) // small left of hitbox
+        this.playerHitbox[3] = new Hitbox(x + width - 10, y + 50, 10, height - 100) // small right of hitbox
+        this.playerHitbox[4] = new Hitbox(x, y + 30, 10, height - 60) // left of hitbox
+        this.playerHitbox[5] = new Hitbox(x + width - 10, y + 30, 10, height - 60) // right of hitbox
 
         this.playerHitbox[100] = new Hitbox(x, y, width, height)
     }
