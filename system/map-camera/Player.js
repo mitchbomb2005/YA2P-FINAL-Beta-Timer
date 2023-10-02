@@ -23,11 +23,11 @@ export class Player {
     camera;
     playerHitbox = new Array()
     maxVelX = 100;
-    maxVelY = 59;
+    maxVelY = 50;
     noclipVelChange = 10;
-    velChange = 5;
+    velChange = 4;
     coyoteTime = 5
-    jumpVel = 30 // this.coyoteTime
+    jumpVel = 38 // this.coyoteTime
 
     constructor(x, y, keyManager, debug, map, camera) {
         this.keyManager = keyManager;
@@ -51,13 +51,6 @@ export class Player {
     }
 
     update() {
-        if (this.velY > this.maxVelY) {
-            this.velY = this.maxVelY;
-        }
-        if (this.velY < -this.maxVelY) {
-            this.velY = -this.maxVelY;
-            console.log("fixed velocity")
-        }
         if(this.debug.noClip) {
             this.#updateVelocityNoclip();
             this.#moveNoclip();
@@ -69,6 +62,7 @@ export class Player {
             this.camera.x = this.camera.x - (((this.camera.x - 838) - this.x) / 10)
             this.camera.y = this.camera.y - (((this.camera.y - 509) - this.y) / 10) 
         }
+        console.log(this.velY)
 
     }
     
@@ -143,8 +137,16 @@ export class Player {
        
         }
         this.velX = this.velX * .8
-        this.velY = this.velY - 1
+        this.velY = this.velY - 1.5
         this.velY = this.velY * .997
+
+        if (this.velY > this.maxVelY) {
+            this.velY = this.maxVelY;
+        }
+        if (this.velY < -this.maxVelY) {
+            this.velY = -this.maxVelY;
+            console.log("fixed velocity")
+        }
 
         /*
         if (this.keyManager.isKeyPressed("KeyS")) {
