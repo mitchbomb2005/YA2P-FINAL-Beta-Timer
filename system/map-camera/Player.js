@@ -19,6 +19,7 @@ export class Player {
     camera;
     playerHitbox = new Array()
     jump = false;
+    jumpState = false
 
     // Constant
     maxVelX = 100;
@@ -119,10 +120,13 @@ export class Player {
                 this.velX = this.maxVelX;
             }    
         }
-        if (this.jump == true) {
-            if (this.keyManager.wasKeyJustPressed("KeyW")) {
-                this.velY += this.jumpVel;          
-            }
+        if (this.keyManager.isKeyPressed("KeyW")) {
+            //if (this.jumpState == true) {
+                if (this.jump == true) {
+                    this.velY += this.jumpVel;   
+                }
+            //}
+       
         }
         if (this.velY > this.maxVelY) {
             this.velY = this.maxVelY;
@@ -237,7 +241,7 @@ export class Player {
                 var hitH = this.map.hitboxes[i].height
                 var hitY = this.map.hitboxes[i].y
                 this.y = (-hitY - (offset)) - hitH
-                this.jump = true
+                //this.jump = true
             }
         }
 /*
