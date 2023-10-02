@@ -14,8 +14,9 @@ export class Player {
     velY = 0;
     x;
     y;
-    jump = false;
+    jump = 0;
     jumpState = false
+    wallJumpLeft = false
 
     // Constant
     debug;
@@ -28,6 +29,9 @@ export class Player {
     velChange = 4;
     coyoteTime = 5
     jumpVel = 38 // this.coyoteTime
+    wallJumpVelY = 40
+    wallJumpVelX = 60
+    wallJumpCheck = false
 
     constructor(x, y, keyManager, debug, map, camera) {
         this.keyManager = keyManager;
@@ -62,7 +66,10 @@ export class Player {
             this.camera.x = this.camera.x - (((this.camera.x - 838) - this.x) / 10)
             this.camera.y = this.camera.y - (((this.camera.y - 509) - this.y) / 10) 
         }
-        console.log(this.velY)
+        if (this.jump > 0) {
+            this.wallJumpCheck = true
+        }
+        //console.log(this.velY)
 
     }
     
@@ -121,7 +128,12 @@ export class Player {
             if (this.velX > this.maxVelX) {
                 this.velX = this.maxVelX;
             }    
+            if (this.velY < 0 && this.wallJumpLeft) {
+                this.velY = this.velY / 2
+                console.log("wallslide")
+            }
         }
+
         if (this.keyManager.isKeyPressed("KeyW")) {
             //if (this.jumpState == true) {
                 if (this.velY <= 0) {
@@ -133,15 +145,31 @@ export class Player {
                         this.velY += this.jumpVel;   
                     }
                 }
+
+                if (this.keyManager.wasKeyJustPressed("KeyW")) {
+                    if (this.wallJumpLeft && this.wallJumpCheck) {
+                        if (this.velY < 0) {
+                            this.velY = this.wallJumpVelY
+                        } else {
+                            this.velY += this.wallJumpVelY
+                        }
+                        
+                        this.velX -= this.wallJumpVelX
+                        this.wallJumpCheck = false
+                    }
+                }
+
             //}
-       
         }
+
+
+
         this.velX = this.velX * .8
         this.velY = this.velY - 1.5
         this.velY = this.velY * .997
 
-        if (this.velY > this.maxVelY) {
-            this.velY = this.maxVelY;
+        if (this.velY > this.maxVelY + 50) {
+            this.velY = this.maxVelY + 50;
         }
         if (this.velY < -this.maxVelY) {
             this.velY = -this.maxVelY;
@@ -197,6 +225,7 @@ export class Player {
     }
     #colide() {
 
+        this.wallJumpLeft = false
         for (let i = 0; i < this.map.hitboxes.length; i++) /* left hit */ { 
             if(this.#collisionCheck(2, i, this.map)) {
                 var offset = 25
@@ -208,7 +237,8 @@ export class Player {
                 var hitX = this.map.hitboxes[i].x
 
                 this.x = (-hitX - (offset)) - hitW
-                //this.wallJumpLeft = true
+                this.wallJumpLeft = true
+                //console.log("left hit")
             }
         }
 
