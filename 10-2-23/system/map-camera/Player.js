@@ -121,6 +121,9 @@ export class Player {
             if (Math.abs(this.velX) > this.maxVelX) {
                 this.velX = -this.maxVelX;
             }
+            if (this.velY < 0 && this.wallJumpRight) {
+                this.velY = this.velY / 2
+            }
 
         }
         
