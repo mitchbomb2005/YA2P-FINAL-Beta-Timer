@@ -136,28 +136,37 @@ export class Player {
 
         if (this.keyManager.isKeyPressed("KeyW")) {
             //if (this.jumpState == true) {
-                if (this.velY <= 0) {
-                    if (this.jump > 0) {
-                        this.velY += this.jumpVel;   
-                    }
+                if (this.velY <= 0 && this.jump > 0) {
+                    this.velY += this.jumpVel;     
                 } else if (this.keyManager.wasKeyJustPressed("KeyW")) {
                     if (this.jump > 0) {
                         this.velY += this.jumpVel;   
-                    }
-                }
-
-                if (this.keyManager.wasKeyJustPressed("KeyW")) {
-                    if (this.wallJumpLeft && this.wallJumpCheck) {
+                    } else if (this.wallJumpLeft && this.wallJumpCheck) {
                         if (this.velY < 0) {
                             this.velY = this.wallJumpVelY
                         } else {
-                            this.velY += this.wallJumpVelY
+                            this.velY += this.wallJumpVelY - 10
                         }
                         
                         this.velX -= this.wallJumpVelX
                         this.wallJumpCheck = false
                     }
                 }
+
+                /*
+                if (this.keyManager.wasKeyJustPressed("KeyW")) {
+                    if (this.wallJumpLeft && this.wallJumpCheck) {
+                        if (this.velY < 0) {
+                            this.velY = this.wallJumpVelY
+                        } else {
+                            this.velY += this.wallJumpVelY - 10
+                        }
+                        
+                        this.velX -= this.wallJumpVelX
+                        this.wallJumpCheck = false
+                    }
+                }
+                */
 
             //}
         }
