@@ -17,6 +17,7 @@ export class Player {
     jump = 0;
     jumpState = false
     wallJumpLeft = false
+    wallJumpRight = false
 
     // Constant
     debug;
@@ -150,6 +151,15 @@ export class Player {
                         
                         this.velX -= this.wallJumpVelX
                         this.wallJumpCheck = false
+                    } else if (this.wallJumpRight && this.wallJumpCheck) {
+                        if (this.velY < 0) {
+                            this.velY = this.wallJumpVelY
+                        } else {
+                            this.velY += this.wallJumpVelY - 10
+                        }
+                        
+                        this.velX += this.wallJumpVelX
+                        this.wallJumpCheck = false
                     }
                 }
 
@@ -233,7 +243,7 @@ export class Player {
         return (hit);
     }
     #colide() {
-
+        this.wallJumpRight = false
         this.wallJumpLeft = false
         for (let i = 0; i < this.map.hitboxes.length; i++) /* left hit */ { 
             if(this.#collisionCheck(2, i, this.map)) {
@@ -262,7 +272,7 @@ export class Player {
                 var hitX = this.map.hitboxes[i].x
 
                 this.x = -hitX + offset
-                //this.wallJumpRight = true
+                this.wallJumpRight = true
             }
         }
 
