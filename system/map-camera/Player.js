@@ -14,19 +14,20 @@ export class Player {
     velY = 0;
     x;
     y;
-    debug;
-    map;
-    camera;
-    playerHitbox = new Array()
     jump = false;
     jumpState = false
 
     // Constant
+    debug;
+    map;
+    camera;
+    playerHitbox = new Array()
     maxVelX = 100;
-    maxVelY = 90;
+    maxVelY = 59;
     noclipVelChange = 10;
     velChange = 5;
-    jumpVel = 30
+    coyoteTime = 5
+    jumpVel = 30 // this.coyoteTime
 
     constructor(x, y, keyManager, debug, map, camera) {
         this.keyManager = keyManager;
@@ -50,6 +51,13 @@ export class Player {
     }
 
     update() {
+        if (this.velY > this.maxVelY) {
+            this.velY = this.maxVelY;
+        }
+        if (this.velY < -this.maxVelY) {
+            this.velY = -this.maxVelY;
+            console.log("fixed velocity")
+        }
         if(this.debug.noClip) {
             this.#updateVelocityNoclip();
             this.#moveNoclip();
@@ -122,17 +130,17 @@ export class Player {
         }
         if (this.keyManager.isKeyPressed("KeyW")) {
             //if (this.jumpState == true) {
-                if (this.jump == true) {
-                    this.velY += this.jumpVel;   
+                if (this.velY <= 0) {
+                    if (this.jump > 0) {
+                        this.velY += this.jumpVel;   
+                    }
+                } else if (this.keyManager.wasKeyJustPressed("KeyW")) {
+                    if (this.jump > 0) {
+                        this.velY += this.jumpVel;   
+                    }
                 }
             //}
        
-        }
-        if (this.velY > this.maxVelY) {
-            this.velY = this.maxVelY;
-        }
-        if (this.velY < -this.maxVelY) {
-            this.velY = -this.maxVelY;
         }
         this.velX = this.velX * .8
         this.velY = this.velY - 1
@@ -153,7 +161,7 @@ export class Player {
     #move() {
         this.x += this.velX;
         this.y += this.velY;
-        this.jump = false
+        this.jump--
         this.#colide()
         //console.log(this.x, this.y)
     }
@@ -227,7 +235,7 @@ export class Player {
                 var y = this.y 
                 var hitY = this.map.hitboxes[i].y
                 this.y = -hitY + offset
-                this.jump = true
+                this.jump = this.coyoteTime
             }
         }
 

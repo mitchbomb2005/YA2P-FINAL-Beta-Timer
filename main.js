@@ -36,7 +36,7 @@ class Main {
             if (this.debug.playerHitbox) {
                 this.player.drawHitbox()
             }
-            await sleep(1000/70);
+            await sleep(1000/60);
         }
     } 
 
@@ -44,7 +44,7 @@ class Main {
 
         // Update variables
         this.player.update();
-        this.debug.update();
+        this.debug.update(); 
         this.camera.update();
         
 
