@@ -35,9 +35,11 @@ class Main {
         while (true) {
             this.updateGame();
             this.gameDisplayer.drawGameFrame();
+            this.mapEdit.update()
             if (this.debug.playerHitbox) {
                 this.player.drawHitbox()
             }
+
             await sleep(1000/60);
         }
     } 
