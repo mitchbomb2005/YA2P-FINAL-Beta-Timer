@@ -10,7 +10,7 @@ export class Edit {
     camera;
     x;
     y;
-    hitbox = new Array()
+    drawn = new Array()
     currentX = 0
     currentY = 0
 
@@ -23,24 +23,23 @@ export class Edit {
             let canvasShape = canvas.getBoundingClientRect()
             //this.x = event.clientX;
             //this.y = event.clientY;
-            this.x = (event.clientX / 1.04) - canvasShape.left; 
-            this.y = (event.clientY / 1.04) - canvasShape.top; 
+            this.x = ((event.clientX / 1.04) - this.camera.x) - canvasShape.left; 
+            this.y = ((event.clientY / 1.04) - this.camera.y) - canvasShape.top; 
           }, false);
 
         onmousemove = (event) => {
             let canvasShape = canvas.getBoundingClientRect()
-            this.currentX = (event.clientX / 1.04) - canvasShape.left; 
-            this.currentY = (event.clientY / 1.04) - canvasShape.top; 
+            this.currentX = ((event.clientX / 1.04) - this.camera.x) - canvasShape.left; 
+            this.currentY = ((event.clientY / 1.04) - this.camera.y) - canvasShape.top; 
         }
     }
 
 
 
     update() {
-        this.hitbox[1] = new Hitbox(this.x, this.y, this.currentX + this.x, this.currentY + this.y)
+        this.drawn[1] = new Hitbox(this.x, this.y, this.currentX + this.x, this.currentY + this.y)
         ctx.fillStyle = "#000000"
-        ctx.fillRect(this.x, this.y, this.currentX - this.x, this.currentY - this.y)
-        console.log(this.x, this.y, this.currentX, this.currentY)
+        ctx.fillRect(this.x + this.camera.x, this.y + this.camera.y, this.currentX - this.x, this.currentY - this.y)
         //ctx.fill()
     }
 
