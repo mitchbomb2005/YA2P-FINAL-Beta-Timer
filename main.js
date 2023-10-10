@@ -6,6 +6,7 @@ import { Player } from "./system/map-camera/Player.js"
 import { KeyManager } from "./system/KeyMan.js"
 import { Debug } from "./debug.js"
 import { Camera } from "./system/map-camera/Camera.js";
+import { Edit } from "./system/MapEditor.js"
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

@@ -5,6 +5,7 @@ export class Debug {
     noClip = false
     playerHitbox = false
     freeCam = false
+    mapBuilder = false
     keyManager;
 
     constructor(keyMan) {
@@ -20,6 +21,7 @@ export class Debug {
             this.flipNoClip();
             this.flipPlayerHitbox();
             this.flipFreeCam();
+            this.flipMapMaker()
         }
         
     }
@@ -62,6 +64,14 @@ export class Debug {
         if (this.keyManager.wasKeyJustPressed("Keyf")) {
             console.log("free Camera")
             this.freeCam = !this.freeCam
+            this.debugMsg()
+        }
+    }
+
+    flipMapMaker() {
+        if (this.keyManager.wasKeyJustPressed("KeyM")) {
+            console.log("map editor")
+            this.mapBuilder = !this.mapBuilder
             this.debugMsg()
         }
     }
