@@ -3,8 +3,8 @@ export class Edit {
     map;
     camera;
     constructor(d, m, c) {
-        debug = d
-        map = m
-        camera = c
+        this.debug = d
+        this.map = m
+        this.camera = c
     }
 }
