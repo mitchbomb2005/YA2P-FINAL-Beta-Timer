@@ -3,6 +3,8 @@ export class Edit {
     debug;
     map;
     camera;
+    x;
+    y;
 
     constructor(d, m, c) {
         this.debug = d
@@ -10,7 +12,8 @@ export class Edit {
         this.camera = c
 
         document.addEventListener("click", (event) => {
-            
+            this.x = clientX;
+            this.y = clientY;
           }, false);
     }
 
