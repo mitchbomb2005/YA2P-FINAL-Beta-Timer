@@ -4,9 +4,6 @@ const ctx = canvas.getContext("2d");
 import { Hitbox } from "./map-camera/Hitbox.js";
 
 export class Edit {
-
-    debug;
-    map;
     camera;
     x;
     y;
@@ -14,9 +11,7 @@ export class Edit {
     currentX = 0
     currentY = 0
 
-    constructor(d, m, c) {
-        this.debug = d
-        this.map = m
+    constructor(c) {
         this.camera = c
 
         document.addEventListener("click", (event) => {
@@ -37,10 +32,15 @@ export class Edit {
 
 
     update() {
-        this.drawn[1] = new Hitbox(this.x, this.y, this.currentX + this.x, this.currentY + this.y)
+        this.drawn[1] = new Hitbox(this.x + this.camera.x, this.y + this.camera.y, this.currentX - this.x, this.currentY - this.y)
+    }
+
+    drawHitbox() {
         ctx.fillStyle = "#000000"
-        ctx.fillRect(this.x + this.camera.x, this.y + this.camera.y, this.currentX - this.x, this.currentY - this.y)
-        //ctx.fill()
+        ctx.fillRect(this.drawn[1].x, 
+                    this.drawn[1].y, 
+                    this.drawn[1].width, 
+                    this.drawn[1].height)
     }
 
 }

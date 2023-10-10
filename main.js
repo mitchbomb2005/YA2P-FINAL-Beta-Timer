@@ -24,7 +24,7 @@ class Main {
 
     camera = new Camera(300, -1000, this.debug, this.keyManager)
     player = new Player(-838, -509, this.keyManager, this.debug, this.map, this.camera);
-    mapEdit= new Edit(this.debug, this.map, this.camera)
+    mapEdit= new Edit(this.camera)
 
     constructor() {
         this.gameDisplayer = new GameDisplayer(this, this.map, this.camera, this.player, this.debug);
@@ -35,11 +35,12 @@ class Main {
         while (true) {
             this.updateGame();
             this.gameDisplayer.drawGameFrame();
-            this.mapEdit.update()
             if (this.debug.playerHitbox) {
                 this.player.drawHitbox()
             }
-
+            if (this.debug.mapBuilder) {
+                this.mapEdit.drawHitbox()
+            }
             await sleep(1000/60);
         }
     } 
@@ -50,6 +51,7 @@ class Main {
         this.player.update();
         this.debug.update(); 
         this.camera.update();
+        this.mapEdit.update()
         
 
         // Update input
