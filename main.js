@@ -24,7 +24,7 @@ class Main {
 
     camera = new Camera(300, -1000, this.debug, this.keyManager)
     player = new Player(-838, -509, this.keyManager, this.debug, this.map, this.camera);
-    mapEdit= new Edit(this.camera)
+    mapEdit= new Edit(this.camera, this.keyManager)
 
     constructor() {
         this.gameDisplayer = new GameDisplayer(this, this.map, this.camera, this.player, this.debug);
