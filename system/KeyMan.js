@@ -44,6 +44,7 @@ export class KeyManager {
         case "ArrowLeft": return !this.keysPressedLastFrame[11] && this.keysCurrentlyPressed[11];
         case "ArrowRight": return !this.keysPressedLastFrame[12] && this.keysCurrentlyPressed[12];
         case "KeyM": return !this.keysPressedLastFrame[13] && this.keysCurrentlyPressed[13];
+        case "AltLeft": return !this.keysPressedLastFrame[14] && this.keysCurrentlyPressed[14];
       }
     }
 
@@ -63,6 +64,7 @@ export class KeyManager {
         case "ArrowLeft": return this.keysCurrentlyPressed[11];
         case "ArrowRight": return this.keysCurrentlyPressed[12];
         case "KeyM": return this.keysCurrentlyPressed[13];
+        case "AltLeft": return this.keysCurrentlyPressed[14];
         default:
           console.log("Unexpected key code: " + code);
       }
@@ -115,6 +117,10 @@ export class KeyManager {
         case "KeyM":
           this.keyBuffer[13] = pressed;
           break;
+        case "AltLeft":
+          this.keyBuffer[14] = pressed;
+          break;
+
         default:
           console.log("Unexpected key code: " + code);
       }

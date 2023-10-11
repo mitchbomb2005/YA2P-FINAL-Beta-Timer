@@ -11,7 +11,7 @@ export class Edit {
     drawn = new Array()
     currentX = 0
     currentY = 0
-    hitNum = 1
+    hitNum = 0
 
     constructor(c, k) {
         this.camera = c
@@ -35,19 +35,27 @@ export class Edit {
 
 
     update() {
-        this.drawn[this.hitNum] = new Hitbox( this.x + this.camera.x, 
-                                    this.y + this.camera.y, 
-                                    this.currentX - this.x, 
-                                    this.currentY - this.y)
+        if (this.keyMan.wasKeyJustPressed("KeyS") && this.keyMan.isKeyPressed("AltLeft")) {
+            this.hitNum++
+        }
+        this.drawn[this.hitNum] = new Hitbox( this.x, 
+                                    this.y, 
+                                    this.currentX, 
+                                    this.currentY)
     }
 
     drawHitbox() {
         ctx.fillStyle = "#000000"
-        for (let i; i < 1 + this.hitNum; i++) {
-            ctx.fillRect(   this.drawn[i].x, 
-                            this.drawn[i].y, 
-                            this.drawn[i].width, 
-                            this.drawn[i].height)
+        for (let i = 0; i < this.hitNum + 1; i++) {
+            //if (this.drawn[i].x = undefined) {
+                //this.drawn[this.hitNum] = new Hitbox( 0, 0, 0, 0)
+            //}
+            ctx.fillRect(   this.drawn[i].x + this.camera.x, 
+                            this.drawn[i].y + this.camera.y, 
+                            this.drawn[i].width - this.drawn[i].x, 
+                            this.drawn[i].height - this.drawn[i].y
+                        )
+            console.log(this.drawn[i])
         }
     }
 
