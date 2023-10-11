@@ -8,7 +8,7 @@ export class Edit {
     camera;
     x;
     y;
-    drawn = new Array()
+    tempHitboxes = new Array()
     currentX = 0
     currentY = 0
     hitNum = 0
@@ -38,24 +38,31 @@ export class Edit {
         if (this.keyMan.wasKeyJustPressed("KeyS") && this.keyMan.isKeyPressed("AltLeft")) {
             this.hitNum++
         }
-        this.drawn[this.hitNum] = new Hitbox( this.x, 
-                                    this.y, 
-                                    this.currentX, 
-                                    this.currentY)
+        if (this.keyMan.wasKeyJustPressed("KeyS") && this.keyMan.isKeyPressed("ShiftLeft")) {
+            for (let i = 0; i < this.hitNum + 1; i++) {
+                console.log(
+                "this.hitboxes[", i ,"] = new Hitbox(",  this.tempHitboxes[i].x, ",",  this.tempHitboxes[i].y, ",",  this.tempHitboxes[i].width, ",",  this.tempHitboxes[i].height, ")"
+                )
+            }
+        }
+        this.tempHitboxes[this.hitNum] = new Hitbox( 
+            this.x, 
+            this.y, 
+            this.currentX, 
+            this.currentY
+        )
     }
 
     drawHitbox() {
         ctx.fillStyle = "#000000"
         for (let i = 0; i < this.hitNum + 1; i++) {
-            //if (this.drawn[i].x = undefined) {
-                //this.drawn[this.hitNum] = new Hitbox( 0, 0, 0, 0)
-            //}
-            ctx.fillRect(   this.drawn[i].x + this.camera.x, 
-                            this.drawn[i].y + this.camera.y, 
-                            this.drawn[i].width - this.drawn[i].x, 
-                            this.drawn[i].height - this.drawn[i].y
-                        )
-            console.log(this.drawn[i])
+            ctx.fillRect(   
+                this.tempHitboxes[i].x + this.camera.x, 
+                this.tempHitboxes[i].y + this.camera.y, 
+                this.tempHitboxes[i].width - this.tempHitboxes[i].x, 
+                this.tempHitboxes[i].height - this.tempHitboxes[i].y
+            )
+            //console.log(this.tempHitboxes[i])
         }
     }
 
