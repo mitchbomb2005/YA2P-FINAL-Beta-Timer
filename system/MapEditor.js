@@ -43,7 +43,7 @@ export class Edit {
 
     drawHitbox() {
         ctx.fillStyle = "#000000"
-        for (let i; i < 1 + this.hitNum; i++) {
+        for (let i = 1; i < 1 + this.hitNum; i++) {
             ctx.fillRect(   this.drawn[i].x, 
                             this.drawn[i].y, 
                             this.drawn[i].width, 
