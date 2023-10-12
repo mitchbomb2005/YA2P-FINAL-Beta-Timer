@@ -14,14 +14,14 @@ export class Map {
     #createHitboxes() {
         this.hitboxes[0] = new Hitbox(-10, 561, 2096, 450); // base floor
         this.hitboxes[1] = new Hitbox(-10, -2200, 1696, 2400); // base roof
-        this.hitboxes[2] = new Hitbox(2085, -50, 2000, 1061); //
+        this.hitboxes[2] = new Hitbox( 2074, -49, 788, 1240)
         this.hitboxes[3] = new Hitbox(-700, -400, 1000, 1411);
         this.hitboxes[4] = new Hitbox(1885, 200, 205, 80);
         this.hitboxes[5] = new Hitbox(2000, -1100, 696, 200);
-        this.hitboxes[6] = new Hitbox(2152, -1232, 664, 450)
+        this.hitboxes[6] = new Hitbox( 2152, -1258, 662, 476)
         this.hitboxes[7] = new Hitbox(1300, -900, 395, 201)
         this.hitboxes[8] = new Hitbox(1300, -1900, 395, 201)
-        this.hitboxes[9] = new Hitbox( 2242, -867, 487, 924)
+        this.hitboxes[9] = new Hitbox(2242, -867, 487, 924)
     }
 
     draw(cameraX, cameraY, color = "#0f0f0f") {

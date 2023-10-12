@@ -1,6 +1,5 @@
 export class Debug {
 
-    debugMode = false
     bean = true
     noClip = false
     playerHitbox = false
@@ -13,27 +12,13 @@ export class Debug {
     }
 
     update() {
-
-        if(!this.debugMode) {
-            this.debugCheck()
-        }else{
+        if (this.keyManager.isKeyPressed("Backslash")) {
             this.hideBean();
             this.flipNoClip();
             this.flipPlayerHitbox();
             this.flipFreeCam();
             this.flipMapMaker()
         }
-        
-    }
-
-    debugCheck() {
-        
-        if (this.keyManager.isKeyPressed("Backslash")) {
-            this.debugMode = true
-            console.log("debug mode enabled");
-            this.debugMsg()
-        }
-
     }
 
     hideBean() {

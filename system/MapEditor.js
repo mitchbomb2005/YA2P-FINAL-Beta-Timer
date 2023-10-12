@@ -38,7 +38,7 @@ export class Edit {
             this.hitNum++
         }
         if (this.keyMan.wasKeyJustPressed("KeyS") && this.keyMan.isKeyPressed("ShiftLeft")) {
-            for (let i = 0; i < this.hitNum + 1; i++) {
+            for (let i = 0; i < this.hitNum; i++) {
                 console.log(
                 "this.hitboxes[", i ,"] = new Hitbox(",  
                 this.tempHitboxes[i].x, ",",  

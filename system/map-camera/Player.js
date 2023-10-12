@@ -19,6 +19,8 @@ export class Player {
     wallJumpLeft = false
     wallJumpRight = false
     stuck = false
+    wallJumpCheckLeft = false
+    wallJumpCheckRight = false
 
     // Constant
     debug;
@@ -33,7 +35,6 @@ export class Player {
     jumpVel = 38 // this.coyoteTime
     wallJumpVelY = 40
     wallJumpVelX = 60
-    wallJumpCheck = false
 
     constructor(x, y, keyManager, debug, map, camera) {
         this.keyManager = keyManager;
@@ -69,7 +70,8 @@ export class Player {
             this.camera.y = this.camera.y - (((this.camera.y - 509) - this.y) / 10) 
         }
         if (this.jump > 0) {
-            this.wallJumpCheck = true
+            this.wallJumpCheckLeft = true
+            this.wallJumpCheckRight = true
         }
         //console.log(this.velY)
 
@@ -146,7 +148,7 @@ export class Player {
                 } else if (this.keyManager.wasKeyJustPressed("KeyW")) {
                     if (this.jump > 0) {
                         this.velY += this.jumpVel;   
-                    } else if (this.wallJumpLeft && this.wallJumpCheck) {
+                    } else if (this.wallJumpLeft && this.wallJumpCheckLeft) {
                         if (this.velY < 0) {
                             this.velY = this.wallJumpVelY
                         } else {
@@ -154,8 +156,9 @@ export class Player {
                         }
                         
                         this.velX -= this.wallJumpVelX
-                        this.wallJumpCheck = false
-                    } else if (this.wallJumpRight && this.wallJumpCheck) {
+                        this.wallJumpCheckLeft = false
+                        this.wallJumpCheckRight = true
+                    } else if (this.wallJumpRight && this.wallJumpCheckRight) {
                         if (this.velY < 0) {
                             this.velY = this.wallJumpVelY
                         } else {
@@ -163,7 +166,8 @@ export class Player {
                         }
                         
                         this.velX += this.wallJumpVelX
-                        this.wallJumpCheck = false
+                        this.wallJumpCheckRight = false
+                        this.wallJumpCheckLeft = true
                     }
                 }
 
