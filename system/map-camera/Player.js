@@ -26,6 +26,7 @@ export class Player {
     debug;
     map;
     camera;
+    deathMap;
     playerHitbox = new Array()
     maxVelX = 100;
     maxVelY = 50;
@@ -36,13 +37,14 @@ export class Player {
     wallJumpVelY = 40
     wallJumpVelX = 60
 
-    constructor(x, y, keyManager, debug, map, camera) {
+    constructor(x, y, keyManager, debug, map, camera, DM) {
         this.keyManager = keyManager;
         this.x = x;
         this.y = y;
         this.debug = debug
         this.map = map
         this.camera = camera
+        this.deathMap = DM
         this.#buildHitbox(-25, -75, 50, 125)
     }
 
@@ -345,6 +347,13 @@ export class Player {
 
                 this.x = -hitX + offset
                 //this.wallJumpRight = true
+            }
+        }
+
+        for (let i = 0; i < this.deathMap.hitboxes.length; i++) {
+            if(this.#collisionCheck(100, i, this.deathMap)) {
+                this.x = -838
+                this.y = -509
             }
         }
 

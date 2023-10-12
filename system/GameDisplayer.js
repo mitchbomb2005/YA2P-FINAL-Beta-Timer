@@ -18,6 +18,7 @@ export class GameDisplayer {
     camera;
     debug;
     player; 
+    deathMap;
 
     background = new Background();
     
@@ -28,9 +29,10 @@ export class GameDisplayer {
     drawUtils = new DrawUtils();
     background = new Background();
 
-    constructor(Game, Map, Camera, Player, Debug = 0) {
+    constructor(Game, Map, Camera, Player, Debug = 0, DM) {
         this.game = Game;
         this.map = Map;
+        this.deathMap = DM
         this.camera = Camera;
         this.debug = Debug
         this.player = Player
@@ -48,6 +50,7 @@ export class GameDisplayer {
         if(this.debug.bean) {
             this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50, 100) 
         }
+        this.deathMap.draw(this.camera.x, this.camera.y);
         this.map.draw(this.camera.x, this.camera.y);
     }
 

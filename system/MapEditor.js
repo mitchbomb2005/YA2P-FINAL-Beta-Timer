@@ -40,11 +40,12 @@ export class Edit {
         if (this.keyMan.wasKeyJustPressed("KeyS") && this.keyMan.isKeyPressed("ShiftLeft")) {
             for (let i = 0; i < this.hitNum; i++) {
                 console.log(
-                "this.hitboxes[", i ,"] = new Hitbox(",  
-                this.tempHitboxes[i].x, ",",  
-                this.tempHitboxes[i].y, ",",  
-                this.tempHitboxes[i].width - this.tempHitboxes[i].x, ",",  
-                this.tempHitboxes[i].height - this.tempHitboxes[i].y, ")"
+                "this.hitboxes[", i ,"] = new Hitbox(",
+                this.tempHitboxes[i].x,",",
+                this.tempHitboxes[i].y,",",
+                this.tempHitboxes[i].width - this.tempHitboxes[i].x, ",",
+                this.tempHitboxes[i].height - this.tempHitboxes[i].y, ",",
+                "false )"
                 )
             }
         }

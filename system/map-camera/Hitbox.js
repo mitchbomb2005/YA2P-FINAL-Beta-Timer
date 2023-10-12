@@ -9,16 +9,20 @@ export class Hitbox {
     y;
     width;
     height;
+    hidden
 
-    constructor(x, y, width, height) {
+    constructor(x, y, width, height, hidden = false) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.hidden = hidden
     }
 
-    draw(cameraX, cameraY, color = "#0f0f0f") {
-        ctx.fillStyle = color;
-        ctx.fillRect(cameraX + this.x, cameraY + this.y, this.width, this.height);
+    draw(cameraX, cameraY, color) {
+        if(!this.hidden) {
+            ctx.fillStyle = color;
+            ctx.fillRect(cameraX + this.x, cameraY + this.y, this.width, this.height);
+        }
     }
 }

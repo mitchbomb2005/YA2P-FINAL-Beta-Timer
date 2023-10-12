@@ -1,6 +1,7 @@
 'use strict';
 
 import { Map } from "./system/map-camera/Map.js"
+import { Death as DeathMap } from "./system/map-camera/DeathMap.js"
 import { GameDisplayer } from "./system/GameDisplayer.js"
 import { Player } from "./system/map-camera/Player.js"
 import { KeyManager } from "./system/KeyMan.js"
@@ -19,21 +20,22 @@ class Main {
 
     // fields
     map = new Map();
+    deathMap = new DeathMap()
     keyManager = new KeyManager();
     debug = new Debug(this.keyManager);
 
     camera = new Camera(0, 2000, this.debug, this.keyManager)
-    player = new Player(-838, -509, this.keyManager, this.debug, this.map, this.camera);
+    player = new Player(-838, -509, this.keyManager, this.debug, this.map, this.camera, this.deathMap);
     mapEdit= new Edit(this.camera, this.keyManager)
 
     constructor() {
-        this.gameDisplayer = new GameDisplayer(this, this.map, this.camera, this.player, this.debug);
+        this.gameDisplayer = new GameDisplayer(this, this.map, this.camera, this.player, this.debug, this.deathMap);
     }
 
     async startGame() {
         //this.autoDebug()
         while (true) {
-            this.updateGame();
+            //this.updateGame();
             this.gameDisplayer.drawGameFrame();
             if (this.debug.playerHitbox) {
                 this.player.drawHitbox()
@@ -41,6 +43,7 @@ class Main {
             if (this.debug.mapBuilder) {
                 this.mapEdit.drawHitbox()
             }
+            this.updateGame();
             await sleep(1000/60);
         }
     } 
