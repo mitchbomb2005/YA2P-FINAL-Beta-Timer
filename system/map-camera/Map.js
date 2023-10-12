@@ -26,6 +26,13 @@ export class Map {
         this.hitboxes[11] = new Hitbox(2933, -1250, 275 , 75, false)
         this.hitboxes[12] = new Hitbox(3418, -1239, 217, 74, false)
 
+        // room beyond death
+
+        this.hitboxes[ 13 ] = new Hitbox( 5110, 5, 1787, 994, false )
+        this.hitboxes[ 14 ] = new Hitbox( 7135, 244, -1057, -937, false )
+        this.hitboxes[ 15 ] = new Hitbox( 5110, -550, 2046, -300, false )
+        this.hitboxes[ 16 ] = new Hitbox( 5110, -851, 81 , 533, false )
+
     }
 
     draw(cameraX, cameraY, color = "#0f0f0f") {
