@@ -22,7 +22,7 @@ class Main {
     keyManager = new KeyManager();
     debug = new Debug(this.keyManager);
 
-    camera = new Camera(300, -1000, this.debug, this.keyManager)
+    camera = new Camera(0, 2000, this.debug, this.keyManager)
     player = new Player(-838, -509, this.keyManager, this.debug, this.map, this.camera);
     mapEdit= new Edit(this.camera, this.keyManager)
 

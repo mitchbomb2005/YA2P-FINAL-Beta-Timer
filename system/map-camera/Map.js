@@ -22,6 +22,10 @@ export class Map {
         this.hitboxes[7] = new Hitbox(1300, -900, 395, 201)
         this.hitboxes[8] = new Hitbox(1300, -1900, 395, 201)
         this.hitboxes[9] = new Hitbox(2242, -867, 487, 924)
+        this.hitboxes[10] = new Hitbox( 1323, -2208, 2143, 679)
+        this.hitboxes[11] = new Hitbox( 2933, -1250, 275 , 75 )
+        this.hitboxes[12] = new Hitbox( 3418, -1239, 217, 74 )
+
     }
 
     draw(cameraX, cameraY, color = "#0f0f0f") {
