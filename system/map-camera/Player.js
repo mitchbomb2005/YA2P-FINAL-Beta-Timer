@@ -18,6 +18,7 @@ export class Player {
     jumpState = false
     wallJumpLeft = false
     wallJumpRight = false
+    stuck = false
 
     // Constant
     debug;
@@ -246,6 +247,7 @@ export class Player {
         return (hit);
     }
     #colide() {
+        var hitDown = false
         this.wallJumpRight = false
         this.wallJumpLeft = false
         for (let i = 0; i < this.map.hitboxes.length; i++) /* left hit */ { 
@@ -290,11 +292,14 @@ export class Player {
                 var hitY = this.map.hitboxes[i].y
                 this.y = -hitY + offset
                 this.jump = this.coyoteTime
+                hitDown = true
+            } else if(!this.#collisionCheck(4, i, this.map) && this.stuck) {
+                this.stuck = false
             }
         }
 
         for (let i = 0; i < this.map.hitboxes.length; i++) /* ceilling hit */ { 
-            if(this.#collisionCheck(1, i, this.map)) {
+            if(this.#collisionCheck(1, i, this.map) && !(hitDown || this.stuck)) {
                 var offset = 75
                 //console.log("hit!")
                 if(this.velY > 0) {
@@ -304,10 +309,12 @@ export class Player {
                 var hitY = this.map.hitboxes[i].y
                 this.y = (-hitY - (offset)) - hitH
                 //this.jump = true
+            } else if(hitDown) {
+                this.stuck = true
             }
         }
-/*
-        for (let i = 0; i < this.map.hitboxes.length; i++) /* left hit / { 
+
+        for (let i = 0; i < this.map.hitboxes.length; i++) /* left hit */ { 
             if(this.#collisionCheck(4, i, this.map)) {
                 var offset = 25
                 //console.log("hit!")
@@ -319,10 +326,10 @@ export class Player {
 
                 this.x = (-hitX - (offset)) - hitW
                 //this.wallJumpLeft = true
-            }
+            } 
         }
 
-        for (let i = 0; i < this.map.hitboxes.length; i++) /* right hit / { 
+        for (let i = 0; i < this.map.hitboxes.length; i++) /* right hit */ { 
             if(this.#collisionCheck(5, i, this.map)) {
                 var offset = 25
                 //console.log("hit!")
@@ -336,6 +343,6 @@ export class Player {
                 //this.wallJumpRight = true
             }
         }
-*/
+
     }
 }

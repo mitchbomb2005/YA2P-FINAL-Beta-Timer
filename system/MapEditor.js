@@ -12,23 +12,22 @@ export class Edit {
     currentX = 0
     currentY = 0
     hitNum = 0
+    canvasShape = canvas.getBoundingClientRect()
 
     constructor(c, k) {
         this.camera = c
         this.keyMan = k
 
         document.addEventListener("click", (event) => {
-            let canvasShape = canvas.getBoundingClientRect()
             //this.x = event.clientX;
             //this.y = event.clientY;
-            this.x = ((event.clientX / 1.0) - this.camera.x) - canvasShape.left; 
-            this.y = ((event.clientY / 1.0) - this.camera.y) - canvasShape.top; 
+            this.x = ((event.clientX / 1.0) - this.camera.x) - this.canvasShape.left; 
+            this.y = ((event.clientY / 1.0) - this.camera.y) - this.canvasShape.top; 
           }, false);
 
         onmousemove = (event) => {
-            let canvasShape = canvas.getBoundingClientRect()
-            this.currentX = ((event.clientX / 1.0) - this.camera.x) - canvasShape.left; 
-            this.currentY = ((event.clientY / 1.0) - this.camera.y) - canvasShape.top; 
+            this.currentX = ((event.clientX / 1.0) - this.camera.x) - this.canvasShape.left; 
+            this.currentY = ((event.clientY / 1.0) - this.camera.y) - this.canvasShape.top; 
         }
     }
 
@@ -41,7 +40,11 @@ export class Edit {
         if (this.keyMan.wasKeyJustPressed("KeyS") && this.keyMan.isKeyPressed("ShiftLeft")) {
             for (let i = 0; i < this.hitNum + 1; i++) {
                 console.log(
-                "this.hitboxes[", i ,"] = new Hitbox(",  this.tempHitboxes[i].x, ",",  this.tempHitboxes[i].y, ",",  this.tempHitboxes[i].width, ",",  this.tempHitboxes[i].height, ")"
+                "this.hitboxes[", i ,"] = new Hitbox(",  
+                this.tempHitboxes[i].x, ",",  
+                this.tempHitboxes[i].y, ",",  
+                this.tempHitboxes[i].width - this.tempHitboxes[i].x, ",",  
+                this.tempHitboxes[i].height - this.tempHitboxes[i].y, ")"
                 )
             }
         }
