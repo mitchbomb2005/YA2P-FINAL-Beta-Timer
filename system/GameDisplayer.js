@@ -42,12 +42,11 @@ export class GameDisplayer {
     drawGameFrame() {
 
         this.resizeCanvasForWindowSize();
-
         ctx.fillStyle = "#a7c7d8";
         ctx.rect(0, 0, 10000, 10000) 
         ctx.fill()
         this.background.Draw(this.camera.x, this.camera.y)
-        if(this.debug.bean) {
+        if(this.debug.bean && !this.player.hidden) {
             this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50, 100) 
         }
         this.deathMap.draw(this.camera.x, this.camera.y);

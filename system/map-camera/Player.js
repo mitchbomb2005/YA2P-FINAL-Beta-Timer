@@ -21,12 +21,15 @@ export class Player {
     stuck = false
     wallJumpCheckLeft = false
     wallJumpCheckRight = false
+    hidden = false
+    death = false
 
     // Constant
     debug;
     map;
     camera;
     deathMap;
+    game;
     playerHitbox = new Array()
     maxVelX = 100;
     maxVelY = 50;
@@ -37,7 +40,7 @@ export class Player {
     wallJumpVelY = 40
     wallJumpVelX = 60
 
-    constructor(x, y, keyManager, debug, map, camera, DM) {
+    constructor(x, y, keyManager, debug, map, camera, DM, game) {
         this.keyManager = keyManager;
         this.x = x;
         this.y = y;
@@ -45,6 +48,7 @@ export class Player {
         this.map = map
         this.camera = camera
         this.deathMap = DM
+        this.game = game
         this.#buildHitbox(-25, -75, 50, 125)
     }
 
@@ -63,7 +67,7 @@ export class Player {
         if(this.debug.noClip) {
             this.#updateVelocityNoclip();
             this.#moveNoclip();
-        } else {
+        } else if (!this.death){
             this.#move()
             this.#updateVelocity()
         }
@@ -75,8 +79,13 @@ export class Player {
             this.wallJumpCheckLeft = true
             this.wallJumpCheckRight = true
         }
+        this.hidden = this.death
         //console.log(this.velY)
 
+    }
+
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
     
     #updateVelocityNoclip() {
@@ -252,7 +261,7 @@ export class Player {
         }
         return (hit);
     }
-    #colide() {
+    async #colide() {
         var hitDown = false
         this.wallJumpRight = false
         this.wallJumpLeft = false
@@ -351,9 +360,12 @@ export class Player {
         }
 
         for (let i = 0; i < this.deathMap.hitboxes.length; i++) {
-            if(this.#collisionCheck(100, i, this.deathMap)) {
+            if(this.#collisionCheck(100, i, this.deathMap) && !this.death) {
+                this.death = true
+                await this.sleep(500)
                 this.x = -838
                 this.y = -509
+                this.death = false
             }
         }
 

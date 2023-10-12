@@ -9,9 +9,7 @@ import { Debug } from "./debug.js"
 import { Camera } from "./system/map-camera/Camera.js";
 import { Edit } from "./system/MapEditor.js"
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+
 
 class Main {
 
@@ -44,7 +42,7 @@ class Main {
                 this.mapEdit.drawHitbox()
             }
             this.updateGame();
-            await sleep(1000/60);
+            await this.sleep(1000/60);
         }
     } 
 
@@ -65,6 +63,10 @@ class Main {
         this.debug.debugMode = true
         this.debug.bean = false
         this.debug.noClip = true
+    }
+
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
 }
