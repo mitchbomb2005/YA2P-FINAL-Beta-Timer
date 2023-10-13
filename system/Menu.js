@@ -5,12 +5,19 @@ import { DrawUtils } from "../utils/DrawUtils.js"
 
 export class Menu {
 
-    draw = DrawUtils
+    draw = new DrawUtils()
+    opacity = 1
 
     constructor() {}
 
     drawMenu() {
-        this.draw.text("hello!", 500, 500, 'white', 'grey')
+        this.draw.Text("Yet Another 2d Platformer", 300, 200, `rgba(255, 255, 255, ${this.opacity})`, `rgba(100, 100, 100, ${this.opacity})`)
+
+        this.draw.Text("Press W To Start", 300, 400, `rgba(255, 255, 255, ${this.opacity})`, `rgba(100, 100, 100, ${this.opacity})`)
+    }
+
+    fade() {
+        
     }
 
 }

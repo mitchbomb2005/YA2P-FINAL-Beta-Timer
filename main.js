@@ -44,6 +44,7 @@ class Main {
                 this.mapEdit.drawHitbox()
             }
             this.updateGame();
+            //this.menu.drawMenu()
             await this.sleep(1000/60);
         }
     } 
