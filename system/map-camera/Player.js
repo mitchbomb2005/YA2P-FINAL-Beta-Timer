@@ -363,7 +363,7 @@ export class Player {
             if(this.#collisionCheck(100, i, this.deathMap) && !this.death) {
                 this.death = true
                 await this.sleep(500)
-                this.x = -838
+                this.x = -388
                 this.y = -509
                 this.death = false
             }

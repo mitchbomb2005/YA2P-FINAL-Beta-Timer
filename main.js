@@ -9,8 +9,7 @@ import { Debug } from "./debug.js"
 import { Camera } from "./system/map-camera/Camera.js";
 import { Edit } from "./system/MapEditor.js"
 import { Menu } from "./system/Menu.js"
-
-
+import { Keys } from "./system/map-camera/Keys.js"
 
 class Main {
 
@@ -25,8 +24,9 @@ class Main {
     menu = new Menu()
 
     camera = new Camera(0, 2000, this.debug, this.keyManager)
-    player = new Player(-838, -509, this.keyManager, this.debug, this.map, this.camera, this.deathMap);
+    player = new Player(-438, -509, this.keyManager, this.debug, this.map, this.camera, this.deathMap);
     mapEdit= new Edit(this.camera, this.keyManager)
+    keys = new Keys(this.camera)
 
     constructor() {
         this.gameDisplayer = new GameDisplayer(this, this.map, this.camera, this.player, this.debug, this.deathMap);
@@ -47,6 +47,7 @@ class Main {
             }
 
             if(this.menu.check) {
+                this.keys.drawKeys()
                 this.updateGame();
             } else {
                 this.menu.drawMenu()

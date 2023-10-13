@@ -13,7 +13,7 @@ export class Map {
     
     #createHitboxes() {
         this.hitboxes[0] = new Hitbox(-10, 561, 2096, 450, false); // base floor
-        this.hitboxes[1] = new Hitbox(-10, -2200, 1696, 2400, false); // base roof
+        this.hitboxes[1] = new Hitbox(-610, -2200, 2296, 2400, false); // base roof
         this.hitboxes[2] = new Hitbox(2074, -49, 788, 1240, false)
         this.hitboxes[3] = new Hitbox(-700, -400, 1000, 1411, false);
         this.hitboxes[4] = new Hitbox(1885, 200, 205, 80, false);
