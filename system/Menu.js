@@ -17,10 +17,10 @@ export class Menu {
         this.draw.Text("P r e s s W T o S t a r t", 300, 400, `rgba(255, 255, 255, ${this.opacity})`, `rgba(100, 100, 100, ${this.opacity})`)
     }
 
-    fade() {
+    async fade() {
         for (let i = 0; i < 20; i++) {
             this.opacity -= .05
-            this.sleep(16)
+            await this.sleep(16)
         }
         this.check = true
     }
