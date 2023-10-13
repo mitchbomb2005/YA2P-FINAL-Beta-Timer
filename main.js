@@ -8,6 +8,7 @@ import { KeyManager } from "./system/KeyMan.js"
 import { Debug } from "./debug.js"
 import { Camera } from "./system/map-camera/Camera.js";
 import { Edit } from "./system/MapEditor.js"
+import { Menu } from "./system/Menu.js"
 
 
 
@@ -21,6 +22,7 @@ class Main {
     deathMap = new DeathMap()
     keyManager = new KeyManager();
     debug = new Debug(this.keyManager);
+    menu = new Menu()
 
     camera = new Camera(0, 2000, this.debug, this.keyManager)
     player = new Player(-838, -509, this.keyManager, this.debug, this.map, this.camera, this.deathMap);
