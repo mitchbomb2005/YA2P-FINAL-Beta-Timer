@@ -7,6 +7,7 @@ export class Menu {
 
     draw = new DrawUtils()
     opacity = 1
+    check = false
 
     constructor() {}
 
@@ -17,7 +18,14 @@ export class Menu {
     }
 
     fade() {
-        
+        check = true
+        for(let i = 0; i < 20; i++) {
+            this.sleep(1000 / 60)
+            this.opacity -= 1/20
+        }
     }
 
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 }

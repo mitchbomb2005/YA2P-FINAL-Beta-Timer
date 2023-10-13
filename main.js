@@ -44,7 +44,10 @@ class Main {
                 this.mapEdit.drawHitbox()
             }
             this.updateGame();
-            //this.menu.drawMenu()
+            this.menu.drawMenu()
+            if (this.menu.check = false) {
+                this.menu.fade()
+            }
             await this.sleep(1000/60);
         }
     } 
@@ -75,4 +78,5 @@ class Main {
 }
 
 var game = new Main();
+
 game.startGame();
