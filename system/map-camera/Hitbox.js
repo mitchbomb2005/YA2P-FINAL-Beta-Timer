@@ -20,7 +20,10 @@ export class Hitbox {
     }
 
     draw(cameraX, cameraY, color) {
-        if(!this.hidden) {
+        if(!this.hidden && 
+            this.x + this.width > cameraX &&
+            this.x + cameraX < 1676
+            ) {
             ctx.fillStyle = color;
             ctx.fillRect(cameraX + this.x, cameraY + this.y, this.width, this.height);
         }

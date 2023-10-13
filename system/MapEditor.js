@@ -12,6 +12,7 @@ export class Edit {
     currentX = 0
     currentY = 0
     hitNum = 0
+    layer = 0
     canvasShape = canvas.getBoundingClientRect()
 
     constructor(c, k) {
