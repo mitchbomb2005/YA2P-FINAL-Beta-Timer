@@ -36,18 +36,25 @@ class Main {
         //this.autoDebug()
         while (true) {
             //this.updateGame();
+            
             this.gameDisplayer.drawGameFrame();
             if (this.debug.playerHitbox) {
                 this.player.drawHitbox()
             }
+
             if (this.debug.mapBuilder) {
                 this.mapEdit.drawHitbox()
             }
-            this.updateGame();
-            this.menu.drawMenu()
-            if (this.menu.check = false) {
-                this.menu.fade()
+
+            if(this.menu.check) {
+                this.updateGame();
+            } else {
+                this.menu.drawMenu()
+                if(this.keyManager.wasKeyJustPressed("KeyW")) {
+                    this.menu.fade()
+                }
             }
+            this.keyManager.update();
             await this.sleep(1000/60);
         }
     } 
@@ -62,7 +69,6 @@ class Main {
         
 
         // Update input
-        this.keyManager.update();
     }
 
     autoDebug() {
