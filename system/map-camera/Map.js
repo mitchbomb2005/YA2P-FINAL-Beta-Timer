@@ -29,8 +29,8 @@ export class Map {
         // room beyond death
 
         this.hitboxes[ 13 ] = new Hitbox( 5110, 5, 1787, 994, false )
-        this.hitboxes[ 14 ] = new Hitbox( 7135, 244, -1057, -937, false )
-        this.hitboxes[ 15 ] = new Hitbox( 5110, -550, 2046, -300, false )
+        this.hitboxes[ 14 ] = new Hitbox( 6078, -693, 1057, 937, false )
+        this.hitboxes[ 15 ] = new Hitbox( 5110, -850, 2046, 300, false )
         this.hitboxes[ 16 ] = new Hitbox( 5110, -851, 81 , 533, false )
 
     }

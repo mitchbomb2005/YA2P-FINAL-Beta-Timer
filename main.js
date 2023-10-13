@@ -8,6 +8,7 @@ import { KeyManager } from "./system/KeyMan.js"
 import { Debug } from "./debug.js"
 import { Camera } from "./system/map-camera/Camera.js";
 import { Edit } from "./system/MapEditor.js"
+import { Menu } from "./system/Menu.js"
 
 
 
@@ -21,6 +22,7 @@ class Main {
     deathMap = new DeathMap()
     keyManager = new KeyManager();
     debug = new Debug(this.keyManager);
+    menu = new Menu()
 
     camera = new Camera(0, 2000, this.debug, this.keyManager)
     player = new Player(-838, -509, this.keyManager, this.debug, this.map, this.camera, this.deathMap);
@@ -34,14 +36,25 @@ class Main {
         //this.autoDebug()
         while (true) {
             //this.updateGame();
+            
             this.gameDisplayer.drawGameFrame();
             if (this.debug.playerHitbox) {
                 this.player.drawHitbox()
             }
+
             if (this.debug.mapBuilder) {
                 this.mapEdit.drawHitbox()
             }
-            this.updateGame();
+
+            if(this.menu.check) {
+                this.updateGame();
+            } else {
+                this.menu.drawMenu()
+                if(this.keyManager.wasKeyJustPressed("KeyW")) {
+                    this.menu.fade()
+                }
+            }
+            this.keyManager.update();
             await this.sleep(1000/60);
         }
     } 
@@ -56,7 +69,6 @@ class Main {
         
 
         // Update input
-        this.keyManager.update();
     }
 
     autoDebug() {
@@ -72,4 +84,5 @@ class Main {
 }
 
 var game = new Main();
+
 game.startGame();
