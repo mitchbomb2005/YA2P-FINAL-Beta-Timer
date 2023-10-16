@@ -19,8 +19,8 @@ export class Player {
     wallJumpLeft = false
     wallJumpRight = false
     stuck = false
-    wallJumpCheckLeft = false
-    wallJumpCheckRight = false
+    wallJumpAmmountLeft = false
+    wallJumpAmmountRight = false
     hidden = false
     death = false
 
@@ -76,8 +76,8 @@ export class Player {
             this.camera.y = this.camera.y - (((this.camera.y - 509) - this.y) / 10) 
         }
         if (this.jump > 0) {
-            this.wallJumpCheckLeft = true
-            this.wallJumpCheckRight = true
+            this.wallJumpAmmountLeft = true
+            this.wallJumpAmmountRight = true
         }
         this.hidden = this.death
         //console.log(this.velY)
@@ -159,26 +159,26 @@ export class Player {
                 } else if (this.keyManager.wasKeyJustPressed("KeyW")) {
                     if (this.jump > 0) {
                         this.velY += this.jumpVel;   
-                    } else if (this.wallJumpLeft && this.wallJumpCheckLeft) {
+                    } else if (this.wallJumpLeft) {
                         if (this.velY < 0) {
-                            this.velY = this.wallJumpVelY
+                            this.velY += (this.wallJumpVelY - 10) / (this.wallJumpAmmountLeft / 2 + .4)
                         } else {
-                            this.velY += this.wallJumpVelY - 10
+                            this.velY += ((this.wallJumpVelY - 10) / (this.wallJumpAmmountLeft / 2 + .4)) / 1.3
                         }
                         
                         this.velX -= this.wallJumpVelX
-                        this.wallJumpCheckLeft = false
-                        this.wallJumpCheckRight = true
-                    } else if (this.wallJumpRight && this.wallJumpCheckRight) {
+                        this.wallJumpAmmountLeft += .5
+                        this.wallJumpAmmountRight = 1
+                    } else if (this.wallJumpRight) {
                         if (this.velY < 0) {
-                            this.velY = this.wallJumpVelY
+                            this.velY += (this.wallJumpVelY - 10) / (this.wallJumpAmmountRight / 2 + .4)
                         } else {
-                            this.velY += this.wallJumpVelY - 10
+                            this.velY += ((this.wallJumpVelY - 10) / (this.wallJumpAmmountRight / 2 + .4)) / 1.3
                         }
                         
                         this.velX += this.wallJumpVelX
-                        this.wallJumpCheckRight = false
-                        this.wallJumpCheckLeft = true
+                        this.wallJumpAmmountRight += .5
+                        this.wallJumpAmmountLeft = 1
                     }
                 }
 
