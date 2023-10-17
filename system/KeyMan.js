@@ -46,6 +46,7 @@ export class KeyManager {
         case "KeyM": return !this.keysPressedLastFrame[13] && this.keysCurrentlyPressed[13];
         case "AltLeft": return !this.keysPressedLastFrame[14] && this.keysCurrentlyPressed[14];
         case "ShiftLeft": return !this.keysPressedLastFrame[15] && this.keysCurrentlyPressed[15];
+        case "Space": return !this.keysPressedLastFrame[16] && this.keysCurrentlyPressed[16];
       }
     }
 
@@ -67,6 +68,7 @@ export class KeyManager {
         case "KeyM": return this.keysCurrentlyPressed[13];
         case "AltLeft": return this.keysCurrentlyPressed[14];
         case "ShiftLeft": return this.keysCurrentlyPressed[15];
+        case "Space": return this.keysCurrentlyPressed[16];
         default:
           console.log("Unexpected key code: " + code);
       }
@@ -124,6 +126,9 @@ export class KeyManager {
           break;
         case "ShiftLeft":
           this.keyBuffer[15] = pressed;
+          break;
+        case "Space":
+          this.keyBuffer[16] = pressed;
           break;
 
         default:

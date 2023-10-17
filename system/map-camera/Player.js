@@ -103,7 +103,7 @@ export class Player {
             }
               
         }
-        if (this.keyManager.isKeyPressed("KeyW")) {
+        if (this.keyManager.isKeyPressed("KeyW") || this.keyManager.isKeyPressed("Space")) {
             this.velY += this.noclipVelChange;
             if (this.velY > this.maxVelY) {
                 this.velY = this.maxVelY;
@@ -152,11 +152,11 @@ export class Player {
             }
         }
 
-        if (this.keyManager.isKeyPressed("KeyW")) {
+        if (this.keyManager.isKeyPressed("KeyW") || this.keyManager.isKeyPressed("Space")) {
             //if (this.jumpState == true) {
                 if (this.velY <= 0 && this.jump > 0) {
                     this.velY += this.jumpVel;     
-                } else if (this.keyManager.wasKeyJustPressed("KeyW")) {
+                } else if (this.keyManager.wasKeyJustPressed("KeyW") || this.keyManager.wasKeyJustPressed("Space")) {
                     if (this.jump > 0) {
                         this.velY += this.jumpVel;   
                     } else if (this.wallJumpLeft) {
@@ -183,7 +183,7 @@ export class Player {
                 }
 
                 /*
-                if (this.keyManager.wasKeyJustPressed("KeyW")) {
+                if (this.keyManager.wasKeyJustPressed("KeyW") || this.keyManager.wasKeyJustPressed("Space")) {
                     if (this.wallJumpLeft && this.wallJumpCheck) {
                         if (this.velY < 0) {
                             this.velY = this.wallJumpVelY
