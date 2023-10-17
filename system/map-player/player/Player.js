@@ -2,7 +2,7 @@
 
 // rename this to Player.js
 
-import { Hitbox } from "./Hitbox.js";
+import { Hitbox } from "../Hitbox.js";
 
 export class Player {
 
