@@ -1,6 +1,6 @@
 'use strict';
 
-import { Hitbox } from "./Hitbox.js";
+import { Hitbox } from "../../Hitbox.js";
 
 export class Death {
 

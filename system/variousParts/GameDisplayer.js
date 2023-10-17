@@ -8,7 +8,7 @@ var scaleY = 0;
 // import { Map }
 // import { Camera }
 import { DrawUtils } from "../../utils/DrawUtils.js"
-import { Background } from "./map-camera/Background.js"
+import { Background } from "../map-player/map/mapCarryers/Background.js"
 
 export class GameDisplayer {
 

@@ -1,15 +1,15 @@
 'use strict';
 
-import { Map } from "./system/map-camera/Map.js"
-import { Death as DeathMap } from "./system/map-camera/DeathMap.js"
-import { GameDisplayer } from "./system/GameDisplayer.js"
-import { Player } from "./system/map-camera/Player.js"
-import { KeyManager } from "./system/KeyMan.js"
+import { Map } from "./system/map-player/map/mapCarryers/Map.js"
+import { Death as DeathMap } from "./system/map-player/map/mapCarryers/DeathMap.js"
+import { GameDisplayer } from "./system/variousParts/GameDisplayer.js"
+import { Player } from "./system/map-player/player/Player.js"
+import { KeyManager } from "./system/variousParts/KeyMan.js"
 import { Debug } from "./debug.js"
-import { Camera } from "./system/map-camera/Camera.js";
-import { Edit } from "./system/MapEditor.js"
-import { Menu } from "./system/Menu.js"
-import { Keys } from "./system/map-camera/Keys.js"
+import { Camera } from "./system/map-player/player/Camera.js"
+import { Edit } from "./system/map-player/map/otherParts/MapEditor.js"
+import { Menu } from "./system/variousParts/Menu.js"
+import { Keys } from "./system/map-player/map/otherParts/Keys.js"
 
 class Main {
 

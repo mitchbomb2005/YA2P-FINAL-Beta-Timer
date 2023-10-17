@@ -1,7 +1,7 @@
 const canvas = document.getElementById("game_screen");
 const ctx = canvas.getContext("2d");
 
-import { Hitbox } from "./map-camera/Hitbox.js";
+import { Hitbox } from "../../Hitbox.js";
 
 export class Edit {
     keyMan;
