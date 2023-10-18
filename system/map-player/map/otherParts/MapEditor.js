@@ -8,6 +8,7 @@ export class Edit {
     camera;
     x;
     y;
+    drawUtlils
     tempHitboxes = new Array()
     currentX = 0
     currentY = 0
@@ -15,9 +16,10 @@ export class Edit {
     layer = 0
     canvasShape = canvas.getBoundingClientRect()
 
-    constructor(c, k) {
+    constructor(c, k, d) {
         this.camera = c
         this.keyMan = k
+        this.drawUtlils = d
 
         document.addEventListener("click", (event) => {
             //this.x = event.clientX;
@@ -50,6 +52,12 @@ export class Edit {
                 )
             }
         }
+        if (this.keyMan.isKeyPressed("AltLeft") && this.keyMan.wasKeyJustPressed("KeyM")) {
+            this.layer++
+            if (this.layer == 3) {
+                this.layer = 0
+            }
+        }
         this.tempHitboxes[this.hitNum] = new Hitbox( 
             this.x, 
             this.y, 
@@ -67,8 +75,10 @@ export class Edit {
                 this.tempHitboxes[i].width - this.tempHitboxes[i].x, 
                 this.tempHitboxes[i].height - this.tempHitboxes[i].y
             )
+            this.drawUtlils.Text(this.layer, 20, 100)
             //console.log(this.tempHitboxes[i])
         }
+
     }
 
 }

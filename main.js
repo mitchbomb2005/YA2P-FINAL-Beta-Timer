@@ -10,6 +10,7 @@ import { Camera } from "./system/map-player/player/Camera.js"
 import { Edit } from "./system/map-player/map/otherParts/MapEditor.js"
 import { Menu } from "./system/variousParts/Menu.js"
 import { Keys } from "./system/map-player/map/otherParts/Keys.js"
+import { DrawUtils } from "./utils/DrawUtils.js"
 
 class Main {
 
@@ -22,10 +23,11 @@ class Main {
     keyManager = new KeyManager();
     debug = new Debug(this.keyManager);
     menu = new Menu()
+    drawUtils = new DrawUtils()
 
     camera = new Camera(0, 2000, this.debug, this.keyManager)
     player = new Player(-438, -509, this.keyManager, this.debug, this.map, this.camera, this.deathMap);
-    mapEdit= new Edit(this.camera, this.keyManager)
+    mapEdit= new Edit(this.camera, this.keyManager, this.drawUtils)
     keys = new Keys(this.camera)
 
     constructor() {
