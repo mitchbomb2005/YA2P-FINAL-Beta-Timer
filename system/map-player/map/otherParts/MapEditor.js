@@ -68,10 +68,10 @@ export class Edit {
             }
         }
         this.tempHitboxes[this.hitNum] = new Hitbox( 
-            (this.x / this.layerOffset) - (this.camXSet * this.layerOffset), 
-            (this.y / this.layerOffset) - (this.camYSet * this.layerOffset), 
-            ((this.currentX) / this.layerOffset) + (this.camXSetII / this.layerOffset), //*2, 
-            ((this.currentY) / this.layerOffset) + (this.camYSetII / this.layerOffset) //*2
+            (this.x / this.layerOffset),
+            (this.y / this.layerOffset),
+            ((this.currentX) / this.layerOffset),
+            ((this.currentY) / this.layerOffset)
         )
 
         this.layerOffsetSet()
