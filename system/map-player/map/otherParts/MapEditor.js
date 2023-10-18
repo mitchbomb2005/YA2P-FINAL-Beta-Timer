@@ -8,6 +8,10 @@ export class Edit {
     camera;
     x;
     y;
+    camXSet
+    camYSet
+    camXSetII
+    camYSetII
     drawUtlils
     tempHitboxes = new Array()
     currentX = 0
@@ -26,12 +30,16 @@ export class Edit {
             //this.x = event.clientX;
             //this.y = event.clientY;
             this.x = (((event.clientX / 1.0) - this.camera.x) - this.canvasShape.left) * this.layerOffset; 
-            this.y = (((event.clientY / 1.0) - this.camera.y) - this.canvasShape.top) * this.layerOffset; 
+            this.y = (((event.clientY / 1.0) - this.camera.y) - this.canvasShape.top) * this.layerOffset;
+            this.camXSet = this.camera.x
+            this.camYSet = this.camera.y
           }, false);
 
         onmousemove = (event) => {
             this.currentX = (((event.clientX / 1.0) - this.camera.x) - this.canvasShape.left) * this.layerOffset; 
             this.currentY = (((event.clientY / 1.0) - this.camera.y) - this.canvasShape.top) * this.layerOffset; 
+            this.camXSetII = this.camera.x
+            this.camYSetII = this.camera.y
         }
     }
 
@@ -60,10 +68,10 @@ export class Edit {
             }
         }
         this.tempHitboxes[this.hitNum] = new Hitbox( 
-            this.x / this.layerOffset, 
-            this.y / this.layerOffset, 
-            (this.currentX - this.x) / this.layerOffset, //*2, 
-            (this.currentY - this.y) / this.layerOffset, //*2
+            (this.x / this.layerOffset) - (this.camXSet * this.layerOffset), 
+            (this.y / this.layerOffset) - (this.camYSet * this.layerOffset), 
+            ((this.currentX) / this.layerOffset) + (this.camXSetII / this.layerOffset), //*2, 
+            ((this.currentY) / this.layerOffset) + (this.camYSetII / this.layerOffset) //*2
         )
 
         this.layerOffsetSet()
