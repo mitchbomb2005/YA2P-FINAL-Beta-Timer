@@ -14,6 +14,7 @@ export class Edit {
     currentY = 0
     hitNum = 0
     layer = 0
+    layerOffset
     canvasShape = canvas.getBoundingClientRect()
 
     constructor(c, k, d) {
@@ -24,13 +25,13 @@ export class Edit {
         document.addEventListener("click", (event) => {
             //this.x = event.clientX;
             //this.y = event.clientY;
-            this.x = ((event.clientX / 1.0) - this.camera.x) - this.canvasShape.left; 
-            this.y = ((event.clientY / 1.0) - this.camera.y) - this.canvasShape.top; 
+            this.x = (((event.clientX / 1.0) - this.camera.x) - this.canvasShape.left) * this.layerOffset; 
+            this.y = (((event.clientY / 1.0) - this.camera.y) - this.canvasShape.top) * this.layerOffset; 
           }, false);
 
         onmousemove = (event) => {
-            this.currentX = ((event.clientX / 1.0) - this.camera.x) - this.canvasShape.left; 
-            this.currentY = ((event.clientY / 1.0) - this.camera.y) - this.canvasShape.top; 
+            this.currentX = (((event.clientX / 1.0) - this.camera.x) - this.canvasShape.left) * this.layerOffset; 
+            this.currentY = (((event.clientY / 1.0) - this.camera.y) - this.canvasShape.top) * this.layerOffset; 
         }
     }
 
@@ -46,8 +47,8 @@ export class Edit {
                 "this.hitboxes[", i ,"] = new Hitbox(",
                 this.tempHitboxes[i].x,",",
                 this.tempHitboxes[i].y,",",
-                this.tempHitboxes[i].width - this.tempHitboxes[i].x, ",",
-                this.tempHitboxes[i].height - this.tempHitboxes[i].y, ",",
+                this.tempHitboxes[i].width, ",",
+                this.tempHitboxes[i].height, ",",
                 "false )"
                 )
             }
@@ -59,26 +60,33 @@ export class Edit {
             }
         }
         this.tempHitboxes[this.hitNum] = new Hitbox( 
-            this.x, 
-            this.y, 
-            this.currentX, 
-            this.currentY
+            this.x / this.layerOffset, 
+            this.y / this.layerOffset, 
+            (this.currentX - this.x) / this.layerOffset, //*2, 
+            (this.currentY - this.y) / this.layerOffset, //*2
         )
+
+        this.layerOffsetSet()
     }
 
     drawHitbox() {
         ctx.fillStyle = "#000000"
         for (let i = 0; i < this.hitNum + 1; i++) {
-            ctx.fillRect(   
-                this.tempHitboxes[i].x + this.camera.x, 
-                this.tempHitboxes[i].y + this.camera.y, 
-                this.tempHitboxes[i].width - this.tempHitboxes[i].x, 
-                this.tempHitboxes[i].height - this.tempHitboxes[i].y
-            )
-            this.drawUtlils.Text(this.layer, 20, 100)
-            //console.log(this.tempHitboxes[i])
-        }
+            this.tempHitboxes[i].draw(this.camera.x / this.layerOffset, this.camera.y / this.layerOffset) 
 
+        }
+        this.drawUtlils.Text(this.layer, 20, 100)
+
+    }
+
+    layerOffsetSet() {
+        if (this.layer == 0) {
+            this.layerOffset = 1
+        } else if (this.layer == 1) {
+            this.layerOffset = 2
+        } else if (this.layer == 2) {
+            this.layerOffset = 3
+        }
     }
 
 }

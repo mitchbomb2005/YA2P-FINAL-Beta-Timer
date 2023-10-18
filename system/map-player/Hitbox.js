@@ -11,7 +11,7 @@ export class Hitbox {
     height;
     hidden
 
-    constructor(x, y, width, height, hidden = false) {
+    constructor(x = 0, y = 0, width, height, hidden = false) {
         this.x = x;
         this.y = y;
         this.width = width;
