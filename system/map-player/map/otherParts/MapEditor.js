@@ -81,7 +81,6 @@ export class Edit {
                 ((this.currentX)) - (this.x),
                 ((this.currentY)) - this.y,
             )
-            console.log (this.tempHitboxes[this.hitNum])
         }
 
         this.layerOffsetSet()

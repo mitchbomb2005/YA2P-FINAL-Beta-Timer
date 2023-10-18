@@ -13,6 +13,7 @@ export class Background {
 
     constructor(cam) {
         this.createLayer1()
+        this.createLayer2()
         this.camera = cam
     }
 
@@ -32,32 +33,28 @@ export class Background {
     }
 
     createLayer2() {
-        
+        this.layer2[0] = new Hitbox(75, 150, 60, 650)
+        this.layer2[1] = new Hitbox(80, 350, 580, 50)
+        this.layer2[2] = new Hitbox(655, 0, 60, 800)
+        this.layer2[3] = new Hitbox(665, 440, 380, 60)
+        this.layer2[4] = new Hitbox(990, -550, 60, 1350)
+        this.layer2[5] = new Hitbox(390, -50, 660, 60)
+        this.layer2[6] = new Hitbox(990, 0, 400, 60)
+        this.layer2[7] = new Hitbox(990, 300, 400, 60)
+        this.layer2[8] = new Hitbox(1330, 0, 60, 860)
+        //this.layer2[0] = new Hitbox()
     }
     
 
-    Draw(x, y) {
-        for (let i = 0; i < this.layer1.length; i++) {
-            this.layer1[i].draw(this.camera.x / 2, this.camera.y / 2, "#5f5f5f")
+    Draw() {
+        for (let i = 0; i < this.layer2.length; i++) {
+            this.layer2[i].draw(this.camera.x / 3, this.camera.y / 3, "#7f7f7f")
         }
-        /*
-        this.#DrawLayer2(x, y);
-        this.#DrawLayer1(x, y);
-        this.#DrawLayer0(x, y, 1, 1);
-        */
-    }
+        for (let i = 0; i < this.layer1.length; i++) {
+            this.layer1[i].draw(this.camera.x / 2, this.camera.y / 2, "#5f5f5f")  
+        }
 
-    #DrawLayer2(x, y, xOffset = 3, yOffset = 3) {
-        ctx.fillStyle = "#7f7f7f";
-        ctx.fillRect((x/xOffset) + 75 , (y/yOffset) + 150 , 60, 650);
-        ctx.fillRect((x/xOffset) + 80 , (y/yOffset) + 350 , 580, 50);
-        ctx.fillRect((x/xOffset) + 655 , (y/yOffset) + 0 , 60, 800);
-        ctx.fillRect((x/xOffset) + 665 , (y/yOffset) + 440 , 380, 60);
-        ctx.fillRect((x/xOffset) + 990 , (y/yOffset) + -550 , 60, 1350);
-        ctx.fillRect((x/xOffset) + 390 , (y/yOffset) + -50 , 660, 60);
-        ctx.fillRect((x/xOffset) + 990 , (y/yOffset) + 0 , 400, 60);
-        ctx.fillRect((x/xOffset) + 990 , (y/yOffset) + 300 , 400, 60);
-        ctx.fillRect((x/xOffset) + 1330 , (y/yOffset) + 0 , 60, 860);
+
     }
 
 }
