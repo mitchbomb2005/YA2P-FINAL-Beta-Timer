@@ -21,6 +21,14 @@ export class Background {
 
     createLayer1() {
         this.layer1[0] = new Hitbox(150, 150, 50, 650)
+        this.layer1[1] = new Hitbox(175, 450, 500, 40)
+        this.layer1[2] = new Hitbox(670, 150, 50, 650)
+        this.layer1[3] = new Hitbox(1000, 0, 950, 50)
+        this.layer1[4] = new Hitbox(1900, 0, 50, 400)
+        this.layer1[5] = new Hitbox(1900, 350, 650, 50)
+        this.layer1[6] = new Hitbox(1000, -500, 50, 550)
+        this.layer1[7] = new Hitbox(1700, -500, 50, 550)
+        //this.layer1[0] = new Hitbox()
     }
 
     createLayer2() {
@@ -37,23 +45,6 @@ export class Background {
         this.#DrawLayer1(x, y);
         this.#DrawLayer0(x, y, 1, 1);
         */
-    }
-
-    #DrawLayer0(x, y, xOffset = 1.05, yOffset = 1.05) {
-        ctx.fillStyle = "#bfbfbf";
-        //ctx.fillRect((x/xOffset) + 1476, (y / yOffset), 620, 700);
-        //1696, 2096
-    }
-
-    #DrawLayer1(x, y, xOffset = 2, yOffset = 2) {
-        ctx.fillStyle = "#5f5f5f";
-        ctx.fillRect((x/xOffset) + 175, (y/yOffset) + 450, 500, 40);
-        ctx.fillRect((x/xOffset) + 670, (y/yOffset) + 150, 50, 650);
-        ctx.fillRect((x/xOffset) + 1000, (y/yOffset) + 0, 950, 50);
-        ctx.fillRect((x/xOffset) + 1900, (y/yOffset) + 0, 50, 400);
-        ctx.fillRect((x/xOffset) + 1900, (y/yOffset) + 350, 650, 50);
-        ctx.fillRect((x/xOffset) + 1000, (y/yOffset) + -500, 50, 550);
-        ctx.fillRect((x/xOffset) + 1700, (y/yOffset) + -500, 50, 550);
     }
 
     #DrawLayer2(x, y, xOffset = 3, yOffset = 3) {
