@@ -67,21 +67,13 @@ export class Edit {
                 this.layer = 0
             }
         }
-        if (this.layer == 0) {
-            this.tempHitboxes[this.hitNum] = new Hitbox( 
-                (this.x),
-                (this.y),
-                ((this.currentX)) - this.x,
-                ((this.currentY)) - this.y
-            )
-        } else if (this.layer == 1) {
-            this.tempHitboxes[this.hitNum] = new Hitbox( 
-                (this.x),
-                (this.y),
-                ((this.currentX)) - (this.x),
-                ((this.currentY)) - this.y,
-            )
-        }
+        this.tempHitboxes[this.hitNum] = new Hitbox( 
+            (this.x),
+            (this.y),
+            ((this.currentX)) - this.x,
+            ((this.currentY)) - this.y
+        )
+
 
         this.layerOffsetSet()
     }
