@@ -29,15 +29,15 @@ export class Edit {
         document.addEventListener("click", (event) => {
             //this.x = event.clientX;
             //this.y = event.clientY;
-            this.x = (((event.clientX / 1.0) - this.camera.x) - this.canvasShape.left) * this.layerOffset; 
-            this.y = (((event.clientY / 1.0) - this.camera.y) - this.canvasShape.top) * this.layerOffset;
+            this.x = (((event.clientX / 1.0) - (this.camera.x / this.layerOffset)) - this.canvasShape.left) //* this.layerOffset; 
+            this.y = (((event.clientY / 1.0) - (this.camera.y / this.layerOffset)) - this.canvasShape.top) //* this.layerOffset;
             this.camXSet = this.camera.x
             this.camYSet = this.camera.y
           }, false);
 
         onmousemove = (event) => {
-            this.currentX = (((event.clientX / 1.0) - this.camera.x) - this.canvasShape.left) * this.layerOffset; 
-            this.currentY = (((event.clientY / 1.0) - this.camera.y) - this.canvasShape.top) * this.layerOffset; 
+            this.currentX = (((event.clientX / 1.0) - (this.camera.x / this.layerOffset)) - this.canvasShape.left) //* this.layerOffset; 
+            this.currentY = (((event.clientY / 1.0) - (this.camera.y / this.layerOffset)) - this.canvasShape.top) //* this.layerOffset; 
             this.camXSetII = this.camera.x
             this.camYSetII = this.camera.y
         }
@@ -67,12 +67,22 @@ export class Edit {
                 this.layer = 0
             }
         }
-        this.tempHitboxes[this.hitNum] = new Hitbox( 
-            (this.x / this.layerOffset),
-            (this.y / this.layerOffset),
-            ((this.currentX) / this.layerOffset),
-            ((this.currentY) / this.layerOffset)
-        )
+        if (this.layer == 0) {
+            this.tempHitboxes[this.hitNum] = new Hitbox( 
+                (this.x),
+                (this.y),
+                ((this.currentX)) - this.x,
+                ((this.currentY)) - this.y
+            )
+        } else if (this.layer == 1) {
+            this.tempHitboxes[this.hitNum] = new Hitbox( 
+                (this.x),
+                (this.y),
+                ((this.currentX)) - (this.x),
+                ((this.currentY)) - this.y,
+            )
+            console.log (this.tempHitboxes[this.hitNum])
+        }
 
         this.layerOffsetSet()
     }
