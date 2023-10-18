@@ -8,7 +8,6 @@ var scaleY = 0;
 // import { Map }
 // import { Camera }
 import { DrawUtils } from "../../utils/DrawUtils.js"
-import { Background } from "../map-player/map/mapCarryers/Background.js"
 
 export class GameDisplayer {
 
@@ -19,23 +18,22 @@ export class GameDisplayer {
     debug;
     player; 
     deathMap;
-
-    background = new Background();
     
     // fields
     originalWidth = canvas.width;
     originalHeight = canvas.height;
 
     drawUtils = new DrawUtils();
-    background = new Background();
+    background
 
-    constructor(Game, Map, Camera, Player, Debug = 0, DM) {
+    constructor(Game, Map, Camera, Player, Debug = 0, DM, BG) {
         this.game = Game;
         this.map = Map;
         this.deathMap = DM
         this.camera = Camera;
         this.debug = Debug
         this.player = Player
+        this.background = BG
     }
 
     // methods (functions)

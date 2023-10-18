@@ -11,20 +11,10 @@ export class Background {
     layer2 = new Array
 
     constructor() {
-        this.layer1[1] = new Hitbox()
     }
 
 // base
-// ctx.fillRect((x/1) + 0 , (y/2) + 0 , 0, 0);
-
-    createLayer1() {
-        this.layer1[1] = new Hitbox()
-    }
-
-    createLayer2() {
-        
-    }
-    
+// ctx.fillRect((x/1) + 0 , (y/2) + 0 , 0, 0);    
 
     Draw(x, y) {
         this.#DrawLayer2(x, y);

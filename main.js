@@ -11,6 +11,7 @@ import { Edit } from "./system/map-player/map/otherParts/MapEditor.js"
 import { Menu } from "./system/variousParts/Menu.js"
 import { Keys } from "./system/map-player/map/otherParts/Keys.js"
 import { DrawUtils } from "./utils/DrawUtils.js"
+import { Background } from "./system/map-player/map/mapCarryers/Background.js"
 
 class Main {
 
@@ -29,9 +30,10 @@ class Main {
     player = new Player(-438, -509, this.keyManager, this.debug, this.map, this.camera, this.deathMap);
     mapEdit= new Edit(this.camera, this.keyManager, this.drawUtils)
     keys = new Keys(this.camera)
+    Background = new Background(this.camera)
 
     constructor() {
-        this.gameDisplayer = new GameDisplayer(this, this.map, this.camera, this.player, this.debug, this.deathMap);
+        this.gameDisplayer = new GameDisplayer(this, this.map, this.camera, this.player, this.debug, this.deathMap, this.Background);
     }
 
     async startGame() {

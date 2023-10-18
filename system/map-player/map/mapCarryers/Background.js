@@ -1,6 +1,6 @@
 'use strict';
 
-import { Hitbox } from "../../Hitbox";
+import { Hitbox } from "../../Hitbox.js";
 
 const canvas = document.getElementById("game_screen");
 const ctx = canvas.getContext("2d");
@@ -9,16 +9,18 @@ export class Background {
 
     layer1 = new Array
     layer2 = new Array
+    camera
 
-    constructor() {
-        this.layer1[1] = new Hitbox()
+    constructor(cam) {
+        this.createLayer1()
+        this.camera = cam
     }
 
 // base
 // ctx.fillRect((x/1) + 0 , (y/2) + 0 , 0, 0);
 
     createLayer1() {
-        this.layer1[1] = new Hitbox()
+        this.layer1[0] = new Hitbox(150, 150, 50, 650)
     }
 
     createLayer2() {
@@ -27,9 +29,14 @@ export class Background {
     
 
     Draw(x, y) {
+        for (let i = 0; i < this.layer1.length; i++) {
+            this.layer1[i].draw(this.camera.x / 2, this.camera.y / 2, "#5f5f5f")
+        }
+        /*
         this.#DrawLayer2(x, y);
         this.#DrawLayer1(x, y);
         this.#DrawLayer0(x, y, 1, 1);
+        */
     }
 
     #DrawLayer0(x, y, xOffset = 1.05, yOffset = 1.05) {
@@ -40,7 +47,6 @@ export class Background {
 
     #DrawLayer1(x, y, xOffset = 2, yOffset = 2) {
         ctx.fillStyle = "#5f5f5f";
-        ctx.fillRect((x/xOffset) + 150, (y/yOffset) + 150, 50, 650);
         ctx.fillRect((x/xOffset) + 175, (y/yOffset) + 450, 500, 40);
         ctx.fillRect((x/xOffset) + 670, (y/yOffset) + 150, 50, 650);
         ctx.fillRect((x/xOffset) + 1000, (y/yOffset) + 0, 950, 50);
