@@ -15,11 +15,12 @@ export class Keys {
     }
     drawKeys() {
         ctx.drawImage(this.keyD, 388 + this.camera.x, 600 + this.camera.y)
-        ctx.drawImage(this.keyW, 1788 + this.camera.x, 600 + this.camera.y)
-        ctx.drawImage(this.keyW, 2288 + this.camera.x, -500 + this.camera.y)
-        ctx.drawImage(this.keySpace, 1788 + this.camera.x, 650 + this.camera.y)
-        ctx.drawImage(this.keySpace, 2288 + this.camera.x, -450 + this.camera.y)
+        this.jump(1788, 600)
     }
 
+    jump(x, y) {
+        ctx.drawImage(this.keyW, x + this.camera.x, y + this.camera.y)
+        ctx.drawImage(this.keySpace, x + this.camera.x, (y + 50) + this.camera.y)
+    }
     
 }
