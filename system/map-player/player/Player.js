@@ -29,6 +29,7 @@ export class Player {
     map;
     camera;
     deathMap;
+    checkpointMap;
     game;
     playerHitbox = new Array()
     maxVelX = 100;
@@ -40,7 +41,7 @@ export class Player {
     wallJumpVelY = 40
     wallJumpVelX = 60
 
-    constructor(x, y, keyManager, debug, map, camera, DM, game) {
+    constructor(x, y, keyManager, debug, map, camera, DM, game, CPM) {
         this.keyManager = keyManager;
         this.x = x;
         this.y = y;
@@ -52,6 +53,7 @@ export class Player {
         this.#buildHitbox(-25, -75, 50, 125)
         this.respawnX = x
         this.respawnY = y
+        this.checkpointMap = CPM
     }
 
     #buildHitbox(x, y, width, height) {
@@ -367,9 +369,17 @@ export class Player {
                 await this.sleep(500)
                 this.x = this.respawnX
                 this.y = this.respawnY
+                this.velX = 0;
+                this.velY = 0;
                 this.death = false
             }
         }
 
+        for (let i = 0; i < this.deathMap.hitboxes.length; i++) {
+            if(this.#collisionCheck(100, i, this.checkpointMap)) {
+                this.respawnX = this.x
+                this.respawnY = this.y
+            }
+        }
     }
 }

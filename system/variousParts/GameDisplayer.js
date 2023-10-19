@@ -26,7 +26,7 @@ export class GameDisplayer {
     drawUtils = new DrawUtils();
     background
 
-    constructor(Game, Map, Camera, Player, Debug = 0, DM, BG) {
+    constructor(Game, Map, Camera, Player, Debug = 0, DM, BG, CPM) {
         this.game = Game;
         this.map = Map;
         this.deathMap = DM
@@ -34,6 +34,7 @@ export class GameDisplayer {
         this.debug = Debug
         this.player = Player
         this.background = BG
+        this.checkpoint = CPM
     }
 
     // methods (functions)
@@ -48,6 +49,7 @@ export class GameDisplayer {
             this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50, 100) 
         }
         this.deathMap.draw(this.camera.x, this.camera.y);
+        this.checkpoint.draw(this.camera.x, this.camera.y) 
         this.map.draw(this.camera.x, this.camera.y);
     }
 
