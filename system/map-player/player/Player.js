@@ -12,6 +12,8 @@ export class Player {
     velY = 0;
     x;
     y;
+    respawnX
+    respawnY
     jump = 0;
     jumpState = false
     wallJumpLeft = false
@@ -48,6 +50,8 @@ export class Player {
         this.deathMap = DM
         this.game = game
         this.#buildHitbox(-25, -75, 50, 125)
+        this.respawnX = x
+        this.respawnY = y
     }
 
     #buildHitbox(x, y, width, height) {
@@ -361,8 +365,8 @@ export class Player {
             if(this.#collisionCheck(100, i, this.deathMap) && !this.death) {
                 this.death = true
                 await this.sleep(500)
-                this.x = -388
-                this.y = -509
+                this.x = this.respawnX
+                this.y = this.respawnY
                 this.death = false
             }
         }
