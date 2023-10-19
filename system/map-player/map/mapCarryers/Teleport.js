@@ -2,21 +2,25 @@
 
 import { Hitbox } from "../../Hitbox.js";
 
-export class Checkpoint {
+export class Teleport {
 
     // fields
     hitboxes = new Array();
 
     constructor() {
-        //this.#createHitboxes();
+        this.#createHitboxes();
     }
     
     #createHitboxes() {
-        this.hitboxes[0] = new Hitbox(500, 421, 96, 150, false);
+        this.hitboxes[0] = new Hitbox(
+            250, 421, 96, 150, 
+            false, 
+            -4000, 300 
+            );
         
     }
 
-    draw(cameraX, cameraY, color = "rgba(0, 255, 50, .3)") {
+    draw(cameraX, cameraY, color = "#dbb000") {
         
         for (let i = 0; i < this.hitboxes.length; i++) {
             this.hitboxes[i].draw(cameraX, cameraY, color);

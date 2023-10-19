@@ -18,6 +18,7 @@ export class GameDisplayer {
     debug;
     player; 
     deathMap;
+    teleport
     
     // fields
     originalWidth = canvas.width;
@@ -26,7 +27,7 @@ export class GameDisplayer {
     drawUtils = new DrawUtils();
     background
 
-    constructor(Game, Map, Camera, Player, Debug = 0, DM, BG, CPM) {
+    constructor(Game, Map, Camera, Player, Debug = 0, DM, BG, CPM, TP) {
         this.game = Game;
         this.map = Map;
         this.deathMap = DM
@@ -35,6 +36,7 @@ export class GameDisplayer {
         this.player = Player
         this.background = BG
         this.checkpoint = CPM
+        this.teleport = TP
     }
 
     // methods (functions)
@@ -45,6 +47,7 @@ export class GameDisplayer {
         ctx.rect(0, 0, 10000, 10000) 
         ctx.fill()
         this.background.Draw()
+        this.teleport.draw(this.camera.x, this.camera.y)
         if(this.debug.bean && !this.player.hidden) {
             this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50, 100) 
         }

@@ -29,6 +29,10 @@ export class Background {
         this.layer1[5] = new Hitbox(1900, 350, 650, 50)
         this.layer1[6] = new Hitbox(1000, -500, 50, 550)
         this.layer1[7] = new Hitbox(1700, -500, 50, 550)
+        this.layer1[8] = new Hitbox( 2506.5000000000023 , 350.2387499999997 , 43 , 312.00000000000006 , false )
+        this.layer1[ 9 ] = new Hitbox( 2240.500000000002 , 65.48882334537797 , 40 , 297 , false )
+        this.layer1[ 10 ] = new Hitbox( 1936.5000000000018 , 65.48882334537797 , 332 , 42 , false )
+        this.layer1[ 11 ] = new Hitbox( 999.9999999999981 , -499.2612500000009 , 748.0000000000001 , 44 , false )
         //this.layer1[0] = new Hitbox()
     }
 

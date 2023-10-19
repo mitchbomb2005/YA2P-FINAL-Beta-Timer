@@ -9,15 +9,19 @@ export class Hitbox {
     y;
     width;
     height;
-    hidden
+    hidden;
+    extraInfoI
+    extraInfoII
 
-    constructor(x = 0, y = 0, width, height, hidden = false, extraInfoI = 0, extraInfoII = 0, labelI = "I", labelII = "II"){
+    constructor(x = 0, y = 0, width, height, hidden = false, extraInfoI = 0, extraInfoII = 0){
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.hidden = hidden
-        eval("var " + labelI + " = " + extraInfoI) // does this work at all? i found it here, https://www.geeksforgeeks.org/how-to-use-dynamic-variable-names-in-javascript/
+        this.extraInfoI = extraInfoI
+        this.extraInfoII = extraInfoII
+    
     }
 
     draw(cameraX, cameraY, color) {
