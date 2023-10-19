@@ -32,7 +32,7 @@ export class Game{
     checkpoint = new Checkpoint()
     
     constructor() {
-        this.gameDisplayer = new GameDisplayer(this, this.map, this.camera, this.player, this.debug, this.deathMap, this.Background, this.checkpoint);
         this.player = new Player(-438, -509, this.keyManager, this.debug, this.map, this.camera, this.deathMap, this.checkpoint);
+        this.gameDisplayer = new GameDisplayer(this, this.map, this.camera, this.player, this.debug, this.deathMap, this.Background, this.checkpoint);
     }
 }

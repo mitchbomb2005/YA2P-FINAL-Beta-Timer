@@ -375,7 +375,7 @@ export class Player {
             }
         }
 
-        for (let i = 0; i < this.deathMap.hitboxes.length; i++) {
+        for (let i = 0; i < this.checkpointMap.hitboxes.length; i++) {
             if(this.#collisionCheck(100, i, this.checkpointMap)) {
                 this.respawnX = this.x
                 this.respawnY = this.y
