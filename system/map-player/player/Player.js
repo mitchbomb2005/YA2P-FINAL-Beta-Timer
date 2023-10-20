@@ -185,6 +185,7 @@ export class Player {
                         this.wallJumpAmmountLeft = 1
                     }
                 }
+                this.jump = 0
 
                 /*
                 if (this.keyManager.wasKeyJustPressed("KeyW") || this.keyManager.wasKeyJustPressed("Space")) {

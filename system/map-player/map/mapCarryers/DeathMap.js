@@ -13,6 +13,7 @@ export class Death {
     
     #createHitboxes() {
         this.hitboxes[ 0 ] = new Hitbox( 2587.185250268402 , 271.47764669075593 , 1189.9999999964243 , 746.4774999989917 , false )
+        this.hitboxes[ 1 ] = new Hitbox( -1378.9984923976906 , 617.5 , 413.99999999121405 , 624 , false )
     }
 
     draw(cameraX, cameraY, color = "#500000") {
