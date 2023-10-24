@@ -8,11 +8,11 @@ export class Checkpoint {
     hitboxes = new Array();
 
     constructor() {
-        //this.#createHitboxes();
+        this.#createHitboxes();
     }
     
     #createHitboxes() {
-        this.hitboxes[0] = new Hitbox(500, 421, 96, 150, false);
+        this.hitboxes[0] = new Hitbox(4550, -1000, 100, 150, false);
         
     }
 

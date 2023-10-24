@@ -13,7 +13,9 @@ export class Player {
     x;
     y;
     respawnX
+    respawnVelX
     respawnY
+    respawnVelY
     jump = 0;
     jumpState = false
     wallJumpLeft = false
@@ -51,7 +53,9 @@ export class Player {
         this.deathMap = DM
         this.#buildHitbox(-25, -75, 50, 125)
         this.respawnX = x
+        this.respawnVelX = 0
         this.respawnY = y
+        this.respawnVelY = 0
         this.checkpointMap = CPM
         this.teleportMap = TPM
     }
@@ -369,9 +373,9 @@ export class Player {
                 this.death = true
                 await this.sleep(500)
                 this.x = this.respawnX
+                this.velX = this.respawnVelX
                 this.y = this.respawnY
-                this.velX = 0;
-                this.velY = 0;
+                this.velY = this.respawnVelY
                 this.death = false
             }
         }
@@ -379,7 +383,9 @@ export class Player {
         for (let i = 0; i < this.checkpointMap.hitboxes.length; i++) {
             if(this.#collisionCheck(100, i, this.checkpointMap)) {
                 this.respawnX = this.x
+                this.respawnVelX = this.velX
                 this.respawnY = this.y
+                this.respawnVelY = this.velY
             }
         }
 
