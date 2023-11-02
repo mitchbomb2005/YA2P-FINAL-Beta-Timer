@@ -393,6 +393,7 @@ export class Player {
             if(this.#collisionCheck(100, i, this.teleportMap)) {
                 this.x = this.teleportMap.hitboxes[i].extraInfoI
                 this.y = this.teleportMap.hitboxes[i].extraInfoII 
+                this.velX = this.teleportMap.hitboxes[i].extraInfoIII
             }
         }
     }

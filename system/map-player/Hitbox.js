@@ -12,8 +12,10 @@ export class Hitbox {
     hidden;
     extraInfoI
     extraInfoII
+    extraInfoIII
+    extraInfoIIII
 
-    constructor(x = 0, y = 0, width, height, hidden = false, extraInfoI = 0, extraInfoII = 0){
+    constructor(x = 0, y = 0, width, height, hidden = false, extraInfoI = 0, extraInfoII = 0, extraInfoIII = 1, extraInfoIIII = 1){
         this.x = x;
         this.y = y;
         this.width = width;
@@ -21,6 +23,8 @@ export class Hitbox {
         this.hidden = hidden
         this.extraInfoI = extraInfoI
         this.extraInfoII = extraInfoII
+        this.extraInfoIII = extraInfoIII
+        this.extraInfoIIII = extraInfoIIII
     
     }
 
