@@ -275,7 +275,7 @@ export class Player {
         this.wallJumpRight = false
         this.wallJumpLeft = false
         for (let i = 0; i < this.map.hitboxes.length; i++) /* left hit */ { 
-            if(this.#collisionCheck(2, i, this.map)) {
+            if(this.#collisionCheck(2, i, this.map) && !this.#collisionCheck(3, i, this.map)) {
                 var offset = 25
                 //console.log("hit!")
                 if (this.velX > 0) {
@@ -291,7 +291,7 @@ export class Player {
         }
 
         for (let i = 0; i < this.map.hitboxes.length; i++) /* right hit */ { 
-            if(this.#collisionCheck(3, i, this.map)) {
+            if(this.#collisionCheck(3, i, this.map) && !this.#collisionCheck(2, i, this.map)) {
                 var offset = 25
                 //console.log("hit!")
                 if (this.velX > 0) {
