@@ -27,12 +27,14 @@ export class KeyManager {
 
       document.addEventListener('keydown', (event) => {
         var code = event.code;
-        this.setKeyPressed(code)
+        this.setKeyPressed(code, true)
+
+        if (!this.isKeyPressed("KeyZ")) (console.log("keyZ"))
       }, false);
     
       document.addEventListener('keyup', (event) => {
         var code = event.code;
-        this.setKeyPressed(code)
+        this.setKeyPressed(code, false)
       }, false);
 
       document.addEventListener("click", (event) => {
@@ -127,110 +129,110 @@ export class KeyManager {
       }
     }
 
-    setKeyPressed(code) {
+    setKeyPressed(code, pressed) {
       switch (code) {
         case "Backslash":
-          this.keyBuffer[26] = this.keysCurrentlyPressed[26];
+          this.keyBuffer[26] = pressed;
           break;
         case "ArrowUp":
-          this.keyBuffer[27] = this.keysCurrentlyPressed[27];
+          this.keyBuffer[27] = pressed;
           break;
         case "ArrowDown":
-          this.keyBuffer[28] = this.keysCurrentlyPressed[28];
+          this.keyBuffer[28] = pressed;
           break;
         case "ArrowLeft":
-          this.keyBuffer[29] = this.keysCurrentlyPressed[29];
+          this.keyBuffer[29] = pressed;
           break;
         case "ArrowRight":
-          this.keyBuffer[30] = this.keysCurrentlyPressed[30];
+          this.keyBuffer[30] = pressed;
           break;
         case "AltLeft":
-          this.keyBuffer[31] = this.keysCurrentlyPressed[31];
+          this.keyBuffer[31] = pressed;
           break;
         case "ShiftLeft":
-          this.keyBuffer[32] = this.keysCurrentlyPressed[32];
+          this.keyBuffer[32] = pressed;
           break;
         case "Space":
-          this.keyBuffer[33] = this.keysCurrentlyPressed[33];
+          this.keyBuffer[33] = pressed;
           break;
         
         case "KeyA":
-          this.keyBuffer[0] = this.keysCurrentlyPressed[0];
+          this.keyBuffer[0] = pressed;
           break;
         case "KeyB":
-          this.keyBuffer[1] = this.keysCurrentlyPressed[1];
+          this.keyBuffer[1] = pressed;
           break;
         case "KeyC":
-          this.keyBuffer[2] = this.keysCurrentlyPressed[2];
+          this.keyBuffer[2] = pressed;
           break;
         case "KeyD":
-          this.keyBuffer[3] = this.keysCurrentlyPressed[3];
+          this.keyBuffer[3] = pressed;
           break;
         case "KeyE":
-          this.keyBuffer[4] = this.keysCurrentlyPressed[4];
+          this.keyBuffer[4] = pressed;
           break;
         case "Keyf":
-          this.keyBuffer[5] = this.keysCurrentlyPressed[5];
+          this.keyBuffer[5] = pressed;
           break;
         case "KeyG":
-          this.keyBuffer[6] = this.keysCurrentlyPressed[6];
+          this.keyBuffer[6] = pressed;
           break;
         case "KeyH":
-          this.keyBuffer[7] = this.keysCurrentlyPressed[7];
+          this.keyBuffer[7] = pressed;
           break;
         case "KeyI":
-          this.keyBuffer[8] = this.keysCurrentlyPressed[8];
+          this.keyBuffer[8] = pressed;
           break;
         case "KeyJ":
-          this.keyBuffer[9] = this.keysCurrentlyPressed[9];
+          this.keyBuffer[9] = pressed;
           break;
         case "KeyK":
-          this.keyBuffer[10] = this.keysCurrentlyPressed[10];
+          this.keyBuffer[10] = pressed;
           break;
         case "KeyL":
-          this.keyBuffer[11] = this.keysCurrentlyPressed[11];
+          this.keyBuffer[11] = pressed;
           break;
         case "KeyM":
-          this.keyBuffer[12] = this.keysCurrentlyPressed[12];
+          this.keyBuffer[12] = pressed;
           break;
         case "KeyN":
-          this.keyBuffer[13] = this.keysCurrentlyPressed[13];
+          this.keyBuffer[13] = pressed;
           break;
         case "KeyO":
-          this.keyBuffer[14] = this.keysCurrentlyPressed[14];
+          this.keyBuffer[14] = pressed;
           break;
         case "KeyP":
-          this.keyBuffer[15] = this.keysCurrentlyPressed[15];
+          this.keyBuffer[15] = pressed;
           break;
         case "KeyQ":
-          this.keyBuffer[16] = this.keysCurrentlyPressed[16];
+          this.keyBuffer[16] = pressed;
           break;
         case "KeyR":
-          this.keyBuffer[17] = this.keysCurrentlyPressed[17];
+          this.keyBuffer[17] = pressed;
           break;
         case "KeyS":
-          this.keyBuffer[18] = this.keysCurrentlyPressed[18];
+          this.keyBuffer[18] = pressed;
           break;
         case "KeyT":
-          this.keyBuffer[19] = this.keysCurrentlyPressed[19];
+          this.keyBuffer[19] = pressed;
           break;
         case "KeyU":
-          this.keyBuffer[20] = this.keysCurrentlyPressed[20];
+          this.keyBuffer[20] = pressed;
           break;
         case "KeyV":
-          this.keyBuffer[21] = this.keysCurrentlyPressed[21];
+          this.keyBuffer[21] = pressed;
           break;
         case "KeyW":
-          this.keyBuffer[22] = this.keysCurrentlyPressed[22];
+          this.keyBuffer[22] = pressed;
           break;
         case "KeyX":
-          this.keyBuffer[23] = this.keysCurrentlyPressed[23];
+          this.keyBuffer[23] = pressed;
           break;
         case "KeyY":
-          this.keyBuffer[24] = this.keysCurrentlyPressed[24];
+          this.keyBuffer[24] = pressed;
           break;
         case "KeyZ":
-          this.keyBuffer[25] = this.keysCurrentlyPressed[25];
+          this.keyBuffer[25] = pressed;
           break;
         
 
