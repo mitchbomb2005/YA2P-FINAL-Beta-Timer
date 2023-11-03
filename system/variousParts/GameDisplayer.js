@@ -42,7 +42,7 @@ export class GameDisplayer {
     // methods (functions)
     drawGameFrame() {
 
-        //this.resizeCanvasForWindowSize();
+        this.resizeCanvasForWindowSize();
         ctx.fillStyle = "#a7c7d8";
         ctx.rect(0, 0, 10000, 10000) 
         ctx.fill()

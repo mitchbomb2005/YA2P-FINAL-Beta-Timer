@@ -1,6 +1,6 @@
 'use strict';
 const canvas = document.getElementById("game_screen");
-
+const ctx = canvas.getContext("2d");
 
 export class KeyManager {
     /*
@@ -13,17 +13,18 @@ export class KeyManager {
     keyBuffer;
     keysCurrentlyPressed;
     keysPressedLastFrame;
-    mouseX = 0;
-    mouseY = 0;
+    mouseX;
+    mouseY;
     canvasShape = canvas.getBoundingClientRect()
-    camera
+    percentX;
+    percentY;
+    mousePos
 
 
-    constructor(Camera) {
+    constructor() {
       this.keyBuffer = new Array();
       this.keysCurrentlyPressed = new Array();
       this.keysPressedLastFrame = new Array();
-      this.camera = Camera
 
       document.addEventListener('keydown', (event) => {
         var code = event.code;
@@ -36,11 +37,27 @@ export class KeyManager {
       }, false);
 
       document.addEventListener("click", (event) => {
-        //this.x = event.clientX;
-        //this.y = event.clientY;
+        var rect = canvas.getBoundingClientRect()
+        this.mousePos = this.getMousePos(canvas, event);
+        this.percentX = ((this.mousePos.x) / (rect.width)) * 100
+        this.percentY = ((this.mousePos.y) / (rect.height)) * 100
+        alert(this.percentX +" "+ this.percentY);
+
+        /*
         this.mouseX = (((event.clientX / 1.0) - this.canvasShape.left))
         this.mouseY = (((event.clientY / 1.0) - this.canvasShape.top))
+        /*
+        this.x = event.clientX;
+        this.y = event.clientY;/**/
       }, false);
+    }
+
+     getMousePos(canvas, evt) {
+      var rect = canvas.getBoundingClientRect();
+      return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+      };
     }
 
     wasKeyJustPressed(code) {
