@@ -1,4 +1,6 @@
 'use strict';
+const canvas = document.getElementById("game_screen");
+
 
 export class KeyManager {
     /*
@@ -11,11 +13,24 @@ export class KeyManager {
     keyBuffer;
     keysCurrentlyPressed;
     keysPressedLastFrame;
+    mouseX = 0;
+    mouseY = 0;
+    canvasShape = canvas.getBoundingClientRect()
+    camera
 
-    constructor() {
+
+    constructor(Camera) {
       this.keyBuffer = new Array();
       this.keysCurrentlyPressed = new Array();
       this.keysPressedLastFrame = new Array();
+      this.camera = Camera
+
+      document.addEventListener("click", (event) => {
+        //this.x = event.clientX;
+        //this.y = event.clientY;
+        this.mouseX = (((event.clientX / 1.0) - this.canvasShape.left))
+        this.mouseY = (((event.clientY / 1.0) - this.canvasShape.top))
+      }, false);
 
       document.addEventListener('keydown', (event) => {
         var code = event.code;

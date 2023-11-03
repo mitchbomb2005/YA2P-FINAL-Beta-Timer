@@ -14,8 +14,8 @@ export class Map {
     }
     
     #createHitboxes() {
-        this.hitboxes[0] = new Hitbox(-1010, 561, 3096, 450, false); // base floor
-        this.hitboxes[1] = new Hitbox(-610, -2200, 2296, 2400, false); // base roof
+        this.hitboxes[0] = new Hitbox(-1010, 561, 3096, 450, false);
+        this.hitboxes[1] = new Hitbox(-610, -2200, 2296, 2400, false); 
         this.hitboxes[ 3 ] = new Hitbox( 2008.9999999999964 , 193.97764669075622 , 609 , 815.9998532503878 , false )
         this.hitboxes[ 4 ] = new Hitbox( 2993.0024418611138 , 233.47749999999962 , 181 , 57 , false )
         this.hitboxes[ 2 ] = new Hitbox( 3756.0024418375065 , 194.47749999999968 , 932.0000000236037 , 823.9999037479197 , false )
@@ -28,12 +28,8 @@ export class Map {
         this.hitboxes[ 11 ] = new Hitbox( -3490.1934929277077 , -972.7555040524678 , 2258.8671014008346 , 594.8641219037341 , false )
         this.hitboxes[ 12 ] = new Hitbox( 4507.0000000000055 , -647.2477418670517 , 992.7804512288185 , 1209.2252418669236 , false )
         this.hitboxes[ 13 ] = new Hitbox( 3939.9988582128817 , -647.2477418670517 , 404.9999999641177 , 654.9999999965565 , false )
-        this.hitboxes[ 14 ] = new Hitbox( 5410.262131286703 , -647.7477418670528 , 1137.9988961216532 , 1210.478114695024 , false )
-        this.hitboxes[ 15 ] = new Hitbox( 6245.262130897224 , -1239.272552517728 , 1122.0000003894775 , 1802.0023106506746 , false )
-        this.hitboxes[ 16 ] = new Hitbox( 5868.262131286714 , -1239.2702418669844 , 175 , 428.99999999993247 , false )
-
-
         
+        /**/   
     }
 
     draw(cameraX, cameraY, color = "#0f0f0f") {

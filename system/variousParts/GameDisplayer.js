@@ -54,7 +54,13 @@ export class GameDisplayer {
         this.deathMap.draw(this.camera.x, this.camera.y);
         this.checkpoint.draw(this.camera.x, this.camera.y) 
         this.map.draw(this.camera.x, this.camera.y);
-        this.drawText() 
+        this.drawText()
+        this.drawUtils.Line(
+            -this.player.x + this.camera.x, 
+            -this.player.y + this.camera.y - 20, 
+            this.camera.mouseX + this.camera.x, 
+            this.camera.mouseY + this.camera.y, 
+            "#A06000")
     }
 
     drawText() { 

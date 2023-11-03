@@ -255,7 +255,6 @@ export class Player {
     }
 
     #collisionCheck(part, i, type) {
-        
         if  (  
         ((  this.playerHitbox[part].y -this.y >= type.hitboxes[i].y &&
             this.playerHitbox[part].y -this.y <= type.hitboxes[i].y + type.hitboxes[i].height) || 
