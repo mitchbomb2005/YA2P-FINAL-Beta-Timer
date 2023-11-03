@@ -28,8 +28,6 @@ export class KeyManager {
       document.addEventListener('keydown', (event) => {
         var code = event.code;
         this.setKeyPressed(code, true)
-
-        if (!this.isKeyPressed("KeyZ")) (console.log("keyZ"))
       }, false);
     
       document.addEventListener('keyup', (event) => {
