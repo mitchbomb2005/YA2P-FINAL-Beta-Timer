@@ -20,15 +20,15 @@ class Main {
                 this.game.mapEdit.drawHitbox()
             }
 
-            if(this.game.menu.check) {
+           // if(this.game.menu.check) {
                 this.game.keys.drawKeys()
                 this.updateGame();
-            } else {
+            /*} else {
                 this.game.menu.drawMenu()
                 if(this.game.keyManager.wasKeyJustPressed("KeyW")) {
                     this.game.menu.fade()
                 }
-            }
+            }/**/
             this.game.keyManager.update();
             await this.sleep(1000/60);
         }
