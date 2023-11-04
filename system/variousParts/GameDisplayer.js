@@ -58,8 +58,8 @@ export class GameDisplayer {
         this.drawUtils.Line(
             -this.player.x + this.camera.x, 
             -this.player.y + this.camera.y - 20, 
-            this.camera.mouseX + this.camera.x, 
-            this.camera.mouseY + this.camera.y, 
+            this.camera.keyMan.mousePos.x + this.camera.x, 
+            this.camera.keyMan.mousePos.y + this.camera.y, 
             "#A06000")
     }
 

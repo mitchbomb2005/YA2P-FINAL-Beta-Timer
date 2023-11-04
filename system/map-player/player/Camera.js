@@ -24,19 +24,11 @@ export class Camera {
         if (this.debug.freeCam) {
             this.freeCamMove()
         }
-        if (this.keyMan.mouseX !== this.mouseXSto || this.keyMan.mouseY !== this.mouseYSto) {
-            this.updateMouse()
-        } 
+        this.keyMan.camY = this.y
+        this.keyMan.camX = this.x
 
     }
 
-
-    updateMouse() {
-        this.mouseXSto = this.keyMan.mouseX
-        this.mouseYSto = this.keyMan.mouseY
-        this.mouseX = this.mouseXSto - this.x
-        this.mouseY = this.mouseYSto - this.y
-    }
 
     freeCamMove() {}
 }

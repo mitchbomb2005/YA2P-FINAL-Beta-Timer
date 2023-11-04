@@ -19,12 +19,17 @@ export class KeyManager {
     percentX;
     percentY;
     mousePos
+    camY
+    camX
+    
 
 
     constructor() {
       this.keyBuffer = new Array();
       this.keysCurrentlyPressed = new Array();
       this.keysPressedLastFrame = new Array();
+
+      this.mousePos = this.mouseSetup()
 
       document.addEventListener('keydown', (event) => {
         var code = event.code;
@@ -37,11 +42,11 @@ export class KeyManager {
       }, false);
 
       document.addEventListener("click", (event) => {
+
         var rect = canvas.getBoundingClientRect()
         this.mousePos = this.getMousePos(canvas, event);
-        this.percentX = ((this.mousePos.x) / (rect.width)) * 100
-        this.percentY = ((this.mousePos.y) / (rect.height)) * 100
-        alert(this.percentX +" "+ this.percentY);
+        this.mousePos.x = (((this.mousePos.x) / (rect.width)) * 1676) - this.camX
+        this.mousePos.y = (((this.mousePos.y) / (rect.height)) * 918) - this.camY
 
         /*
         this.mouseX = (((event.clientX / 1.0) - this.canvasShape.left))
@@ -50,6 +55,14 @@ export class KeyManager {
         this.x = event.clientX;
         this.y = event.clientY;/**/
       }, false);
+    }
+
+
+    mouseSetup() {
+      return {
+        x: 0,
+        y: 0
+    };
     }
 
      getMousePos(canvas, evt) {
