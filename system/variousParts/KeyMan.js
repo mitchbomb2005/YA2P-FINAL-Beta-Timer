@@ -21,13 +21,15 @@ export class KeyManager {
     mousePos
     camY
     camX
+    game
     
 
 
-    constructor() {
+    constructor(game) {
       this.keyBuffer = new Array();
       this.keysCurrentlyPressed = new Array();
       this.keysPressedLastFrame = new Array();
+      this.game = game
 
       this.mousePos = this.mouseSetup()
 
@@ -42,7 +44,7 @@ export class KeyManager {
       }, false);
 
       document.addEventListener("click", (event) => {
-
+        this.game.hook.enabled = !this.game.hook.enabled
         var rect = canvas.getBoundingClientRect()
         this.mousePos = this.getMousePos(canvas, event);
         this.mousePos.x = (((this.mousePos.x) / (rect.width)) * 1676) - this.camX

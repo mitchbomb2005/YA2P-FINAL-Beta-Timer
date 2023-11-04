@@ -1,6 +1,6 @@
 'use strict';
 
-import { Game } from "./import.js"
+import { Game } from "./imports/import.js"
 
 class Main {
 
@@ -40,7 +40,8 @@ class Main {
         this.game.player.update();
         this.game.debug.update(); 
         this.game.camera.update();
-        this.game.mapEdit.update()
+        this.game.mapEdit.update();
+        this.game.hook.update();
         
 
         // Update input

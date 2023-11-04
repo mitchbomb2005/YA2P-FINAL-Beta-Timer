@@ -5,6 +5,7 @@ export class Debug {
     playerHitbox = false
     freeCam = false
     mapBuilder = false
+    grappleHookTest = true
     keyManager;
 
     constructor(keyMan) {
@@ -18,6 +19,7 @@ export class Debug {
             this.flipPlayerHitbox();
             this.flipFreeCam();
             this.flipMapMaker()
+            this.flipGrappleHookTest()
         }
     }
 
@@ -66,6 +68,13 @@ export class Debug {
         console.log("debug mode, " + this.debugMode, " ; bean visibilaty, " + this.bean, " ; noclip, " + this.noClip, " ; hitbox, " + this.playerHitbox, " ; free camera, " + this.freeCam)
     }
 
+    flipGrappleHookTest() {
+        if (this.keyManager.wasKeyJustPressed("KeyG")) {
+            console.log("Grapple")
+            this.grappleHookTest = !this.grappleHookTest
+            this.debugMsg()
+        }
+    }
     
 
 }

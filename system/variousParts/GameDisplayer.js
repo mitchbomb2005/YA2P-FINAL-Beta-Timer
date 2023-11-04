@@ -27,7 +27,7 @@ export class GameDisplayer {
     drawUtils = new DrawUtils();
     background
 
-    constructor(Game, Map, Camera, Player, Debug = 0, DM, BG, CPM, TP) {
+    constructor(Game, Map, Camera, Player, Debug = 0, DM, BG, CPM, TP, game) {
         this.game = Game;
         this.map = Map;
         this.deathMap = DM
@@ -55,12 +55,14 @@ export class GameDisplayer {
         this.checkpoint.draw(this.camera.x, this.camera.y) 
         this.map.draw(this.camera.x, this.camera.y);
         this.drawText()
-        this.drawUtils.Line(
-            -this.player.x + this.camera.x, 
-            -this.player.y + this.camera.y - 20, 
-            this.camera.keyMan.mousePos.x + this.camera.x, 
-            this.camera.keyMan.mousePos.y + this.camera.y, 
-            "#A06000")
+        if (this.debug.grappleHookTest) {
+            if (this.game.hook.enabled){
+                this.drawUtils.Line(
+                    this.game.hook.x1, 
+                    this.game.hook.y1, 
+                    this.camera.keyMan.mousePos.x + this.camera.x, 
+                    this.camera.keyMan.mousePos.y + this.camera.y, 
+                    "#A06000")}}
     }
 
     drawText() { 

@@ -28,6 +28,7 @@ export class Player {
 
     // Constant
     debug;
+    extra;
     map;
     camera;
     deathMap;
@@ -43,7 +44,7 @@ export class Player {
     wallJumpVelY = 40
     wallJumpVelX = 60
 
-    constructor(x, y, keyManager, debug, map, camera, DM, CPM, TPM) {
+    constructor(x, y, keyManager, debug, map, camera, DM, CPM, TPM, extra) {
         this.keyManager = keyManager;
         this.x = x;
         this.y = y;
@@ -58,6 +59,7 @@ export class Player {
         this.respawnVelY = 0
         this.checkpointMap = CPM
         this.teleportMap = TPM
+        this.game = extra
     }
 
     #buildHitbox(x, y, width, height) {
@@ -86,6 +88,9 @@ export class Player {
         if (this.jump > 0) {
             this.wallJumpAmmountLeft = true
             this.wallJumpAmmountRight = true
+        }
+        if (this.keyManager.wasKeyJustPressed("KeyR")){
+            this.die()
         }
         this.hidden = this.death
         //console.log(this.velY)
@@ -210,8 +215,12 @@ export class Player {
         }
 
 
-
-        this.velX = this.velX * .8
+        if (!this.game.hook.enabled) {
+            this.velX = this.velX * .8
+        } else {
+            this.velX = this.velX * .9
+        }
+        
         this.velY = this.velY - 1.5
         this.velY = this.velY * .997
 
@@ -241,6 +250,19 @@ export class Player {
         this.jump--
         this.#colide()
         //console.log(this.x, this.y)
+    }
+
+    async die() {
+        this.death = true
+        this.game.hook.enabled = false
+        await this.sleep(500)
+        this.x = this.respawnX
+        this.velX = this.respawnVelX
+        this.y = this.respawnY
+        this.velY = this.respawnVelY
+        this.death = false
+        this.game.hook.enabled = false
+
     }
 
     drawHitbox() {
@@ -369,13 +391,7 @@ export class Player {
 
         for (let i = 0; i < this.deathMap.hitboxes.length; i++) {
             if(this.#collisionCheck(100, i, this.deathMap) && !this.death) {
-                this.death = true
-                await this.sleep(500)
-                this.x = this.respawnX
-                this.velX = this.respawnVelX
-                this.y = this.respawnY
-                this.velY = this.respawnVelY
-                this.death = false
+                this.die()
             }
         }
 
