@@ -327,7 +327,7 @@ export class Player {
         }
 
         for (let i = 0; i < this.map.hitboxes.length; i++) /* ground hit */ {  
-            if(this.#collisionCheck(0, i, this.map)) {
+            if(this.#collisionCheck(0, i, this.map) && !this.#collisionCheck(1, i, this.map)) {
                 var offset = 50
                 //console.log("hit!")
                 if(this.velY < 0) {
@@ -338,13 +338,11 @@ export class Player {
                 this.y = -hitY + offset
                 this.jump = this.coyoteTime
                 hitDown = true
-            } else if(!this.#collisionCheck(4, i, this.map) && this.stuck) {
-                this.stuck = false
             }
         }
 
         for (let i = 0; i < this.map.hitboxes.length; i++) /* ceilling hit */ { 
-            if(this.#collisionCheck(1, i, this.map) && !(hitDown || this.stuck)) {
+            if(this.#collisionCheck(1, i, this.map) && !this.#collisionCheck(0, i, this.map)) {
                 var offset = 75
                 //console.log("hit!")
                 if(this.velY > 0) {
@@ -354,8 +352,6 @@ export class Player {
                 var hitY = this.map.hitboxes[i].y
                 this.y = (-hitY - (offset)) - hitH
                 //this.jump = true
-            } else if(hitDown) {
-                this.stuck = true
             }
         }
 
