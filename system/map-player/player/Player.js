@@ -315,7 +315,7 @@ export class Player {
             if(this.#collisionCheck(3, i, this.map) && !this.#collisionCheck(2, i, this.map)) {
                 var offset = 25
                 //console.log("hit!")
-                if (this.velX > 0) {
+                if (this.velX < 0) {
                     this.velX = 0
                 }
                 var hitW = this.map.hitboxes[i].width
