@@ -82,8 +82,12 @@ export class Player {
             this.#updateVelocity()
         }
         if (!this.debug.freeCam) {
-            this.camera.x = this.camera.x - (((this.camera.x - 838) - this.x) / 10)
-            this.camera.y = this.camera.y - (((this.camera.y - 509) - this.y) / 10) 
+
+        /*    this.camera.x = this.x + 900
+            this.camera.y = this.y + 500 /**/
+
+        /**/    this.camera.x = this.camera.x - (((this.camera.x - 838) - this.x) / 10)
+            this.camera.y = this.camera.y - (((this.camera.y - 509) - this.y) / 10) /**/
         }
         if (this.jump > 0) {
             this.wallJumpAmmountLeft = true
@@ -166,7 +170,6 @@ export class Player {
         }
 
         if (this.keyManager.isKeyPressed("KeyW") || this.keyManager.isKeyPressed("Space")) {
-            //if (this.jumpState == true) {
                 if (this.velY <= 0 && this.jump > 0) {
                     this.velY += this.jumpVel;     
                 } else if (this.keyManager.wasKeyJustPressed("KeyW") || this.keyManager.wasKeyJustPressed("Space")) {
@@ -194,24 +197,12 @@ export class Player {
                         this.wallJumpAmmountLeft = 1
                     }
                 }
-                this.jump = 0
+            this.jump = 0
 
-                /*
-                if (this.keyManager.wasKeyJustPressed("KeyW") || this.keyManager.wasKeyJustPressed("Space")) {
-                    if (this.wallJumpLeft && this.wallJumpCheck) {
-                        if (this.velY < 0) {
-                            this.velY = this.wallJumpVelY
-                        } else {
-                            this.velY += this.wallJumpVelY - 10
-                        }
-                        
-                        this.velX -= this.wallJumpVelX
-                        this.wallJumpCheck = false
-                    }
-                }
-                */
+        }
 
-            //}
+        if (this.keyManager.isKeyPressed("KeyS")) {
+            this.velY -= 2
         }
 
 
