@@ -62,7 +62,9 @@ export class GameDisplayer {
                     this.game.hook.y1, 
                     this.camera.keyMan.mousePos.x + this.camera.x, 
                     this.camera.keyMan.mousePos.y + this.camera.y, 
-                    "#A06000")}}
+                    "#A06000")
+            }
+        }
     }
 
     drawText() { 
