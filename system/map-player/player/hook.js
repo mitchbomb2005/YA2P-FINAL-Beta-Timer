@@ -8,6 +8,7 @@ export class Hook{
     targetLength = 100
     length
     maxLength
+    slope
 
     constructor(game){
         this.game = game
@@ -19,6 +20,7 @@ export class Hook{
         this.x2 = this.game.camera.keyMan.mousePos.x + this.game.camera.x
         this.y2 = this.game.camera.keyMan.mousePos.y + this.game.camera.y
         this.length = Math.sqrt( Math.pow( (this.x2 - this.x1), 2) + Math.pow( (this.y2 - this.y1) , 2) )  //√((x2 – x1)² + (y2 – y1)²)
+        this.slope = (this.x2 - this.x1) / (this.y2 - this.y1)
         this.maxLength = 1500
         if (!this.game.debug.grappleHookTest) {
             this.enabled = false

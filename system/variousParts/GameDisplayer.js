@@ -59,9 +59,9 @@ export class GameDisplayer {
             if (this.game.hook.enabled){
                 this.drawUtils.Line(
                     this.game.hook.x1, 
-                    this.game.hook.y1, 
+                    this.game.hook.y1,
                     this.camera.keyMan.mousePos.x + this.camera.x, 
-                    this.camera.keyMan.mousePos.y + this.camera.y, 
+                    this.camera.keyMan.mousePos.y + this.camera.y,/**/ 
                     "#A06000")
             }
         }

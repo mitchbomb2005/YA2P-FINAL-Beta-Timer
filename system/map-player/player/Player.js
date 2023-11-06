@@ -206,10 +206,46 @@ export class Player {
         }
 
 
-        if (!this.game.hook.enabled) {
+        if (this.jump == 5) {
             this.velX = this.velX * .8
-        } else {
+        }  else {
             this.velX = this.velX * .9
+        }
+
+        if (this.game.hook.enabled) {
+            if 
+            ((  this.keyManager.isKeyPressed("KeyA")    && 
+                !this.keyManager.isKeyPressed("KeyD"))  && 
+                -this.x < this.keyManager.mousePos.x    && 
+                -this.y > this.keyManager.mousePos.y) 
+                {
+                    this.velY = this.velY + ((this.game.hook.y1 - this.game.hook.y2) / 300) + .1
+            }
+            if 
+            ((  this.keyManager.isKeyPressed("KeyA")    && 
+                !this.keyManager.isKeyPressed("KeyD"))  && 
+                -this.x < this.keyManager.mousePos.x    && 
+                -this.y < this.keyManager.mousePos.y ) 
+                {
+                    this.velY = this.velY - ((this.game.hook.y1 - this.game.hook.y2) / 300)
+            }
+            if 
+            ((  this.keyManager.isKeyPressed("KeyD")    && 
+                !this.keyManager.isKeyPressed("KeyA"))  && 
+                -this.x > this.keyManager.mousePos.x    && 
+                -this.y > this.keyManager.mousePos.y) 
+                {
+                    this.velY = this.velY + ((this.game.hook.y1 - this.game.hook.y2) / 300) + .1
+            }
+            if 
+            ((  this.keyManager.isKeyPressed("KeyD")    && 
+                !this.keyManager.isKeyPressed("KeyA"))  && 
+                -this.x > this.keyManager.mousePos.x    && 
+                -this.y < this.keyManager.mousePos.y ) 
+                {
+                    this.velY = this.velY - ((this.game.hook.y1 - this.game.hook.y2) / 300)
+            }
+            this.velY = this.velY * .99
         }
         
         this.velY = this.velY - 1.5
@@ -269,14 +305,14 @@ export class Player {
 
     #collisionCheck(part, i, type) {
         if  (  
-        ((  this.playerHitbox[part].y -this.y >= type.hitboxes[i].y &&
-            this.playerHitbox[part].y -this.y <= type.hitboxes[i].y + type.hitboxes[i].height) || 
-        (   this.playerHitbox[part].y + this.playerHitbox[part].height -this.y >= type.hitboxes[i].y &&
-            this.playerHitbox[part].y + this.playerHitbox[part].height -this.y <= type.hitboxes[i].y + type.hitboxes[i].height)) &&
-        ((  this.playerHitbox[part].x -this.x >= type.hitboxes[i].x &&
-            this.playerHitbox[part].x -this.x <= type.hitboxes[i].x + type.hitboxes[i].width) ||
-        (   this.playerHitbox[part].x + this.playerHitbox[part].width -this.x >= type.hitboxes[i].x &&
-            this.playerHitbox[part].x + this.playerHitbox[part].width -this.x <= type.hitboxes[i].x + type.hitboxes[i].width))
+        ((  this.playerHitbox[part].y -this.y >= type.hitboxes[i].y                                                                &&
+            this.playerHitbox[part].y -this.y <= type.hitboxes[i].y + type.hitboxes[i].height)                                     || 
+        (   this.playerHitbox[part].y + this.playerHitbox[part].height -this.y >= type.hitboxes[i].y                               &&
+            this.playerHitbox[part].y + this.playerHitbox[part].height -this.y <= type.hitboxes[i].y + type.hitboxes[i].height))   &&
+        ((  this.playerHitbox[part].x -this.x >= type.hitboxes[i].x                                                                &&
+            this.playerHitbox[part].x -this.x <= type.hitboxes[i].x + type.hitboxes[i].width)                                      ||
+        (   this.playerHitbox[part].x + this.playerHitbox[part].width -this.x >= type.hitboxes[i].x                                &&
+            this.playerHitbox[part].x + this.playerHitbox[part].width -this.x <= type.hitboxes[i].x + type.hitboxes[i].width       ))
             ) {
             var hit = true
         }
@@ -286,6 +322,14 @@ export class Player {
         var hitDown = false
         this.wallJumpRight = false
         this.wallJumpLeft = false
+
+        for (let i = 0; i < this.map.hitboxes.length; i++) /* check if stuck */ { 
+            if(this.#collisionCheck(0, i, this.map) && this.#collisionCheck(1, i, this.map) && this.#collisionCheck(2, i, this.map) && this.#collisionCheck(3, i, this.map)) {
+                this.die()
+                return
+            }
+        }
+
         for (let i = 0; i < this.map.hitboxes.length; i++) /* left hit */ { 
             if(this.#collisionCheck(2, i, this.map) && !this.#collisionCheck(3, i, this.map)) {
                 var offset = 25
@@ -375,6 +419,7 @@ export class Player {
                 //this.wallJumpRight = true
             }
         }
+        
 
         for (let i = 0; i < this.deathMap.hitboxes.length; i++) {
             if(this.#collisionCheck(100, i, this.deathMap) && !this.death) {
