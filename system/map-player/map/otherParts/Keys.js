@@ -17,7 +17,7 @@ export class Keys {
         this.keySpace.src = 'https://raw.githubusercontent.com/loglot/key-images/main/Keyboard%20%26%20Mouse/Dark/Space_Key_Dark.png'
         this.warnLava.src = 'https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/images/warn.png'
         this.warnGrey.src = 'https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/images/warnGrey.png'
-        this.redFlag.src = '../../../other/images/redflag.png'
+        this.redFlag.src = 'https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/images/redFlag.png'
     }
     drawKeys() {
         ctx.drawImage(this.keyD, 388 + this.camera.x, 600 + this.camera.y)
