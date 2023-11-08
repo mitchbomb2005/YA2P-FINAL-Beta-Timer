@@ -8,6 +8,7 @@ export class Keys {
     keySpace = new Image();
     warnLava = new Image();
     warnGrey = new Image();
+    redFlag = new Image();
 
     constructor(cam){
         this.camera = cam
@@ -16,6 +17,7 @@ export class Keys {
         this.keySpace.src = 'https://raw.githubusercontent.com/loglot/key-images/main/Keyboard%20%26%20Mouse/Dark/Space_Key_Dark.png'
         this.warnLava.src = 'https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/images/warn.png'
         this.warnGrey.src = 'https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/images/warnGrey.png'
+        this.redFlag.src = '../../../other/images/redflag.png'
     }
     drawKeys() {
         ctx.drawImage(this.keyD, 388 + this.camera.x, 600 + this.camera.y)
@@ -24,6 +26,7 @@ export class Keys {
         ctx.drawImage(this.warnLava, 3478 + this.camera.x, 300 + this.camera.y)
         ctx.drawImage(this.warnGrey, -100 + this.camera.x, 600 + this.camera.y)
         ctx.drawImage(this.warnGrey, -650 + this.camera.x, 600 + this.camera.y) //4614.999243608894 , -268.5449578291483
+        ctx.drawImage(this.redFlag, -650 + this.camera.x, 400 + this.camera.y, 100, 100)
         this.jump(4615 , -270)
     }
 
