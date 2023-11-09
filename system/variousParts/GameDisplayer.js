@@ -68,9 +68,6 @@ export class GameDisplayer {
     }
 
     drawText() { 
-        this.drawUtils.Text("WARNING", -508 + this.camera.x, 675 + this.camera.y, "#646464", "#FFFFFF") 
-        this.drawUtils.Text("going this way will", -608 + this.camera.x, 775 + this.camera.y, "#646464", "#FFFFFF") //
-        this.drawUtils.Text("skip the intro", -548 + this.camera.x, 875 + this.camera.y, "#646464", "#FFFFFF")
     }
     
     // don't alter this, just ignore it

@@ -12,11 +12,11 @@ export class Teleport {
     }
     
     #createHitboxes() {
-        this.hitboxes[0] = new Hitbox(
-            -2408, -275, 96, 150, 
-            false, 
-            -4600, 1000 
-        );
+        //this.hitboxes[0] = new Hitbox(
+        //    0, 0, 0, 0, 
+        //    false, 
+        //    0, 0 
+        //);
         
     }
 

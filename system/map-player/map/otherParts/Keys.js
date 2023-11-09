@@ -21,13 +21,6 @@ export class Keys {
     }
     drawKeys() {
         ctx.drawImage(this.keyD, 388 + this.camera.x, 600 + this.camera.y)
-        this.jump(1788, 600)
-        ctx.drawImage(this.warnLava, 2778 + this.camera.x, 300 + this.camera.y)
-        ctx.drawImage(this.warnLava, 3478 + this.camera.x, 300 + this.camera.y)
-        ctx.drawImage(this.warnGrey, -100 + this.camera.x, 600 + this.camera.y)
-        ctx.drawImage(this.warnGrey, -650 + this.camera.x, 600 + this.camera.y) //4614.999243608894 , -268.5449578291483
-        ctx.drawImage(this.redFlag, -650 + this.camera.x, 400 + this.camera.y, 100, 100)
-        this.jump(4615 , -270)
     }
 
     jump(x, y) {
