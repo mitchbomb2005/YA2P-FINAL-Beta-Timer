@@ -7,6 +7,8 @@ class Main {
     game = new Game()
 
     async startGame() {
+        if(localStorage) {this.game.storage.accessible = false} else {this.game.storage.accessible = true}
+
         //this.game.autoDebug()
         while (true) {
             //this.game.updateGame();
@@ -42,6 +44,7 @@ class Main {
         this.game.camera.update();
         this.game.mapEdit.update();
         this.game.hook.update();
+        this.game.storage.update()
         
 
         // Update input

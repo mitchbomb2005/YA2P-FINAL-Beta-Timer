@@ -14,10 +14,10 @@ export class Debug {
 
     update() {
         if (this.keyManager.isKeyPressed("Backslash")) {
-            this.hideBean();
-            this.flipNoClip();
-            this.flipPlayerHitbox();
-            this.flipFreeCam();
+            this.hideBean()
+            this.flipNoClip()
+            this.flipPlayerHitbox()
+            this.flipFreeCam()
             this.flipMapMaker()
             this.flipGrappleHookTest()
         }

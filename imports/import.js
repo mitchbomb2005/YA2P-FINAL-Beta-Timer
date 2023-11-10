@@ -13,6 +13,7 @@ import { Background } from "../system/map-player/map/mapCarryers/Background.js"
 import { Checkpoint } from "../system/map-player/map/mapCarryers/checkpoint.js"
 import { Teleport } from "../system/map-player/map/mapCarryers/Teleport.js"
 import { Hook } from "../system/map-player/player/hook.js"
+import { Storage } from "../storage/storage.js"
 
 export class Game{
     // System
@@ -27,6 +28,7 @@ export class Game{
     debug = new Debug(this.keyManager);
     menu = new Menu()
     drawUtils = new DrawUtils()
+    storage = new Storage(this)
     
     camera = new Camera(0, 2000, this.debug, this.keyManager)
     mapEdit= new Edit(this.camera, this.keyManager, this.drawUtils)

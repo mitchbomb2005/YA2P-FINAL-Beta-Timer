@@ -6,14 +6,19 @@ export class Keys {
     keyD = new Image();
     keyW = new Image();
     keySpace = new Image();
+    keyShift = new Image();
+    keyS = new Image();
+    keyL = new Image();
     warnLava = new Image();
     warnGrey = new Image();
     redFlag = new Image();
 
     constructor(cam){
         this.camera = cam
-        this.keyD.src = 'https://raw.githubusercontent.com/loglot/key-images/10212df9a78eeeb348d6302c3b79ac149670d2e6/Keyboard%20%26%20Mouse/Dark/D_Key_Dark.png';
-        this.keyW.src = 'https://raw.githubusercontent.com/loglot/key-images/10212df9a78eeeb348d6302c3b79ac149670d2e6/Keyboard%20%26%20Mouse/Dark/W_Key_Dark.png';
+        this.keyD.src = 'https://raw.githubusercontent.com/loglot/key-images/main/Keyboard%20%26%20Mouse/Dark/D_Key_Dark.png';
+        this.keyW.src = 'https://raw.githubusercontent.com/loglot/key-images/main/Keyboard%20%26%20Mouse/Dark/W_Key_Dark.png';
+        this.keyS.src = 'https://raw.githubusercontent.com/loglot/key-images/main/Keyboard%20%26%20Mouse/Dark/S_Key_Dark.png';
+        this.keyL.src = 'https://raw.githubusercontent.com/loglot/key-images/main/Keyboard%20%26%20Mouse/Dark/L_Key_Dark.png';
         this.keySpace.src = 'https://raw.githubusercontent.com/loglot/key-images/main/Keyboard%20%26%20Mouse/Dark/Space_Key_Dark.png'
         this.warnLava.src = 'https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/images/warn.png'
         this.warnGrey.src = 'https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/images/warnGrey.png'

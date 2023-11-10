@@ -9,6 +9,7 @@ export class Hook{
     length
     maxLength
     slope
+    visibility
 
     constructor(game){
         this.game = game
@@ -24,6 +25,7 @@ export class Hook{
         this.maxLength = 1500
         if (!this.game.debug.grappleHookTest) {
             this.enabled = false
+            this.visibility = false
         }
         if (this.length > this.targetLength && this.enabled) {
             this.game.player.velX = this.game.player.velX + ((this.x1 - this.x2) / 130)
