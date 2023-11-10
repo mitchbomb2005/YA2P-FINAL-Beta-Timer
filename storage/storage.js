@@ -15,6 +15,7 @@ export class Storage{
         }
         if (localStorage.getItem("Save")) {
             this.Save = localStorage.getItem("Save")
+            this.load()
         }
     }
 
@@ -31,9 +32,14 @@ export class Storage{
 
     save() {
         console.log("fake save")
+        this.save.playerX = this.game.player.x
+        this.save.playerY = this.game.player.y
+        console.log(this.save.playerX)
     }
 
     load() {
         console.log("fake load")
+        this.game.player.x = this.save.playerX
+        this.game.player.y = this.save.playerY
     }
 }
