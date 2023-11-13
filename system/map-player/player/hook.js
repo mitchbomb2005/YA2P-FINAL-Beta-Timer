@@ -30,14 +30,14 @@ export class Hook{
             this.y2 = this.y2 + (this.trajectory.y * this.speed);
         }
 
-        if (this.visibility && !this.fixed){
+        if (this.visibility /*&& !this.fixed*/){
             for (let i = 0; i < this.game.map.hitboxes.length; i++){
                 if(this.#collisionCheck(this.game.map, i)){
                     this.enabled = true
                     this.motion = false
-                    if (!this.fixed) {
+                    /*if (!this.fixed) {
                         //this.fixPos(this.game.map, i)
-                    }
+                    }*/
                 }
             }
         }
