@@ -90,6 +90,13 @@ export class Hook{
         var xRightCompare   = this.x2 - (type.hitboxes[i].x + type.hitboxes[i].width)
 
         if (
+            yTopCompare == 0        ||
+            xLeftCompare == 0       ||
+            yBottomCompare == 0     ||
+            xRightCompare == 0
+        ) {return}
+        
+        if (
             yTopCompare < yBottomCompare       &&
             yTopCompare < xLeftCompare         &&
             yTopCompare < xRightCompare        
