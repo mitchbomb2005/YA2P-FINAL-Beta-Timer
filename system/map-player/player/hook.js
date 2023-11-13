@@ -9,6 +9,7 @@ export class Hook{
     slope
     hitNum
     fixed
+    yTopCompare == 0 ; xLeftCompare == 0 ; yBottomCompare == 0 ; xRightCompare == 0
 
     constructor(game){
         this.game = game
@@ -88,31 +89,31 @@ export class Hook{
     }
 
     fixPos(type, i) {
-        var yTopCompare     = this.y2 - type.hitboxes[i].y
-        var xLeftCompare    = this.x2 - type.hitboxes[i].x
-        var yBottomCompare  = this.y2 - (type.hitboxes[i].y + type.hitboxes[i].height)
-        var xRightCompare   = this.x2 - (type.hitboxes[i].x + type.hitboxes[i].width)
+        this.yTopCompare     = this.y2 - type.hitboxes[i].y
+        this.xLeftCompare    = this.x2 - type.hitboxes[i].x
+        this.yBottomCompare  = this.y2 - (type.hitboxes[i].y + type.hitboxes[i].height)
+        this.xRightCompare   = this.x2 - (type.hitboxes[i].x + type.hitboxes[i].width)
 
         if (
-            yTopCompare == 0        ||
-            xLeftCompare == 0       ||
-            yBottomCompare == 0     ||
-            xRightCompare == 0
+            this.yTopCompare == 0        ||
+            this.xLeftCompare == 0       ||
+            this.yBottomCompare == 0     ||
+            this.xRightCompare == 0
         ) {return}
         
         if (
-            yTopCompare < yBottomCompare       &&
-            yTopCompare < xLeftCompare         &&
-            yTopCompare < xRightCompare        
+            this.yTopCompare < this.yBottomCompare       &&
+            this.yTopCompare < this.xLeftCompare         &&
+            this.yTopCompare < this.xRightCompare        
         ) {
             this.y2 = type.hitboxes[i].y  
         } else if (
-            yBottomCompare < xLeftCompare      &&
-            yBottomCompare < xRightCompare
+            this.yBottomCompare < this.xLeftCompare      &&
+            this.yBottomCompare < this.xRightCompare
         ) {
             this.y2 = type.hitboxes[i].y + type.hitboxes[i].height
         }else if (
-            xLeftCompare < xRightCompare
+            this.xLeftCompare < this.xRightCompare
         ) {
             this.x2 = type.hitboxes[i].x
         } else {
@@ -120,7 +121,7 @@ export class Hook{
         }
         this.fixed = true
 
-        console.log(yTopCompare, yBottomCompare, xLeftCompare, xRightCompare)
+        console.log(this.yTopCompare, this.yBottomCompare, this.xLeftCompare, this.xRightCompare)
     }
 
 }
