@@ -8,7 +8,7 @@ export class Hook{
     trajectory = new Object() ; speed = 80 ; threshold = 5 ; motion
     slope
     hitNum
-    fixed
+    fixed = false
     yTopCompare == 0 ; xLeftCompare == 0 ; yBottomCompare == 0 ; xRightCompare == 0
 
     constructor(game){
@@ -36,7 +36,7 @@ export class Hook{
                     this.enabled = true
                     this.motion = false
                     if (!this.fixed) {
-                        this.fixPos(this.game.map, i)
+                        //this.fixPos(this.game.map, i)
                     }
                 }
             }
