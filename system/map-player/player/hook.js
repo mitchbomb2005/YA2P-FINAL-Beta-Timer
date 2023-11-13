@@ -17,6 +17,10 @@ export class Hook{
         this.visibility = false
     }
     update() {
+        /*this.game.drawUtils.Text(this.yTopCompare, 100, 100)
+        this.game.drawUtils.Text(this.yBottomCompare, 200, 200)
+        this.game.drawUtils.Text(this.xLeftCompare, 300, 300)
+        this.game.drawUtils.Text(this.xRightCompare, 400, 400)*/
         this.x1 = -this.game.player.x + this.game.camera.x
         this.y1 = -this.game.player.y + this.game.camera.y - 15
 
@@ -36,7 +40,7 @@ export class Hook{
                     this.enabled = true
                     this.motion = false
                     if (!this.fixed) {
-                        //this.fixPos(this.game.map, i)
+                        this.fixPos(this.game.map, i)
                     }
                 }
             }
@@ -89,10 +93,10 @@ export class Hook{
     }
 
     fixPos(type, i) {
-        this.yTopCompare     = this.y2 - type.hitboxes[i].y
-        this.xLeftCompare    = this.x2 - type.hitboxes[i].x
-        this.yBottomCompare  = this.y2 - (type.hitboxes[i].y + type.hitboxes[i].height)
-        this.xRightCompare   = this.x2 - (type.hitboxes[i].x + type.hitboxes[i].width)
+        this.yTopCompare     = Math.abs(this.y2 - type.hitboxes[i].y)
+        this.xLeftCompare    = Math.abs(this.x2 - type.hitboxes[i].x)
+        this.yBottomCompare  = Math.abs(this.y2 - (type.hitboxes[i].y + type.hitboxes[i].height))
+        this.xRightCompare   = Math.abs(this.x2 - (type.hitboxes[i].x + type.hitboxes[i].width))
 
 
         if (
@@ -100,23 +104,24 @@ export class Hook{
             this.yTopCompare < this.xLeftCompare         &&
             this.yTopCompare < this.xRightCompare        
         ) {
-            this.y2 = type.hitboxes[i].y + type.hitboxes[i].height
+            this.y2 = type.hitboxes[i].y  
         } else if (
             this.yBottomCompare < this.xLeftCompare      &&
             this.yBottomCompare < this.xRightCompare
         ) {
-            this.y2 = type.hitboxes[i].y  
+            this.y2 = type.hitboxes[i].y + type.hitboxes[i].height
         }else if (
             this.xLeftCompare < this.xRightCompare
         ) {
-            this.x2 = type.hitboxes[i].x + type.hitboxes[i].width
-        } else {
             this.x2 = type.hitboxes[i].x
+        } else {
+            this.x2 = type.hitboxes[i].x + type.hitboxes[i].width
         }
         
         
         this.fixed = true
         console.log(this.yTopCompare, this.yBottomCompare, this.xLeftCompare, this.xRightCompare)
+
     }
 
 }
