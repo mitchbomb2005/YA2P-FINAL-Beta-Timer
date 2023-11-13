@@ -100,18 +100,18 @@ export class Hook{
             this.yTopCompare < this.xLeftCompare         &&
             this.yTopCompare < this.xRightCompare        
         ) {
-            this.y2 = type.hitboxes[i].y  
+            this.y2 = type.hitboxes[i].y + type.hitboxes[i].height
         } else if (
             this.yBottomCompare < this.xLeftCompare      &&
             this.yBottomCompare < this.xRightCompare
         ) {
-            this.y2 = type.hitboxes[i].y + type.hitboxes[i].height
+            this.y2 = type.hitboxes[i].y  
         }else if (
             this.xLeftCompare < this.xRightCompare
         ) {
-            this.x2 = type.hitboxes[i].x
-        } else {
             this.x2 = type.hitboxes[i].x + type.hitboxes[i].width
+        } else {
+            this.x2 = type.hitboxes[i].x
         }
         
         
