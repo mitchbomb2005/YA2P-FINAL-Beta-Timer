@@ -36,7 +36,7 @@ export class Hook{
                     this.enabled = true
                     this.motion = false
                     if (!this.fixed) {
-                        this.fixPos(this.game.map, i)
+                        //this.fixPos(this.game.map, i)
                     }
                 }
             }
