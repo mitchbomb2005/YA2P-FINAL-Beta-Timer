@@ -12,9 +12,9 @@ export class Menu {
     constructor() {}
 
     drawMenu() {
-        this.draw.Text("Y e t A n o t h e r 2 d P l a t f o r m e r", 300, 200, `rgba(0, 0, 0, ${this.opacity})`, `rgba(155, 155, 155, ${this.opacity})`)
+        this.draw.Text("Y e t A n o t h e r 2 d P l a t f o r m e r", 300, 200, `rgba(70, 70, 70, ${this.opacity})`, `rgba(255, 255, 255, ${this.opacity})`)
 
-        this.draw.Text("P r e s s W T o S t a r t", 300, 400, `rgba(0, 0, 0, ${this.opacity})`, `rgba(155, 155, 155, ${this.opacity})`)
+        this.draw.Text("P r e s s W T o S t a r t", 300, 400, `rgba(70, 70, 70, ${this.opacity})`, `rgba(255, 255, 255, ${this.opacity})`)
     }
 
     async fade() {

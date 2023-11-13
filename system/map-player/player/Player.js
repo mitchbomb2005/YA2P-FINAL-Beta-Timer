@@ -40,7 +40,7 @@ export class Player {
     noclipVelChange = 10;
     velChange = 4;
     coyoteTime = 5
-    jumpVel = 38 // this.coyoteTime
+    jumpVel = 30 // this.coyoteTime
     wallJumpVelY = 40
     wallJumpVelX = 60
 
@@ -170,7 +170,7 @@ export class Player {
         }
 
         if (this.keyManager.isKeyPressed("KeyW") || this.keyManager.isKeyPressed("Space")) {
-            this.velY += .5
+            this.velY += .7
                 if (this.velY <= 0 && this.jump > 0) {
                     this.velY += this.jumpVel;     
                 } else if (this.keyManager.wasKeyJustPressed("KeyW") || this.keyManager.wasKeyJustPressed("Space")) {
