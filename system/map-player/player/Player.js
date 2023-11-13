@@ -176,6 +176,7 @@ export class Player {
                 } else if (this.keyManager.wasKeyJustPressed("KeyW") || this.keyManager.wasKeyJustPressed("Space")) {
                     if (this.jump > 0) {
                         this.velY += this.jumpVel;   
+                        this.game.audio.jumpSound()
                     } else if (this.wallJumpLeft) {
                         if (this.velY < 0) {
                             this.velY += (this.wallJumpVelY - 10) / (this.wallJumpAmmountLeft / 2 + .4)

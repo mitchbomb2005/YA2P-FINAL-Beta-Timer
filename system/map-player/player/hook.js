@@ -4,7 +4,7 @@ export class Hook{
     enabled = false ; visibility = false
     x1 ; x2
     y1 ; y2
-    length ; targetLength = 0 ; maxLength = 2000
+    length ; targetLength = 0 ; maxLength = 1000
     trajectory = new Object() ; speed = 80 ; threshold = 5 ; motion
     slope
     hitNum
@@ -58,9 +58,10 @@ export class Hook{
             this.game.player.velY = this.game.player.velY + ((this.y1 - (this.y2 + this.game.camera.y)) / 130) + .1
         }
 
-        if (this.length > this.maxLength) {
+        if (this.length > this.maxLength && this.visibility) {
             this.enabled = false
             this.visibility = false
+            this.game.audio.breakSound()
         }
 
     }

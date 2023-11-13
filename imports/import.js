@@ -14,6 +14,7 @@ import { Checkpoint } from "../system/map-player/map/mapCarryers/checkpoint.js"
 import { Teleport } from "../system/map-player/map/mapCarryers/Teleport.js"
 import { Hook } from "../system/map-player/player/hook.js"
 import { Storage } from "../storage/storage.js"
+import { Sound as Audio } from "../system/map-player/map/otherParts/audio.js"
 
 export class Game{
     // System
@@ -35,6 +36,7 @@ export class Game{
     keys = new Keys(this.camera)
     Background = new Background(this.camera)
     checkpoint = new Checkpoint()
+    audio = new Audio()
     
     
     constructor() {
