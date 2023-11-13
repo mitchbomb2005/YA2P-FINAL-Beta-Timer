@@ -94,18 +94,18 @@ export class Hook{
             yTopCompare < xLeftCompare         &&
             yTopCompare < xRightCompare        
         ) {
-            this.y2 += yTopCompare
+            this.y2 -= yTopCompare
         } else if (
             yBottomCompare < xLeftCompare      &&
             yBottomCompare < xRightCompare
         ) {
-            this.y2 += yBottomCompare
+            this.y2 -= yBottomCompare
         }else if (
             xLeftCompare < xRightCompare
         ) {
-            this.x2 += xLeftCompare
+            this.x2 -= xLeftCompare
         } else {
-            this.x2 += xRightCompare
+            this.x2 -= xRightCompare
         }
 
         console.log(yTopCompare, yBottomCompare, xLeftCompare, xRightCompare)
