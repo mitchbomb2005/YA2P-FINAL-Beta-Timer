@@ -8,6 +8,7 @@ export class Hook{
     trajectory = new Object() ; speed = 80 ; threshold = 5 ; motion
     slope
     hitNum
+    fixed
 
     constructor(game){
         this.game = game
@@ -33,7 +34,9 @@ export class Hook{
                 if(this.#collisionCheck(this.game.map, i)){
                     this.enabled = true
                     this.motion = false
-                    this.fixPos(this.game.map, i)
+                    if (!this.fixed) {
+                        this.fixPos(this.game.map, i)
+                    }
                 }
             }
         }
@@ -70,6 +73,7 @@ export class Hook{
         //this.trajectory.y = (this.game.camera.keyMan.mousePos.y) - (-this.game.player.y)
         this.x2 = -this.game.player.x
         this.y2 = -this.game.player.y
+        this.fixed = false
         
 
     }
@@ -114,6 +118,7 @@ export class Hook{
         } else {
             this.x2 = type.hitboxes[i].x + type.hitboxes[i].width
         }
+        this.fixed = true
 
         console.log(yTopCompare, yBottomCompare, xLeftCompare, xRightCompare)
     }
