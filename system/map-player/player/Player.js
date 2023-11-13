@@ -216,32 +216,32 @@ export class Player {
             if 
             ((  this.keyManager.isKeyPressed("KeyA")    && 
                 !this.keyManager.isKeyPressed("KeyD"))  && 
-                -this.x < this.keyManager.mousePos.x    && 
-                -this.y > this.keyManager.mousePos.y) 
+                -this.x < this.game.hook.x2             && 
+                -this.y > this.game.hook.y2) 
                 {
                     this.velY = this.velY + ((this.game.hook.y1 - this.game.hook.y2) / 300) + .1
             }
             if 
             ((  this.keyManager.isKeyPressed("KeyA")    && 
                 !this.keyManager.isKeyPressed("KeyD"))  && 
-                -this.x < this.keyManager.mousePos.x    && 
-                -this.y < this.keyManager.mousePos.y ) 
+                -this.x < this.game.hook.x2             && 
+                -this.y < this.game.hook.y2 ) 
                 {
                     this.velY = this.velY - ((this.game.hook.y1 - this.game.hook.y2) / 300)
             }
             if 
             ((  this.keyManager.isKeyPressed("KeyD")    && 
                 !this.keyManager.isKeyPressed("KeyA"))  && 
-                -this.x > this.keyManager.mousePos.x    && 
-                -this.y > this.keyManager.mousePos.y) 
+                -this.x > this.game.hook.x2             && 
+                -this.y > this.game.hook.y2) 
                 {
                     this.velY = this.velY + ((this.game.hook.y1 - this.game.hook.y2) / 300) + .1
             }
             if 
             ((  this.keyManager.isKeyPressed("KeyD")    && 
                 !this.keyManager.isKeyPressed("KeyA"))  && 
-                -this.x > this.keyManager.mousePos.x    && 
-                -this.y < this.keyManager.mousePos.y ) 
+                -this.x > this.game.hook.x2             && 
+                -this.y < this.game.hook.y2 ) 
                 {
                     this.velY = this.velY - ((this.game.hook.y1 - this.game.hook.y2) / 300)
             }

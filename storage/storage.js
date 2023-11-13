@@ -32,14 +32,14 @@ export class Storage{
 
     save() {
         console.log("fake save")
-        this.save.playerX = this.game.player.x
-        this.save.playerY = this.game.player.y
-        console.log(this.save.playerX)
+        this.Save.playerX = this.game.player.x
+        this.Save.playerY = this.game.player.y
+        console.log(this.Save.playerX)
     }
 
     load() {
         console.log("fake load")
-        this.game.player.x = this.save.playerX
-        this.game.player.y = this.save.playerY
+        this.game.player.x = this.Save.playerX
+        this.game.player.y = this.Save.playerY
     }
 }

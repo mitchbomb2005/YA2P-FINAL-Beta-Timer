@@ -56,12 +56,12 @@ export class GameDisplayer {
         this.map.draw(this.camera.x, this.camera.y);
         this.drawText()
         if (this.debug.grappleHookTest) {
-            if (this.game.hook.enabled){
+            if (this.game.hook.visibility){
                 this.drawUtils.Line(
                     this.game.hook.x1, 
                     this.game.hook.y1,
-                    this.camera.keyMan.mousePos.x + this.camera.x, 
-                    this.camera.keyMan.mousePos.y + this.camera.y,/**/ 
+                    this.game.hook.x2 + this.camera.x, 
+                    this.game.hook.y2 + this.camera.y,/**/ 
                     "#A06000")
             }
         }

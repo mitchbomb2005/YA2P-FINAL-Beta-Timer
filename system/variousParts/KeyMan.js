@@ -44,11 +44,15 @@ export class KeyManager {
       }, false);
 
       document.addEventListener("click", (event) => {
-        this.game.hook.enabled = !this.game.hook.enabled
+        this.game.hook.visibility = !this.game.hook.visibility
+        this.game.hook.enabled = false
+        this.game.hook.motion = true
         var rect = canvas.getBoundingClientRect()
         this.mousePos = this.getMousePos(canvas, event);
         this.mousePos.x = (((this.mousePos.x) / (rect.width)) * 1676) - this.camX
         this.mousePos.y = (((this.mousePos.y) / (rect.height)) * 918) - this.camY
+
+        this.game.hook.mouseUpdate()
 
         /*
         this.mouseX = (((event.clientX / 1.0) - this.canvasShape.left))
