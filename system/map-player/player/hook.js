@@ -94,13 +94,8 @@ export class Hook{
         this.yBottomCompare  = this.y2 - (type.hitboxes[i].y + type.hitboxes[i].height)
         this.xRightCompare   = this.x2 - (type.hitboxes[i].x + type.hitboxes[i].width)
 
-        if (
-            this.yTopCompare == 0        ||
-            this.xLeftCompare == 0       ||
-            this.yBottomCompare == 0     ||
-            this.xRightCompare == 0
-        ) {return}
-        
+
+        /*
         if (
             this.yTopCompare < this.yBottomCompare       &&
             this.yTopCompare < this.xLeftCompare         &&
@@ -118,9 +113,10 @@ export class Hook{
             this.x2 = type.hitboxes[i].x
         } else {
             this.x2 = type.hitboxes[i].x + type.hitboxes[i].width
-        }
+        }*/
+        
+        
         this.fixed = true
-
         console.log(this.yTopCompare, this.yBottomCompare, this.xLeftCompare, this.xRightCompare)
     }
 
