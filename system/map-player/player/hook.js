@@ -9,7 +9,7 @@ export class Hook{
     slope
     hitNum
     fixed = false
-    yTopCompare == 0 ; xLeftCompare == 0 ; yBottomCompare == 0 ; xRightCompare == 0
+    yTopCompare = 0 ; xLeftCompare = 0 ; yBottomCompare = 0 ; xRightCompare = 0
 
     constructor(game){
         this.game = game
@@ -30,14 +30,14 @@ export class Hook{
             this.y2 = this.y2 + (this.trajectory.y * this.speed);
         }
 
-        if (this.visibility /*&& !this.fixed*/){
+        if (this.visibility && !this.fixed){
             for (let i = 0; i < this.game.map.hitboxes.length; i++){
                 if(this.#collisionCheck(this.game.map, i)){
                     this.enabled = true
                     this.motion = false
-                    /*if (!this.fixed) {
-                        //this.fixPos(this.game.map, i)
-                    }*/
+                    if (!this.fixed) {
+                        this.fixPos(this.game.map, i)
+                    }
                 }
             }
         }
@@ -95,7 +95,6 @@ export class Hook{
         this.xRightCompare   = this.x2 - (type.hitboxes[i].x + type.hitboxes[i].width)
 
 
-        /*
         if (
             this.yTopCompare < this.yBottomCompare       &&
             this.yTopCompare < this.xLeftCompare         &&
@@ -113,7 +112,7 @@ export class Hook{
             this.x2 = type.hitboxes[i].x
         } else {
             this.x2 = type.hitboxes[i].x + type.hitboxes[i].width
-        }*/
+        }
         
         
         this.fixed = true
