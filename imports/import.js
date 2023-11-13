@@ -30,7 +30,7 @@ export class Game{
     drawUtils = new DrawUtils()
     storage = new Storage(this)
     
-    camera = new Camera(0, 2000, this.debug, this.keyManager)
+    camera = new Camera(400, 300, this.debug, this.keyManager)
     mapEdit= new Edit(this.camera, this.keyManager, this.drawUtils)
     keys = new Keys(this.camera)
     Background = new Background(this.camera)
