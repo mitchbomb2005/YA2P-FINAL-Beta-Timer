@@ -170,6 +170,7 @@ export class Player {
         }
 
         if (this.keyManager.isKeyPressed("KeyW") || this.keyManager.isKeyPressed("Space")) {
+            this.velY += .5
                 if (this.velY <= 0 && this.jump > 0) {
                     this.velY += this.jumpVel;     
                 } else if (this.keyManager.wasKeyJustPressed("KeyW") || this.keyManager.wasKeyJustPressed("Space")) {
@@ -208,11 +209,13 @@ export class Player {
 
         if (this.jump == 5) {
             this.velX = this.velX * .8
-        }  else {
+        }  else if (this.game.hook.enabled == true) {
+            this.velX = this.velX * .95
+        } else {
             this.velX = this.velX * .85
         }
 
-        if (this.game.hook.enabled) {
+        if (this.game.hook.enabled && false) {
             if 
             ((  this.keyManager.isKeyPressed("KeyA")    && 
                 !this.keyManager.isKeyPressed("KeyD"))  && 
@@ -282,6 +285,7 @@ export class Player {
     async die() {
         this.death = true
         this.game.hook.enabled = false
+        this.game.hook.visible = false
         await this.sleep(500)
         this.x = this.respawnX
         this.velX = this.respawnVelX

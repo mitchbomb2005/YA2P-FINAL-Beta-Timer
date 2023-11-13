@@ -4,7 +4,7 @@ export class Hook{
     enabled = false ; visibility = false
     x1 ; x2
     y1 ; y2
-    length ; targetLength = 100 ; maxLength = 2000
+    length ; targetLength = 0 ; maxLength = 2000
     trajectory = new Object() ; speed = 80 ; threshold = 5 ; motion
     slope
     hitNum
@@ -54,8 +54,8 @@ export class Hook{
         }
 
         if (this.length > this.targetLength && this.enabled) {
-            this.game.player.velX = this.game.player.velX + ((this.x1 - (this.x2 + this.game.camera.x)) / 130)
-            this.game.player.velY = this.game.player.velY + ((this.y1 - (this.y2 + this.game.camera.y)) / 170) + .1
+            this.game.player.velX = this.game.player.velX + ((this.x1 - (this.x2 + this.game.camera.x)) / 70)
+            this.game.player.velY = this.game.player.velY + ((this.y1 - (this.y2 + this.game.camera.y)) / 130) + .1
         }
 
         if (this.length > this.maxLength) {
@@ -119,7 +119,7 @@ export class Hook{
         }
         
         
-        this.fixed = true
+        //this.fixed = true
         console.log(this.yTopCompare, this.yBottomCompare, this.xLeftCompare, this.xRightCompare)
 
     }

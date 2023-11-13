@@ -14,7 +14,7 @@ export class Map {
     }
     
     #createHitboxes() {
-        this.hitboxes[0] = new Hitbox(-610, 561, 3096, 450, false);
+        this.hitboxes[0] = new Hitbox(-810, 561, 3296, 450, false);
         this.hitboxes[ 3 ] = new Hitbox( -1024.7860391771198 , -65.27843357064609 , 1078.9999169405419 , 926.7784335706135 , false )
         this.hitboxes[ 1 ] = new Hitbox( -1020.3557599703686 , -757.0166034383657 , 2310.7671079087622 , 933.9944019380071 , false )
         this.hitboxes[ 2 ] = new Hitbox( 1520.6442400475894 , -756.0224994350601 , 700.0000000001269 , 952.9999899576599 , false )
