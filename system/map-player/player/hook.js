@@ -1,19 +1,13 @@
 export class Hook{
     game
-    enabled
-    x1
-    y1
-    x2
-    y2
-    targetLength = 100
-    length
-    maxLength = 2000
+
+    enabled = false ; visibility = false
+    x1 ; x2
+    y1 ; y2
+    length ; targetLength = 100 ; maxLength = 2000
+    trajectory = new Object() ; speed = 80 ; threshold = 5 ; motion
     slope
-    visibility
-    trajectory = new Object()
-    speed = 80
-    threshold = 5
-    motion
+    hitNum
 
     constructor(game){
         this.game = game
@@ -39,6 +33,7 @@ export class Hook{
                 if(this.#collisionCheck(this.game.map, i)){
                     this.enabled = true
                     this.motion = false
+                    this.fixPos(this.game.map, i)
                 }
             }
         }
@@ -59,8 +54,6 @@ export class Hook{
             this.enabled = false
             this.visibility = false
         }
-
-        
 
     }
 
@@ -87,7 +80,35 @@ export class Hook{
                 this.y2 <= type.hitboxes[i].y + type.hitboxes[i].height)   &&
             (   this.x2 >= type.hitboxes[i].x                              && 
                 this.x2 <= type.hitboxes[i].x + type.hitboxes[i].width)
-        ) {return true} else {return false}
+        ) {this.hitNum = i;return true} else {return false}
+    }
+
+    fixPos(type, i) {
+        var yTopCompare     = this.y2 - type.hitboxes[i].y
+        var xLeftCompare    = this.x2 - type.hitboxes[i].x
+        var yBottomCompare  = this.y2 - (type.hitboxes[i].y + type.hitboxes[i].height)
+        var xRightCompare   = this.x2 - (type.hitboxes[i].x + type.hitboxes[i].width)
+
+        if (
+            yTopCompare << yBottomCompare       &&
+            yTopCompare << xLeftCompare         &&
+            yTopCompare << xRightCompare        
+        ) {
+            this.y2 = yTopCompare
+        } else if (
+            yBottomCompare << xLeftCompare      &&
+            yBottomCompare << xRightCompare
+        ) {
+            this.y2 = yBottomCompare
+        }else if (
+            xLeftCompare << xRightCompare
+        ) {
+            this.x2 = xLeftCompare
+        } else {
+            this.x2 = xRightCompare
+        }
+
+        console.log(yTopCompare, yBottomCompare, xLeftCompare, xRightCompare)
     }
 
 }
