@@ -90,18 +90,18 @@ export class Hook{
         var xRightCompare   = this.x2 - (type.hitboxes[i].x + type.hitboxes[i].width)
 
         if (
-            yTopCompare << yBottomCompare       &&
-            yTopCompare << xLeftCompare         &&
-            yTopCompare << xRightCompare        
+            yTopCompare < yBottomCompare       &&
+            yTopCompare < xLeftCompare         &&
+            yTopCompare < xRightCompare        
         ) {
             this.y2 = yTopCompare
         } else if (
-            yBottomCompare << xLeftCompare      &&
-            yBottomCompare << xRightCompare
+            yBottomCompare < xLeftCompare      &&
+            yBottomCompare < xRightCompare
         ) {
             this.y2 = yBottomCompare
         }else if (
-            xLeftCompare << xRightCompare
+            xLeftCompare < xRightCompare
         ) {
             this.x2 = xLeftCompare
         } else {
