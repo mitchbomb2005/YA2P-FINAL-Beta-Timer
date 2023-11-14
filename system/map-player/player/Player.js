@@ -294,6 +294,7 @@ export class Player {
         this.velY = this.respawnVelY
         this.death = false
         this.game.hook.enabled = false
+        this.game.hook.visibility = false
 
     }
 
