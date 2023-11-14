@@ -40,7 +40,7 @@ export class Player {
     noclipVelChange = 10;
     velChange = 4;
     coyoteTime = 5
-    jumpVel = 38 // this.coyoteTime
+    jumpVel = 30 // this.coyoteTime
     wallJumpVelY = 40
     wallJumpVelX = 60
 
@@ -170,11 +170,13 @@ export class Player {
         }
 
         if (this.keyManager.isKeyPressed("KeyW") || this.keyManager.isKeyPressed("Space")) {
+            this.velY += .7
                 if (this.velY <= 0 && this.jump > 0) {
                     this.velY += this.jumpVel;     
                 } else if (this.keyManager.wasKeyJustPressed("KeyW") || this.keyManager.wasKeyJustPressed("Space")) {
                     if (this.jump > 0) {
                         this.velY += this.jumpVel;   
+                        this.game.audio.jumpSound()
                     } else if (this.wallJumpLeft) {
                         if (this.velY < 0) {
                             this.velY += (this.wallJumpVelY - 10) / (this.wallJumpAmmountLeft / 2 + .4)
@@ -208,40 +210,42 @@ export class Player {
 
         if (this.jump == 5) {
             this.velX = this.velX * .8
-        }  else {
+        }  else if (this.game.hook.enabled == true) {
+            this.velX = this.velX * .95
+        } else {
             this.velX = this.velX * .85
         }
 
-        if (this.game.hook.enabled) {
+        if (this.game.hook.enabled && false) {
             if 
             ((  this.keyManager.isKeyPressed("KeyA")    && 
                 !this.keyManager.isKeyPressed("KeyD"))  && 
-                -this.x < this.keyManager.mousePos.x    && 
-                -this.y > this.keyManager.mousePos.y) 
+                -this.x < this.game.hook.x2             && 
+                -this.y > this.game.hook.y2) 
                 {
                     this.velY = this.velY + ((this.game.hook.y1 - this.game.hook.y2) / 300) + .1
             }
             if 
             ((  this.keyManager.isKeyPressed("KeyA")    && 
                 !this.keyManager.isKeyPressed("KeyD"))  && 
-                -this.x < this.keyManager.mousePos.x    && 
-                -this.y < this.keyManager.mousePos.y ) 
+                -this.x < this.game.hook.x2             && 
+                -this.y < this.game.hook.y2 ) 
                 {
                     this.velY = this.velY - ((this.game.hook.y1 - this.game.hook.y2) / 300)
             }
             if 
             ((  this.keyManager.isKeyPressed("KeyD")    && 
                 !this.keyManager.isKeyPressed("KeyA"))  && 
-                -this.x > this.keyManager.mousePos.x    && 
-                -this.y > this.keyManager.mousePos.y) 
+                -this.x > this.game.hook.x2             && 
+                -this.y > this.game.hook.y2) 
                 {
                     this.velY = this.velY + ((this.game.hook.y1 - this.game.hook.y2) / 300) + .1
             }
             if 
             ((  this.keyManager.isKeyPressed("KeyD")    && 
                 !this.keyManager.isKeyPressed("KeyA"))  && 
-                -this.x > this.keyManager.mousePos.x    && 
-                -this.y < this.keyManager.mousePos.y ) 
+                -this.x > this.game.hook.x2             && 
+                -this.y < this.game.hook.y2 ) 
                 {
                     this.velY = this.velY - ((this.game.hook.y1 - this.game.hook.y2) / 300)
             }
@@ -282,6 +286,7 @@ export class Player {
     async die() {
         this.death = true
         this.game.hook.enabled = false
+        this.game.hook.visible = false
         await this.sleep(500)
         this.x = this.respawnX
         this.velX = this.respawnVelX
