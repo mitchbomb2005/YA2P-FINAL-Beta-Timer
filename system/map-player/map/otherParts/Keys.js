@@ -30,6 +30,10 @@ export class Keys {
     }
     drawKeys() {
         ctx.drawImage(this.keyD, 388 + this.camera.x, 600 + this.camera.y)
+        this.jump(4480, 245)
+        this.jump(3850, -410)
+        this.jump(2273.265700406848 , 642.4999999999999 )
+        ctx.drawImage(this.hookEnabled, 5803.8752307244795 + this.camera.x, -199.17987904329323 + this.camera.y)
     }
 
     jump(x, y) {
