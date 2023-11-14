@@ -56,6 +56,8 @@ export class KeyManager {
           this.game.hook.mouseUpdate()
           if (this.game.hook.visibility) {
             this.game.audio.hookSound()
+          } else {
+            this.game.audio.breakSound()
           }
           }
 
