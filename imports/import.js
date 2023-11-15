@@ -27,7 +27,7 @@ export class Game{
     teleport = new Teleport()
     keyManager = new KeyManager(this);
     debug = new Debug(this.keyManager);
-    menu = new Menu()
+    menu = new Menu(this)
     drawUtils = new DrawUtils()
     storage = new Storage(this)
     
