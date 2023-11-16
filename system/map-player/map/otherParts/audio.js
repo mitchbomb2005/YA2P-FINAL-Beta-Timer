@@ -45,25 +45,18 @@ export class Sound{
     five = new Audio('https://raw.githubusercontent.com/loglot/fez_music/main/layers/layer_five.ogg')      ;   five2 = new Audio('https://raw.githubusercontent.com/loglot/fez_music/main/layers/layer_five.ogg')
 
     playSound(){
-        if (!this.key){
-            this.one.play()
-            this.two.play()
-            this.three.play()
-            this.four.play()
-            this.five.play()
-        } else {
-            this.one2.play()
-            this.two2.play()
-            this.three2.play()
-            this.four2.play()
-            this.five2.play() 
-        }
+
+        this.one.play()
+        this.two.play()
+        this.three.play()
+        this.four.play()
+        this.five.play()
+
     }
         
     async playSongLoop(){
         while(true){
             this.playSound()
-            this.key = !this.key
             await this.sleep(68000)
         }
     }
