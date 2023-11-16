@@ -47,14 +47,6 @@ export class GameDisplayer {
         ctx.rect(0, 0, 10000, 10000) 
         ctx.fill()
         this.background.Draw()
-        this.teleport.draw(this.camera.x, this.camera.y)
-        if(this.debug.bean && !this.player.hidden) {
-            this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50, 100) 
-        }
-        this.deathMap.draw(this.camera.x, this.camera.y);
-        this.checkpoint.draw(this.camera.x, this.camera.y) 
-        this.map.draw(this.camera.x, this.camera.y);
-        this.drawText()
         if (this.debug.grappleHookTest) {
             if (this.game.hook.visibility){
                 this.drawUtils.Line(
@@ -65,6 +57,15 @@ export class GameDisplayer {
                     "#A06000")
             }
         }
+        this.teleport.draw(this.camera.x, this.camera.y)
+        if(this.debug.bean && !this.player.hidden) {
+            this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50, 100) 
+        }
+        this.deathMap.draw(this.camera.x, this.camera.y);
+        this.checkpoint.draw(this.camera.x, this.camera.y) 
+        this.map.draw(this.camera.x, this.camera.y);
+        this.drawText()
+
     }
 
     drawText() { 
