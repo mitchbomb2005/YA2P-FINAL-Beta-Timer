@@ -13,8 +13,9 @@ export class Storage{
             console.log(undefined)
             return
         }
-        if (localStorage.getItem("Save") != "") {
+        if (localStorage.getItem("Save") == "") {
             this.Save = localStorage.getItem("Save")
+            console.log ("save cloud")
             this.load()
         }
     }
@@ -31,17 +32,15 @@ export class Storage{
     }
 
     save() {
-        this.save.playerX = this.game.player.x
-        this.save.playerY = this.game.player.y
-
-        if(localStorage) {
+        this.Save.playerX = this.game.player.x
+        this.Save.playerY = this.game.player.y
+            console.log("save")
             localStorage.setItem("Save", this.Save);
-        }
     }
 
     load() {
-        this.game.player.x = this.save.playerX
-        this.game.player.y = this.save.playerY
+        this.game.player.x = this.Save.playerX
+        this.game.player.y = this.Save.playerY
         console.log(this.Save)
     }
 }
