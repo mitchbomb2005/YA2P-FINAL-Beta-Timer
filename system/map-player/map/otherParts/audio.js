@@ -38,19 +38,8 @@ export class Sound{
         wallJump.play();
     }
     key = false
-    one = new Audio('https://raw.githubusercontent.com/loglot/fez_music/main/layers/layer_one.ogg')        ;   one2 = new Audio('https://raw.githubusercontent.com/loglot/fez_music/main/layers/layer_one.ogg')
-    two = new Audio('https://raw.githubusercontent.com/loglot/fez_music/main/layers/layer_two.ogg')        ;   two2 = new Audio('https://raw.githubusercontent.com/loglot/fez_music/main/layers/layer_two.ogg')
-    three = new Audio('https://raw.githubusercontent.com/loglot/fez_music/main/layers/layer_three.ogg')    ;   three2 = new Audio('https://raw.githubusercontent.com/loglot/fez_music/main/layers/layer_three.ogg')
-    four = new Audio('https://raw.githubusercontent.com/loglot/fez_music/main/layers/layer_four.ogg')      ;   four2 = new Audio('https://raw.githubusercontent.com/loglot/fez_music/main/layers/layer_four.ogg')
-    five = new Audio('https://raw.githubusercontent.com/loglot/fez_music/main/layers/layer_five.ogg')      ;   five2 = new Audio('https://raw.githubusercontent.com/loglot/fez_music/main/layers/layer_five.ogg')
 
     playSound(){
-
-        this.one.play()
-        this.two.play()
-        this.three.play()
-        this.four.play()
-        this.five.play()
 
     }
         

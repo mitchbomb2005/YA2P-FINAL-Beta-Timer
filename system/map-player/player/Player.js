@@ -185,6 +185,7 @@ export class Player {
                         }
                         
                         this.velX -= this.wallJumpVelX
+                        this.game.audio.wallJumpSound()
                         this.wallJumpAmmountLeft += .5
                         this.wallJumpAmmountRight = 1
                     } else if (this.wallJumpRight) {
@@ -195,6 +196,7 @@ export class Player {
                         }
                         
                         this.velX += this.wallJumpVelX
+                        this.game.audio.wallJumpSound()
                         this.wallJumpAmmountRight += .5
                         this.wallJumpAmmountLeft = 1
                     }
@@ -287,6 +289,7 @@ export class Player {
         this.death = true
         this.game.hook.enabled = false
         this.game.hook.visible = false
+        this.game.audio.hurtSound()
         await this.sleep(500)
         this.x = this.respawnX
         this.velX = this.respawnVelX
