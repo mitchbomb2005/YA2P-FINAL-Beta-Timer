@@ -48,12 +48,22 @@ export class GameDisplayer {
         ctx.fill()
         this.background.Draw()
         if (this.debug.grappleHookTest) {
-            if (this.game.hook.visibility){
+            if (this.game.hook.visibility) {
                 this.drawUtils.Line(
-                    this.game.hook.x1, 
+                    this.game.hook.x1,
                     this.game.hook.y1,
-                    this.game.hook.x2 + this.camera.x, 
-                    this.game.hook.y2 + this.camera.y,/**/ 
+                    this.game.hook.x2 + this.camera.x,
+                    this.game.hook.y2 + this.camera.y,/**/
+                    "#A06000")
+            }
+        }
+        if (this.debug.grappleHookTest) {
+            if (this.game.bounceHook.visibility) {
+                this.drawUtils.Line(
+                    this.game.bounceHook.x1,
+                    this.game.bounceHook.y1,
+                    this.game.bounceHook.x2 + this.camera.x,
+                    this.game.bounceHook.y2 + this.camera.y,/**/
                     "#A06000")
             }
         }
