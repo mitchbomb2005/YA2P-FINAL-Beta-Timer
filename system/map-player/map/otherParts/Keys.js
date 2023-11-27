@@ -18,17 +18,17 @@ export class Keys {
 
     constructor(cam){
         this.camera = cam
-        this.keyD.src = 'https://raw.githubusercontent.com/loglot/key-images/main/Keyboard%20%26%20Mouse/Dark/D_Key_Dark.png';
-        this.keyW.src = 'https://raw.githubusercontent.com/loglot/key-images/main/Keyboard%20%26%20Mouse/Dark/W_Key_Dark.png';
-        this.keyS.src = 'https://raw.githubusercontent.com/loglot/key-images/main/Keyboard%20%26%20Mouse/Dark/S_Key_Dark.png';
-        this.keyL.src = 'https://raw.githubusercontent.com/loglot/key-images/main/Keyboard%20%26%20Mouse/Dark/L_Key_Dark.png'; //
-        this.leftClick.src = 'https://raw.githubusercontent.com/loglot/key-images/main/Keyboard%20%26%20Mouse/Dark/Mouse_Left_Key_Dark.png';
-        this.keySpace.src = 'https://raw.githubusercontent.com/loglot/key-images/main/Keyboard%20%26%20Mouse/Dark/Space_Key_Dark.png'
-        this.warnLava.src = 'https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/images/warn.png'
-        this.warnGrey.src = 'https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/images/warnGrey.png'
-        this.redFlag.src = 'https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/images/redFlag.png'
-        this.hookDisabled.src = 'https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/images/hookDisabled.png'
-        this.hookEnabled.src = 'https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/images/hookEnabled.png'
+        this.keyD.src = '../../../../other/images/keys/D_Key_Dark.png';
+        this.keyW.src = '../../../../other/images/keys/W_Key_Dark.png';
+        this.keyS.src = '../../../../other/images/keys/S_Key_Dark.png';
+        this.keyL.src = '../../../../other/images/keys/L_Key_Dark.png'; //
+        this.leftClick.src = '../../../../other/images/keys/Mouse_Left_Key_Dark.png';
+        this.keySpace.src = '../../../../other/images/keys/Space_Key_Dark.png';
+        this.warnLava.src = '../../../../other/images/warn.png';
+        this.warnGrey.src = '../../../../other/images/warnGrey.png';
+        this.redFlag.src = '../../../../other/images/redFlag.png';
+        this.hookDisabled.src = '../../../../other/images/hookDisabled.png';
+        this.hookEnabled.src = '../../../../other/images/hookEnabled.png';
     }
     drawKeys() {
         ctx.drawImage(this.keyD, 388 + this.camera.x, 600 + this.camera.y) //5652.9319785986945 , -181.7023653299001

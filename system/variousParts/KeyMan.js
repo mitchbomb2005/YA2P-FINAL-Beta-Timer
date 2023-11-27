@@ -50,7 +50,7 @@ export class KeyManager {
         this.mousePos.x = (((this.mousePos.x) / (rect.width)) * 1676) - this.camX
         this.mousePos.y = (((this.mousePos.y) / (rect.height)) * 918) - this.camY
         if (this.game.menu.check) {
-          this.game.hook.visibility = true
+          this.game.hook.visibility = !this.game.hook.visibility
           this.game.hook.enabled = false
           this.game.hook.motion = true
           this.game.hook.mouseUpdate()
@@ -70,9 +70,6 @@ export class KeyManager {
       }, false);
       document.addEventListener('contextmenu', event => {
         event.preventDefault();
-        this.game.hook.visibility = false
-        this.game.hook.enabled = false
-        
       }, false);
     }
 
