@@ -50,7 +50,7 @@ export class KeyManager {
         this.mousePos.x = (((this.mousePos.x) / (rect.width)) * 1676) - this.camX
         this.mousePos.y = (((this.mousePos.y) / (rect.height)) * 918) - this.camY
         if (this.game.menu.check) {
-          this.game.hook.visibility = !this.game.hook.visibility
+          this.game.hook.visibility = true
           this.game.hook.enabled = false
           this.game.hook.motion = true
           this.game.hook.mouseUpdate()
@@ -70,21 +70,9 @@ export class KeyManager {
       }, false);
       document.addEventListener('contextmenu', event => {
         event.preventDefault();
-                var rect = canvas.getBoundingClientRect()
-        this.mousePos = this.getMousePos(canvas, event);
-        this.mousePos.x = (((this.mousePos.x) / (rect.width)) * 1676) - this.camX
-        this.mousePos.y = (((this.mousePos.y) / (rect.height)) * 918) - this.camY
-        if(this.game.menu.check){
-          this.game.bounceHook.visibility = !this.game.bounceHook.visibility
-          this.game.bounceHook.enabled = false
-          this.game.bounceHook.motion = true
-          this.game.bounceHook.mouseUpdate()
-          if (this.game.bounceHook.visibility) {
-            this.game.audio.bounceHookSound()
-          } else {
-            this.game.audio.breakSound()
-          }
-          }
+        this.game.hook.visibility = false
+        this.game.hook.enabled = false
+        
       }, false);
     }
 

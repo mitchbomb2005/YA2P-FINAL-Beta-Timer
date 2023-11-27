@@ -15,7 +15,6 @@ import { Teleport } from "../system/map-player/map/mapCarryers/Teleport.js"
 import { Hook } from "../system/map-player/player/hook.js"
 import { Storage } from "../storage/storage.js"
 import { Sound as Audio } from "../system/map-player/map/otherParts/audio.js"
-import { BounceHook } from "../system/map-player/player/bounceHook.js"
 
 export class Game{
     // System
@@ -67,6 +66,8 @@ export class Game{
         
     }
     hook = new Hook(this)
-    bounceHook = new BounceHook(this)
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
     
 }

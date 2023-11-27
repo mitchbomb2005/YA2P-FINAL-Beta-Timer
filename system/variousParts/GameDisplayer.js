@@ -57,16 +57,6 @@ export class GameDisplayer {
                     "#A06000")
             }
         }
-        if (this.debug.grappleHookTest) {
-            if (this.game.bounceHook.visibility) {
-                this.drawUtils.Line(
-                    this.game.bounceHook.x1,
-                    this.game.bounceHook.y1,
-                    this.game.bounceHook.x2 + this.camera.x,
-                    this.game.bounceHook.y2 + this.camera.y,/**/
-                    "#A06000")
-            }
-        }
         this.teleport.draw(this.camera.x, this.camera.y)
         if(this.debug.bean && !this.player.hidden) {
             this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50, 100) 
