@@ -24,7 +24,7 @@ class Main {
             }
 
             if(this.game.menu.check) {
-                this.game.keys.drawKeys()
+                //this.game.keys.drawKeys()
                 this.updateGame();
             } else {
                 this.game.menu.drawMenu()
