@@ -289,9 +289,9 @@ export class Player {
         this.game.hook.visible = false
         await this.sleep(500)
         this.x = this.respawnX
-        this.velX = this.respawnVelX
+        this.velX = 0
         this.y = this.respawnY
-        this.velY = this.respawnVelY
+        this.velY = 0
         this.death = false
         this.game.hook.enabled = false
 
