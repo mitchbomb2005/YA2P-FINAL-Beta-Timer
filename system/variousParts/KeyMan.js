@@ -68,6 +68,9 @@ export class KeyManager {
         this.x = event.clientX;
         this.y = event.clientY;/**/
       }, false);
+      document.addEventListener('contextmenu', event => {
+        event.preventDefault();
+    });
     }
 
 
