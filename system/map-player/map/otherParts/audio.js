@@ -1,39 +1,56 @@
 export class Sound{
-    break = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/audio/break.wav')
-    jump = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/audio/jump.wav')
-    hook = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/audio/hook.wav')
-    hookHit = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/audio/hook-hit.wav')
-    hurt = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/audio/hurt.wav')
-    menu = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/audio/menu.wav')
-    wallJump = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/audio/wallJump.wav')
+
 
     breakSound() {
-        this.break.play()
+        var hbreak = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/audio/break.wav')
+        hbreak.play()
     }
 
     jumpSound() {
-        this.jump.volume = .5
-        this.jump.play()
+        var jump = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/audio/jump.wav')
+        jump.volume = .5
+        jump.play()
     }
 
     hookSound() {
-        this.hook.volume = .5
-        this.hook.play()
+        var hook = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/audio/hook.wav')
+        hook.volume = .5
+        hook.play()
     }
 
     hookHitSound() {
-        this.hookHit.play
+        var hookHit = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/audio/hookHit.wav')
+        hookHit.play()
     }
 
     hurtSound() {
-        this.hurt.play();
+        var hurt = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/audio/hurt.wav')
+        hurt.play();
     }
 
     menuSound() {
-        this.menu.play();
+        var menu = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/audio/menu.wav')
+        menu.play();
     }
 
     wallJumpSound() {
-        this.wallJump.play();
+        var wallJump = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/other/audio/wallJump.wav')
+        wallJump.play();
     }
+    key = false
+
+    playSound(){
+
+    }
+        
+    async playSongLoop(){
+        while(true){
+            this.playSound()
+            await this.sleep(68000)
+        }
+    }
+        
+    sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
 }

@@ -39,8 +39,10 @@ export class Hook{
                 if(this.#collisionCheck(this.game.map, i)){
                     this.enabled = true
                     this.motion = false
+
                     if (!this.fixed) {
                         this.fixPos(this.game.map, i)
+                        this.game.audio.hookHitSound()
                     }
                 }
             }
@@ -120,7 +122,7 @@ export class Hook{
         }
         
         
-        //this.fixed = true
+        this.fixed = true
         console.log(this.yTopCompare, this.yBottomCompare, this.xLeftCompare, this.xRightCompare)
 
     }

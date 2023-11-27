@@ -8,6 +8,7 @@ class Main {
 
     async startGame() {
         if(localStorage) {this.game.storage.accessible = false} else {this.game.storage.accessible = true}
+        this.game.storage.check()
 
         //this.game.autoDebug()
         while (true) {

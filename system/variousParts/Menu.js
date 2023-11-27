@@ -8,8 +8,11 @@ export class Menu {
     draw = new DrawUtils()
     opacity = 1
     check = false
+    game
 
-    constructor() {}
+    constructor(game) {
+        this.game = game
+    }
 
     drawMenu() {
         this.draw.Text("Y e t A n o t h e r 2 d P l a t f o r m e r", 300, 200, `rgba(70, 70, 70, ${this.opacity})`, `rgba(255, 255, 255, ${this.opacity})`)
@@ -23,6 +26,7 @@ export class Menu {
             await this.sleep(16)
         }
         this.check = true
+        this.game.audio.playSongLoop()
     }
 
     sleep(ms) {

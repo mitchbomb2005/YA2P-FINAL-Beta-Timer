@@ -185,6 +185,7 @@ export class Player {
                         }
                         
                         this.velX -= this.wallJumpVelX
+                        this.game.audio.wallJumpSound()
                         this.wallJumpAmmountLeft += .5
                         this.wallJumpAmmountRight = 1
                     } else if (this.wallJumpRight) {
@@ -195,6 +196,7 @@ export class Player {
                         }
                         
                         this.velX += this.wallJumpVelX
+                        this.game.audio.wallJumpSound()
                         this.wallJumpAmmountRight += .5
                         this.wallJumpAmmountLeft = 1
                     }
@@ -287,6 +289,7 @@ export class Player {
         this.death = true
         this.game.hook.enabled = false
         this.game.hook.visible = false
+        this.game.audio.hurtSound()
         await this.sleep(500)
         this.x = this.respawnX
         this.velX = 0
@@ -294,6 +297,7 @@ export class Player {
         this.velY = 0
         this.death = false
         this.game.hook.enabled = false
+        this.game.hook.visibility = false
 
     }
 
@@ -330,7 +334,55 @@ export class Player {
 
         for (let i = 0; i < this.map.hitboxes.length; i++) /* check if stuck */ { 
             if(this.#collisionCheck(0, i, this.map) && this.#collisionCheck(1, i, this.map) && this.#collisionCheck(2, i, this.map) && this.#collisionCheck(3, i, this.map)) {
-                this.die()
+                //this.die()
+                
+                if(
+                    Math.abs(this.velX) > Math.abs(this.velY)
+                ) {
+                    if(this.velX > 0) {
+                        var offset = 25
+                        //console.log("hit!")
+                        if (this.velX > 0) {
+                            this.velX = 0
+                        }
+                        var hitW = this.map.hitboxes[i].width
+                        var hitX = this.map.hitboxes[i].x
+        
+                        this.x = (-hitX - (offset)) - hitW
+                    } else {
+                        var offset = 25
+                        //console.log("hit!")
+                        if (this.velX < 0) {
+                            this.velX = 0
+                        }
+                        var hitW = this.map.hitboxes[i].width
+                        var hitX = this.map.hitboxes[i].x
+        
+                        this.x = (-hitX + (offset))
+                    }
+                } else {
+                    if(this.vely > 0) {
+                        var offset = 75
+                        //console.log("hit!")
+                        if(this.velY > 0) {
+                            this.velY = 0
+                        }
+                        var hitH = this.map.hitboxes[i].height
+                        var hitY = this.map.hitboxes[i].y
+                        this.y = (-hitY - (offset)) - hitH
+                    } else {
+                        var offset = 50
+                        //console.log("hit!")
+                        if(this.velY < 0) {
+                            this.velY = 0
+                        }
+                        var y = this.y 
+                        var hitY = this.map.hitboxes[i].y
+                        this.y = -hitY + offset
+                        this.jump = this.coyoteTime
+                        hitDown = true
+                    }
+                }
                 return
             }
         }

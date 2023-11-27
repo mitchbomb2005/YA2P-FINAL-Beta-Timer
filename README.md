@@ -1,6 +1,2 @@
-# Yet Another 2d Platformer
-canvas.addEventListener("click", function (evt) {
-    
-}, false);
 
-//Get Mouse Position
+# Yet Another 2d Platformer
