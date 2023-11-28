@@ -44,7 +44,7 @@ export class GameDisplayer {
 
         this.resizeCanvasForWindowSize();
         ctx.fillStyle = "#a7c7d8";
-        ctx.rect(0, 0, 10000, 10000) 
+        ctx.rect(0, 0, 100000, 10000) 
         ctx.fill()
         this.background.Draw()
         if (this.debug.grappleHookTest) {

@@ -81,13 +81,13 @@ export class Player {
             this.#move()
             this.#updateVelocity()
         }
-        if (!this.debug.freeCam) {
+        if (!this.game.debug.freeCam) {
 
         /*    this.camera.x = this.x + 900
             this.camera.y = this.y + 500 /**/
 
-        /**/    this.camera.x = this.camera.x - (((this.camera.x - 838) - this.x) / 10)
-            this.camera.y = this.camera.y - (((this.camera.y - 509) - this.y) / 10) /**/
+        /**/    this.camera.x = this.camera.x - (((this.camera.x - this.camera.midX) - this.x) / 10)
+            this.camera.y = this.camera.y - (((this.camera.y - this.camera.midY) - this.y) / 10) /**/
         }
         if (this.jump > 0) {
             this.wallJumpAmmountLeft = true

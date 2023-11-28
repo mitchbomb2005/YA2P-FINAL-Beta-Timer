@@ -1,6 +1,6 @@
 'use strict';
 
-// rename this to Player.js
+const canvas = document.getElementById("game_screen");
 
 export class Camera {
 
@@ -12,6 +12,10 @@ export class Camera {
     mouseY
     mouseXSto
     mouseYSto
+    midX = canvas.offsetWidth / 2
+    midY = canvas.offsetHeight / 2
+
+
 
     constructor(x, y, debug, keyman) {
         this.x = x

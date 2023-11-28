@@ -118,7 +118,7 @@ export class Background {
 
     Draw() {
         for (let i = 0; i < this.layer2.length; i++) {
-            this.layer2[i].draw(this.camera.x / 3, this.camera.y / 3, "#7f7f7f")
+            this.layer2[i].draw((this.camera.x / 3), (this.camera.y / 3), "#7f7f7f")
         }
         for (let i = 0; i < this.layer1.length; i++) {
             this.layer1[i].draw(this.camera.x / 2, this.camera.y / 2, "#5f5f5f")  
