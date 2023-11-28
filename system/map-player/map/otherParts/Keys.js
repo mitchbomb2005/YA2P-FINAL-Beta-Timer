@@ -18,7 +18,7 @@ export class Keys {
 
     constructor(cam){
         this.camera = cam
-        /*this.keyD.src = 'other/images/keys/D_Key_Dark.png';
+        this.keyD.src = 'other/images/keys/D_Key_Dark.png';
         this.keyW.src = 'other/images/keys/W_Key_Dark.png';
         this.keyS.src = 'other/images/keys/S_Key_Dark.png';
         this.keyL.src = 'other/images/keys/L_Key_Dark.png'; //
@@ -28,7 +28,7 @@ export class Keys {
         this.warnGrey.src = 'other/images/warnGrey.png';
         this.redFlag.src = 'other/images/redFlag.png';
         this.hookDisabled.src = 'other/images/hookDisabled.png';
-        this.hookEnabled.src = 'other/images/hookEnabled.png';*/
+        this.hookEnabled.src = 'other/images/hookEnabled.png';
     }
     drawKeys() {
         ctx.drawImage(this.keyD, 388 + this.camera.x, 600 + this.camera.y) //5652.9319785986945 , -181.7023653299001
