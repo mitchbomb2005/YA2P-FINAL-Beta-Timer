@@ -1,7 +1,7 @@
 const canvas = document.getElementById("game_screen");
 const ctx = canvas.getContext("2d");
 
-import { DrawUtils } from "../../utils/DrawUtils.js"
+import { DrawUtils } from "../../../utils/DrawUtils.js"
 
 export class Menu {
 
