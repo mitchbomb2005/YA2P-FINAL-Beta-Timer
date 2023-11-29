@@ -25,6 +25,7 @@ export class Player {
     wallJumpAmmountRight = false
     hidden = false
     death = false
+    float = 1
 
     // Constant
     debug;
