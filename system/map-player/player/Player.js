@@ -92,7 +92,7 @@ export class Player {
             this.wallJumpAmmountLeft = true
             this.wallJumpAmmountRight = true
         }
-        if (this.keyManager.wasKeyJustPressed("KeyR")){
+        if (this.keyManager.wasKeyJustPressed("KeyR") && !this.keyManager.isKeyPressed("ShiftLeft")){
             this.die()
         }
         this.hidden = this.death
@@ -126,7 +126,7 @@ export class Player {
           }
             
         }
-        if (this.keyManager.isKeyPressed("KeyS")) {
+        if (this.keyManager.isKeyPressed("KeyS") && !this.keyManager.isKeyPressed("ShiftLeft")) {
             this.velY -= this.noclipVelChange;
             if (Math.abs(this.velY) > this.maxVelY) {
                 this.velY = -this.maxVelY;

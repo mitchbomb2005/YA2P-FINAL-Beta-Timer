@@ -20,11 +20,16 @@ export class Edit {
     layer = 0
     layerOffset
     canvasShape = canvas.getBoundingClientRect()
+    game
+    total// = this.game.map.hitboxes.length
+    
 
-    constructor(c, k, d) {
+    constructor(c, k, d, g) {
         this.camera = c
         this.keyMan = k
         this.drawUtlils = d
+        this.game = g
+        this.total = this.game.map.hitboxes.length
 
         document.addEventListener("click", (event) => {
             //this.x = event.clientX;
@@ -47,19 +52,26 @@ export class Edit {
 
     update() {
         if (this.keyMan.wasKeyJustPressed("KeyS") && this.keyMan.isKeyPressed("AltLeft")) {
+            this.fix(this.hitNum)
             this.hitNum++
         }
         if (this.keyMan.wasKeyJustPressed("KeyS") && this.keyMan.isKeyPressed("ShiftLeft")) {
             for (let i = 0; i < this.hitNum; i++) {
                 console.log(
-                "this.hitboxes[", i ,"] = new Hitbox(",
+                "this.hitboxes[", this.total ,"] = new Hitbox(",
                 this.tempHitboxes[i].x,",",
                 this.tempHitboxes[i].y,",",
                 this.tempHitboxes[i].width, ",",
                 this.tempHitboxes[i].height, ",",
                 "false )"
                 )
+                this.addToMap(i)
+                this.total++
+                
             }
+            this.tempHitboxes.splice(0, this.hitNum)
+            this.hitNum = 0
+
         }
         if (this.keyMan.isKeyPressed("AltLeft") && this.keyMan.wasKeyJustPressed("KeyM")) {
             this.layer++
@@ -95,6 +107,26 @@ export class Edit {
             this.layerOffset = 2
         } else if (this.layer == 2) {
             this.layerOffset = 3
+        }
+    }
+
+    addToMap(Q){ //this.game.map.hitboxes.length
+        this.game.map.hitboxes[this.game.map.hitboxes.length] = new Hitbox(
+            this.tempHitboxes[Q].x,
+            this.tempHitboxes[Q].y,
+            this.tempHitboxes[Q].width,
+            this.tempHitboxes[Q].height
+            )
+    }
+
+    fix(hitnum) {
+        if (this.tempHitboxes[hitnum].width < 0) {
+            this.tempHitboxes[hitnum].x += this.tempHitboxes[hitnum].width
+            this.tempHitboxes[hitnum].width = -this.tempHitboxes[hitnum].width 
+        }
+        if (this.tempHitboxes[hitnum].height < 0) {
+            this.tempHitboxes[hitnum].y += this.tempHitboxes[hitnum].height
+            this.tempHitboxes[hitnum].height = -this.tempHitboxes[hitnum].height
         }
     }
 

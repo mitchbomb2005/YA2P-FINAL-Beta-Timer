@@ -32,7 +32,7 @@ export class Game{
     storage = new Storage(this)
     
     camera = new Camera(400, 300, this.debug, this.keyManager)
-    mapEdit= new Edit(this.camera, this.keyManager, this.drawUtils)
+    mapEdit= new Edit(this.camera, this.keyManager, this.drawUtils, this)
     keys = new Keys(this.camera)
     Background = new Background(this.camera)
     checkpoint = new Checkpoint()
