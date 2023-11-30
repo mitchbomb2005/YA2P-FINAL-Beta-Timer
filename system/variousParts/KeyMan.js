@@ -47,8 +47,8 @@ export class KeyManager {
         
         var rect = canvas.getBoundingClientRect()
         this.mousePos = this.getMousePos(canvas, event);
-        this.mousePos.x = (((this.mousePos.x) / (rect.width)) * 1676) - this.camX
-        this.mousePos.y = (((this.mousePos.y) / (rect.height)) * 918) - this.camY
+        this.mousePos.x = (((this.mousePos.x) / (rect.width)) * canvas.width) - this.camX
+        this.mousePos.y = (((this.mousePos.y) / (rect.height)) * canvas.height) - this.camY
         if (this.game.menu.check) {
           this.game.hook.visibility = !this.game.hook.visibility
           this.game.hook.enabled = false
