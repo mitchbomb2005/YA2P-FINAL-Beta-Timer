@@ -72,7 +72,6 @@ export class Debug {
                 }
             }
         }
-        
     }
 
     debugMsg() {

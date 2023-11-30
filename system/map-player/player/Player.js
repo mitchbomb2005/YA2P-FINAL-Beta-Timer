@@ -42,6 +42,8 @@ export class Player {
     coyoteTime = 5
     jumpVel = 30 ; float = .75
     wallJumpVelY = 40 ; wallJumpVelX = 60
+    jumpVel = 30 ; float = .75
+    wallJumpVelY = 40 ; wallJumpVelX = 60
 
     constructor(x, y, keyManager, debug, map, camera, DM, CPM, TPM, extra) {
         this.keyManager = keyManager;
@@ -93,11 +95,13 @@ export class Player {
             this.wallJumpAmmountRight = true
         }
         if (this.keyManager.wasKeyJustPressed("KeyR") && !this.keyManager.isKeyPressed("ShiftLeft")){
+        if (this.keyManager.wasKeyJustPressed("KeyR") && !this.keyManager.isKeyPressed("ShiftLeft")){
             this.die()
         }
         this.hidden = this.death
         //console.log(this.velY)
 
+        }
     }
 
     sleep(ms) {
@@ -127,6 +131,7 @@ export class Player {
             
         }
         if (this.keyManager.isKeyPressed("KeyS") && !this.keyManager.isKeyPressed("ShiftLeft")) {
+        if (this.keyManager.isKeyPressed("KeyS") && !this.keyManager.isKeyPressed("ShiftLeft")) {
             this.velY -= this.noclipVelChange;
             if (Math.abs(this.velY) > this.maxVelY) {
                 this.velY = -this.maxVelY;
@@ -136,7 +141,7 @@ export class Player {
         if (this.velY < -this.maxVelY) {
             this.velY = -this.maxVelY;
         }
-    }
+        }}
 
     #moveNoclip() {
         this.x += this.velX;
@@ -169,6 +174,7 @@ export class Player {
         }
 
         if (this.keyManager.isKeyPressed("KeyW") || this.keyManager.isKeyPressed("Space")) {
+            this.velY += this.float
             this.velY += this.float
                 if (this.velY <= 0 && this.jump > 0) {
                     this.velY += this.jumpVel;     
