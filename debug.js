@@ -60,7 +60,19 @@ export class Debug {
             console.log("map editor")
             this.mapBuilder = !this.mapBuilder
             this.debugMsg()
+            if (this.keyManager.isKeyPressed("ShiftLeft")) {
+                if (this.mapBuilder == true) {
+                    this.grappleHookTest = false
+                    this.noClip = true
+                    this.bean = false
+                } else {
+                    this.grappleHookTest = true
+                    this.noClip = false
+                    this.bean = true
+                }
+            }
         }
+        
     }
 
     debugMsg() {
