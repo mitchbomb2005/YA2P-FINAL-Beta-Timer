@@ -22,6 +22,7 @@ export class Edit {
     canvasShape = canvas.getBoundingClientRect()
     game
     total// = this.game.map.hitboxes.length
+    text
     
 
     constructor(c, k, d, g) {
@@ -50,7 +51,7 @@ export class Edit {
 
 
 
-    update() {
+    async update() {
         if (this.keyMan.wasKeyJustPressed("KeyS") && this.keyMan.isKeyPressed("AltLeft")) {
             this.fix(this.hitNum)
             this.hitNum++
@@ -65,10 +66,24 @@ export class Edit {
                 this.tempHitboxes[i].height, ",",
                 "false )"
                 )
+                //navigator.clipboard.writeText()
                 this.addToMap(i)
                 this.total++
-                
-            }
+                if (this.total != this.game.map.hitboxes.length) {
+                    navigator.clipboard.writeText("")
+                }
+               // navigator.clipboard.readText().then(text =>this.text = text)
+                await navigator.clipboard.writeText(//this.text,
+                    "this.hitboxes[" + this.total + "] = new Hitbox("+
+                    this.tempHitboxes[i].x+ ","+
+                    this.tempHitboxes[i].y+ ","+
+                    this.tempHitboxes[i].width+ ","+
+                    this.tempHitboxes[i].height+ ","+
+                    "false )"
+                )
+                    //navigator.clipboard.writeText("TEXT_TO_BE_COPIED")
+                    //    .then(() => alert("Copied"))
+                }
             this.tempHitboxes.splice(0, this.hitNum)
             this.hitNum = 0
 
@@ -129,5 +144,6 @@ export class Edit {
             this.tempHitboxes[hitnum].height = -this.tempHitboxes[hitnum].height
         }
     }
+
 
 }
