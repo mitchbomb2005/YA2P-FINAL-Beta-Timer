@@ -22,6 +22,7 @@ export class Edit {
     canvasShape = canvas.getBoundingClientRect()
     game
     total// = this.game.map.hitboxes.length
+    start
     text
     
 
@@ -31,6 +32,7 @@ export class Edit {
         this.drawUtlils = d
         this.game = g
         this.total = this.game.map.hitboxes.length
+        this.start = this.game.map.hitboxes.length
 
         document.addEventListener("click", (event) => {
             //this.x = event.clientX;
@@ -59,7 +61,7 @@ export class Edit {
         if (this.keyMan.wasKeyJustPressed("KeyS") && this.keyMan.isKeyPressed("ShiftLeft")) {
             for (let i = 0; i < this.hitNum; i++) {
                 console.log(
-                "this.hitboxes[", this.total ,"] = new Hitbox(",
+                    "this.hitboxes[", this.total ,"] = new Hitbox(",
                 this.tempHitboxes[i].x,",",
                 this.tempHitboxes[i].y,",",
                 this.tempHitboxes[i].width, ",",
@@ -67,20 +69,21 @@ export class Edit {
                 "false )"
                 )
                 //navigator.clipboard.writeText()
-                this.addToMap(i)
+                
                 this.total++
-                if (this.total != this.game.map.hitboxes.length) {
-                    navigator.clipboard.writeText("")
+                if (this.start == this.game.map.hitboxes.length) {
+                    navigator.clipboard.writeText(" ")
                 }
-               // navigator.clipboard.readText().then(text =>this.text = text)
-                await navigator.clipboard.writeText(//this.text,
+                await navigator.clipboard.readText().then(text =>this.text = text)
+                await navigator.clipboard.writeText(this.text+
                     "this.hitboxes[" + this.total + "] = new Hitbox("+
                     this.tempHitboxes[i].x+ ","+
                     this.tempHitboxes[i].y+ ","+
                     this.tempHitboxes[i].width+ ","+
                     this.tempHitboxes[i].height+ ","+
-                    "false )"
+                    "false )\n "
                 )
+                this.addToMap(i)
                     //navigator.clipboard.writeText("TEXT_TO_BE_COPIED")
                     //    .then(() => alert("Copied"))
                 }
