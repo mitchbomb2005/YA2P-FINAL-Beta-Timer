@@ -45,7 +45,13 @@ export class Sound{
     key = false
 
     playSound(){
-
+        this.breakSound(0)
+        this.jumpSound(0)
+        this.hookSound(0)
+        this.hookHitSound(0)
+        this.hurtSound(0)
+        this.menuSound(0)
+        this.wallJumpSound(0)
     }
         
     async playSongLoop(){
