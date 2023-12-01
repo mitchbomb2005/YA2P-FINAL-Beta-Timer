@@ -51,7 +51,7 @@ export class Sound{
         this.hookHitSound(0)
         this.hurtSound(0)
         this.menuSound(0)
-        this.wallJumpSound(0)
+        this.wallJumpSound(0) 
     }
         
     async playSongLoop(){
