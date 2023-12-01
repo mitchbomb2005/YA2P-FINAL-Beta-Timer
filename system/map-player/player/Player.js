@@ -40,9 +40,8 @@ export class Player {
     noclipVelChange = 10;
     velChange = 4;
     coyoteTime = 5
-    jumpVel = 30 ; float = .75
-    wallJumpVelY = 40 ; wallJumpVelX = 60
-    jumpVel = 30 ; float = .75
+    jumpVel = 30 ; float = .35; gravity = 1.5
+    friction = .8; airFriction = .85; hookFriction = .95
     wallJumpVelY = 40 ; wallJumpVelX = 60
 
     constructor(x, y, keyManager, debug, map, camera, DM, CPM, TPM, extra) {
@@ -95,13 +94,12 @@ export class Player {
             this.wallJumpAmmountRight = true
         }
         if (this.keyManager.wasKeyJustPressed("KeyR") && !this.keyManager.isKeyPressed("ShiftLeft")){
-        if (this.keyManager.wasKeyJustPressed("KeyR") && !this.keyManager.isKeyPressed("ShiftLeft")){
             this.die()
         }
         this.hidden = this.death
         //console.log(this.velY)
 
-        }
+        
     }
 
     sleep(ms) {
@@ -216,11 +214,11 @@ export class Player {
 
 
         if (this.jump == 5) {
-            this.velX = this.velX * .8
+            this.velX = this.velX * this.friction
         }  else if (this.game.hook.enabled == true) {
-            this.velX = this.velX * .95
+            this.velX = this.velX * this.hookFriction
         } else {
-            this.velX = this.velX * .85
+            this.velX = this.velX * this.airFriction
         }
 
         if (this.game.hook.enabled && false) {
@@ -259,7 +257,7 @@ export class Player {
             this.velY = this.velY * .99
         }
         
-        this.velY = this.velY - 1.5
+        this.velY = this.velY - this.gravity
         this.velY = this.velY * .997
 
         if (this.velY > this.maxVelY + 50) {
