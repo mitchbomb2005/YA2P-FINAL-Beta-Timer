@@ -35,17 +35,28 @@ export class Hook{
         }
 
         if (this.visibility && !this.fixed){
-            for (let i = 0; i < this.game.map.hitboxes.length; i++){
-                if(this.#collisionCheck(this.game.map, i)){
-                    this.enabled = true
-                    this.motion = false
 
-                    if (!this.fixed) {
-                        this.fixPos(this.game.map, i)
-                        this.game.audio.hookHitSound()
+            for (let i = 0; i < this.game.map.hitboxes.length; i++){
+                    if(this.#collisionCheck(this.game.map, i)){
+                        this.enabled = true
+                       this.motion = false
+
+                        if (!this.fixed) {
+                            this.fixPos(this.game.map, i)
+                            this.game.audio.hookHitSound()
+                        
+                        }
                     }
-                }
             }
+
+            for (let i = 0; i < this.game.deathMap.hitboxes.length; i++){
+                if(this.#collisionCheck(this.game.deathMap, i)){
+                    this.visibility = false
+                    this.enabled = false
+                    this.motion = false
+                    this.game.audio.breakSound()
+    
+                }}
         }
         
         

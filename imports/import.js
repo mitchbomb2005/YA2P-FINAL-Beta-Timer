@@ -25,6 +25,7 @@ export class Game{
     map = new Map();
     deathMap = new DeathMap()
     teleport = new Teleport()
+    
     keyManager = new KeyManager(this);
     debug = new Debug(this.keyManager);
     menu = new Menu(this)
@@ -32,7 +33,6 @@ export class Game{
     storage = new Storage(this)
     
     camera = new Camera(400, 300, this.debug, this.keyManager)
-    mapEdit= new Edit(this.camera, this.keyManager, this.drawUtils, this)
     mapEdit= new Edit(this.camera, this.keyManager, this.drawUtils, this)
     keys = new Keys(this.camera)
     Background = new Background(this.camera)
