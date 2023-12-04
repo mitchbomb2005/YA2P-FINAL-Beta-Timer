@@ -31,18 +31,29 @@ export class Keys {
         this.hookEnabled.src = 'other/images/hookEnabled.png';
     }
     drawKeys() {
-        ctx.drawImage(this.keyD, 388 + this.camera.x, 600 + this.camera.y) //5652.9319785986945 , -181.7023653299001
+
+        this.drawMisc()
         this.jump(4480, 245)
         this.jump(3850, -410)
-        this.jump(2273.265700406848 , 642.4999999999999 )
-        ctx.drawImage(this.hookEnabled, 5803.8752307244795 + this.camera.x, -199.17987904329323 + this.camera.y)
-        ctx.drawImage(this.redFlag, 1544.8500139551425 + this.camera.x, 67.9775041778131 + this.camera.y, 100, 100)
-        ctx.drawImage(this.leftClick, 5702.9319785986945 + this.camera.x, -181.7023653299001 + this.camera.y)
-    }
+        this.jump(2273, 642)
+        this.hookTip(5704,-200,0)
+
+    } // 6851 -130
+ 
 
     jump(x, y) {
         ctx.drawImage(this.keyW, x + this.camera.x, y + this.camera.y)
         ctx.drawImage(this.keySpace, x + this.camera.x, (y + 50) + this.camera.y)
+    }
+
+    hookTip(x, y, type){
+        ctx.drawImage(this.leftClick, x + this.camera.x, y + this.camera.y)
+        ctx.drawImage(this.hookEnabled, x+100 + this.camera.x, y + this.camera.y)
+    }
+
+    drawMisc(){
+        ctx.drawImage(this.keyD, 388 + this.camera.x, 600 + this.camera.y)
+        ctx.drawImage(this.redFlag, 1544.8500139551425 + this.camera.x, 67.9775041778131 + this.camera.y, 100, 100)
     }
     
 }
