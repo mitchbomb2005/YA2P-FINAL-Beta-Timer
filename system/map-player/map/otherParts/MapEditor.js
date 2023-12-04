@@ -87,8 +87,7 @@ export class Edit {
                     //navigator.clipboard.writeText("TEXT_TO_BE_COPIED")
                     //    .then(() => alert("Copied"))
                 }
-            this.tempHitboxes.splice(0, this.hitNum)
-            this.hitNum = 0
+            this.delete("all")
 
         }
         if (this.keyMan.isKeyPressed("AltLeft") && this.keyMan.wasKeyJustPressed("KeyM")) {
@@ -97,6 +96,14 @@ export class Edit {
                 this.layer = 0
             }
         }
+        if (this.keyMan.isKeyPressed("AltLeft") && this.keyMan.wasKeyJustPressed("KeyR")){
+            this.delete("last")
+        }        
+        if (this.keyMan.isKeyPressed("ShiftLeft") && this.keyMan.wasKeyJustPressed("KeyR")){
+            this.game.map.hitboxes.splice(this.total - 1, 1)
+            this.total -= 1 
+        }
+
         this.tempHitboxes[this.hitNum] = new Hitbox( 
             (this.x),
             (this.y),
@@ -148,5 +155,19 @@ export class Edit {
         }
     }
 
+    delete(peram, num = 1) {
+        if(peram == "all"){
+            this.tempHitboxes.splice(0, this.hitNum)
+            this.hitNum = 0
+        }
+        if (peram == "last") {
+            this.tempHitboxes.splice(this.hitNum - num, num)
+            this.hitNum = this.hitNum - num
+        }
+        if (peram == "first") {
+            this.tempHitboxes.splice(0, num)
+            this.hitNum = this.hitNum - num
+        }
 
+    }
 }

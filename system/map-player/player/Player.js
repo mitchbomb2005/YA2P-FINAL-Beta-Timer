@@ -93,7 +93,7 @@ export class Player {
             this.wallJumpAmmountLeft = true
             this.wallJumpAmmountRight = true
         }
-        if (this.keyManager.wasKeyJustPressed("KeyR") && !this.keyManager.isKeyPressed("ShiftLeft")){
+        if (this.keyManager.wasKeyJustPressed("KeyR") && (!this.keyManager.isKeyPressed("ShiftLeft") && !this.keyManager.isKeyPressed("AltLeft"))){
             this.die()
         }
         this.hidden = this.death
