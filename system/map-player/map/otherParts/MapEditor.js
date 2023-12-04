@@ -65,8 +65,8 @@ export class Edit {
                 this.tempHitboxes[i].x,",",
                 this.tempHitboxes[i].y,",",
                 this.tempHitboxes[i].width, ",",
-                this.tempHitboxes[i].height, ",",
-                "false )"
+                this.tempHitboxes[i].height,
+                " )"
                 )
                 //navigator.clipboard.writeText()
                 
@@ -80,8 +80,8 @@ export class Edit {
                     this.tempHitboxes[i].x+ ","+
                     this.tempHitboxes[i].y+ ","+
                     this.tempHitboxes[i].width+ ","+
-                    this.tempHitboxes[i].height+ ","+
-                    "false )\n "
+                    this.tempHitboxes[i].height+
+                    " )\n "
                 )
                 this.addToMap(i)
                     //navigator.clipboard.writeText("TEXT_TO_BE_COPIED")
