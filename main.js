@@ -43,7 +43,12 @@ class Main {
         this.game.player.update();
         this.game.debug.update(); 
         this.game.camera.update();
-        this.game.mapEdit.update();
+
+        if(this.game.debug.mapBuilder){
+            this.game.mapEdit.update();
+        }
+
+
         this.game.hook.update();
         this.game.storage.update()
         
