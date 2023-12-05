@@ -24,6 +24,7 @@ export class Edit {
     total// = this.game.map.hitboxes.length
     start
     text
+    first = true
     
 
     constructor(c, k, d, g) {
@@ -59,6 +60,10 @@ export class Edit {
             this.hitNum++
         }
         if (this.keyMan.wasKeyJustPressed("KeyS") && this.keyMan.isKeyPressed("ShiftLeft")) {
+            if(this.first == true) {
+                this.first = false
+                navigator.clipboard.writeText(" ")
+            }
             for (let i = 0; i < this.hitNum; i++) {
                 console.log(
                     "this.hitboxes[", this.total ,"] = new Hitbox(",
@@ -70,9 +75,40 @@ export class Edit {
                 )
                 //navigator.clipboard.writeText()
                 
+                
+
+                await navigator.clipboard.readText().then(text =>this.text = text)
+                if(this.layer == 0) {
+                    await navigator.clipboard.writeText(this.text+
+                        "this.hitboxes[" + this.total + "] = new Hitbox("+
+                        this.tempHitboxes[i].x+ ","+
+                        this.tempHitboxes[i].y+ ","+
+                        this.tempHitboxes[i].width+ ","+
+                        this.tempHitboxes[i].height+
+                        " )\n "
+                    )
+                } else if (this.layer == 1) {
+                    await navigator.clipboard.writeText(this.text+
+                        "this.layer1[" + (this.game.Background.layer1.length) + "] = new Hitbox("+
+                        this.tempHitboxes[i].x+ ","+
+                        this.tempHitboxes[i].y+ ","+
+                        this.tempHitboxes[i].width+ ","+
+                        this.tempHitboxes[i].height+
+                        " )\n "
+                    )
+                } else if (this.layer == 2) {
+                    await navigator.clipboard.writeText(this.text+
+                        "this.layer2[" + (this.game.Background.layer2.length) + "] = new Hitbox("+
+                        this.tempHitboxes[i].x+ ","+
+                        this.tempHitboxes[i].y+ ","+
+                        this.tempHitboxes[i].width+ ","+
+                        this.tempHitboxes[i].height+
+                        " )\n "
+                    )
+                }
+
                 this.total++
 
-                this.addToClipboard(i)
                 this.addToMap(i)
                     //navigator.clipboard.writeText("TEXT_TO_BE_COPIED")
                     //    .then(() => alert("Copied"))
@@ -151,38 +187,6 @@ export class Edit {
 
     }
 
-    async addToClipboard(i){
-        await navigator.clipboard.readText().then(text =>this.text = text)
-        if(this.layer == 0) {
-            await navigator.clipboard.writeText(this.text+
-                "this.hitboxes[" + this.total + "] = new Hitbox("+
-                this.tempHitboxes[i].x+ ","+
-                this.tempHitboxes[i].y+ ","+
-                this.tempHitboxes[i].width+ ","+
-                this.tempHitboxes[i].height+
-                " )\n "
-            )
-        } else if (this.layer == 1) {
-            await navigator.clipboard.writeText(this.text+
-                "this.layer1[" + (this.game.Background.layer1.length + 1) + "] = new Hitbox("+
-                this.tempHitboxes[i].x+ ","+
-                this.tempHitboxes[i].y+ ","+
-                this.tempHitboxes[i].width+ ","+
-                this.tempHitboxes[i].height+
-                " )\n "
-            )
-        } else if (this.layer == 2) {
-            await navigator.clipboard.writeText(this.text+
-                "this.layer2[" + (this.game.Background.layer2.length + 1) + "] = new Hitbox("+
-                this.tempHitboxes[i].x+ ","+
-                this.tempHitboxes[i].y+ ","+
-                this.tempHitboxes[i].width+ ","+
-                this.tempHitboxes[i].height+
-                " )\n "
-            )
-        }
-    }
-
     fix(hitnum) {
         if (this.tempHitboxes[hitnum].width < 0) {
             this.tempHitboxes[hitnum].x += this.tempHitboxes[hitnum].width
@@ -210,3 +214,4 @@ export class Edit {
 
     }
 }
+

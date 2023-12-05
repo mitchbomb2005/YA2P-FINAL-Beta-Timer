@@ -128,8 +128,8 @@ export class Player {
           }
             
         }
-        if (this.keyManager.isKeyPressed("KeyS") && !this.keyManager.isKeyPressed("ShiftLeft")) {
-        if (this.keyManager.isKeyPressed("KeyS") && !this.keyManager.isKeyPressed("ShiftLeft")) {
+        
+        if (this.keyManager.isKeyPressed("KeyS") && (!this.keyManager.isKeyPressed("ShiftLeft") && !this.keyManager.isKeyPressed("AltLeft"))) {
             this.velY -= this.noclipVelChange;
             if (Math.abs(this.velY) > this.maxVelY) {
                 this.velY = -this.maxVelY;
@@ -139,7 +139,7 @@ export class Player {
         if (this.velY < -this.maxVelY) {
             this.velY = -this.maxVelY;
         }
-        }}
+        }
 
     #moveNoclip() {
         this.x += this.velX;
