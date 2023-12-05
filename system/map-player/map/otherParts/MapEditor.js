@@ -71,18 +71,8 @@ export class Edit {
                 //navigator.clipboard.writeText()
                 
                 this.total++
-                if (this.start == this.game.map.hitboxes.length) {
-                    navigator.clipboard.writeText(" ")
-                }
-                await navigator.clipboard.readText().then(text =>this.text = text)
-                await navigator.clipboard.writeText(this.text+
-                    "this.hitboxes[" + this.total + "] = new Hitbox("+
-                    this.tempHitboxes[i].x+ ","+
-                    this.tempHitboxes[i].y+ ","+
-                    this.tempHitboxes[i].width+ ","+
-                    this.tempHitboxes[i].height+
-                    " )\n "
-                )
+
+                this.addToClipboard(i)
                 this.addToMap(i)
                     //navigator.clipboard.writeText("TEXT_TO_BE_COPIED")
                     //    .then(() => alert("Copied"))
@@ -136,12 +126,61 @@ export class Edit {
     }
 
     addToMap(Q){ //this.game.map.hitboxes.length
-        this.game.map.hitboxes[this.game.map.hitboxes.length] = new Hitbox(
-            this.tempHitboxes[Q].x,
-            this.tempHitboxes[Q].y,
-            this.tempHitboxes[Q].width,
-            this.tempHitboxes[Q].height
+        if (this.layer == 0) {
+            this.game.map.hitboxes[this.game.map.hitboxes.length] = new Hitbox(
+                this.tempHitboxes[Q].x,
+                this.tempHitboxes[Q].y,
+                this.tempHitboxes[Q].width,
+                this.tempHitboxes[Q].height
+                )
+        } else if (this.layer == 1) {
+            this.game.Background.layer1[this.game.Background.layer1.length] = new Hitbox(
+                this.tempHitboxes[Q].x,
+                this.tempHitboxes[Q].y,
+                this.tempHitboxes[Q].width,
+                this.tempHitboxes[Q].height
+                )
+        } else if (this.layer == 2) {
+            this.game.Background.layer2[this.game.Background.layer2.length] = new Hitbox(
+                this.tempHitboxes[Q].x,
+                this.tempHitboxes[Q].y,
+                this.tempHitboxes[Q].width,
+                this.tempHitboxes[Q].height
+                )
+        }
+
+    }
+
+    async addToClipboard(i){
+        await navigator.clipboard.readText().then(text =>this.text = text)
+        if(this.layer == 0) {
+            await navigator.clipboard.writeText(this.text+
+                "this.hitboxes[" + this.total + "] = new Hitbox("+
+                this.tempHitboxes[i].x+ ","+
+                this.tempHitboxes[i].y+ ","+
+                this.tempHitboxes[i].width+ ","+
+                this.tempHitboxes[i].height+
+                " )\n "
             )
+        } else if (this.layer == 1) {
+            await navigator.clipboard.writeText(this.text+
+                "this.layer1[" + (this.game.Background.layer1.length + 1) + "] = new Hitbox("+
+                this.tempHitboxes[i].x+ ","+
+                this.tempHitboxes[i].y+ ","+
+                this.tempHitboxes[i].width+ ","+
+                this.tempHitboxes[i].height+
+                " )\n "
+            )
+        } else if (this.layer == 2) {
+            await navigator.clipboard.writeText(this.text+
+                "this.layer2[" + (this.game.Background.layer2.length + 1) + "] = new Hitbox("+
+                this.tempHitboxes[i].x+ ","+
+                this.tempHitboxes[i].y+ ","+
+                this.tempHitboxes[i].width+ ","+
+                this.tempHitboxes[i].height+
+                " )\n "
+            )
+        }
     }
 
     fix(hitnum) {
