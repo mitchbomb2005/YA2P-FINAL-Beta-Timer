@@ -22,18 +22,19 @@ class Main {
             if (this.game.debug.mapBuilder) {
                 this.game.mapEdit.drawHitbox()
             }
-
+            
+            this.game.keys.drawKeys()
             if(this.game.menu.check) {
-                this.game.keys.drawKeys()
                 this.updateGame();
             } else {
                 this.game.menu.drawMenu()
-                if(this.game.keyManager.wasKeyJustPressed("KeyW")) {
+                if(this.game.keyManager.wasKeyJustPressed("KeyW") && !this.game.menu.checkDos) {
                     this.game.menu.fade()
                 }
             }/**/
             this.game.keyManager.update();
             await this.sleep(1000/60);
+            
         }
     } 
 
@@ -51,6 +52,10 @@ class Main {
 
         this.game.hook.update();
         this.game.storage.update()
+
+        if (this.game.keyManager.wasKeyJustPressed("KeyP") && this.game.menu.checkDos) {
+            this.game.menu.fade("up")
+        }
         
 
         // Update input

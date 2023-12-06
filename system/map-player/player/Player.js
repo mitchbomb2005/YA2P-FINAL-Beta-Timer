@@ -4,12 +4,8 @@ import { Hitbox } from ".././Hitbox.js";
 
 export class Player {
 
-    // System
-    keyManager;
-
-    // Variables
     x; velX = 0; maxVelX = 100;
-    y; velY = 0; maxVelY = 50;
+    y; velY = 0; maxVelY = 50; avgVelY = 0
     noclipVelChange = 10; velChange = 4;
     friction = .8; airFriction = .85; hookFriction = .95;
 
@@ -23,7 +19,7 @@ export class Player {
     respawnX; respawnVelX; 
     respawnY; respawnVelY;
 
-    debug; extra; camera;
+    debug; extra; camera; keyManager;
     map; deathMap; checkpointMap; teleportMap
 
     stuck = false; death = false; hidden = false;
@@ -252,6 +248,8 @@ export class Player {
             this.velY = -this.maxVelY;
             console.log("fixed velocity")
         }
+
+        this.avgVelY = (this.avgVelY + this.velY)/2
 
         /*
         if (this.keyManager.isKeyPressed("KeyS")) {
