@@ -8,41 +8,26 @@ export class Player {
     keyManager;
 
     // Variables
-    velX = 0;
-    velY = 0;
-    x;
-    y;
-    respawnX
-    respawnVelX
-    respawnY
-    respawnVelY
-    jump = 0;
-    jumpState = false
-    wallJumpLeft = false
-    wallJumpRight = false
-    stuck = false
-    wallJumpAmmountLeft = false
-    wallJumpAmmountRight = false
-    hidden = false
-    death = false
+    x; velX = 0; maxVelX = 100;
+    y; velY = 0; maxVelY = 50;
+    noclipVelChange = 10; velChange = 4;
+    friction = .8; airFriction = .85; hookFriction = .95;
 
-    // Constant
-    debug;
-    extra;
-    map;
-    camera;
-    deathMap;
-    checkpointMap;
-    teleportMap
-    playerHitbox = new Array()
-    maxVelX = 100;
-    maxVelY = 50;
-    noclipVelChange = 10;
-    velChange = 4;
-    coyoteTime = 5
-    jumpVel = 30 ; float = .35; gravity = 1.5
-    friction = .8; airFriction = .85; hookFriction = .95
+    jump = 0; jumpState = false; coyoteTime = 5;
+    jumpVel = 30 ; float = .35; gravity = 1.5; 
+
+    wallJumpLeft = false; wallJumpAmmountLeft = false;
+    wallJumpRight = false; wallJumpAmmountRight = false;
     wallJumpVelY = 40 ; wallJumpVelX = 60
+
+    respawnX; respawnVelX; 
+    respawnY; respawnVelY;
+
+    debug; extra; camera;
+    map; deathMap; checkpointMap; teleportMap
+
+    stuck = false; death = false; hidden = false;
+    playerHitbox = new Array();
 
     constructor(x, y, keyManager, debug, map, camera, DM, CPM, TPM, extra) {
         this.keyManager = keyManager;

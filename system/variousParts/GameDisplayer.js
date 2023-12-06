@@ -59,7 +59,7 @@ export class GameDisplayer {
         }
         this.teleport.draw(this.camera.x, this.camera.y)
         if(this.debug.bean && !this.player.hidden) {
-            this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50, 100) 
+            this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50, 100 + Math.abs(this.player.velY / 2)) 
         }
         this.deathMap.draw(this.camera.x, this.camera.y);
         this.checkpoint.draw(this.camera.x, this.camera.y) 
