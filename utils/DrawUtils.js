@@ -71,11 +71,11 @@ export class DrawUtils {
         ctx.fillText(text, x, y);
     }
 
-    Line(x1, y1, x2, y2, color) {
+    Line(x1, y1, x2, y2, color, width = 20) {
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
-        ctx.lineWidth = 20
+        ctx.lineWidth = width
         ctx.strokeStyle = color;
         ctx.lineCap = "round";
         ctx.stroke();

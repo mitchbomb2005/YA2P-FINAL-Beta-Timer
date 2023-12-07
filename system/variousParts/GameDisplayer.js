@@ -54,7 +54,8 @@ export class GameDisplayer {
                     this.game.hook.y1,
                     this.game.hook.x2 + this.camera.x,
                     this.game.hook.y2 + this.camera.y,/**/
-                    "#A06000")
+                    "#A06000",
+                    30 + -this.game.hook.length/70)
             }
         }
         this.teleport.draw(this.camera.x, this.camera.y)
