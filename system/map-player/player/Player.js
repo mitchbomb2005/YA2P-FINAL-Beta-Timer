@@ -251,7 +251,7 @@ export class Player {
             console.log("fixed velocity")
         }
 
-        this.avgVelY = (this.avgVelY + this.velY)/2
+        this.avgVelY = (this.avgVelY + this.velY + Math.abs(this.velX))/3
 
         /*
         if (this.keyManager.isKeyPressed("KeyS")) {
