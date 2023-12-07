@@ -48,7 +48,7 @@ export class Debug {
     }
 
     flipFreeCam() {
-        if (this.keyManager.wasKeyJustPressed("Keyf")) {
+        if (this.keyManager.wasKeyJustPressed("KeyF")) {
             console.log("free Camera")
             this.freeCam = !this.freeCam
             this.debugMsg()

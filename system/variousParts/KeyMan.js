@@ -105,7 +105,7 @@ export class KeyManager {
         case "KeyC": return !this.keysPressedLastFrame[2] && this.keysCurrentlyPressed[2];
         case "KeyD": return !this.keysPressedLastFrame[3] && this.keysCurrentlyPressed[3];
         case "KeyE": return !this.keysPressedLastFrame[4] && this.keysCurrentlyPressed[4];
-        case "Keyf": return !this.keysPressedLastFrame[5] && this.keysCurrentlyPressed[5];
+        case "KeyF": return !this.keysPressedLastFrame[5] && this.keysCurrentlyPressed[5];
         case "KeyG": return !this.keysPressedLastFrame[6] && this.keysCurrentlyPressed[6];
         case "KeyH": return !this.keysPressedLastFrame[7] && this.keysCurrentlyPressed[7];
         case "KeyI": return !this.keysPressedLastFrame[8] && this.keysCurrentlyPressed[8];
@@ -147,7 +147,7 @@ export class KeyManager {
         case "KeyC": return this.keysCurrentlyPressed[2];
         case "KeyD": return this.keysCurrentlyPressed[3];
         case "KeyE": return this.keysCurrentlyPressed[4];
-        case "Keyf": return this.keysCurrentlyPressed[5];
+        case "KeyF": return this.keysCurrentlyPressed[5];
         case "KeyG": return this.keysCurrentlyPressed[6];
         case "KeyH": return this.keysCurrentlyPressed[7];
         case "KeyI": return this.keysCurrentlyPressed[8];
@@ -215,7 +215,7 @@ export class KeyManager {
         case "KeyE":
           this.keyBuffer[4] = pressed;
           break;
-        case "Keyf":
+        case "KeyF":
           this.keyBuffer[5] = pressed;
           break;
         case "KeyG":
