@@ -264,7 +264,7 @@ export class Player {
     }
 
     #move() {
-        this.x += this.velX;
+        this.x += this.velX //* this.game.main.deltaTime;
         this.y += this.velY;
         this.jump--
         this.#colide()

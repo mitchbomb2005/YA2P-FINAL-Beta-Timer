@@ -38,9 +38,10 @@ export class Game{
     Background = new Background(this.camera)
     checkpoint = new Checkpoint()
     audio = new Audio()
+    main
     
     
-    constructor() {
+    constructor(tld) {
         this.player = new Player(-438, -509, 
             this.keyManager, 
             this.debug, 
@@ -51,6 +52,8 @@ export class Game{
             this.teleport,
             this
         );
+
+        this.main = tld
 
         this.gameDisplayer = new GameDisplayer(
             this, 

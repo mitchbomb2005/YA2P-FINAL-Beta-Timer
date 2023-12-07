@@ -4,7 +4,10 @@ import { Game } from "./imports/import.js"
 
 class Main {
 
-    game = new Game()
+    game = new Game(this)
+    currentTime = 1
+    deltaTime = 1
+    lastTime
 
     async startGame() {
         if(localStorage) {this.game.storage.accessible = false} else {this.game.storage.accessible = true}
@@ -13,6 +16,10 @@ class Main {
         //this.game.autoDebug()
         while (true) {
             //this.game.updateGame();
+
+           
+            this.currentTime = Date.now();
+            
             
             this.game.gameDisplayer.drawGameFrame();
             if (this.game.debug.playerHitbox) {
@@ -33,12 +40,14 @@ class Main {
                 }
             }/**/
             this.game.keyManager.update();
+            this.lastTime = Date.now()
             await this.sleep(1000/60);
             
         }
     } 
 
-    updateGame() {
+    updateGame() { 
+        
 
         // Update variables
         this.game.player.update();
@@ -52,10 +61,14 @@ class Main {
 
         this.game.hook.update();
         this.game.storage.update()
+        this.DeltaTime()
 
         if (this.game.keyManager.wasKeyJustPressed("KeyP") && this.game.menu.checkDos) {
             this.game.menu.fade("up")
         }
+        
+        this.deltaTime = (this.currentTime - this.lastTime)/20;
+        console.log(this.deltaTime, this.lastTime, this.currentTime, Date.now());
         
 
         // Update input
@@ -71,7 +84,13 @@ class Main {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
+    DeltaTime(){
+
+        
+        
+    }
 }
+
 
 var game = new Main();
 
