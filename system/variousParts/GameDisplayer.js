@@ -59,7 +59,13 @@ export class GameDisplayer {
         }
         this.teleport.draw(this.camera.x, this.camera.y)
         if(this.debug.bean && !this.player.hidden) {  
-             this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50 + (this.player.avgVelY/2), 100 - this.player.avgVelY) 
+            if (this.player.avgVelY > 20){
+                this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50 + (20/2), 100 - 20) 
+            } else if (this.player.avgVelY < -20){
+                this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50 + (-20/2), 100 + 20) 
+            } else{
+                this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50 + (this.player.avgVelY/2), 100 - this.player.avgVelY) 
+            }
             
             
         }

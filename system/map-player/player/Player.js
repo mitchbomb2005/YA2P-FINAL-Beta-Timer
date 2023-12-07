@@ -9,7 +9,7 @@ export class Player {
     noclipVelChange = 10; velChange = 4;
     friction = .8; airFriction = .85; hookFriction = .95;
 
-    jump = 0; jumpState = false; coyoteTime = 5;
+    jump = 0; lastJump = 0; coyoteTime = 5;
     jumpVel = 30 ; float = .35; gravity = 1.5; 
 
     wallJumpLeft = false; wallJumpAmmountLeft = false;
@@ -55,6 +55,7 @@ export class Player {
     }
 
     update() {
+        this.lastJump = this.jump
         if(this.debug.noClip) {
             this.#updateVelocityNoclip();
             this.#moveNoclip();
@@ -159,7 +160,8 @@ export class Player {
                     this.velY += this.jumpVel;     
                 } else if (this.keyManager.wasKeyJustPressed("KeyW") || this.keyManager.wasKeyJustPressed("Space")) {
                     if (this.jump > 0) {
-                        this.velY += this.jumpVel;   
+                        this.velY += this.jumpVel; 
+                        
                         this.game.audio.jumpSound()
                     } else if (this.wallJumpLeft) {
                         if (this.velY < 0) {
@@ -191,8 +193,8 @@ export class Player {
 
         if (this.keyManager.isKeyPressed("KeyS")) {
             this.velY -= 2
+            this.avgVelY += 4
         }
-
 
         if (this.jump == 5) {
             this.velX = this.velX * this.friction
