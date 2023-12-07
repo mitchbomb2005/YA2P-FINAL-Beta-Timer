@@ -43,7 +43,7 @@ export class KeyManager {
         this.setKeyPressed(code, false)
       }, false);
 
-      document.addEventListener("click", (event) => {
+      document.addEventListener("mousedown", (event) => {
         
         var rect = canvas.getBoundingClientRect()
         this.mousePos = this.getMousePos(canvas, event);
