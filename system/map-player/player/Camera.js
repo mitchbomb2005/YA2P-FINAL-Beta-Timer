@@ -12,21 +12,27 @@ export class Camera {
     mouseY
     mouseXSto
     mouseYSto
+    velX
+    velY
     midX = canvas.offsetWidth / 2
     midY = canvas.offsetHeight / 2
+    game
 
 
 
-    constructor(x, y, debug, keyman) {
+    constructor(x, y, debug, keyman, game) {
         this.x = x
         this.y = y
         this.debug = debug
         this.keyMan = keyman
+        this.game = game
     }
 
     update() {
         if (this.debug.freeCam) {
             this.freeCamMove()
+        } else {
+            this.move()
         }
         this.keyMan.camY = this.y
         this.keyMan.camX = this.x
@@ -34,5 +40,12 @@ export class Camera {
     }
 
 
-    freeCamMove() {}
+    freeCamMove() {}z
+
+    move() {
+        this.velX = ((this.x - this.midX) - this.game.player.x)  /10
+        this.x -=  this.velX
+        this.velY = ((this.y - this.midY) - this.game.player.y)  /10
+        this.y -=  this.velY
+    }
 }

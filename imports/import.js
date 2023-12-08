@@ -16,6 +16,7 @@ import { Hook } from "../system/map-player/player/hook.js"
 import { Storage } from "../storage/storage.js"
 import { Sound as Audio } from "../system/map-player/map/otherParts/audio.js"
 
+
 export class Game{
     // System
     gameDisplayer;
@@ -26,19 +27,20 @@ export class Game{
     deathMap = new DeathMap()
     teleport = new Teleport()
     
+    
     keyManager = new KeyManager(this);
     debug = new Debug(this.keyManager);
     menu = new Menu(this)
     drawUtils = new DrawUtils()
     storage = new Storage(this)
     
-    camera = new Camera(400, 300, this.debug, this.keyManager)
+    camera = new Camera(400, 300, this.debug, this.keyManager, this)
     mapEdit= new Edit(this.camera, this.keyManager, this.drawUtils, this)
     keys = new Keys(this.camera)
     Background = new Background(this.camera)
     checkpoint = new Checkpoint()
     audio = new Audio()
-    main
+    main 
     
     
     constructor(tld) {

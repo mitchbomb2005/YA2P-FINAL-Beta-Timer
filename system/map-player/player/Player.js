@@ -68,8 +68,8 @@ export class Player {
         /*    this.camera.x = this.x + 900
             this.camera.y = this.y + 500 /**/
 
-        /**/    this.camera.x = this.camera.x - (((this.camera.x - this.camera.midX) - this.x) / 10)
-            this.camera.y = this.camera.y - (((this.camera.y - this.camera.midY) - this.y) / 10) /**/
+        /*    this.camera.x -=((((this.camera.x - this.camera.midX) - this.x) / 10))
+            this.camera.y -= (((this.game.timeUtils.speedFactor* (this.camera.y - this.camera.midY) - this.y) / 10)) /**/
         }
         if (this.jump > 0) {
             this.wallJumpAmmountLeft = true
