@@ -19,6 +19,7 @@ export class GameDisplayer {
     player; 
     deathMap;
     teleport
+    grid = new Image()
     
     // fields
     originalWidth = canvas.width;
@@ -37,16 +38,22 @@ export class GameDisplayer {
         this.background = BG
         this.checkpoint = CPM
         this.teleport = TP
+        this.grid.src = 'other/images/grid.png'
     }
 
     // methods (functions)
     drawGameFrame() {
 
         this.resizeCanvasForWindowSize();
-        ctx.fillStyle = "#a7c7d8";
-        ctx.rect(0, 0, 100000, 10000) 
-        ctx.fill()
-        this.background.Draw()
+        if(!this.debug.backGrid) {
+            ctx.fillStyle = "#a7c7d8";
+            ctx.rect(0, 0, 100000, 10000) 
+            ctx.fill()
+            this.background.Draw()
+        } else {
+            ctx.drawImage(this.grid, 0, 0, 1676,1047)
+        }
+
         if (this.debug.grappleHookTest) {
             if (this.game.hook.visibility) {
                 this.drawUtils.Line(

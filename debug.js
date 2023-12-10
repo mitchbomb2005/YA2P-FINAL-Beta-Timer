@@ -6,6 +6,8 @@ export class Debug {
     freeCam = false
     mapBuilder = false
     grappleHookTest = true
+    backGrid = false
+
     keyManager;
 
     constructor(keyMan) {
@@ -20,6 +22,7 @@ export class Debug {
             this.flipFreeCam()
             this.flipMapMaker()
             this.flipGrappleHookTest()
+            this.flipBackGrid()
         }
     }
 
@@ -27,7 +30,6 @@ export class Debug {
         if (this.keyManager.wasKeyJustPressed("KeyH")) {
             console.log("hide")
             this.bean = !this.bean
-            this.debugMsg()
         }
     }
 
@@ -35,7 +37,6 @@ export class Debug {
         if (this.keyManager.wasKeyJustPressed("KeyN")) {
             console.log("noClip")
             this.noClip = !this.noClip
-            this.debugMsg()
         }
     }
 
@@ -43,7 +44,6 @@ export class Debug {
         if (this.keyManager.wasKeyJustPressed("KeyP")) {
             console.log("playerHitbox")
             this.playerHitbox = !this.playerHitbox
-            this.debugMsg()
         }
     }
 
@@ -51,7 +51,6 @@ export class Debug {
         if (this.keyManager.wasKeyJustPressed("KeyF")) {
             console.log("free Camera")
             this.freeCam = !this.freeCam
-            this.debugMsg()
         }
     }
 
@@ -59,7 +58,6 @@ export class Debug {
         if (this.keyManager.wasKeyJustPressed("KeyM")) {
             console.log("map editor")
             this.mapBuilder = !this.mapBuilder
-            this.debugMsg()
             if (this.keyManager.isKeyPressed("ShiftLeft")) {
                 if (this.mapBuilder == true) {
                     this.grappleHookTest = false
@@ -74,16 +72,17 @@ export class Debug {
         }
     }
 
-    debugMsg() {
-
-        console.log("debug mode, " + this.debugMode, " ; bean visibilaty, " + this.bean, " ; noclip, " + this.noClip, " ; hitbox, " + this.playerHitbox, " ; free camera, " + this.freeCam)
+    flipBackGrid() {
+        if (this.keyManager.wasKeyJustPressed("KeyB")) {
+            console.log("grid")
+            this.backGrid = !this.backGrid
+        }
     }
 
     flipGrappleHookTest() {
         if (this.keyManager.wasKeyJustPressed("KeyG")) {
             console.log("Grapple")
             this.grappleHookTest = !this.grappleHookTest
-            this.debugMsg()
         }
     }
     
