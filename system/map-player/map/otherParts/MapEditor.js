@@ -22,7 +22,6 @@ export class Edit {
     canvasShape = canvas.getBoundingClientRect()
     game
     total// = this.game.map.hitboxes.length
-    start
     text
     first = true
     
@@ -32,8 +31,6 @@ export class Edit {
         this.keyMan = k
         this.drawUtlils = d
         this.game = g
-        this.total = this.game.map.hitboxes.length
-        this.start = this.game.map.hitboxes.length
 
         document.addEventListener("click", (event) => {
             //this.x = event.clientX;
@@ -55,6 +52,8 @@ export class Edit {
 
 
     async update() {
+
+        this.total = this.game.map.ground.hitboxes.length
         if (this.keyMan.wasKeyJustPressed("KeyS") && this.keyMan.isKeyPressed("AltLeft")) {
             this.fix(this.hitNum)
             this.hitNum++
@@ -126,7 +125,7 @@ export class Edit {
             this.delete("last")
         }        
         if (this.keyMan.isKeyPressed("ShiftLeft") && this.keyMan.wasKeyJustPressed("KeyR")){
-            this.game.map.hitboxes.splice(this.total - 1, 1)
+            this.game.map.ground.hitboxes.splice(this.total - 1, 1)
             this.total -= 1 
         }
 
@@ -163,7 +162,7 @@ export class Edit {
 
     addToMap(Q){ //this.game.map.hitboxes.length
         if (this.layer == 0) {
-            this.game.map.hitboxes[this.game.map.hitboxes.length] = new Hitbox(
+            this.game.map.ground.hitboxes[this.game.map.ground.hitboxes.length] = new Hitbox(
                 this.tempHitboxes[Q].x,
                 this.tempHitboxes[Q].y,
                 this.tempHitboxes[Q].width,

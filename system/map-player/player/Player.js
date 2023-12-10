@@ -20,7 +20,7 @@ export class Player {
     respawnY; respawnVelY;
 
     debug; extra; camera; keyManager;
-    map; deathMap; checkpointMap; teleportMap
+    map;
 
     stuck = false; death = false; hidden = false;
     playerHitbox = new Array();
@@ -32,14 +32,11 @@ export class Player {
         this.debug = debug
         this.map = map
         this.camera = camera
-        this.deathMap = DM
         this.#buildHitbox(-25, -75, 50, 125)
         this.respawnX = x
         this.respawnVelX = 0
         this.respawnY = y
         this.respawnVelY = 0
-        this.checkpointMap = CPM
-        this.teleportMap = TPM
         this.game = extra
     }
 
@@ -320,8 +317,8 @@ export class Player {
         this.wallJumpRight = false
         this.wallJumpLeft = false
 
-        for (let i = 0; i < this.map.hitboxes.length; i++) /* check if stuck */ { 
-            if(this.#collisionCheck(0, i, this.map) && this.#collisionCheck(1, i, this.map) && this.#collisionCheck(2, i, this.map) && this.#collisionCheck(3, i, this.map)) {
+        for (let i = 0; i < this.map.ground.hitboxes.length; i++) /* check if stuck */ { 
+            if(this.#collisionCheck(0, i, this.map.ground) && this.#collisionCheck(1, i, this.map.ground) && this.#collisionCheck(2, i, this.map.ground) && this.#collisionCheck(3, i, this.map.ground)) {
                 //this.die()
                 
                 if(
@@ -333,8 +330,8 @@ export class Player {
                         if (this.velX > 0) {
                             this.velX = 0
                         }
-                        var hitW = this.map.hitboxes[i].width
-                        var hitX = this.map.hitboxes[i].x
+                        var hitW = this.map.ground.hitboxes[i].width
+                        var hitX = this.map.ground.hitboxes[i].x
         
                         this.x = (-hitX - (offset)) - hitW
                     } else {
@@ -343,8 +340,8 @@ export class Player {
                         if (this.velX < 0) {
                             this.velX = 0
                         }
-                        var hitW = this.map.hitboxes[i].width
-                        var hitX = this.map.hitboxes[i].x
+                        var hitW = this.map.ground.hitboxes[i].width
+                        var hitX = this.map.ground.hitboxes[i].x
         
                         this.x = (-hitX + (offset))
                     }
@@ -355,8 +352,8 @@ export class Player {
                         if(this.velY > 0) {
                             this.velY = 0
                         }
-                        var hitH = this.map.hitboxes[i].height
-                        var hitY = this.map.hitboxes[i].y
+                        var hitH = this.map.ground.hitboxes[i].height
+                        var hitY = this.map.ground.hitboxes[i].y
                         this.y = (-hitY - (offset)) - hitH
                     } else {
                         var offset = 50
@@ -365,7 +362,7 @@ export class Player {
                             this.velY = 0
                         }
                         var y = this.y 
-                        var hitY = this.map.hitboxes[i].y
+                        var hitY = this.map.ground.hitboxes[i].y
                         this.y = -hitY + offset
                         this.jump = this.coyoteTime
                         hitDown = true
@@ -375,15 +372,15 @@ export class Player {
             }
         }
 
-        for (let i = 0; i < this.map.hitboxes.length; i++) /* left hit */ { 
-            if(this.#collisionCheck(2, i, this.map) && !this.#collisionCheck(3, i, this.map)) {
+        for (let i = 0; i < this.map.ground.hitboxes.length; i++) /* left hit */ { 
+            if(this.#collisionCheck(2, i, this.map.ground) && !this.#collisionCheck(3, i, this.map.ground)) {
                 var offset = 25
                 //console.log("hit!")
                 if (this.velX > 0) {
                     this.velX = 0
                 }
-                var hitW = this.map.hitboxes[i].width
-                var hitX = this.map.hitboxes[i].x
+                var hitW = this.map.ground.hitboxes[i].width
+                var hitX = this.map.ground.hitboxes[i].x
 
                 this.x = (-hitX - (offset)) - hitW
                 this.wallJumpLeft = true
@@ -391,74 +388,74 @@ export class Player {
             }
         }
 
-        for (let i = 0; i < this.map.hitboxes.length; i++) /* right hit */ { 
-            if(this.#collisionCheck(3, i, this.map) && !this.#collisionCheck(2, i, this.map)) {
+        for (let i = 0; i < this.map.ground.hitboxes.length; i++) /* right hit */ { 
+            if(this.#collisionCheck(3, i, this.map.ground) && !this.#collisionCheck(2, i, this.map.ground)) {
                 var offset = 25
                 //console.log("hit!")
                 if (this.velX < 0) {
                     this.velX = 0
                 }
-                var hitW = this.map.hitboxes[i].width
-                var hitX = this.map.hitboxes[i].x
+                var hitW = this.map.ground.hitboxes[i].width
+                var hitX = this.map.ground.hitboxes[i].x
 
                 this.x = -hitX + offset
                 this.wallJumpRight = true
             }
         }
 
-        for (let i = 0; i < this.map.hitboxes.length; i++) /* ground hit */ {  
-            if(this.#collisionCheck(0, i, this.map) && !this.#collisionCheck(1, i, this.map)) {
+        for (let i = 0; i < this.map.ground.hitboxes.length; i++) /* ground hit */ {  
+            if(this.#collisionCheck(0, i, this.map.ground) && !this.#collisionCheck(1, i, this.map.ground)) {
                 var offset = 50
                 //console.log("hit!")
                 if(this.velY < 0) {
                     this.velY = 0
                 }
                 var y = this.y 
-                var hitY = this.map.hitboxes[i].y
+                var hitY = this.map.ground.hitboxes[i].y
                 this.y = -hitY + offset
                 this.jump = this.coyoteTime
                 hitDown = true
             }
         }
 
-        for (let i = 0; i < this.map.hitboxes.length; i++) /* ceilling hit */ { 
-            if(this.#collisionCheck(1, i, this.map) && !this.#collisionCheck(0, i, this.map)) {
+        for (let i = 0; i < this.map.ground.hitboxes.length; i++) /* ceilling hit */ { 
+            if(this.#collisionCheck(1, i, this.map.ground) && !this.#collisionCheck(0, i, this.map.ground)) {
                 var offset = 75
                 //console.log("hit!")
                 if(this.velY > 0) {
                     this.velY = 0
                 }
-                var hitH = this.map.hitboxes[i].height
-                var hitY = this.map.hitboxes[i].y
+                var hitH = this.map.ground.hitboxes[i].height
+                var hitY = this.map.ground.hitboxes[i].y
                 this.y = (-hitY - (offset)) - hitH
                 //this.jump = true
             }
         }
 
-        for (let i = 0; i < this.map.hitboxes.length; i++) /* left hit */ { 
-            if(this.#collisionCheck(4, i, this.map)) {
+        for (let i = 0; i < this.map.ground.hitboxes.length; i++) /* left hit */ { 
+            if(this.#collisionCheck(4, i, this.map.ground)) {
                 var offset = 25
                 //console.log("hit!")
                 if (this.velX > 0) {
                     this.velX = 0
                 }
-                var hitW = this.map.hitboxes[i].width
-                var hitX = this.map.hitboxes[i].x
+                var hitW = this.map.ground.hitboxes[i].width
+                var hitX = this.map.ground.hitboxes[i].x
 
                 this.x = (-hitX - (offset)) - hitW
                 //this.wallJumpLeft = true
             } 
         }
 
-        for (let i = 0; i < this.map.hitboxes.length; i++) /* right hit */ { 
-            if(this.#collisionCheck(5, i, this.map)) {
+        for (let i = 0; i < this.map.ground.hitboxes.length; i++) /* right hit */ { 
+            if(this.#collisionCheck(5, i, this.map.ground)) {
                 var offset = 25
                 //console.log("hit!")
                 if (this.velX > 0) {
                     this.velX = 0
                 }
-                var hitW = this.map.hitboxes[i].width
-                var hitX = this.map.hitboxes[i].x
+                var hitW = this.map.ground.hitboxes[i].width
+                var hitX = this.map.ground.hitboxes[i].x
 
                 this.x = -hitX + offset
                 //this.wallJumpRight = true
@@ -466,14 +463,14 @@ export class Player {
         }
         
 
-        for (let i = 0; i < this.deathMap.hitboxes.length; i++) {
-            if(this.#collisionCheck(100, i, this.deathMap) && !this.death) {
+        for (let i = 0; i < this.map.lava.hitboxes.length; i++) {
+            if(this.#collisionCheck(100, i, this.map.lava) && !this.death) {
                 this.die()
             }
         }
 
-        for (let i = 0; i < this.checkpointMap.hitboxes.length; i++) {
-            if(this.#collisionCheck(100, i, this.checkpointMap)) {
+        for (let i = 0; i < this.map.checkpoint.hitboxes.length; i++) {
+            if(this.#collisionCheck(100, i, this.map.checkpoint)) {
                 this.respawnX = this.x
                 this.respawnVelX = this.velX
                 this.respawnY = this.y
@@ -481,11 +478,11 @@ export class Player {
             }
         }
 
-        for (let i = 0; i < this.teleportMap.hitboxes.length; i++) {
-            if(this.#collisionCheck(100, i, this.teleportMap)) {
-                this.x = this.teleportMap.hitboxes[i].extraInfoI
-                this.y = this.teleportMap.hitboxes[i].extraInfoII 
-                this.velX = this.teleportMap.hitboxes[i].extraInfoIII
+        for (let i = 0; i < this.map.teleport.hitboxes.length; i++) {
+            if(this.#collisionCheck(100, i, this.map.teleport)) {
+                this.x = this.map.teleport.hitboxes[i].extraInfoI
+                this.y = this.map.teleport.hitboxes[i].extraInfoII 
+                this.velX = this.map.teleport.hitboxes[i].extraInfoIII
             }
         }
     }

@@ -31,13 +31,10 @@ export class GameDisplayer {
     constructor(Game, Map, Camera, Player, Debug = 0, DM, BG, CPM, TP, game) {
         this.game = Game;
         this.map = Map;
-        this.deathMap = DM
         this.camera = Camera;
         this.debug = Debug
         this.player = Player
         this.background = BG
-        this.checkpoint = CPM
-        this.teleport = TP
         this.grid.src = 'other/images/grid.png'
     }
 
@@ -54,18 +51,9 @@ export class GameDisplayer {
             ctx.drawImage(this.grid, 0, 0, 1676,1047)
         }
 
-        if (this.debug.grappleHookTest) {
-            if (this.game.hook.visibility) {
-                this.drawUtils.Line(
-                    this.game.hook.x1,
-                    this.game.hook.y1,
-                    this.game.hook.x2 + this.camera.x,
-                    this.game.hook.y2 + this.camera.y,/**/
-                    "#A06000",
-                    30 + -this.game.hook.length/70)
-            }
-        }
-        this.teleport.draw(this.camera.x, this.camera.y)
+        this.drawHeld()
+        
+        this.map.teleport.draw(this.camera.x, this.camera.y)
         if(this.debug.bean && !this.player.hidden) {  
             if (this.player.avgVelY > 20){
                 this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50 + (20/2), 100 - 20) 
@@ -77,9 +65,9 @@ export class GameDisplayer {
             
             
         }
-        this.deathMap.draw(this.camera.x, this.camera.y);
-        this.checkpoint.draw(this.camera.x, this.camera.y) 
-        this.map.draw(this.camera.x, this.camera.y);
+        this.map.lava.draw(this.camera.x, this.camera.y);
+        this.map.checkpoint.draw(this.camera.x, this.camera.y) 
+        this.map.ground.draw(this.camera.x, this.camera.y);
         this.drawText()
 
     }
@@ -114,6 +102,28 @@ export class GameDisplayer {
           scaleX = (desiredWidth / this.originalWidth);
           scaleY = (desiredHeight / this.originalHeight);
           ctx.setTransform(scaleY, 0, 0, scaleX, 0, 0)
+        }
+    }
+
+    drawHeld(){
+        if (this.game.hook.visibility) {
+            this.drawUtils.Line(
+                this.game.hook.x1,
+                this.game.hook.y1,
+                this.game.hook.x2 + this.camera.x,
+                this.game.hook.y2 + this.camera.y,/**/
+                "#A06000",
+                30 + -this.game.hook.length/70)
+        }
+
+        if (this.game.sword.visibility) {
+            this.drawUtils.Line(
+                this.game.sword.x1,
+                this.game.sword.y1,
+                this.game.sword.x2 + this.camera.x,
+                this.game.sword.y2 + this.camera.y,/**/
+                "#A06000",
+                30 + -this.game.sword.length/70)
         }
     }
 

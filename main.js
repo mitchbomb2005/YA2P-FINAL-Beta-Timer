@@ -68,7 +68,6 @@ class Main {
         }
         
         this.deltaTime = (this.currentTime - this.lastTime)/20;
-        console.log(this.deltaTime, this.lastTime, this.currentTime, Date.now());
         
 
         // Update input

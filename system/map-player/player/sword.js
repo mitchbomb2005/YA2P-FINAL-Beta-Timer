@@ -1,4 +1,4 @@
-export class Hook{
+export class Sword{
     game
 
     enabled = false ; visibility = false

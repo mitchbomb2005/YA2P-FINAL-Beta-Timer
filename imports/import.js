@@ -1,5 +1,5 @@
-import { Map } from "../system/map-player/map/mapCarryers/Map.js"
-import { Death as DeathMap } from "../system/map-player/map/mapCarryers/DeathMap.js"
+import { Map } from "./map.js"
+
 import { GameDisplayer } from "../system/variousParts/GameDisplayer.js"
 import { Player } from "../system/map-player/player/Player.js"
 import { KeyManager } from "../system/variousParts/KeyMan.js"
@@ -10,11 +10,12 @@ import { Menu } from "../system/variousParts/menu/Menu.js"
 import { Keys } from "../system/map-player/map/otherParts/Keys.js"
 import { DrawUtils } from "../utils/DrawUtils.js"
 import { Background } from "../system/map-player/map/mapCarryers/Background.js"
-import { Checkpoint } from "../system/map-player/map/mapCarryers/checkpoint.js"
-import { Teleport } from "../system/map-player/map/mapCarryers/Teleport.js"
+
 import { Hook } from "../system/map-player/player/hook.js"
+import { Sword } from "../system/map-player/player/sword.js"
+
 import { Storage } from "../storage/storage.js"
-import { Sound as Audio } from "../system/map-player/map/otherParts/audio.js"
+import { Sound as Audio } from "../system/map-player/map/otherParts/audio.js" //Checkpoint
 
 
 export class Game{
@@ -23,22 +24,20 @@ export class Game{
     player;
 
     // fields
-    map = new Map();
-    deathMap = new DeathMap()
-    teleport = new Teleport()
+
     
     
     keyManager = new KeyManager(this);
-    debug = new Debug(this.keyManager);
+    debug = new Debug(this.keyManager, this);
     menu = new Menu(this)
     drawUtils = new DrawUtils()
     storage = new Storage(this)
+    sword = new Sword(this)
     
     camera = new Camera(400, 300, this.debug, this.keyManager, this)
     mapEdit= new Edit(this.camera, this.keyManager, this.drawUtils, this)
-    keys = new Keys(this.camera)
+    keys = new Keys(this.camera, this)
     Background = new Background(this.camera)
-    checkpoint = new Checkpoint()
     audio = new Audio()
     main 
     
@@ -69,8 +68,12 @@ export class Game{
             this.teleport,
         );
 
+
+        
+
         
     }
+    map = new Map(this);
     hook = new Hook(this)
     sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));

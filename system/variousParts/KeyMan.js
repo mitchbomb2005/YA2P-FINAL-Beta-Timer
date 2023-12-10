@@ -38,20 +38,33 @@ export class KeyManager {
       }, false);
 
       document.addEventListener("mousedown", (event) => {
-        
         var rect = canvas.getBoundingClientRect()
         this.mousePos = this.getMousePos(canvas, event);
         this.mousePos.x = (((this.mousePos.x) / (rect.width)) * 1676) - this.camX
         this.mousePos.y = (((this.mousePos.y) / (rect.height)) * 918) - this.camY
-        if (this.game.menu.check) {
-          this.game.hook.visibility = !this.game.hook.visibility
-          this.game.hook.enabled = false
-          this.game.hook.motion = true
-          this.game.hook.mouseUpdate()
-          if (this.game.hook.visibility) {
-            this.game.audio.hookSound()
-          } else {
-            this.game.audio.breakSound()
+        if (event.button == 0) {
+          if (this.game.menu.check) {
+            this.game.hook.visibility = !this.game.hook.visibility
+            this.game.hook.enabled = false
+            this.game.hook.motion = true
+            this.game.hook.mouseUpdate()
+            if (this.game.hook.visibility) {
+              this.game.audio.hookSound()
+            } else {
+              this.game.audio.breakSound()
+            }
+          }
+        }else if (event.button == 2) {
+          if (this.game.menu.check) {
+            this.game.sword.visibility = !this.game.sword.visibility
+            this.game.sword.enabled = false
+            this.game.sword.motion = true
+            this.game.sword.mouseUpdate()
+            if (this.game.sword.visibility) {
+              this.game.audio.hookSound()
+            } else {
+              this.game.audio.breakSound()
+            }
           }
         }
 

@@ -16,7 +16,7 @@ export class Keys {
     hookEnabled = new Image();
     leftClick = new Image()
 
-    constructor(cam){
+    constructor(cam, root){
         this.camera = cam
         this.keyD.src = 'other/images/keys/D_Key_Dark.png';
         this.keyW.src = 'other/images/keys/W_Key_Dark.png';
@@ -29,14 +29,17 @@ export class Keys {
         this.redFlag.src = 'other/images/redFlag.png';
         this.hookDisabled.src = 'other/images/hookDisabled.png';
         this.hookEnabled.src = 'other/images/hookEnabled.png';
+        this.game = root
     }
     drawKeys() {
 
-        this.drawMisc()
-        this.jump(4480, 245)
-        this.jump(3850, -410)
-        this.jump(2273, 642)
-        this.hookTip(5704,-200,0)
+        if(this.game.debug.shortsMap) {} else {
+            this.drawMisc()
+            this.jump(4480, 245)
+            this.jump(3850, -410)
+            this.jump(2273, 642)
+            this.hookTip(5704,-200,0)
+        }
 
     } // 6851 -130
  

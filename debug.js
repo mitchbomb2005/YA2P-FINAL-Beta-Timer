@@ -7,11 +7,14 @@ export class Debug {
     mapBuilder = false
     grappleHookTest = true
     backGrid = false
+    shortsMap = false
 
     keyManager;
+    game;
 
-    constructor(keyMan) {
+    constructor(keyMan, root) {
         this.keyManager = keyMan
+        this.game = root
     }
 
     update() {
@@ -23,6 +26,7 @@ export class Debug {
             this.flipMapMaker()
             this.flipGrappleHookTest()
             this.flipBackGrid()
+            this.flipShortsMap()
         }
     }
 
@@ -83,6 +87,22 @@ export class Debug {
         if (this.keyManager.wasKeyJustPressed("KeyG")) {
             console.log("Grapple")
             this.grappleHookTest = !this.grappleHookTest
+        }
+    }
+
+    flipShortsMap(){
+        if (this.keyManager.wasKeyJustPressed("KeyS")) {
+            console.log("YT SHORTS")
+            this.shortsMap = !this.shortsMap
+            if(this.shortsMap == true) {
+                this.game.map.shorts()
+                this.game.player.x = -438
+                this.game.player.y = -459
+            } else {
+                this.game.map.Main()
+                this.game.player.x = -438
+                this.game.player.y = -509
+            }
         }
     }
     
