@@ -48,7 +48,8 @@ export class GameDisplayer {
             ctx.fill()
             this.background.Draw()
         } else {
-            ctx.drawImage(this.grid, 0, 0, 1676,1047)
+            //ctx.drawImage(this.grid, 0, 0, 1676,1047)
+            ctx.drawImage(this.grid, 0, 0, this.originalWidth,625 * (this.originalWidth / 1000))
         }
 
         this.drawHeld()

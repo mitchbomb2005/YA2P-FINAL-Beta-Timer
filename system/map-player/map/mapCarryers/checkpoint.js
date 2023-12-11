@@ -28,7 +28,7 @@ export class Checkpoint {
         
     }
 
-    draw(cameraX, cameraY, color = "rgba(0, 255, 50, .3)") {
+    draw(cameraX, cameraY, color = "rgba(0, 255, 50, .1)") {
         
         for (let i = 0; i < this.hitboxes.length; i++) {
             this.hitboxes[i].draw(cameraX, cameraY, color);

@@ -39,6 +39,9 @@ export class Keys {
             this.jump(3850, -410)
             this.jump(2273, 642)
             this.hookTip(5704,-200,0)
+            this.hookTip(13093,-4439,0)
+            this.hookTip(13946,-3594,0)
+            
         }
 
     } // 6851 -130
@@ -56,7 +59,14 @@ export class Keys {
 
     drawMisc(){
         ctx.drawImage(this.keyD, 388 + this.camera.x, 600 + this.camera.y)
-        ctx.drawImage(this.redFlag, 1544.8500139551425 + this.camera.x, 67.9775041778131 + this.camera.y, 100, 100)
+        ctx.drawImage(this.redFlag, 1544 + this.camera.x, 67 + this.camera.y, 100, 100)
+        ctx.drawImage(this.keyS, 13530 + this.camera.x, -4937 + this.camera.y)
+        ctx.drawImage(this.keyW, 14496 + this.camera.x, -4253 + this.camera.y)
     }
     
 }
+
+/*
+
+
+*/
