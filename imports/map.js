@@ -1,9 +1,12 @@
-import { Map as MainGround } from "../system/map-player/map/mapCarryers/Map.js"
-import { Death as MainLava } from "../system/map-player/map/mapCarryers/DeathMap.js"
-import { Teleport as MainTeleport } from "../system/map-player/map/mapCarryers/Teleport.js"
-import { Checkpoint as MainCheckpoint } from "../system/map-player/map/mapCarryers/checkpoint.js"
+import { Map as MainGround } from               "../system/map-player/map/mapCarryers/Map.js"
+import { Death as MainLava } from               "../system/map-player/map/mapCarryers/DeathMap.js"
+import { Teleport as MainTeleport } from        "../system/map-player/map/mapCarryers/Teleport.js"
+import { Checkpoint as MainCheckpoint } from    "../system/map-player/map/mapCarryers/checkpoint.js"
 
-import { Map as ShortsGround } from "../system/map-player/map/mapCarryers/otherMaps/shorts/Map.js"
+import { Map as ShortsGround } from             "../system/map-player/map/mapCarryers/otherMaps/shorts/Map.js"
+import { Death as ShortsLava } from             "../system/map-player/map/mapCarryers/otherMaps/shorts/DeathMap.js"
+import { Teleport as ShortsTeleport } from      "../system/map-player/map/mapCarryers/otherMaps/shorts/Teleport.js"
+import { Checkpoint as ShortsCheckpoint } from  "../system/map-player/map/mapCarryers/otherMaps/shorts/checkpoint.js"
 
 export class Map{
     ground
@@ -20,6 +23,9 @@ export class Map{
 
     shorts() {
         this.ground = new ShortsGround()
+        this.lava = new ShortsLava()
+        this.teleport = new ShortsTeleport()
+        this.checkpoint = new ShortsCheckpoint()
     
     }
 

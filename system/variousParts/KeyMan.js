@@ -56,15 +56,6 @@ export class KeyManager {
           }
         }else if (event.button == 2) {
           if (this.game.menu.check) {
-            this.game.sword.visibility = !this.game.sword.visibility
-            this.game.sword.enabled = false
-            this.game.sword.motion = true
-            this.game.sword.mouseUpdate()
-            if (this.game.sword.visibility) {
-              this.game.audio.hookSound()
-            } else {
-              this.game.audio.breakSound()
-            }
           }
         }
 
