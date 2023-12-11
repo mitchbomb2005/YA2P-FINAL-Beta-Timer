@@ -70,6 +70,7 @@ export class GameDisplayer {
         this.map.checkpoint.draw(this.camera.x, this.camera.y) 
         this.map.ground.draw(this.camera.x, this.camera.y);
         this.drawText()
+        if(this.debug.enum = true) {this.enum()}
 
     }
 
@@ -125,6 +126,21 @@ export class GameDisplayer {
                this.game.sword.y2 + this.camera.y,/**/
                "#aaaaaa",
                 30 + -this.game.sword.length/70)
+        }
+    }
+
+    enum() {
+        for (let i = 0; i < this.map.ground.hitboxes.length; i++) {
+            this.drawUtils.Text(i, this.map.ground.hitboxes[i].x + this.camera.x, this.map.ground.hitboxes[i].y + this.camera.y, "white", "#0f0f0f")
+        }
+        for (let i = 0; i < this.map.lava.hitboxes.length; i++) {
+            this.drawUtils.Text(i, this.map.lava.hitboxes[i].x + this.camera.x, this.map.lava.hitboxes[i].y + this.camera.y, "white", "#500000")
+        }
+        for (let i = 0; i < this.map.checkpoint.hitboxes.length; i++) {
+            this.drawUtils.Text(i, this.map.checkpoint.hitboxes[i].x + this.camera.x, this.map.checkpoint.hitboxes[i].y + this.camera.y, "white", "rgba(0, 255, 50, 1)")
+        }
+        for (let i = 0; i < this.map.teleport.hitboxes.length; i++) {
+            this.drawUtils.Text(i, this.map.teleport.hitboxes[i].x + this.camera.x, this.map.teleport.hitboxes[i].y + this.camera.y, "white", "#dbb000")
         }
     }
 

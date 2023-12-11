@@ -8,6 +8,7 @@ export class Debug {
     grappleHookTest = true
     backGrid = false
     shortsMap = false
+    enum = false
 
     keyManager;
     game;
@@ -27,6 +28,7 @@ export class Debug {
             this.flipGrappleHookTest()
             this.flipBackGrid()
             this.flipShortsMap()
+            this.flipEnum()
         }
     }
 
@@ -103,6 +105,12 @@ export class Debug {
                 this.game.player.x = -438
                 this.game.player.y = -509
             }
+        }
+    }
+
+    flipEnum(){
+        if (this.keyManager.wasKeyJustPressed("KeyE")) {
+            this.enum = !this.enum
         }
     }
     
