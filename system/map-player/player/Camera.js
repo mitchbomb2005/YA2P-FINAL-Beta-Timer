@@ -43,9 +43,9 @@ export class Camera {
     freeCamMove() {}z
 
     move() {
-        this.velX = ((this.x - this.midX) - this.game.player.x)  /10
+        this.velX = ((this.x - this.midX) - this.game.player.x)  /5
         this.x -=  this.velX
-        this.velY = ((this.y - this.midY) - this.game.player.y)  /10
+        this.velY = ((this.y - this.midY) - this.game.player.y)  /5
         this.y -=  this.velY
     }
 }
