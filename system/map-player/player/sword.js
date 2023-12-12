@@ -34,26 +34,9 @@ export class Sword{
         }
 
 
-        
-        
-
-        if (!this.game.debug.grappleHookTest) {
-            this.enabled = false
-            this.visibility = false
-        }
-
-        if (this.length > this.targetLength && this.enabled) {
-            this.game.player.velX = this.game.player.velX + ((this.x1 - (this.x2 + this.game.camera.x)) / 70)
-            this.game.player.velY = this.game.player.velY + ((this.y1 - (this.y2 + this.game.camera.y)) / 130) + .1
-        }
-
-        if (this.length > this.maxLength && this.visibility) {
-            this.enabled = false
-            this.visibility = false
-            this.game.audio.breakSound()
-        }
-
     }
+        
+
 
     mouseUpdate(){
 
@@ -82,82 +65,32 @@ export class Sword{
         ) {this.hitNum = i;return true} else {return false}
     }
 
-    fixPos(type, i) {
-        this.yTopCompare     = Math.abs(this.y2 - type.hitboxes[i].y)
-        this.xLeftCompare    = Math.abs(this.x2 - type.hitboxes[i].x)
-        this.yBottomCompare  = Math.abs(this.y2 - (type.hitboxes[i].y + type.hitboxes[i].height))
-        this.xRightCompare   = Math.abs(this.x2 - (type.hitboxes[i].x + type.hitboxes[i].width))
 
-
-        if (
-            this.yTopCompare < this.yBottomCompare       &&
-            this.yTopCompare < this.xLeftCompare         &&
-            this.yTopCompare < this.xRightCompare        
-        ) {
-            this.y2 = type.hitboxes[i].y  
-        } else if (
-            this.yBottomCompare < this.xLeftCompare      &&
-            this.yBottomCompare < this.xRightCompare
-        ) {
-            this.y2 = type.hitboxes[i].y + type.hitboxes[i].height
-        }else if (
-            this.xLeftCompare < this.xRightCompare
-        ) {
-            this.x2 = type.hitboxes[i].x
-        } else {
-            this.x2 = type.hitboxes[i].x + type.hitboxes[i].width
-        }
-        
-        
-        this.fixed = true
-        console.log(this.yTopCompare, this.yBottomCompare, this.xLeftCompare, this.xRightCompare)
-
-    }
 
     colide(){
         if (this.visibility && !this.fixed){
 
             for (let i = 0; i < this.game.map.ground.hitboxes.length; i++){
                     if(this.#collisionCheck(this.game.map.ground, i)){
-                        this.enabled = true
-                       this.motion = false
 
-                        if (!this.fixed) {
-                            this.fixPos(this.game.map.ground, i)
-                            this.game.audio.hookHitSound()
-                        
-                        }
+
+
                     }
             }
 
             for (let i = 0; i < this.game.map.lava.hitboxes.length; i++){
                 if(this.#collisionCheck(this.game.map.lava, i)){
-                    this.visibility = false
-                    this.enabled = false
-                    this.motion = false
-                    this.game.audio.breakSound()
+
     
-                }}
+                }
+            }
         }
     }
 
     move(x, y){
-        var Xstep = this.speed
-        var Ystep = this.speed
 
-        
-        for (let i = 0; i < this.speed && !this.enabled; i++) {
-            if (Xstep != 0) {
-                this.x2 +=x
-                this.Xstep--
-            }
-            if (Ystep != 0) {
-                this.y2 +=y
-                this.Ystep--
-            }
-            this.colide()
-        }
-        
+        this.x2 = (this.x1 - this.game.camera.x) + (x * 150)
+        this.y2 = (this.y1 - this.game.camera.y) + (y * 150)
 
     }
 

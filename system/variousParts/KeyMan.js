@@ -42,7 +42,7 @@ export class KeyManager {
         this.mousePos = this.getMousePos(canvas, event);
         this.mousePos.x = (((this.mousePos.x) / (rect.width)) * 1676) - this.camX
         this.mousePos.y = (((this.mousePos.y) / (rect.height)) * 918) - this.camY
-        if (event.button == 0) {
+        if (event.button == 0 && !this.isKeyPressed("ShiftLeft")) {
           if (this.game.menu.check) {
             this.game.hook.visibility = !this.game.hook.visibility
             this.game.hook.enabled = false
@@ -54,8 +54,12 @@ export class KeyManager {
               this.game.audio.breakSound()
             }
           }
-        }else if (event.button == 2) {
+        }else if (event.button == 2 || this.isKeyPressed("ShiftLeft")) {
           if (this.game.menu.check) {
+            this.game.sword.visibility = !this.game.sword.visibility
+            this.game.sword.enabled = false
+            this.game.sword.motion = true
+            this.game.sword.mouseUpdate()
           }
         }
 
