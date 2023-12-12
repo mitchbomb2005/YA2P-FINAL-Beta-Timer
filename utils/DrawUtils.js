@@ -71,7 +71,16 @@ export class DrawUtils {
         ctx.fillText(text, x, y);
     }
 
-    Line(x1, y1, x2, y2, color, width = 20) {
+    Line(x1, y1, x2, y2, color, width = 20, outline = true, oColor = "black", weight = 5/* */) {
+        if(outline) {
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.lineWidth = width + weight
+            ctx.strokeStyle = oColor;
+            ctx.lineCap = "round";
+            ctx.stroke();
+        }
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
