@@ -54,7 +54,7 @@ export class KeyManager {
               this.game.audio.breakSound()
             }
           }
-        }else if (event.button == 2 || this.isKeyPressed("ShiftLeft")) {
+        }/*else if (event.button == 2 || this.isKeyPressed("ShiftLeft")) {
           if (this.game.menu.check) {
             this.game.sword.visibility = !this.game.sword.visibility
             this.game.sword.enabled = false
@@ -73,6 +73,7 @@ export class KeyManager {
       document.addEventListener('contextmenu', event => {
         event.preventDefault();
       }, false);
+      
     }
 
 
