@@ -10,6 +10,7 @@ export class Sword{
     hitNum
     fixed = false
     yTopCompare = 0 ; xLeftCompare = 0 ; yBottomCompare = 0 ; xRightCompare = 0
+    anim = 0
 
     constructor(game){
         this.game = game
@@ -44,7 +45,7 @@ export class Sword{
         const diffY = this.game.camera.keyMan.mousePos.y + this.game.player.y; 
         const mouseDistance = (diffX ** 2 + diffY ** 2) ** 0.5;
 
-        this.trajectory.x = mouseDistance < this.threshold ? 0 : diffX / mouseDistance;
+        this.trajectory.x = mouseDistance < this.threshold ? 0 : (diffX / mouseDistance) ;
         this.trajectory.y = mouseDistance < this.threshold ? 0 : diffY / mouseDistance;
 
         //this.trajectory.x = (this.game.camera.keyMan.mousePos.x) - (-this.game.player.x)
@@ -52,6 +53,12 @@ export class Sword{
         this.x2 = -this.game.player.x
         this.y2 = -this.game.player.y
         this.fixed = false
+
+        this.anim = Math.asin(this.trajectory.x) * 16
+
+        console.log(this.trajectory.x, this.anim)
+
+
         
 
     }
@@ -68,7 +75,7 @@ export class Sword{
 
 
     colide(){
-        if (this.visibility && !this.fixed){
+        if (this.visibility){
 
             for (let i = 0; i < this.game.map.ground.hitboxes.length; i++){
                     if(this.#collisionCheck(this.game.map.ground, i)){

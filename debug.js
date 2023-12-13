@@ -69,10 +69,12 @@ export class Debug {
                     this.grappleHookTest = false
                     this.noClip = true
                     this.bean = false
+                    this.enum = true
                 } else {
                     this.grappleHookTest = true
                     this.noClip = false
                     this.bean = true
+                    this.enum = false
                 }
             }
         }

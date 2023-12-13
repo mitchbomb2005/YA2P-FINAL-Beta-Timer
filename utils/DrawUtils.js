@@ -69,6 +69,7 @@ export class DrawUtils {
         ctx.strokeText(text, x, y);
         ctx.fillStyle = fillColor;
         ctx.fillText(text, x, y);
+
     }
 
     Line(x1, y1, x2, y2, color, width = 20, outline = true, oColor = "black", weight = 5/* */) {
@@ -88,6 +89,7 @@ export class DrawUtils {
         ctx.strokeStyle = color;
         ctx.lineCap = "round";
         ctx.stroke();
+
     }
 
 }

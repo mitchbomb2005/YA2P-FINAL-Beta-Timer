@@ -70,7 +70,8 @@ export class GameDisplayer {
         this.map.checkpoint.draw(this.camera.x, this.camera.y) 
         this.map.ground.draw(this.camera.x, this.camera.y);
         this.drawText()
-        if(this.debug.enum = true) {this.enum()}
+
+        if(this.debug.enum == true) {this.enum()}
 
     }
 
@@ -114,8 +115,9 @@ export class GameDisplayer {
                 this.game.hook.y1,
                 this.game.hook.x2 + this.camera.x,
                 this.game.hook.y2 + this.camera.y,/**/
-                "#A06000",
-                30 + -this.game.hook.length/70)
+                "#A06000", 
+                30 + -this.game.hook.length/70, 
+                true, "#6b4101" )
         }
 
         if (this.game.sword.visibility) {
@@ -125,7 +127,8 @@ export class GameDisplayer {
                 this.game.sword.x2 + this.camera.x,
                this.game.sword.y2 + this.camera.y,/**/
                "#aaaaaa",
-                30 + -this.game.sword.length/70)
+                30 + -this.game.sword.length/70,
+                true, "#5c5c5c")
         }
     }
 

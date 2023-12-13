@@ -56,10 +56,16 @@ export class KeyManager {
           }
         }/*else if (event.button == 2 || this.isKeyPressed("ShiftLeft")) {
           if (this.game.menu.check) {
+
+
+
             this.game.sword.visibility = !this.game.sword.visibility
             this.game.sword.enabled = false
             this.game.sword.motion = true
             this.game.sword.mouseUpdate()
+            
+
+            
           }
         }
 
