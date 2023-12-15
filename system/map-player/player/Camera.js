@@ -10,8 +10,7 @@ export class Camera {
     keyMan;
     mouseX
     mouseY
-    mouseXSto
-    mouseYSto
+    mousePos
     velX
     velY
     midX = canvas.offsetWidth / 2
@@ -26,9 +25,16 @@ export class Camera {
         this.debug = debug
         this.keyMan = keyman
         this.game = game
+        document.addEventListener('mousemove', evt => {
+            this.mousePos = this.keyMan.getMousePos(canvas, evt)
+    
+          }, false)
     }
 
     update() {
+        this.mouseX = -(this.mousePos.x - 1676/2)/3
+        this.mouseY = -(this.mousePos.y - 918/2)/3
+
         if (this.debug.freeCam) {
             this.freeCamMove()
         } else {
@@ -43,9 +49,9 @@ export class Camera {
     freeCamMove() {}z
 
     move() {
-        this.velX = ((this.x - this.midX) - this.game.player.x)  /5
+        this.velX = ((this.x - this.midX) - (this.game.player.x+this.mouseX))  /5
         this.x -=  this.velX
-        this.velY = ((this.y - this.midY) - this.game.player.y)  /5
+        this.velY = ((this.y - this.midY) - (this.game.player.y+this.mouseY))  /5
         this.y -=  this.velY
     }
 }

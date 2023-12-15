@@ -7,8 +7,6 @@ export class KeyManager {
     keyBuffer;
     keysCurrentlyPressed;
     keysPressedLastFrame;
-    mouseX;
-    mouseY;
     canvasShape = canvas.getBoundingClientRect()
     percentX;
     percentY;
@@ -20,12 +18,14 @@ export class KeyManager {
 
 
     constructor(game) {
+      
+      this.mousePos = this.mouseSetup()
+
       this.keyBuffer = new Array();
       this.keysCurrentlyPressed = new Array();
       this.keysPressedLastFrame = new Array();
       this.game = game
 
-      this.mousePos = this.mouseSetup()
 
       document.addEventListener('keydown', (event) => {
         var code = event.code;
@@ -78,8 +78,7 @@ export class KeyManager {
       }, false);
       document.addEventListener('contextmenu', event => {
         event.preventDefault();
-      }, false);
-      
+      }, false);      
     }
 
 
