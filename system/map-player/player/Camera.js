@@ -49,9 +49,15 @@ export class Camera {
     freeCamMove() {}z
 
     move() {
-        this.velX = ((this.x - this.midX) - (this.game.player.x+this.mouseX))  /5
+        if(this.debug.cursorCamera) {
+            this.velX = ((this.x - this.midX) - (this.game.player.x+this.mouseX))  /5
+            this.velY = ((this.y - this.midY) - (this.game.player.y+this.mouseY))  /5
+        } else {
+            this.velX = ((this.x - this.midX) - (this.game.player.x))  /5
+            this.velY = ((this.y - this.midY) - (this.game.player.y))  /5
+        }
+
         this.x -=  this.velX
-        this.velY = ((this.y - this.midY) - (this.game.player.y+this.mouseY))  /5
         this.y -=  this.velY
     }
 }
