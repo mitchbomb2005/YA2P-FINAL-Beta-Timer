@@ -26,7 +26,6 @@ export class Game{
     enemy;
 
     // fields
-
     
     
     keyManager = new KeyManager(this);
