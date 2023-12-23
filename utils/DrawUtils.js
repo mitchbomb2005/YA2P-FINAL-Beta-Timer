@@ -5,7 +5,7 @@ const ctx = canvas.getContext("2d");
 
 export class DrawUtils {
     
-    Bean(x, y, width, height) {
+    Bean(x, y, width, height, color) {
 
         ctx.beginPath();
         ctx.arc(x - 5, (y + 5) - (height / 2), width / 2 +5, 0, ( Math.PI/180 ) * 190, ( Math.PI/180 ) * 180,  false);
@@ -44,7 +44,7 @@ export class DrawUtils {
 
         ctx.beginPath();
         ctx.rect(x - (width / 2), y - (height / 2), width, height - width / 2);
-        ctx.fillStyle = "#afbfaf";
+        ctx.fillStyle = color;
         ctx.fill();
         ctx.closePath();
 

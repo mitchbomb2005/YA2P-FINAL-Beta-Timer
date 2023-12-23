@@ -6,7 +6,7 @@ export class Enemy {
 
     x; velX = 0; maxVelX = 100;
     y; velY = 0; maxVelY = 50; avgVelY = 0
-    noclipVelChange = 10; velChange = 4;
+    noclipVelChange = 10; velChange = 3.5;
     friction = .8; airFriction = .85; hookFriction = .95;
 
     jump = 0; lastJump = 0; coyoteTime = 5;
@@ -53,15 +53,14 @@ export class Enemy {
     }
 
     update() {
-        if(this.enabled){
             this.lastJump = this.jump
-            this.#updateVelocity()
+            this.updateVelocity()
+            this.#move()
             if (this.jump > 0) {
                 this.wallJumpAmmountLeft = true
                 this.wallJumpAmmountRight = true
             }
             this.hidden = this.death
-        }
 
 
         
@@ -74,8 +73,9 @@ export class Enemy {
 
 
 
-    #updateVelocity() {
-        if (this.x < this.game.player.x) {
+    updateVelocity() {
+        console.log(this.x, this.game.player.x)
+        if (this.x > this.game.player.x) {
             this.velX -= this.velChange;
             if (Math.abs(this.velX) > this.maxVelX) {
                 this.velX = -this.maxVelX;
@@ -86,7 +86,7 @@ export class Enemy {
 
         }
         
-        if (this.keyManager.isKeyPressed("KeyA")) {
+        if (this.x < this.game.player.x) {
             this.velX += this.velChange;
             if (this.velX > this.maxVelX) {
                 this.velX = this.maxVelX;
@@ -96,12 +96,12 @@ export class Enemy {
             }
         }
 
-        if (this.keyManager.isKeyPressed("KeyW") || this.keyManager.isKeyPressed("Space")) {
+        if (this.y < this.game.player.y) {
             this.velY += this.float
             this.velY += this.float
                 if (this.velY <= 0 && this.jump > 0) {
                     this.velY += this.jumpVel;     
-                } else if (this.keyManager.wasKeyJustPressed("KeyW") || this.keyManager.wasKeyJustPressed("Space")) {
+                } else if (this.y < this.game.player.y) {
                     if (this.jump > 0) {
                         this.velY += this.jumpVel; 
                         
