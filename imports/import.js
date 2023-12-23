@@ -2,6 +2,7 @@ import { Map } from "./map.js"
 
 import { GameDisplayer } from "../system/variousParts/GameDisplayer.js"
 import { Player } from "../system/map-player/player/Player.js"
+import { Enemy } from "../system/enemy/Enemy.js"
 import { KeyManager } from "../system/variousParts/KeyMan.js"
 import { Debug } from "../debug.js"
 import { Camera } from "../system/map-player/player/Camera.js"
@@ -22,6 +23,7 @@ export class Game{
     // System
     gameDisplayer;
     player;
+    enemy;
 
     // fields
 
@@ -53,6 +55,8 @@ export class Game{
             this.teleport,
             this
         );
+
+        this.enemy = new Enemy(-438, -509, this);
 
         this.main = tld
 

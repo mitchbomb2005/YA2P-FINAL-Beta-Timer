@@ -55,17 +55,9 @@ export class GameDisplayer {
         this.drawHeld()
         
         this.map.teleport.draw(this.camera.x, this.camera.y)
-        if(this.debug.bean && !this.player.hidden) {  
-            if (this.player.avgVelY > 20){
-                this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50 + (20/2), 100 - 20) 
-            } else if (this.player.avgVelY < -20){
-                this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50 + (-20/2), 100 + 20) 
-            } else{
-                this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50 + (this.player.avgVelY/2), 100 - this.player.avgVelY) 
-            }
-            
-            
-        }
+
+        this.drawTheBeanPeople()
+
         this.map.lava.draw(this.camera.x, this.camera.y);
         this.map.checkpoint.draw(this.camera.x, this.camera.y) 
         this.map.ground.draw(this.camera.x, this.camera.y);
@@ -145,6 +137,23 @@ export class GameDisplayer {
         for (let i = 0; i < this.map.teleport.hitboxes.length; i++) {
             this.drawUtils.Text(i, this.map.teleport.hitboxes[i].x + this.camera.x, this.map.teleport.hitboxes[i].y + this.camera.y, "white", "#dbb000")
         }
+    }
+
+    drawTheBeanPeople() {
+        this.drawUtils.Bean(-this.game.enemy.x + this.camera.x, -this.game.enemy.y + this.camera.y, 50 + (this.game.enemy.avgVelY/2), 100 - this.game.enemy.avgVelY) 
+        console.log(-this.game.enemy.x, -this.game.enemy.y)
+        if(this.debug.bean && !this.player.hidden) {  
+            if (this.player.avgVelY > 20){
+                this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50 + (20/2), 100 - 20) 
+            } else if (this.player.avgVelY < -20){
+                this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50 + (-20/2), 100 + 20) 
+            } else{
+                this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50 + (this.player.avgVelY/2), 100 - this.player.avgVelY) 
+            }
+        }
+
+        this.drawUtils.Bean(-this.game.enemy.x + this.camera.x, -this.game.enemy.y + this.camera.y, 50 + (this.game.enemy.avgVelY/2), 100 - this.game.enemy.avgVelY) 
+        console.log(-this.game.enemy.x, -this.game.enemy.y)
     }
 
 }
