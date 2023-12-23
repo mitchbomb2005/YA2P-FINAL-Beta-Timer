@@ -140,8 +140,8 @@ export class GameDisplayer {
     }
 
     drawTheBeanPeople() {
-        this.drawUtils.Bean(-this.game.enemy.x + this.camera.x, -this.game.enemy.y + this.camera.y, 50 + (this.game.enemy.avgVelY/2), 100 - this.game.enemy.avgVelY) 
-        console.log(-this.game.enemy.x, -this.game.enemy.y)
+        //this.drawUtils.Bean(-this.game.enemy.x + this.camera.x, -this.game.enemy.y + this.camera.y, 50 + (this.game.enemy.avgVelY/2), 100 - this.game.enemy.avgVelY) 
+        //console.log(-this.game.enemy.x, -this.game.enemy.y)
         if(this.debug.bean && !this.player.hidden) {  
             if (this.player.avgVelY > 20){
                 this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50 + (20/2), 100 - 20) 

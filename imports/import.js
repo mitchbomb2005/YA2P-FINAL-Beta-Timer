@@ -2,7 +2,6 @@ import { Map } from "./map.js"
 
 import { GameDisplayer } from "../system/variousParts/GameDisplayer.js"
 import { Player } from "../system/map-player/player/Player.js"
-import { Enemy } from "../system/enemy/Enemy.js"
 import { KeyManager } from "../system/variousParts/KeyMan.js"
 import { Debug } from "../debug.js"
 import { Camera } from "../system/map-player/player/Camera.js"
@@ -17,6 +16,7 @@ import { Sword } from "../system/map-player/player/sword.js"
 
 import { Storage } from "../storage/storage.js"
 import { Sound as Audio } from "../system/map-player/map/otherParts/audio.js" //Checkpoint
+import { Enemy } from "../system/enemy/Enemy.js"
 
 
 export class Game{
