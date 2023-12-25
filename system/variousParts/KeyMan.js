@@ -40,8 +40,8 @@ export class KeyManager {
       document.addEventListener("mousedown", (event) => {
         var rect = canvas.getBoundingClientRect()
         this.mousePos = this.getMousePos(canvas, event);
-        this.mousePos.x = (((this.mousePos.x) / (rect.width)) * 1676) - this.camX
-        this.mousePos.y = (((this.mousePos.y) / (rect.height)) * 918) - this.camY
+        this.mousePos.x = (((this.mousePos.x) / (rect.width)) * this.canvasShape.width) - this.camX
+        this.mousePos.y = (((this.mousePos.y) / (rect.height)) * this.canvasShape.height) - this.camY
         if (event.button == 0 && !this.isKeyPressed("ShiftLeft")) {
           if (this.game.menu.check) {
             this.game.hook.visibility = !this.game.hook.visibility

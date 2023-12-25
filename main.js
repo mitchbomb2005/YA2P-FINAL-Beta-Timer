@@ -61,7 +61,6 @@ class Main {
 
 
         this.game.hook.update();
-        this.game.sword.update();
         this.game.storage.update()
         this.DeltaTime()
 

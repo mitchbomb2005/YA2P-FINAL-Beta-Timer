@@ -111,17 +111,6 @@ export class GameDisplayer {
                 30 + -this.game.hook.length/70, 
                 true, "#6b4101" )
         }
-
-        if (this.game.sword.visibility) {
-            this.drawUtils.Line(
-                this.game.sword.x1,
-                this.game.sword.y1,
-                this.game.sword.x2 + this.camera.x,
-               this.game.sword.y2 + this.camera.y,/**/
-               "#aaaaaa",
-                30 + -this.game.sword.length/70,
-                true, "#5c5c5c")
-        }
     }
 
     enum() {

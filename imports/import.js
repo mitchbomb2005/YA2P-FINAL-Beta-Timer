@@ -12,7 +12,6 @@ import { DrawUtils } from "../utils/DrawUtils.js"
 import { Background } from "../system/map-player/map/mapCarryers/Background.js"
 
 import { Hook } from "../system/map-player/player/hook.js"
-import { Sword } from "../system/map-player/player/sword.js"
 
 import { Storage } from "../storage/storage.js"
 import { Sound as Audio } from "../system/map-player/map/otherParts/audio.js" //Checkpoint
@@ -33,7 +32,6 @@ export class Game{
     menu = new Menu(this)
     drawUtils = new DrawUtils()
     storage = new Storage(this)
-    sword = new Sword(this)
     
     camera = new Camera(400, 300, this.debug, this.keyManager, this)
     mapEdit= new Edit(this.camera, this.keyManager, this.drawUtils, this)
