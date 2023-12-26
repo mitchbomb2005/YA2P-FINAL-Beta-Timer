@@ -33,17 +33,22 @@ export class Edit {
         this.game = g
 
         document.addEventListener("click", (event) => {
+            
+            var rect = canvas.getBoundingClientRect()
             //this.x = event.clientX;
             //this.y = event.clientY;
-            this.x = (((event.clientX / 1.0) - (this.camera.x / this.layerOffset)) - this.canvasShape.left) //* this.layerOffset; 
-            this.y = (((event.clientY / 1.0) - (this.camera.y / this.layerOffset)) - this.canvasShape.top) //* this.layerOffset;
+            this.x = ((event.clientX - rect.left) / (rect.width) * this.canvasShape.width ) - this.camera.x//* this.layerOffset; 
+            this.y = ((event.clientY - rect.top) / (rect.height) * this.canvasShape.height ) - this.camera.y //* this.layerOffset;
+            //this.mousePos.x = (((this.mousePos.x) / (rect.width)) * this.canvasShape.width) - this.camX
+            //this.mousePos.y = (((this.mousePos.y) / (rect.height)) * this.canvasShape.height) - this.camY
             this.camXSet = this.camera.x
             this.camYSet = this.camera.y
           }, false);
 
         onmousemove = (event) => {
-            this.currentX = (((event.clientX / 1.0) - (this.camera.x / this.layerOffset)) - this.canvasShape.left) //* this.layerOffset; 
-            this.currentY = (((event.clientY / 1.0) - (this.camera.y / this.layerOffset)) - this.canvasShape.top) //* this.layerOffset; 
+            var rect = canvas.getBoundingClientRect()
+            this.currentX = ((event.clientX - rect.left) / (rect.width) * this.canvasShape.width )- this.camera.x//* this.layerOffset; 
+            this.currentY = ((event.clientY - rect.top) / (rect.height) * this.canvasShape.height ) - this.camera.y //* this.layerOffset;
             this.camXSetII = this.camera.x
             this.camYSetII = this.camera.y
         }

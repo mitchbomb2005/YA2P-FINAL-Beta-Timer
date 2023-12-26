@@ -17,7 +17,7 @@ export class KeyManager {
     
 
 
-    constructor(game) {
+    constructor(game) {//
       
       this.mousePos = this.mouseSetup()
 
