@@ -108,7 +108,9 @@ export class KeyManager {
         case "ShiftLeft": return !this.keysPressedLastFrame[32] && this.keysCurrentlyPressed[32];
         case "Space": return !this.keysPressedLastFrame[33] && this.keysCurrentlyPressed[33];//Escape
         case "Escape": return !this.keysPressedLastFrame[34] && this.keysCurrentlyPressed[34];
-        case "Enter": return !this.keysPressedLastFrame[34] && this.keysCurrentlyPressed[35];
+        case "Enter": return !this.keysPressedLastFrame[35] && this.keysCurrentlyPressed[35];
+        case "Equal": return !this.keysPressedLastFrame[36] && this.keysCurrentlyPressed[36];
+        case "Minus": return !this.keysPressedLastFrame[37] && this.keysCurrentlyPressed[37];
 
         case "KeyA": return !this.keysPressedLastFrame[0] && this.keysCurrentlyPressed[0];
         case "KeyB": return !this.keysPressedLastFrame[1] && this.keysCurrentlyPressed[1];
@@ -153,6 +155,8 @@ export class KeyManager {
         case "Space": return this.keysCurrentlyPressed[33];//Escape
         case "Escape": return this.keysCurrentlyPressed[34];
         case "Enter": return this.keysCurrentlyPressed[35];
+        case "Equal": return this.keysCurrentlyPressed[36];
+        case "Minus": return this.keysCurrentlyPressed[37];
 
         case "KeyA": return this.keysCurrentlyPressed[0];
         case "KeyB": return this.keysCurrentlyPressed[1];
@@ -216,6 +220,12 @@ export class KeyManager {
         break;
         case "Enter":
           this.keyBuffer[35] = pressed;
+        break;       
+        case "Equal":
+          this.keyBuffer[36] = pressed;
+        break;        
+        case "Minus":
+          this.keyBuffer[37] = pressed;
         break;
         
         case "KeyA":

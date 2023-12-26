@@ -37,8 +37,8 @@ export class Edit {
             var rect = canvas.getBoundingClientRect()
             //this.x = event.clientX;
             //this.y = event.clientY;
-            this.x = ((event.clientX - rect.left) / (rect.width) * this.canvasShape.width ) - this.camera.x//* this.layerOffset; 
-            this.y = ((event.clientY - rect.top) / (rect.height) * this.canvasShape.height ) - this.camera.y //* this.layerOffset;
+            this.x = ((((event.clientX - rect.left)/ this.camera.zoom )  / (rect.width ) * this.canvasShape.width ) - this.camera.x)//* this.layerOffset; 
+            this.y = ((((event.clientY - rect.top) / (this.camera.zoom)) / (rect.height) * this.canvasShape.height) - this.camera.y)  //* this.layerOffset;
             //this.mousePos.x = (((this.mousePos.x) / (rect.width)) * this.canvasShape.width) - this.camX
             //this.mousePos.y = (((this.mousePos.y) / (rect.height)) * this.canvasShape.height) - this.camY
             this.camXSet = this.camera.x
@@ -47,8 +47,8 @@ export class Edit {
 
         onmousemove = (event) => {
             var rect = canvas.getBoundingClientRect()
-            this.currentX = ((event.clientX - rect.left) / (rect.width) * this.canvasShape.width )- this.camera.x//* this.layerOffset; 
-            this.currentY = ((event.clientY - rect.top) / (rect.height) * this.canvasShape.height ) - this.camera.y //* this.layerOffset;
+            this.currentX = ((((event.clientX - rect.left)/ this.camera.zoom )  / (rect.width ) * this.canvasShape.width ) - this.camera.x)  //* this.layerOffset; 
+            this.currentY = ((((event.clientY - rect.top) / (this.camera.zoom)) / (rect.height) * this.canvasShape.height) - this.camera.y) //* this.layerOffset;
             this.camXSetII = this.camera.x
             this.camYSetII = this.camera.y
         }

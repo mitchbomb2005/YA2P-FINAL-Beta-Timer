@@ -15,6 +15,10 @@ export class Camera {
     velY
     midX = canvas.offsetWidth / 2
     midY = canvas.offsetHeight / 2
+    omidX = this.midX
+    omidY = this.midY
+    originalCanvas = canvas.getBoundingClientRect()
+    zoom = 1
     game
 
 
@@ -32,13 +36,19 @@ export class Camera {
     }
 
     update() {
-        this.mouseX = -(this.mousePos.x - 1676/2)/3
-        this.mouseY = -(this.mousePos.y - 918/2)/3
+        this.mouseX = 0 //-(this.mousePos.x - 1676/2)/3
+        this.mouseY = 0 //-(this.mousePos.y - 918/2)/3
 
         if (this.debug.freeCam) {
             this.freeCamMove()
         } else {
             this.move()
+        }
+        if (this.keyMan.wasKeyJustPressed("Equal")) {
+            this.Zoom("in")
+        }
+        if (this.keyMan.wasKeyJustPressed("Minus")) {
+            this.Zoom("out")
         }
         this.keyMan.camY = this.y
         this.keyMan.camX = this.x
@@ -46,7 +56,7 @@ export class Camera {
     }
 
 
-    freeCamMove() {}z
+    freeCamMove() {}
 
     move() {
         if(this.debug.cursorCamera) {
@@ -59,5 +69,18 @@ export class Camera {
 
         this.x -=  this.velX
         this.y -=  this.velY
+    }
+
+    Zoom(direction) {
+        if (direction == "in") {
+            this.zoom -= .1
+        } else if (direction == "out") {
+            this.zoom += .1
+        }
+        canvas.width = this.originalCanvas.width * this.zoom
+        
+        this.midX = this.omidX / (this.zoom)
+        this.midY = this.omidY / (this.zoom)
+             
     }
 }

@@ -85,7 +85,7 @@ export class GameDisplayer {
         canvas.height = desiredHeight;
         scaleX = (desiredWidth / this.originalWidth);
         scaleY = (desiredHeight / this.originalHeight);
-        ctx.setTransform(scaleY, 0, 0, scaleX, 0, 0)
+        ctx.setTransform(scaleY * this.game.camera.zoom, 0, 0, scaleX * this.game.camera.zoom, 0, 0)
          currentWidth = canvas.width;
          currentHeight = canvas.height;
         if (currentHeight >= windowHeight) {
@@ -96,7 +96,7 @@ export class GameDisplayer {
           canvas.height = desiredHeight;
           scaleX = (desiredWidth / this.originalWidth);
           scaleY = (desiredHeight / this.originalHeight);
-          ctx.setTransform(scaleY, 0, 0, scaleX, 0, 0)
+          ctx.setTransform(scaleY * this.game.camera.zoom, 0, 0, scaleX * this.game.camera.zoom, 0, 0)
         }
     }
 
