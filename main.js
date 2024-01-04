@@ -51,6 +51,7 @@ class Main {
 
         // Update variables
         this.game.player.update();
+        //this.game.enemy.update();
         this.game.debug.update(); 
         this.game.camera.update();
 
@@ -60,7 +61,6 @@ class Main {
 
 
         this.game.hook.update();
-        this.game.sword.update();
         this.game.storage.update()
         this.DeltaTime()
 

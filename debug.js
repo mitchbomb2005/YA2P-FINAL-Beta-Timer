@@ -9,6 +9,7 @@ export class Debug {
     backGrid = false
     shortsMap = false
     enum = false
+    cursorCamera = true
 
     keyManager;
     game;
@@ -29,6 +30,7 @@ export class Debug {
             this.flipBackGrid()
             this.flipShortsMap()
             this.flipEnum()
+            this.flipC()
         }
     }
 
@@ -113,6 +115,12 @@ export class Debug {
     flipEnum(){
         if (this.keyManager.wasKeyJustPressed("KeyE")) {
             this.enum = !this.enum
+        }
+    }
+
+    flipC() {
+        if (this.keyManager.wasKeyJustPressed("KeyC")) {
+            this.cursorCamera = !this.cursorCamera
         }
     }
     

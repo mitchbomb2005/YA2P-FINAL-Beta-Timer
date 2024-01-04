@@ -12,19 +12,19 @@ import { DrawUtils } from "../utils/DrawUtils.js"
 import { Background } from "../system/map-player/map/mapCarryers/Background.js"
 
 import { Hook } from "../system/map-player/player/hook.js"
-import { Sword } from "../system/map-player/player/sword.js"
 
 import { Storage } from "../storage/storage.js"
 import { Sound as Audio } from "../system/map-player/map/otherParts/audio.js" //Checkpoint
+import { Enemy } from "../system/enemy/Enemy.js"
 
 
 export class Game{
     // System
     gameDisplayer;
     player;
+    enemy;
 
     // fields
-
     
     
     keyManager = new KeyManager(this);
@@ -32,9 +32,8 @@ export class Game{
     menu = new Menu(this)
     drawUtils = new DrawUtils()
     storage = new Storage(this)
-    sword = new Sword(this)
     
-    camera = new Camera(400, 300, this.debug, this.keyManager, this)
+    camera = new Camera(850, 600, this.debug, this.keyManager, this)
     mapEdit= new Edit(this.camera, this.keyManager, this.drawUtils, this)
     keys = new Keys(this.camera, this)
     Background = new Background(this.camera)
@@ -53,6 +52,8 @@ export class Game{
             this.teleport,
             this
         );
+
+        this.enemy = new Enemy(-438, -509, this);
 
         this.main = tld
 

@@ -17,7 +17,7 @@ export class KeyManager {
     
 
 
-    constructor(game) {
+    constructor(game) {//
       
       this.mousePos = this.mouseSetup()
 
@@ -40,8 +40,8 @@ export class KeyManager {
       document.addEventListener("mousedown", (event) => {
         var rect = canvas.getBoundingClientRect()
         this.mousePos = this.getMousePos(canvas, event);
-        this.mousePos.x = (((this.mousePos.x) / (rect.width)) * 1676) - this.camX
-        this.mousePos.y = (((this.mousePos.y) / (rect.height)) * 918) - this.camY
+        this.mousePos.x = (((this.mousePos.x) / (rect.width)) * this.canvasShape.width) - this.camX
+        this.mousePos.y = (((this.mousePos.y) / (rect.height)) * this.canvasShape.height) - this.camY
         if (event.button == 0 && !this.isKeyPressed("ShiftLeft")) {
           if (this.game.menu.check) {
             this.game.hook.visibility = !this.game.hook.visibility
@@ -108,7 +108,9 @@ export class KeyManager {
         case "ShiftLeft": return !this.keysPressedLastFrame[32] && this.keysCurrentlyPressed[32];
         case "Space": return !this.keysPressedLastFrame[33] && this.keysCurrentlyPressed[33];//Escape
         case "Escape": return !this.keysPressedLastFrame[34] && this.keysCurrentlyPressed[34];
-        case "Enter": return !this.keysPressedLastFrame[34] && this.keysCurrentlyPressed[35];
+        case "Enter": return !this.keysPressedLastFrame[35] && this.keysCurrentlyPressed[35];
+        case "Equal": return !this.keysPressedLastFrame[36] && this.keysCurrentlyPressed[36];
+        case "Minus": return !this.keysPressedLastFrame[37] && this.keysCurrentlyPressed[37];
 
         case "KeyA": return !this.keysPressedLastFrame[0] && this.keysCurrentlyPressed[0];
         case "KeyB": return !this.keysPressedLastFrame[1] && this.keysCurrentlyPressed[1];
@@ -153,6 +155,8 @@ export class KeyManager {
         case "Space": return this.keysCurrentlyPressed[33];//Escape
         case "Escape": return this.keysCurrentlyPressed[34];
         case "Enter": return this.keysCurrentlyPressed[35];
+        case "Equal": return this.keysCurrentlyPressed[36];
+        case "Minus": return this.keysCurrentlyPressed[37];
 
         case "KeyA": return this.keysCurrentlyPressed[0];
         case "KeyB": return this.keysCurrentlyPressed[1];
@@ -216,6 +220,12 @@ export class KeyManager {
         break;
         case "Enter":
           this.keyBuffer[35] = pressed;
+        break;       
+        case "Equal":
+          this.keyBuffer[36] = pressed;
+        break;        
+        case "Minus":
+          this.keyBuffer[37] = pressed;
         break;
         
         case "KeyA":

@@ -20,14 +20,14 @@ export class Menu {
             ctx.fillStyle = `rgba(0, 0, 0, ${this.bgOpacity})`
             ctx.rect(0, 0, 100000, 10000) 
             ctx.fill()
-            this.draw.Text("P r e s s W t o C o n t i n u e", 300, 300, `rgba(70, 70, 70, ${this.opacity})`, `rgba(255, 255, 255, ${this.opacity})`)
+            this.draw.Text("P r e s s W t o C o n t i n u e", 600, 300, `rgba(70, 70, 70, ${this.opacity})`, `rgba(255, 255, 255, ${this.opacity})`)
         } else {
-            this.draw.Text("P r e s s W T o S t a r t", 300, 300, `rgba(70, 70, 70, ${this.opacity})`, `rgba(255, 255, 255, ${this.opacity})`)
+            this.draw.Text("P r e s s W T o S t a r t", 600, 500, `rgba(70, 70, 70, ${this.opacity})`, `rgba(255, 255, 255, ${this.opacity})`)
         }
-        this.draw.Text("Y e t A n o t h e r 2 d P l a t f o r m e r", 300, 150, `rgba(70, 70, 70, ${this.opacity})`, `rgba(255, 255, 255, ${this.opacity})`)
+        this.draw.Text("Y e t A n o t h e r 2 d P l a t f o r m e r", 600, 300, `rgba(70, 70, 70, ${this.opacity})`, `rgba(255, 255, 255, ${this.opacity})`)
 
         
-        this.draw.Text("P r e s s S T o E n t e r S e t t i n g s", 300, 400, `rgba(70, 70, 70, ${this.opacity})`, `rgba(255, 255, 255, ${this.opacity})`)
+        this.draw.Text("P r e s s S T o E n t e r S e t t i n g s", 600,600, `rgba(70, 70, 70, ${this.opacity})`, `rgba(255, 255, 255, ${this.opacity})`)
     }
 
     async fade(updown = "down") {
