@@ -63,7 +63,8 @@ export class GameDisplayer {
         this.map.ground.draw(this.camera.x, this.camera.y);
         this.drawText()
 
-        if(this.debug.enum == true) {this.enum()}
+        this.debugDraw()
+
 
     }
 
@@ -98,6 +99,16 @@ export class GameDisplayer {
           scaleY = (desiredHeight / this.originalHeight);
           ctx.setTransform(scaleY * this.game.camera.zoom, 0, 0, scaleX * this.game.camera.zoom, 0, 0)
         }
+    }
+
+    debugDraw() {
+        if(this.debug.enum == true)   {this.enum()}
+        if(this.debug.getPos == true) {this.getPos()}
+    }
+
+    getPos() {
+        this.drawUtils.Text(Math.round(this.player.x), 100, 300, "white", "black")
+        this.drawUtils.Text(Math.round(this.player.y), 100, 400, "white", "black")
     }
 
     drawHeld(){

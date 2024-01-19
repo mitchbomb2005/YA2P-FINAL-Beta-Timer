@@ -71,10 +71,10 @@ export class Edit {
             for (let i = 0; i < this.hitNum; i++) {
                 console.log(
                     "this.hitboxes[", this.total ,"] = new Hitbox(",
-                this.tempHitboxes[i].x,",",
-                this.tempHitboxes[i].y,",",
-                this.tempHitboxes[i].width, ",",
-                this.tempHitboxes[i].height,
+                Math.round(this.tempHitboxes[i].x),",",
+                Math.round(this.tempHitboxes[i].y),",",
+                Math.round(this.tempHitboxes[i].width), ",",
+                Math.round(this.tempHitboxes[i].height),
                 " )"
                 )
                 //navigator.clipboard.writeText()
@@ -85,28 +85,28 @@ export class Edit {
                 if(this.layer == 0) {
                     await navigator.clipboard.writeText(this.text+
                         "this.hitboxes[" + this.total + "] = new Hitbox("+
-                        this.tempHitboxes[i].x+ ","+
-                        this.tempHitboxes[i].y+ ","+
-                        this.tempHitboxes[i].width+ ","+
-                        this.tempHitboxes[i].height+
+                        Math.round(this.tempHitboxes[i].x)+ ","+
+                        Math.round(this.tempHitboxes[i].y)+ ","+
+                        Math.round(this.tempHitboxes[i].width)+ ","+
+                        Math.round(this.tempHitboxes[i].height)+
                         " )\n "
                     )
                 } else if (this.layer == 1) {
                     await navigator.clipboard.writeText(this.text+
                         "this.layer1[" + (this.game.Background.layer1.length) + "] = new Hitbox("+
-                        this.tempHitboxes[i].x+ ","+
-                        this.tempHitboxes[i].y+ ","+
-                        this.tempHitboxes[i].width+ ","+
-                        this.tempHitboxes[i].height+
+                        Math.round(this.tempHitboxes[i].x)+ ","+
+                        Math.round(this.tempHitboxes[i].y)+ ","+
+                        Math.round(this.tempHitboxes[i].width)+ ","+
+                        Math.round(this.tempHitboxes[i].height)+
                         " )\n "
                     )
                 } else if (this.layer == 2) {
                     await navigator.clipboard.writeText(this.text+
                         "this.layer2[" + (this.game.Background.layer2.length) + "] = new Hitbox("+
-                        this.tempHitboxes[i].x+ ","+
-                        this.tempHitboxes[i].y+ ","+
-                        this.tempHitboxes[i].width+ ","+
-                        this.tempHitboxes[i].height+
+                        Math.round(this.tempHitboxes[i].x)+ ","+
+                        Math.round(this.tempHitboxes[i].y)+ ","+
+                        Math.round(this.tempHitboxes[i].width)+ ","+
+                        Math.round(this.tempHitboxes[i].height)+
                         " )\n "
                     )
                 }

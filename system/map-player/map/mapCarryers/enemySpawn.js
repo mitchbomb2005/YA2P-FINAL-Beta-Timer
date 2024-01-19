@@ -5,8 +5,6 @@ export class Spawn{
     constructor(thus, execute = true){
         if (execute == true) {
             this.value[0] = new Enemy(-438, -509, thus);
-
-            this.value[1] = new Enemy(-478, -509, thus);
         }
     }
 }
