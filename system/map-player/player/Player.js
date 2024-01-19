@@ -25,6 +25,8 @@ export class Player {
     stuck = false; death = false; hidden = false;
     playerHitbox = new Array();
 
+    hookHeld = false
+
     constructor(x, y, keyManager, debug, map, camera, DM, CPM, TPM, extra) {
         this.keyManager = keyManager;
         this.x = x;

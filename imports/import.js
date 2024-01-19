@@ -69,7 +69,7 @@ export class Game{
             this.teleport,
         );
 
-        this.enemy = new Spawn(this)
+        this.enemy = new Spawn(this, false)
 
         
     }
