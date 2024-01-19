@@ -15,7 +15,7 @@ import { Hook } from "../system/map-player/player/hook.js"
 
 import { Storage } from "../storage/storage.js"
 import { Sound as Audio } from "../system/map-player/map/otherParts/audio.js" //Checkpoint
-import { Enemy } from "../system/enemy/Enemy.js"
+import { Spawn } from "../system/map-player/map/mapCarryers/enemySpawn.js"
 
 
 export class Game{
@@ -39,6 +39,8 @@ export class Game{
     Background = new Background(this.camera)
     audio = new Audio()
     main 
+    enemy
+    
     
     
     constructor(tld) {
@@ -52,8 +54,6 @@ export class Game{
             this.teleport,
             this
         );
-
-        this.enemy = new Enemy(-438, -509, this);
 
         this.main = tld
 
@@ -69,8 +69,7 @@ export class Game{
             this.teleport,
         );
 
-
-        
+        this.enemy = new Spawn(this)
 
         
     }
