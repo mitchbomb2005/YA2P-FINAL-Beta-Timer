@@ -288,6 +288,12 @@ export class Player {
 
     }
 
+    check(valC, valS) {
+        if(valC == "hook") {
+            this.hookHeld = valS
+        }
+    }
+
     drawHitbox() {
         this.playerHitbox[100].draw(-this.x + this.camera.x, -this.y + this.camera.y, "#909090");
 
@@ -468,6 +474,12 @@ export class Player {
         for (let i = 0; i < this.map.lava.hitboxes.length; i++) {
             if(this.#collisionCheck(100, i, this.map.lava) && !this.death) {
                 this.die()
+            }
+        }
+
+        for (let i = 0; i < this.map.enabler.hitboxes.length; i++) {
+            if(this.#collisionCheck(100, i, this.map.enabler)) {
+                this.check(this.map.enabler.hitboxes[i].extraInfoI, this.map.enabler.hitboxes[i].extraInfoII)
             }
         }
 

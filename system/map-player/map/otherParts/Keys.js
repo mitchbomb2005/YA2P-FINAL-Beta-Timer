@@ -18,17 +18,17 @@ export class Keys {
 
     constructor(cam, root){
         this.camera = cam
-        this.keyD.src = 'other/images/keys/D_Key_Dark.png';
-        this.keyW.src = 'other/images/keys/W_Key_Dark.png';
-        this.keyS.src = 'other/images/keys/S_Key_Dark.png';
-        this.keyL.src = 'other/images/keys/L_Key_Dark.png'; //
-        this.leftClick.src = 'other/images/keys/Mouse_Left_Key_Dark.png';
-        this.keySpace.src = 'other/images/keys/Space_Key_Dark.png';
-        this.warnLava.src = 'other/images/warn.png';
-        this.warnGrey.src = 'other/images/warnGrey.png';
-        this.redFlag.src = 'other/images/redFlag.png';
-        this.hookDisabled.src = 'other/images/hookDisabled.png';
-        this.hookEnabled.src = 'other/images/hookEnabled.png';
+        this.keyD.src = 'assets/images/keys/D_Key_Dark.png';
+        this.keyW.src = 'assets/images/keys/W_Key_Dark.png';
+        this.keyS.src = 'assets/images/keys/S_Key_Dark.png';
+        this.keyL.src = 'assets/images/keys/L_Key_Dark.png'; //
+        this.leftClick.src = 'assets/images/keys/Mouse_Left_Key_Dark.png';
+        this.keySpace.src = 'assets/images/keys/Space_Key_Dark.png';
+        this.warnLava.src = 'assets/images/warn.png';
+        this.warnGrey.src = 'assets/images/warnGrey.png';
+        this.redFlag.src = 'assets/images/redFlag.png';
+        this.hookDisabled.src = 'assets/images/hookDisabled.png';
+        this.hookEnabled.src = 'assets/images/hookEnabled.png';
         this.game = root
     }
     drawKeys() {

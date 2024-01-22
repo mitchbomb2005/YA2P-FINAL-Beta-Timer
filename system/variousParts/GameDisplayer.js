@@ -35,7 +35,7 @@ export class GameDisplayer {
         this.debug = Debug
         this.player = Player
         this.background = BG
-        this.grid.src = 'other/images/grid.png'
+        this.grid.src = 'assets/images/grid.png'
     }
 
     // methods (functions)
@@ -52,10 +52,10 @@ export class GameDisplayer {
             ctx.drawImage(this.grid, 0, 0, this.originalWidth,625 * (this.originalWidth / 1000))
         }
 
-        this.drawHeld()
-        
+        this.map.enabler.draw(this.camera.x, this.camera.y)
         this.map.teleport.draw(this.camera.x, this.camera.y)
 
+        this.drawHeld()
         this.drawTheBeanPeople()
 
         this.map.lava.draw(this.camera.x, this.camera.y);
