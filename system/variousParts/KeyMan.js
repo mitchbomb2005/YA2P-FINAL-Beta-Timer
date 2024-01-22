@@ -42,7 +42,7 @@ export class KeyManager {
         this.mousePos = this.getMousePos(canvas, event);
         this.mousePos.x = (((this.mousePos.x) / (rect.width)) * this.canvasShape.width) - this.camX
         this.mousePos.y = (((this.mousePos.y) / (rect.height)) * this.canvasShape.height) - this.camY
-        if (event.button == 0 && !this.isKeyPressed("ShiftLeft")) {
+        if (event.button == 0 && !this.isKeyPressed("ShiftLeft") && this.game.player.hookHeld) {
           if (this.game.menu.check) {
             this.game.hook.visibility = !this.game.hook.visibility
             this.game.hook.enabled = false

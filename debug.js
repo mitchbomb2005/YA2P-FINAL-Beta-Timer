@@ -10,6 +10,7 @@ export class Debug {
     shortsMap = false
     enum = false
     cursorCamera = true
+    getPos = false
 
     keyManager;
     game;
@@ -31,6 +32,13 @@ export class Debug {
             this.flipShortsMap()
             this.flipEnum()
             this.flipC()
+            this.flipGP()
+        }
+    }
+
+    flipGP() {
+        if (this.keyManager.wasKeyJustPressed("KeyG")) {
+            this.getPos = !this.getPos
         }
     }
 

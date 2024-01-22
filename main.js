@@ -51,7 +51,11 @@ class Main {
 
         // Update variables
         this.game.player.update();
-        //this.game.enemy.update();
+        for(let i = 0; i < this.game.enemy.value.length; i++) {
+            this.game.enemy.value[i].update();
+        
+        }
+
         this.game.debug.update(); 
         this.game.camera.update();
 

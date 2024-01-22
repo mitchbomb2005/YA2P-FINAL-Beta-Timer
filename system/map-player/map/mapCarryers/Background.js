@@ -18,7 +18,7 @@ export class Background {
     }
 
 // base
-// ctx.fillRect((x/1) + 0 , (y/2) + 0 , 0, 0);
+// ctx.fillRect((x/1) + 0, (y/2) + 0, 0, 0);
 
     createLayer1() {
         this.layer1[0] = new Hitbox(150, 150, 50, 650)

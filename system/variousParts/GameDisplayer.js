@@ -63,7 +63,8 @@ export class GameDisplayer {
         this.map.ground.draw(this.camera.x, this.camera.y);
         this.drawText()
 
-        if(this.debug.enum == true) {this.enum()}
+        this.debugDraw()
+
 
     }
 
@@ -100,6 +101,16 @@ export class GameDisplayer {
         }
     }
 
+    debugDraw() {
+        if(this.debug.enum == true)   {this.enum()}
+        if(this.debug.getPos == true) {this.getPos()}
+    }
+
+    getPos() {
+        this.drawUtils.Text(Math.round(this.player.x), 100, 300, "white", "black")
+        this.drawUtils.Text(Math.round(this.player.y), 100, 400, "white", "black")
+    }
+
     drawHeld(){
         if (this.game.hook.visibility) {
             this.drawUtils.Line(
@@ -129,9 +140,16 @@ export class GameDisplayer {
     }
 
     drawTheBeanPeople() {
-        //this.drawUtils.Bean(-this.game.enemy.x + this.camera.x, -this.game.enemy.y + this.camera.y, 50 + (this.game.enemy.avgVelY/2), 100 - this.game.enemy.avgVelY, "#cf9f9f")
-        //this.drawUtils.Bean(-this.game.enemy.x + this.camera.x, -this.game.enemy.y + this.camera.y, 50 + (this.game.enemy.avgVelY/2), 100 - this.game.enemy.avgVelY) 
-        //console.log(-this.game.enemy.x, -this.game.enemy.y)
+
+        for(let i = 0; i < this.game.enemy.value.length; i++) {
+            this.drawUtils.Bean(
+                -this.game.enemy.value[i].x + this.camera.x, 
+                -this.game.enemy.value[i].y + this.camera.y, 
+                50 + (this.game.enemy.value[i].avgVelY/2), 
+                100 - this.game.enemy.value[i].avgVelY, 
+                "#cf9f9f")
+        }
+
         if(this.debug.bean && !this.player.hidden) {  
             if (this.player.avgVelY > 20){
                 this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50 + (20/2), 100 - 20, "#afbfaf") 
@@ -141,6 +159,8 @@ export class GameDisplayer {
                 this.drawUtils.Bean(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 50 + (this.player.avgVelY/2), 100 - this.player.avgVelY, "#afbfaf") 
             }
         }
+
+
  
     }
 
