@@ -53,11 +53,11 @@ export class Player {
         this.playerHitbox[100] = new Hitbox(x, y, width, height)
     }
 
-    update() {
+    update(dt) {
         this.lastJump = this.jump
         if(this.debug.noClip) {
-            this.#updateVelocityNoclip();
-            this.#moveNoclip();
+            this.#updateVelocityNoclip(dt);
+            this.#moveNoclip(dt);
         } else if (!this.death){
             this.#move()
             this.#updateVelocity()
@@ -87,23 +87,23 @@ export class Player {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
     
-    #updateVelocityNoclip() {
+    #updateVelocityNoclip(dt) {
         if (this.keyManager.isKeyPressed("KeyD")) {
-            this.velX -= this.noclipVelChange;
+            this.velX -= this.noclipVelChange //* dt;
             if (Math.abs(this.velX) > this.maxVelX) {
                 this.velX = -this.maxVelX;
             }
 
         }
         if (this.keyManager.isKeyPressed("KeyA")) {
-              this.velX += this.noclipVelChange;
+              this.velX += this.noclipVelChange //* dt;
               if (this.velX > this.maxVelX) {
                 this.velX = this.maxVelX;
             }
               
         }
         if (this.keyManager.isKeyPressed("KeyW") || this.keyManager.isKeyPressed("Space")) {
-            this.velY += this.noclipVelChange;
+            this.velY += this.noclipVelChange //* dt;
             if (this.velY > this.maxVelY) {
                 this.velY = this.maxVelY;
           }
@@ -111,7 +111,7 @@ export class Player {
         }
         
         if (this.keyManager.isKeyPressed("KeyS") && (!this.keyManager.isKeyPressed("ShiftLeft") && !this.keyManager.isKeyPressed("AltLeft"))) {
-            this.velY -= this.noclipVelChange;
+            this.velY -= this.noclipVelChange //* dt;
             if (Math.abs(this.velY) > this.maxVelY) {
                 this.velY = -this.maxVelY;
             }
@@ -122,9 +122,9 @@ export class Player {
         }
         }
 
-    #moveNoclip() {
-        this.x += this.velX;
-        this.y += this.velY;
+    #moveNoclip(dt) {
+        this.x += this.velX * dt;
+        this.y += this.velY * dt;
         this.velX = this.velX * .8
         this.velY = this.velY * .8
     }

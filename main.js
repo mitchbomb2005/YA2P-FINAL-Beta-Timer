@@ -5,9 +5,9 @@ import { Game } from "./imports/import.js"
 
 
     const game = new Game(this)
-    var currentTime = 1
-    var deltaTime = 1
-    var lastTime
+    const perfectFrameTime = 1000 / 60;
+    let deltaTime = 0;
+    let lastTimestamp = 0;
 
     async function startGame() {
         if(localStorage) {game.storage.accessible = false} else {game.storage.accessible = true}
@@ -23,11 +23,15 @@ import { Game } from "./imports/import.js"
 
     async function tick() {
         //currentTime = Date.now();
+        
+        await sleep(50)
         requestAnimationFrame(tick);
 
-        console.log("frame")
+        //console.log("frame")
 
-            
+            deltaTime = (Date.now() - lastTimestamp) / perfectFrameTime;
+            lastTimestamp = Date.now();
+            console.log(deltaTime)
             
             game.gameDisplayer.drawGameFrame();
             if (game.debug.playerHitbox) {
@@ -52,25 +56,25 @@ import { Game } from "./imports/import.js"
             //await sleep(1000/60);
     }
 
-    function updateGame() { 
+    async function updateGame() { 
         
 
         // Update variables
-        game.player.update();
+        game.player.update(deltaTime);
         for(let i = 0; i < game.enemy.value.length; i++) {
             game.enemy.value[i].update();
         
         }
 
         game.debug.update(); 
-        game.camera.update();
+        game.camera.update(deltaTime);
 
         if(game.debug.mapBuilder){
             game.mapEdit.update();
         }
 
 
-        game.hook.update();
+        game.hook.update(deltaTime);
         game.storage.update()
         DeltaTime()
 
@@ -78,9 +82,7 @@ import { Game } from "./imports/import.js"
             game.menu.fade("up")
         }
         
-        deltaTime = (currentTime - lastTime)/20;
         
-
         // Update input
     }
 
