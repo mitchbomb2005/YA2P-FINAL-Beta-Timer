@@ -24,6 +24,9 @@ import { Game } from "./imports/import.js"
     async function tick() {
         //currentTime = Date.now();
         requestAnimationFrame(tick);
+
+        console.log("frame")
+
             
             
             game.gameDisplayer.drawGameFrame();
@@ -46,7 +49,7 @@ import { Game } from "./imports/import.js"
             }/**/
             game.keyManager.update();
             //lastTime = Date.now()
-            await sleep(1000/60);
+            //await sleep(1000/60);
     }
 
     function updateGame() { 
