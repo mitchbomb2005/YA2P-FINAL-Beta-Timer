@@ -31,7 +31,7 @@ export class Menu {
     }
 
     async fade(updown = "down") {
-        if(updown=="up") {
+        if(updown=="up" && false) {
             this.check = false
             for (let i = 0; i < 20; i++) {
                 this.opacity += .05
