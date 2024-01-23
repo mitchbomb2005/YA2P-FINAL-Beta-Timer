@@ -84,12 +84,6 @@ import { Game } from "./imports/import.js"
         // Update input
     }
 
-    function autoDebug() {
-        game.debug.debugMode = true
-        game.debug.bean = false
-        game.debug.noClip = true
-    }
-
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
