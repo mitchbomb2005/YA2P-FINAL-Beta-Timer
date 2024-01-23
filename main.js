@@ -2,100 +2,99 @@
 
 import { Game } from "./imports/import.js"
 
-class Main {
 
-    game = new Game(this)
-    currentTime = 1
-    deltaTime = 1
-    lastTime
 
-    async startGame() {
-        if(localStorage) {this.game.storage.accessible = false} else {this.game.storage.accessible = true}
-        this.game.storage.check()
+    const game = new Game(this)
+    var currentTime = 1
+    var deltaTime = 1
+    var lastTime
 
-        //this.game.autoDebug()
-        while (true) {
-            //this.game.updateGame();
+    async function startGame() {
+        if(localStorage) {game.storage.accessible = false} else {game.storage.accessible = true}
+        game.storage.check()
+        requestAnimationFrame(tick);
 
-           
-            this.currentTime = Date.now();
+        //game.autoDebug()
+        //while (true) {
+            //game.updateGame();
             
-            
-            this.game.gameDisplayer.drawGameFrame();
-            if (this.game.debug.playerHitbox) {
-                this.game.player.drawHitbox()
-            }
-
-            if (this.game.debug.mapBuilder) {
-                this.game.mapEdit.drawHitbox()
-            }
-            
-            this.game.keys.drawKeys()
-            if(this.game.menu.check) {
-                this.updateGame();
-            } else {
-                this.game.menu.drawMenu()
-                if(this.game.keyManager.wasKeyJustPressed("KeyW") && !this.game.menu.checkDos) {
-                    this.game.menu.fade()
-                }
-            }/**/
-            this.game.keyManager.update();
-            this.lastTime = Date.now()
-            await this.sleep(1000/60);
-            
-        }
+        //}
     } 
 
-    updateGame() { 
+    async function tick() {
+        //currentTime = Date.now();
+        requestAnimationFrame(tick);
+            
+            
+            game.gameDisplayer.drawGameFrame();
+            if (game.debug.playerHitbox) {
+                game.player.drawHitbox()
+            }
+
+            if (game.debug.mapBuilder) {
+                game.mapEdit.drawHitbox()
+            }
+            
+            game.keys.drawKeys()
+            if(game.menu.check) {
+                updateGame();
+            } else {
+                game.menu.drawMenu()
+                if(game.keyManager.wasKeyJustPressed("KeyW") && !game.menu.checkDos) {
+                    game.menu.fade()
+                }
+            }/**/
+            game.keyManager.update();
+            //lastTime = Date.now()
+            await sleep(1000/60);
+    }
+
+    function updateGame() { 
         
 
         // Update variables
-        this.game.player.update();
-        for(let i = 0; i < this.game.enemy.value.length; i++) {
-            this.game.enemy.value[i].update();
+        game.player.update();
+        for(let i = 0; i < game.enemy.value.length; i++) {
+            game.enemy.value[i].update();
         
         }
 
-        this.game.debug.update(); 
-        this.game.camera.update();
+        game.debug.update(); 
+        game.camera.update();
 
-        if(this.game.debug.mapBuilder){
-            this.game.mapEdit.update();
+        if(game.debug.mapBuilder){
+            game.mapEdit.update();
         }
 
 
-        this.game.hook.update();
-        this.game.storage.update()
-        this.DeltaTime()
+        game.hook.update();
+        game.storage.update()
+        DeltaTime()
 
-        if (this.game.keyManager.wasKeyJustPressed("KeyP") && this.game.menu.checkDos) {
-            this.game.menu.fade("up")
+        if (game.keyManager.wasKeyJustPressed("KeyP") && game.menu.checkDos) {
+            game.menu.fade("up")
         }
         
-        this.deltaTime = (this.currentTime - this.lastTime)/20;
+        deltaTime = (currentTime - lastTime)/20;
         
 
         // Update input
     }
 
-    autoDebug() {
-        this.game.debug.debugMode = true
-        this.game.debug.bean = false
-        this.game.debug.noClip = true
+    function autoDebug() {
+        game.debug.debugMode = true
+        game.debug.bean = false
+        game.debug.noClip = true
     }
 
-    sleep(ms) {
+    function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    DeltaTime(){
+    function DeltaTime(){
 
         
         
     }
-}
 
-
-var game = new Main();
-
-game.startGame();
+startGame();
