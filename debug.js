@@ -11,6 +11,7 @@ export class Debug {
     enum = false
     cursorCamera = true
     getPos = false
+    lag = false
 
     keyManager;
     game;
@@ -33,11 +34,18 @@ export class Debug {
             this.flipEnum()
             this.flipC()
             this.flipGP()
+            this.flipL()
+        }
+    }
+
+    flipL() {
+        if (this.keyManager.wasKeyJustPressed("KeyL")) {
+            this.lag = !this.lag
         }
     }
 
     flipGP() {
-        if (this.keyManager.wasKeyJustPressed("KeyG")) {
+        if (this.keyManager.wasKeyJustPressed("KeyC")) {
             this.getPos = !this.getPos
         }
     }

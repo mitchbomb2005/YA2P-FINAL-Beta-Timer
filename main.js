@@ -24,7 +24,7 @@ import { Game } from "./imports/import.js"
     async function tick() {
         //currentTime = Date.now();
         
-        await sleep(50)
+        if(game.debug.lag){await sleep(Math.random() * 100)}
         requestAnimationFrame(tick);
 
         //console.log("frame")
