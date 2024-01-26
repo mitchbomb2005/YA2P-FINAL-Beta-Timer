@@ -31,7 +31,7 @@ export class Map {
         this.stairs(8343, 540, 994, 91, 20, 18)        
         this.hitboxes[31] = new Hitbox(6499,-1985,1244,1922 )
         this.hitboxes[32] = new Hitbox(7425,-2104,3888,1728 )
-        this.hitboxes[33] = new Hitbox(9811,-540,1020,2483 )
+        this.hitboxes[33] = new Hitbox(9811,-540,1520,2483 )
         
         
         /**/   
