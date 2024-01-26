@@ -35,16 +35,14 @@ export class Keys {
 
         if(this.game.debug.shortsMap) {} else {
             this.drawMisc()
-            this.jump(4480, 245)
-            this.jump(3850, -410)
+            this.hookTip(5347,-621)
+            
             this.jump(2273, 642)
-            this.hookTip(5704,-200,0)
-            this.hookTip(13093,-4439,0)
-            this.hookTip(13946,-3594,0)
+            this.jump(5419, 644)
             
         }
 
-    } // 6851 -130
+    } // 8779, 269
  
 
     jump(x, y) {
@@ -54,14 +52,20 @@ export class Keys {
 
     hookTip(x, y, type){
         ctx.drawImage(this.leftClick, x + this.camera.x, y + this.camera.y)
-        ctx.drawImage(this.hookEnabled, x+100 + this.camera.x, y + this.camera.y)
+        this.hookState(x+100 + this.camera.x, y + this.camera.y)
+    }
+    hookState(x, y) {
+        if(this.game.player.hookHeld) {
+            ctx.drawImage(this.hookEnabled, x, y)
+        } else {
+            ctx.drawImage(this.hookDisabled, x, y)
+        }
     }
 
     drawMisc(){
         ctx.drawImage(this.keyD, 388 + this.camera.x, 600 + this.camera.y)
-        ctx.drawImage(this.redFlag, 1544 + this.camera.x, 67 + this.camera.y, 100, 100)
-        ctx.drawImage(this.keyS, 13530 + this.camera.x, -4937 + this.camera.y)
-        ctx.drawImage(this.keyW, 14496 + this.camera.x, -4253 + this.camera.y)
+        this.hookState(8779 + this.camera.x, 269 + this.camera.y)
+       // ctx.drawImage(this.hookEnabled, 8779 + this.camera.x, 269 + this.camera.y)
     }
     
 }

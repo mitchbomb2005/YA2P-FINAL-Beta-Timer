@@ -91,5 +91,15 @@ export class DrawUtils {
         ctx.stroke();
 
     }
+ 
+    Circle(x, y, rad, color = "rgba(255, 0, 0, .5)") {
+        ctx.beginPath();
+        //ctx.arc()
+        ctx.arc(x, y, rad, 0, 2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.closePath();
+        //this.Text("orb", 100, 100)
+    }
 
 }

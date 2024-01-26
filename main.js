@@ -60,14 +60,15 @@ import { Game } from "./imports/import.js"
         
 
         // Update variables
-        game.player.update(deltaTime);
+        
+        game.camera.update(deltaTime)
+        game.player.update(deltaTime); //REAL
         for(let i = 0; i < game.enemy.value.length; i++) {
             game.enemy.value[i].update();
         
         }
 
-        game.debug.update(); 
-        game.camera.update(deltaTime);
+        game.debug.update();
 
         if(game.debug.mapBuilder){
             game.mapEdit.update();

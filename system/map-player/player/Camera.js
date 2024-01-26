@@ -35,14 +35,14 @@ export class Camera {
           }, false)
     }
 
-    update(dt) {
+    update() {
         this.mouseX = 0 //-(this.mousePos.x - 1676/2)/3
         this.mouseY = 0 //-(this.mousePos.y - 918/2)/3
 
         if (this.debug.freeCam) {
             this.freeCamMove()
         } else {
-            this.move(dt)
+            this.move()
         }
         if (this.keyMan.wasKeyJustPressed("Equal")) {
             this.Zoom("in")
@@ -58,17 +58,17 @@ export class Camera {
 
     freeCamMove() {}
 
-    move(dt) {
+    move() {
         if(this.debug.cursorCamera) {
-            this.velX = (((this.x - this.midX) - (this.game.player.x+this.mouseX))  /5) //* dt 
-            this.velY = (((this.y - this.midY) - (this.game.player.y+this.mouseY))  /5) //* dt
+            this.velX = (((this.x - this.midX) - (this.game.player.x+this.mouseX))  /5) // 
+            this.velY = (((this.y - this.midY) - (this.game.player.y+this.mouseY))  /5) //
         } else {
-            this.velX = (((this.x - this.midX) - (this.game.player.x))  /5) //* dt
-            this.velY = (((this.y - this.midY) - (this.game.player.y))  /5) //* dt
+            this.velX = (((this.x - this.midX) - (this.game.player.x))  /5) //
+            this.velY = (((this.y - this.midY) - (this.game.player.y))  /5) //
         }
 
-        this.x -=  this.velX //* dt
-        this.y -=  this.velY //* dt
+        this.x -=  this.velX 
+        this.y -=  this.velY 
     }
 
     Zoom(direction) {

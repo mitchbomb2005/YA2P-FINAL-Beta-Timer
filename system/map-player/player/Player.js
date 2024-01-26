@@ -1,6 +1,7 @@
 'use strict';
 
 import { Hitbox } from ".././Hitbox.js";
+import { Orb } from "./orbAnim.js";
 
 export class Player {
 
@@ -26,6 +27,7 @@ export class Player {
     playerHitbox = new Array();
 
     hookHeld = false
+    orb = new Array(); anim = false
 
     constructor(x, y, keyManager, debug, map, camera, DM, CPM, TPM, extra) {
         this.keyManager = keyManager;
@@ -53,14 +55,14 @@ export class Player {
         this.playerHitbox[100] = new Hitbox(x, y, width, height)
     }
 
-    update(dt) {
+    update() {
         this.lastJump = this.jump
         if(this.debug.noClip) {
-            this.#updateVelocityNoclip(dt);
-            this.#moveNoclip(dt);
+            this.#updateVelocityNoclip();
+            this.#moveNoclip();
         } else if (!this.death){
-            this.#move()
             this.#updateVelocity()
+            this.#move()
         }
         if (!this.game.debug.freeCam) {
 
@@ -80,6 +82,8 @@ export class Player {
         this.hidden = this.death
         //console.log(this.velY)
 
+
+
         
     }
 
@@ -87,23 +91,23 @@ export class Player {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
     
-    #updateVelocityNoclip(dt) {
+    #updateVelocityNoclip() {
         if (this.keyManager.isKeyPressed("KeyD")) {
-            this.velX -= this.noclipVelChange //* dt;
+            this.velX -= this.noclipVelChange //*18 * (;
             if (Math.abs(this.velX) > this.maxVelX) {
                 this.velX = -this.maxVelX;
             }
 
         }
         if (this.keyManager.isKeyPressed("KeyA")) {
-              this.velX += this.noclipVelChange //* dt;
+              this.velX += this.noclipVelChange //;
               if (this.velX > this.maxVelX) {
                 this.velX = this.maxVelX;
             }
               
         }
         if (this.keyManager.isKeyPressed("KeyW") || this.keyManager.isKeyPressed("Space")) {
-            this.velY += this.noclipVelChange //* dt;
+            this.velY += this.noclipVelChange //;
             if (this.velY > this.maxVelY) {
                 this.velY = this.maxVelY;
           }
@@ -111,7 +115,7 @@ export class Player {
         }
         
         if (this.keyManager.isKeyPressed("KeyS") && (!this.keyManager.isKeyPressed("ShiftLeft") && !this.keyManager.isKeyPressed("AltLeft"))) {
-            this.velY -= this.noclipVelChange //* dt;
+            this.velY -= this.noclipVelChange //;
             if (Math.abs(this.velY) > this.maxVelY) {
                 this.velY = -this.maxVelY;
             }
@@ -120,11 +124,11 @@ export class Player {
         if (this.velY < -this.maxVelY) {
             this.velY = -this.maxVelY;
         }
-        }
+    }
 
-    #moveNoclip(dt) {
-        this.x += this.velX * dt;
-        this.y += this.velY * dt;
+    #moveNoclip() {
+        this.x += this.velX ;
+        this.y += this.velY ;
         this.velX = this.velX * .8
         this.velY = this.velY * .8
     }
@@ -266,7 +270,7 @@ export class Player {
 
     #move() {
         this.x += this.velX //* this.game.main.deltaTime;
-        this.y += this.velY;
+        this.y += this.velY ;
         this.jump--
         this.#colide()
         //console.log(this.x, this.y)
@@ -291,6 +295,17 @@ export class Player {
     check(valC, valS) {
         if(valC == "hook") {
             this.hookHeld = valS
+            if(this.hookHeld == true && this.anim == false) {
+                this.orb[0] = new Orb(this.x - 200, this.y+ 200, 20, this)
+                this.orb[1] = new Orb(this.x - 0, this.y+ 300, 20, this)
+                this.orb[2] = new Orb(this.x - 0, this.y- 300, 20, this)
+                this.orb[3] = new Orb(this.x - 200, this.y- 200, 20, this)
+                this.orb[4] = new Orb(this.x - 300, this.y- 0, 20, this)
+                this.orb[5] = new Orb(this.x + 300, this.y- 0, 20, this)
+                this.orb[6] = new Orb(this.x + 200, this.y- 200, 20, this)
+                this.orb[7] = new Orb(this.x + 200, this.y+ 200, 20, this)
+                this.anim = true
+            }
         }
     }
 
@@ -320,6 +335,7 @@ export class Player {
         }
         return (hit);
     }
+
     async #colide() {
         var hitDown = false
         this.wallJumpRight = false
@@ -354,7 +370,7 @@ export class Player {
                         this.x = (-hitX + (offset))
                     }
                 } else {
-                    if(this.vely > 0) {
+                    if(this.velY > 0) {
                         var offset = 75
                         //console.log("hit!")
                         if(this.velY > 0) {

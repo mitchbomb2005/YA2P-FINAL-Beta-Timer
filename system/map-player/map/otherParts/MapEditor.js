@@ -70,7 +70,7 @@ export class Edit {
             }
             for (let i = 0; i < this.hitNum; i++) {
                 console.log(
-                    "this.hitboxes[", this.total ,"] = new Hitbox(",
+                    "this.hitboxes[", "this.hitboxes.length" ,"] = new Hitbox(",
                 Math.round(this.tempHitboxes[i].x),",",
                 Math.round(this.tempHitboxes[i].y),",",
                 Math.round(this.tempHitboxes[i].width), ",",
