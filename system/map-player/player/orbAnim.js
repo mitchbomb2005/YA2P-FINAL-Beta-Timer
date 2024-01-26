@@ -41,7 +41,7 @@ export class Orb{
 
         this.size = (Math.abs(this.player.x - this.x) + Math.abs(this.player.y - this.y)) / 25 
         this.avgSize = (this.avgSize * 7 + this.size) / 8
-        if (this.size <= 3) {
+        if (this.avgSize <= 7) {
             this.hidden = true
         }
         //this.Draw()

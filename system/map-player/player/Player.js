@@ -27,7 +27,7 @@ export class Player {
     playerHitbox = new Array();
 
     hookHeld = false
-    orb = new Array(); anim = false
+    orb = new Array(); anim = false; animFrames = 0
 
     constructor(x, y, keyManager, debug, map, camera, DM, CPM, TPM, extra) {
         this.keyManager = keyManager;
@@ -295,15 +295,15 @@ export class Player {
     check(valC, valS) {
         if(valC == "hook") {
             this.hookHeld = valS
-            if(this.hookHeld == true && this.anim == false) {
-                this.orb[0] = new Orb(this.x - 200, this.y+ 200, 20, this)
-                this.orb[1] = new Orb(this.x - 0, this.y+ 300, 20, this)
-                this.orb[2] = new Orb(this.x - 0, this.y- 300, 20, this)
-                this.orb[3] = new Orb(this.x - 200, this.y- 200, 20, this)
-                this.orb[4] = new Orb(this.x - 300, this.y- 0, 20, this)
-                this.orb[5] = new Orb(this.x + 300, this.y- 0, 20, this)
-                this.orb[6] = new Orb(this.x + 200, this.y- 200, 20, this)
-                this.orb[7] = new Orb(this.x + 200, this.y+ 200, 20, this)
+            if(this.hookHeld == true && this.animFrames < 30) {
+                this.orb[this.orb.length] = new Orb(this.x - 1000, this.y+ 1000, 20, this)
+                this.orb[this.orb.length] = new Orb(this.x - 0, this.y+ 1500, 20, this)
+                this.orb[this.orb.length] = new Orb(this.x - 0, this.y- 1500, 20, this)
+                this.orb[this.orb.length] = new Orb(this.x - 1000, this.y- 1000, 20, this)
+                this.orb[this.orb.length] = new Orb(this.x - 1500, this.y- 0, 20, this)
+                this.orb[this.orb.length] = new Orb(this.x + 1500, this.y- 0, 20, this)
+                this.orb[this.orb.length] = new Orb(this.x + 1000, this.y- 1000, 20, this)
+                this.orb[this.orb.length] = new Orb(this.x + 1000, this.y+ 1000, 20, this)
                 this.anim = true
             }
         }
