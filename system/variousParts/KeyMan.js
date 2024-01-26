@@ -44,7 +44,7 @@ export class KeyManager {
         this.mousePos.y = (((this.mousePos.y) / (rect.height)) * this.canvasShape.height) - this.camY
         if (event.button == 0 && !this.isKeyPressed("ShiftLeft") && this.game.player.hookHeld) {
           if (this.game.menu.check) {
-            this.game.hook.visibility = !this.game.hook.visibility
+            this.game.hook.visibility = true
             this.game.hook.enabled = false
             this.game.hook.motion = true
             this.game.hook.mouseUpdate()
@@ -79,6 +79,17 @@ export class KeyManager {
       document.addEventListener('contextmenu', event => {
         event.preventDefault();
       }, false);      
+      document.addEventListener("mouseup", (event) => {
+        this.game.hook.visibility = false
+        this.game.hook.enabled = false
+        this.game.hook.motion = true
+        this.game.hook.mouseUpdate()
+        if (this.game.hook.visibility) {
+          this.game.audio.hookSound()
+        } else {
+          this.game.audio.breakSound()
+        }
+      })
     }
 
 

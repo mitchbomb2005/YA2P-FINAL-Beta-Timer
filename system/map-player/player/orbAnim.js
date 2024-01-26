@@ -6,17 +6,19 @@ export class Orb{
     size = 4
     draw
     player
+    color
     hidden = false
-    constructor(x, y, size, player) {
+    constructor(x, y, size, player, color = "#fff") {
         this.x = x
         this.y = y
         this.size = size
         this.player = player
         this.draw = player.game.drawUtils
+        this.color = color
     }
     Draw() {
         if(!this.hidden){
-            this.draw.Circle(-this.x + this.player.camera.x, -this.y + this.player.camera.y, this.avgSize, "#fff")
+            this.draw.Circle(-this.x + this.player.camera.x, -this.y + this.player.camera.y, this.avgSize, this.color)
         }
         //this.draw.Circle(100, 100, 100, "#fff")
     }

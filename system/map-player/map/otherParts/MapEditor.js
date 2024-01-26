@@ -79,12 +79,12 @@ export class Edit {
                 )
                 //navigator.clipboard.writeText()
                 
-                
+                  
 
                 await navigator.clipboard.readText().then(text =>this.text = text)
                 if(this.layer == 0) {
                     await navigator.clipboard.writeText(this.text+
-                        "this.hitboxes[" + this.total + "] = new Hitbox("+
+                        "this.hitboxes[" + "this.hitboxes.length" + "] = new Hitbox("+
                         Math.round(this.tempHitboxes[i].x)+ ","+
                         Math.round(this.tempHitboxes[i].y)+ ","+
                         Math.round(this.tempHitboxes[i].width)+ ","+

@@ -3,6 +3,7 @@ import { Death as MainLava } from               "../system/map-player/map/mapCar
 import { Teleport as MainTeleport } from        "../system/map-player/map/mapCarryers/Teleport.js"
 import { Checkpoint as MainCheckpoint } from    "../system/map-player/map/mapCarryers/checkpoint.js"
 import { Enabler as MainEnabler } from "../system/map-player/map/mapCarryers/Enabler.js"
+import { Door as MainDoor} from "../system/map-player/map/mapCarryers/Doors.js"
 
 import { Map as ShortsGround } from             "../system/map-player/map/mapCarryers/otherMaps/shorts/Map.js"
 import { Death as ShortsLava } from             "../system/map-player/map/mapCarryers/otherMaps/shorts/DeathMap.js"

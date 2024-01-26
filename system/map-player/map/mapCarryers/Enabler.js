@@ -15,7 +15,7 @@ export class Enabler {
 
         //this.hitboxes[0] = new Hitbox(1238,138,336,470, false, "hook", true, "#fff")
 
-        this.hitboxes[0] = new Hitbox(8726,186,213,28, false, "hook", true, "#fff" )
+        this.hitboxes[0] = new Hitbox(8726,186,213,28, false, "hook", true, "rgba(0,0,0,0)" )
  
          
     }

@@ -27,7 +27,7 @@ export class Player {
     playerHitbox = new Array();
 
     hookHeld = false
-    orb = new Array(); anim = false; animFrames = 0
+    orb = new Array(); anim = false; animFrames = 0; orbAlpha = 1
 
     constructor(x, y, keyManager, debug, map, camera, DM, CPM, TPM, extra) {
         this.keyManager = keyManager;
@@ -81,6 +81,23 @@ export class Player {
         }
         this.hidden = this.death
         //console.log(this.velY)
+        this.orbAlpha -= .001
+        if(this.anim == true && this.orbAlpha >= 0) {
+            this.orb[this.orb.length] = new Orb(this.x - 1000, this.y+ 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
+            this.orb[this.orb.length] = new Orb(this.x - 0, this.y+ 1500, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
+            this.orb[this.orb.length] = new Orb(this.x - 0, this.y- 1500, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
+            this.orb[this.orb.length] = new Orb(this.x - 1000, this.y- 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
+            this.orb[this.orb.length] = new Orb(this.x - 1500, this.y- 0, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
+            this.orb[this.orb.length] = new Orb(this.x + 1500, this.y- 0, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
+            this.orb[this.orb.length] = new Orb(this.x + 1000, this.y- 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
+            this.orb[this.orb.length] = new Orb(this.x + 1000, this.y+ 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
+            this.anim = true
+            this.orbAlpha -= .01
+            this.game.audio.powerUpSound()
+        }
+        if(this.orbAlpha <= 0 && this.anim == true) {
+            this.hookHeld = true
+        }
 
 
 
@@ -294,18 +311,11 @@ export class Player {
 
     check(valC, valS) {
         if(valC == "hook") {
-            this.hookHeld = valS
-            if(this.hookHeld == true && this.animFrames < 30) {
-                this.orb[this.orb.length] = new Orb(this.x - 1000, this.y+ 1000, 20, this)
-                this.orb[this.orb.length] = new Orb(this.x - 0, this.y+ 1500, 20, this)
-                this.orb[this.orb.length] = new Orb(this.x - 0, this.y- 1500, 20, this)
-                this.orb[this.orb.length] = new Orb(this.x - 1000, this.y- 1000, 20, this)
-                this.orb[this.orb.length] = new Orb(this.x - 1500, this.y- 0, 20, this)
-                this.orb[this.orb.length] = new Orb(this.x + 1500, this.y- 0, 20, this)
-                this.orb[this.orb.length] = new Orb(this.x + 1000, this.y- 1000, 20, this)
-                this.orb[this.orb.length] = new Orb(this.x + 1000, this.y+ 1000, 20, this)
+            if(this.anim == false){
+                this.orbAlpha = 2
                 this.anim = true
             }
+
         }
     }
 

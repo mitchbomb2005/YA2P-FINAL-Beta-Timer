@@ -42,6 +42,12 @@ export class Sound{
         wallJump.volume = v
         wallJump.play();
     }
+
+    powerUpSound(v=1) {
+        var wallJump = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/powerup.wav')
+        wallJump.volume = v
+        wallJump.play();
+    }
     key = false
 
     playSound(){
