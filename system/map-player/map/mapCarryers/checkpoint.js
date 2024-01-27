@@ -14,7 +14,12 @@ export class Checkpoint {
     #createHitboxes() {
         //this.hitboxes[ 0 ] = new Hitbox( 4708.866632044117 , -1543.832718679886 , 413 , 994.084975922992  )
         this.hitboxes[0] = new Hitbox(5834,-552,185,519 )
- 
+        this.hitboxes[this.hitboxes.length] = new Hitbox(5246,145,393,438 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(9850,-718,612,138 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(14023,-2172,600,166 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(16704,-5017,96,622 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(11223,-2390,274,17 )
+        
         /*
         this.hitboxes[6] = new Hitbox(7824.600652535286,-594.7523150074721,370.9999875076246,473.92704492161954 )
         this.hitboxes[3] = new Hitbox(6554.600640036759,-3115.8253071301892,394.02956252528475,226.461460671424 )

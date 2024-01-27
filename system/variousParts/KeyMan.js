@@ -80,6 +80,7 @@ export class KeyManager {
         event.preventDefault();
       }, false);      
       document.addEventListener("mouseup", (event) => {
+        if(this.game.hook.visibility){
         this.game.hook.visibility = false
         this.game.hook.enabled = false
         this.game.hook.motion = true
@@ -88,7 +89,7 @@ export class KeyManager {
           this.game.audio.hookSound()
         } else {
           this.game.audio.breakSound()
-        }
+        }}
       })
     }
 

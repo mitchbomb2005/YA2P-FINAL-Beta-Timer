@@ -36,9 +36,13 @@ export class Keys {
         if(this.game.debug.shortsMap) {} else {
             this.drawMisc()
             this.hookTip(5347,-621)
+            this.hookTip(13821,-2632)
             
             this.jump(2273, 642)
             this.jump(5419, 644)
+
+            this.jump(8150,188)
+            this.jump(7533,-389)
             
         }
 
@@ -64,7 +68,9 @@ export class Keys {
 
     drawMisc(){
         ctx.drawImage(this.keyD, 388 + this.camera.x, 600 + this.camera.y)
-        this.hookState(8779 + this.camera.x, 269 + this.camera.y)
+        ctx.drawImage(this.keyS, 17620 + this.camera.x, -3280 + this.camera.y)
+        ctx.drawImage(this.keyW, 17620 + this.camera.x, -3380 + this.camera.y)
+        this.hookState(11302 + this.camera.x, -2227 + this.camera.y)
        // ctx.drawImage(this.hookEnabled, 8779 + this.camera.x, 269 + this.camera.y)
     }
     
@@ -72,5 +78,7 @@ export class Keys {
 
 /*
 
+ this.hitboxes[this.hitboxes.length] = new Hitbox(17620,-3580,140,102 )
+ 
 
 */

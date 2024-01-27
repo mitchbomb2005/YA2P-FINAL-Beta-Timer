@@ -27,13 +27,43 @@ export class Map {
         this.hitboxes[7] = new Hitbox(5169,-1733,1066,1321 )
         this.hitboxes[8] = new Hitbox(6191,558,245,79 )
         this.hitboxes[9] = new Hitbox(7018,558,217,79 )
-        this.hitboxes[10] = new Hitbox(7667,558,2156,1518 )
-        this.stairs(8343, 558 + 1, 994, 91, 360, 1)        
+        this.hitboxes[10] = new Hitbox(7667,558,2156,1518 )       
         this.hitboxes[this.hitboxes.length] = new Hitbox(6499,-1985,1244,1922 )
-        this.hitboxes[this.hitboxes.length] = new Hitbox(7425,-2104,3888,1728 )
-        this.hitboxes[this.hitboxes.length] = new Hitbox(9811,-540,1520,2483 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(8065,-646,2658,1329 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(7632,-2009,2159,989 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(10364,-1212,339,724 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(10365,-2024,300,442 )
+        //this.hitboxes[this.hitboxes.length] = new Hitbox(9742,-1604,208,381 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(9742,-1604,355,381 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(10578,-2023,1973,2610 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(7075,-3870,2971,1894 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(12419,-3870,1701,1459 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(12526,-2022,3058,1316 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(14539,-2723,2425,1956 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(13836,-4016,1493,941 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(13836,-4016,3113,585 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(11522,-5009,942,2038 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(9396,-5008,1822,2037 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(16795,-2728,1436,1098 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(17495,-4866,1456,3134 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(16603,-4433,338,447 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(16599,-5520,311,636 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(16608,-5595,2815,462 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(17493,-5276,2048,647 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(14298,-6426,5484,973 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(14661,-4986,242,404 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(13833,-4650,381,739 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(13836,-6650,491,1311 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(10947,-6899,3139,1454 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(9094,-6888,2174,1923 )
+       
         
         
+        //this.hitboxes[this.hitboxes.length] = new Hitbox(7425,-2104,3888,1728 )
+        //this.hitboxes[this.hitboxes.length] = new Hitbox(9811,-540,1520,2483 )
+        
+        
+        this.stairs(10860, -2024 + 1, 994, 91, 360, 1) 
         /**/   
     }
 

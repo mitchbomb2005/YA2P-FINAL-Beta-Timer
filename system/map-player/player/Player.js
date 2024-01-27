@@ -93,7 +93,6 @@ export class Player {
             this.orb[this.orb.length] = new Orb(this.x + 1000, this.y+ 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
             this.anim = true
             this.orbAlpha -= .01
-            this.game.audio.powerUpSound()
         }
         if(this.orbAlpha <= 0 && this.anim == true) {
             this.hookHeld = true
@@ -309,11 +308,13 @@ export class Player {
 
     }
 
-    check(valC, valS) {
+    async check(valC, valS) {
         if(valC == "hook") {
             if(this.anim == false){
                 this.orbAlpha = 2
                 this.anim = true
+                await this.sleep(1500)
+                this.game.audio.powerUpSound()
             }
 
         }
