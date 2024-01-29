@@ -67,18 +67,29 @@ export class Keys {
     }
 
     drawMisc(){
-        ctx.drawImage(this.keyD, 388 + this.camera.x, 600 + this.camera.y)
-        ctx.drawImage(this.keyS, 17620 + this.camera.x, -3280 + this.camera.y)
-        ctx.drawImage(this.keyW, 17620 + this.camera.x, -3380 + this.camera.y)
+        this.drawImage(this.keyD, 388, 600)
+        this.drawImage(this.keyS, 17620, -3280)
+        this.drawImage(this.keyW, 17620, -3380)
+        this.drawImage(this.warnLava, 5976, -1211)
+        this.drawImage(this.warnLava, 5976, -811)
+        this.drawImage(this.warnLava, 5976, -1611)
         this.hookState(11302 + this.camera.x, -2227 + this.camera.y)
        // ctx.drawImage(this.hookEnabled, 8779 + this.camera.x, 269 + this.camera.y)
+    }
+
+    drawImage(img, x, y) {
+        ctx.drawImage(img, x +this.camera.x, y + this.camera.y)
     }
     
 }
 
 /*
 
- this.hitboxes[this.hitboxes.length] = new Hitbox(17620,-3580,140,102 )
- 
 
-*/
+
+
+
+
+
+
+ */

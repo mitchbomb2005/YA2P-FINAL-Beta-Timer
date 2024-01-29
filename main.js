@@ -42,7 +42,6 @@ import { Game } from "./imports/import.js"
                 game.mapEdit.drawHitbox()
             }
             
-            game.keys.drawKeys()
             if(game.menu.check) {
                 updateGame();
             } else {
