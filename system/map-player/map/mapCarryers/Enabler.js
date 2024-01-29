@@ -28,4 +28,11 @@ export class Enabler {
         }
 
     }
+    nDraw(camera, color = "#fff") {
+        
+        for (let i = 0; i < this.hitboxes.length; i++) {
+            this.hitboxes[i].nDraw(camera, this.hitboxes[i].extraInfoIII);
+        }
+
+    }
 }

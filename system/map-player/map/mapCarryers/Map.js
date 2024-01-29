@@ -82,6 +82,13 @@ export class Map {
         }
 
     }
+    nDraw(camera, color = "#0f0f0f") {
+        
+        for (let i = 0; i < this.hitboxes.length; i++) {
+            this.hitboxes[i].nDraw(camera, color);
+        }
+
+    }
 
 
 }

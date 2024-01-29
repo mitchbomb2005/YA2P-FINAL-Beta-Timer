@@ -37,4 +37,11 @@ export class Teleport {
         }
 
     }
+    nDraw(camera, color = "#dbb000") {
+        
+        for (let i = 0; i < this.hitboxes.length; i++) {
+            this.hitboxes[i].nDraw(camera, color);
+        }
+
+    }
 }

@@ -52,15 +52,15 @@ export class GameDisplayer {
             ctx.drawImage(this.grid, 0, 0, this.originalWidth,625 * (this.originalWidth / 1000))
         }
 
-        this.map.enabler.draw(this.camera.x, this.camera.y)
-        this.map.teleport.draw(this.camera.x, this.camera.y)
+        //this.map.enabler.nDraw(this.camera)
+        this.map.teleport.nDraw(this.camera)
 
         this.drawHeld()
         this.drawTheBeanPeople()
 
-        this.map.lava.draw(this.camera.x, this.camera.y);
-        this.map.checkpoint.draw(this.camera.x, this.camera.y) 
-        this.map.ground.draw(this.camera.x, this.camera.y);
+        this.map.lava.nDraw(this.camera);
+        this.map.checkpoint.nDraw(this.camera) 
+        this.map.ground.nDraw(this.camera);
         this.drawText()
 
         this.debugDraw()

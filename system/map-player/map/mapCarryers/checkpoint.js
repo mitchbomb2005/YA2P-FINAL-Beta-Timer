@@ -38,4 +38,12 @@ export class Checkpoint {
         }
 
     }
+
+    nDraw(camera, color = "rgba(0, 255, 50, .3)") {
+        
+        for (let i = 0; i < this.hitboxes.length; i++) {
+            this.hitboxes[i].nDraw(camera, color);
+        }
+
+    }
 }

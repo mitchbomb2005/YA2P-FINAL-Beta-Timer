@@ -29,9 +29,10 @@ import { Game } from "./imports/import.js"
 
         //console.log("frame")
 
+
+            var now = Date.now()
             deltaTime = (Date.now() - lastTimestamp) / perfectFrameTime;
             lastTimestamp = Date.now();
-            console.log(deltaTime)
             
             game.gameDisplayer.drawGameFrame();
             if (game.debug.playerHitbox) {
@@ -41,7 +42,8 @@ import { Game } from "./imports/import.js"
             if (game.debug.mapBuilder) {
                 game.mapEdit.drawHitbox()
             }
-            
+            var DrawTime = Date.now() - now
+            var now = Date.now()
             if(game.menu.check) {
                 updateGame();
             } else {
@@ -51,6 +53,7 @@ import { Game } from "./imports/import.js"
                 }
             }/**/
             game.keyManager.update();
+            console.log("Drawing :", DrawTime , "|||  Updating :", Date.now() - now, "|||  Max : 16 :", DrawTime + Date.now() - now, "|||  Delta Time :", deltaTime)
             //lastTime = Date.now()
             //await sleep(1000/60);
     }
