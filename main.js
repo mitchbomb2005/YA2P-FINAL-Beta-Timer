@@ -50,6 +50,7 @@ import { Game } from "./imports/import.js"
             if(game.menu.check) {
                 updateGame();
                 if(lastFrameMenu){
+                    game.audio.menuSound()
                     game.audio.playSongLoop()
                     lastFrameMenu = false
                 }

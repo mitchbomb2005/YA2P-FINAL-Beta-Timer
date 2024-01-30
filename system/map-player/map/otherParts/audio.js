@@ -63,6 +63,7 @@ export class Sound{
     async playSongLoop(v = .2){
         var song = new Audio(`../../../../../../assets/audio/music/song${Math.floor(Math.random() * 3)}.wav`)
         song.volume = v
+        await this.sleep(2000)
         while(true){
             song.play()
             await this.sleep(68000)
