@@ -13,13 +13,13 @@ export class Sound{
         jump.play()
     }
 
-    hookSound(v=.1) {
+    hookSound(v=.15) {
         var hook = new Audio('../../../../../../assets/audio/hook.wav')
         hook.volume = v
         hook.play()
     }
 
-    hookHitSound(v=.2) {
+    hookHitSound(v=.15) {
         var hookHit = new Audio('../../../../../../assets/audio/hookHit.wav')
         hookHit.volume = v
         hookHit.play()
@@ -43,7 +43,7 @@ export class Sound{
         wallJump.play();
     }
 
-    powerUpSound(v=.2) {
+    powerUpSound(v=.05) {
         var wallJump = new Audio('../../../../../../assets/audio/powerup.wav')
         wallJump.volume = v
         wallJump.play();
