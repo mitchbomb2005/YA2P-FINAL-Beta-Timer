@@ -8,6 +8,7 @@ import { Game } from "./imports/import.js"
     const perfectFrameTime = 1000 / 60;
     let deltaTime = 0;
     let lastTimestamp = 0;
+    let lastFrameMenu = true
 
     async function startGame() {
         if(localStorage) {game.storage.accessible = false} else {game.storage.accessible = true}
@@ -39,6 +40,8 @@ import { Game } from "./imports/import.js"
                 game.player.drawHitbox()
             }
 
+
+
             if (game.debug.mapBuilder) {
                 game.mapEdit.drawHitbox()
             }
@@ -46,6 +49,10 @@ import { Game } from "./imports/import.js"
             var now = Date.now()
             if(game.menu.check) {
                 updateGame();
+                if(lastFrameMenu){
+                    game.audio.playSongLoop()
+                    lastFrameMenu = false
+                }
             } else {
                 game.menu.drawMenu()
                 if(game.keyManager.wasKeyJustPressed("KeyW") && !game.menu.checkDos) {
@@ -62,6 +69,11 @@ import { Game } from "./imports/import.js"
         
 
         // Update variables
+
+        for(let i = 0; i < game.player.orb.length; i++){
+            game.player.orb[i].update()
+            //this.player.orb[i].Draw()
+        }
         
         game.camera.update(deltaTime)
         game.player.update(deltaTime); //REAL

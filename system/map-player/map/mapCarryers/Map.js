@@ -22,7 +22,7 @@ export class Map {
         this.hitboxes[2] = new Hitbox(-101,-1800,2239,1985 )
         this.hitboxes[3] = new Hitbox(3244,562,2582,1485 )
         this.hitboxes[4] = new Hitbox(2030,-1824,2437,1555 )
-        this.hitboxes[5] = new Hitbox(3617,-1740,1672,1917 )
+        this.hitboxes[5] = new Hitbox(3617,-1733,1672,1917 )
         this.hitboxes[6] = new Hitbox(5606,-89,2138,249 )
         this.hitboxes[7] = new Hitbox(5169,-1733,1066,1321 )
         this.hitboxes[8] = new Hitbox(6191,558,245,79 )

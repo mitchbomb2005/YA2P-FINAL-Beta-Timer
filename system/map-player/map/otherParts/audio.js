@@ -1,49 +1,49 @@
 export class Sound{
 
 
-    breakSound(v=1) {
+    breakSound(v=.2) {
         var hbreak = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/break.wav')
         hbreak.volume = v
         hbreak.play()
     }
 
-    jumpSound(v=.5) {
+    jumpSound(v=.1) {
         var jump = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/jump.wav')
         jump.volume = v
         jump.play()
     }
 
-    hookSound(v=.5) {
+    hookSound(v=.1) {
         var hook = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/hook.wav')
         hook.volume = v
         hook.play()
     }
 
-    hookHitSound(v=1) {
+    hookHitSound(v=.2) {
         var hookHit = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/hookHit.wav')
         hookHit.volume = v
         hookHit.play()
     }
 
-    hurtSound(v=1) {
+    hurtSound(v=.2) {
         var hurt = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/hurt.wav')
         hurt.volume = v
         hurt.play();
     }
 
-    menuSound(v=1) {
+    menuSound(v=.2) {
         var menu = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/menu.wav')
         menu.volume = v
         menu.play();
     }
 
-    wallJumpSound(v=1) {
+    wallJumpSound(v=.2) {
         var wallJump = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/wallJump.wav')
         wallJump.volume = v
         wallJump.play();
     }
 
-    powerUpSound(v=1) {
+    powerUpSound(v=.2) {
         var wallJump = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/powerup.wav')
         wallJump.volume = v
         wallJump.play();
@@ -60,9 +60,11 @@ export class Sound{
         this.wallJumpSound(0) 
     }
         
-    async playSongLoop(){
+    async playSongLoop(v = .2){
+        var song = new Audio(`../../../../../../assets/audio/music/song${Math.floor(Math.random() * 3)}.wav`)
+        song.volume = v
         while(true){
-            this.playSound()
+            song.play()
             await this.sleep(68000)
         }
     }

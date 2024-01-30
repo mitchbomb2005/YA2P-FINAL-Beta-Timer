@@ -70,7 +70,7 @@ export class GameDisplayer {
 
         if(this.player.anim) {
             for(let i = 0; i < this.player.orb.length; i++){
-                this.player.orb[i].update()
+                //this.player.orb[i].update()
                 this.player.orb[i].Draw()
             }
         }
