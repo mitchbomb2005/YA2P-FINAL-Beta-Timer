@@ -375,6 +375,7 @@ export class Background {
     createLayer3() {
         this.layer3[0] = new Hitbox(3006,-3604,145,815 )
         this.layer3[1] = new Hitbox(2205,-3594,147,786 )
+        this.layer3[2] = new Hitbox(666,-2553,115,165 )
     }
 
     Draw() {

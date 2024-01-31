@@ -28,6 +28,18 @@ export class GameDisplayer {
     drawUtils = new DrawUtils();
     background
 
+    
+    hookState = false
+    lastHookState = false
+    hookStateChange = true
+    r = 167 ; rC = 1; targetR = this.r
+    b = 216 ; bC = 0; targetB = this.b
+    g = 199 ; gC = ((this.b - this.g) / (this.b - this.r)) * this.rC; targetG = this.g
+    loops = this.b - this.r
+    i = 0
+
+    // , 192, 219
+
     constructor(Game, Map, Camera, Player, Debug = 0, DM, BG, CPM, TP, game) {
         this.game = Game;
         this.map = Map;
@@ -40,10 +52,35 @@ export class GameDisplayer {
 
     // methods (functions)
     drawGameFrame() {
+        this.hookState = this.game.player.hookHeld
+        if(this.hookState != this.lastHookState) {
+            this.hookStateChange = true
+        }
+        this.lastHookState = this.game.player.hookHeld
 
         this.resizeCanvasForWindowSize();
+        
+        this.bgFade(this.targetR, this.targetG, this.targetB)
+        this.r += this.rC
+        this.g += this.gC
+        this.b += this.bC
+
+        if(this.hookStateChange == true) {
+            if(this.game.menu.check == true) {
+                if(this.hookState == false) {
+                    this.targetR = 167
+                    this.targetG = 167
+                    this.targetB = 167
+                } else {
+                    this.targetR = 167
+                    this.targetG = 199
+                    this.targetB = 216
+                }
+                this.hookStateChange = false
+            }
+        }
         if(!this.debug.backGrid) {
-            ctx.fillStyle = "#a7c7d8";
+            ctx.fillStyle = `rgb(${this.r}, ${this.g}, ${this.b})`;
             ctx.rect(0, 0, 100000, 10000) 
             ctx.fill()
             this.background.Draw()
@@ -76,6 +113,30 @@ export class GameDisplayer {
         }
 
 
+    }
+
+    bgFade(r,g,b) {
+        var rD = r - this.r 
+        var gD = g - this.g
+        var bD = b - this.b 
+
+        if(Math.abs(rD) >= Math.abs(bD) && Math.abs(rD) >= Math.abs(gD))    {
+            this.loops = Math.abs(rD)
+} else  if(Math.abs(gD) >= Math.abs(bD) && Math.abs(gD) >= Math.abs(rD))    {
+            this.loops = Math.abs(gD)
+} else                                                                      {
+            this.loops = Math.abs(bD)
+}
+        if(this.loops != 0) {
+            this.rC = rD / this.loops
+            this.gC = gD / this.loops
+            this.bC = bD / this.loops
+        } else {
+            this.rC = 0
+            this.gC = 0
+            this.bC = 0
+        }
+        console.log(r, g, b, "|", this.r, this.g, this.b)
     }
 
     drawText() { 
