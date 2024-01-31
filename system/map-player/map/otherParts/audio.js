@@ -2,7 +2,9 @@ export class Sound{
     songLength = [
         101000,
         178000,
-        145000
+        145000,
+        80000,
+        135000
     ]
 
     breakSound(v=.2) {
@@ -67,7 +69,7 @@ export class Sound{
     async playSongLoop(v = .2){
 
         while(true){
-            var songNum = Math.floor(Math.random() * 3)
+            var songNum = Math.floor(Math.random() * 5)
             var song = new Audio(`../../../../../../assets/audio/music/song${songNum}.wav`)
             song.volume = v
             await this.sleep(2000)
