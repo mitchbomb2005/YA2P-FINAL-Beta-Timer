@@ -136,7 +136,6 @@ export class GameDisplayer {
             this.gC = 0
             this.bC = 0
         }
-        console.log(r, g, b, "|", this.r, this.g, this.b)
     }
 
     drawText() { 
