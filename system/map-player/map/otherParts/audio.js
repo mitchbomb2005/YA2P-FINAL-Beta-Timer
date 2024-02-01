@@ -8,49 +8,49 @@ export class Sound{
     ]
 
     breakSound(v=.2) {
-        var hbreak = new Audio('../../../../../../assets/audio/break.wav')
+        var hbreak = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/break.wav')
         hbreak.volume = v
         hbreak.play()
     }
 
     jumpSound(v=.1) {
-        var jump = new Audio('../../../../../../assets/audio/jump.wav')
+        var jump = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/jump.wav')
         jump.volume = v
         jump.play()
     }
 
     hookSound(v=.15) {
-        var hook = new Audio('../../../../../../assets/audio/hook.wav')
+        var hook = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/hook.wav')
         hook.volume = v
         hook.play()
     }
 
     hookHitSound(v=.15) {
-        var hookHit = new Audio('../../../../../../assets/audio/hookHit.wav')
+        var hookHit = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/hookHit.wav')
         hookHit.volume = v
         hookHit.play()
     }
 
     hurtSound(v=.2) {
-        var hurt = new Audio('../../../../../../assets/audio/hurt.wav')
+        var hurt = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/hurt.wav')
         hurt.volume = v
         hurt.play();
     }
 
     menuSound(v=.2) {
-        var menu = new Audio('../../../../../../assets/audio/menu.wav')
+        var menu = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/menu.wav')
         menu.volume = v
         menu.play();
     }
 
     wallJumpSound(v=.2) {
-        var wallJump = new Audio('../../../../../../assets/audio/wallJump.wav')
+        var wallJump = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/wallJump.wav')
         wallJump.volume = v
         wallJump.play();
     }
 
     powerUpSound(v=.05) {
-        var wallJump = new Audio('../../../../../../assets/audio/powerup.wav')
+        var wallJump = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/powerup.wav')
         wallJump.volume = v
         wallJump.play();
     }
@@ -70,7 +70,7 @@ export class Sound{
 
         while(true){
             var songNum = Math.floor(Math.random() * 5)
-            var song = new Audio(`../../../../../../assets/audio/music/song${songNum}.wav`)
+            var song = new Audio(`https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/music/song${songNum}.WAV`)
             song.volume = v
             await this.sleep(2000)
             song.play()
