@@ -139,6 +139,10 @@ export class GameDisplayer {
     }
 
     drawText() { 
+        //  this.hitboxes[this.hitboxes.length] = new Hitbox(-1380,-3287,124,74 )
+ 
+        this.drawUtils.Text("you found an incomplete secret!", 4424 + this.camera.x,-5049 + this.camera.y, "white", "grey")
+        this.drawUtils.Text("sorry for that lava part, but this is the end for now", -1680 + this.camera.x,-3387 + this.camera.y, "white", "grey")
     }
     
     // don't alter this, just ignore it
