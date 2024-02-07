@@ -92,8 +92,14 @@ export class GameDisplayer {
         //this.map.enabler.nDraw(this.camera)
         this.map.teleport.nDraw(this.camera)
 
+
+        
+        for(let i = 0; i < this.map.sign.signs.length; i++) {
+            this.map.sign.signs[i].nDraw(this.camera, this.drawUtils)
+        }
         this.drawHeld()
         this.drawTheBeanPeople()
+
 
         this.map.lava.nDraw(this.camera);
         this.map.checkpoint.nDraw(this.camera) 
@@ -111,7 +117,16 @@ export class GameDisplayer {
                 this.player.orb[i].Draw()
             }
         }
-
+        
+        this.drawUtils.Circle(1000000000000000000000, 1000, 10000, 10000)
+        for(let i = 0; i < this.map.sign.signs.length; i++){
+            if(this.map.sign.signs[i].interact){
+                this.drawUtils.Rect(0, 700, 10000, 10000, "#555555")
+                for(let j = 0; j < this.map.sign.signs[i].text.length; j++){
+                    this.drawUtils.Text(this.map.sign.signs[i].text[j], 100, 800 + (100 * j))
+                }
+            }
+        }
 
     }
 
@@ -142,7 +157,7 @@ export class GameDisplayer {
         //  this.hitboxes[this.hitboxes.length] = new Hitbox(-1380,-3287,124,74 )
  
         this.drawUtils.Text("you found an incomplete secret!", 4424 + this.camera.x,-5049 + this.camera.y, "white", "grey")
-        this.drawUtils.Text("sorry for that lava part, but this is the end for now", -1680 + this.camera.x,-3387 + this.camera.y, "white", "grey")
+        //this.drawUtils.Text("sorry for that lava part, but this is the end for now", -1680 + this.camera.x,-3387 + this.camera.y, "white", "grey")
     }
     
     // don't alter this, just ignore it

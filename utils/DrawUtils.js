@@ -102,4 +102,10 @@ export class DrawUtils {
         //this.Text("orb", 100, 100)
     }
 
+    Rect(x = 0, y = 0, width = 0, height = 0, color = "#000000") {
+        ctx.fillStyle = color;
+        ctx.rect(x, y, width, height) 
+        ctx.fill()
+    }
+
 }

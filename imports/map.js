@@ -9,6 +9,7 @@ import { Map as ShortsGround } from             "../system/map-player/map/mapCar
 import { Death as ShortsLava } from             "../system/map-player/map/mapCarryers/otherMaps/shorts/DeathMap.js"
 import { Teleport as ShortsTeleport } from      "../system/map-player/map/mapCarryers/otherMaps/shorts/Teleport.js"
 import { Checkpoint as ShortsCheckpoint } from  "../system/map-player/map/mapCarryers/otherMaps/shorts/checkpoint.js"
+import { signMaker } from "../system/map-player/map/mapCarryers/signMap.js"
 
 export class Map{
     ground
@@ -17,6 +18,7 @@ export class Map{
     game
     checkpoint
     Enabler
+    sign
 
 
     constructor(root){
@@ -38,6 +40,7 @@ export class Map{
         this.teleport = new MainTeleport()
         this.checkpoint = new MainCheckpoint() //-438, -509
         this.enabler = new MainEnabler()
+        this.sign = new signMaker()
 
 
     }

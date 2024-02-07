@@ -67,17 +67,14 @@ import { Game } from "./imports/import.js"
     }
 
     async function updateGame() { 
-        
-
-        // Update variables
 
         for(let i = 0; i < game.player.orb.length; i++){
             game.player.orb[i].update()
-            //this.player.orb[i].Draw()
         }
         
         game.camera.update(deltaTime)
-        game.player.update(deltaTime); //REAL
+        game.map.sign.update(game.player, game.keyManager)
+        game.player.update(deltaTime); 
         for(let i = 0; i < game.enemy.value.length; i++) {
             game.enemy.value[i].update();
         
@@ -97,9 +94,6 @@ import { Game } from "./imports/import.js"
         if (game.keyManager.wasKeyJustPressed("KeyP") && game.menu.checkDos) {
             game.menu.fade("up")
         }
-        
-        
-        // Update input
     }
 
     function sleep(ms) {
@@ -108,8 +102,6 @@ import { Game } from "./imports/import.js"
 
     function DeltaTime(){
 
-        
-        
     }
 
 startGame();

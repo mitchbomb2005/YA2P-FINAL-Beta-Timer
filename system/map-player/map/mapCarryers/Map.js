@@ -89,11 +89,11 @@ export class Map {
        this.hitboxes[this.hitboxes.length] = new Hitbox(1557,-3794,723,397 )
        this.hitboxes[this.hitboxes.length] = new Hitbox(1132,-2063,210,151 )
        this.hitboxes[this.hitboxes.length] = new Hitbox(1110,-2114,264,69 )
-       this.hitboxes[this.hitboxes.length] = new Hitbox(-133,-2847,1047,172 )
-       this.hitboxes[this.hitboxes.length] = new Hitbox(889,-2872,59,222 )
-       this.hitboxes[this.hitboxes.length] = new Hitbox(661,-2693,125,165 )
-       this.hitboxes[this.hitboxes.length] = new Hitbox(627,-2391,197,77 ) // 70
-       this.hitboxes[this.hitboxes.length] = new Hitbox(358,-5487,1246,2332 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-133,-2847 - 300,1047,172 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(889,-2872  - 300,59,222 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(661,-2693  - 300,125,165 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(627,-2391  - 300,197,77 ) // 70
+       this.hitboxes[this.hitboxes.length] = new Hitbox(358,-5487  - 300,1246,2332 )
  
        
 
