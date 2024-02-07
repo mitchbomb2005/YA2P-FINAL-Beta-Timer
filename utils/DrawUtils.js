@@ -103,9 +103,11 @@ export class DrawUtils {
     }
 
     Rect(x = 0, y = 0, width = 0, height = 0, color = "#000000") {
-        ctx.fillStyle = color;
+        ctx.beginPath();
         ctx.rect(x, y, width, height) 
+        ctx.fillStyle = color;
         ctx.fill()
+        ctx.closePath();
     }
 
 }

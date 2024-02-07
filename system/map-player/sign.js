@@ -28,7 +28,7 @@ export class sign{
     }
 
     update(player, keyman) {
-        if(-player.x > this.x && -player.x < this.x + this.width) {
+        if(-player.x > this.x && -player.x < this.x + this.width && -player.y > this.y && -player.y < this.y + this.height) {
             this.tipSize = (this.tipSize * 9 + 100) /10
             if(keyman.wasKeyJustPressed("KeyE")){
                 this.interact = !this.interact

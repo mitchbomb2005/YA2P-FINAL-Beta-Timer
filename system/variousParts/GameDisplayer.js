@@ -37,6 +37,9 @@ export class GameDisplayer {
     g = 199 ; gC = ((this.b - this.g) / (this.b - this.r)) * this.rC; targetG = this.g
     loops = this.b - this.r
     i = 0
+    signDisplayPos = 800
+    signTextPos = 800
+    signText = ["","","","","","",100]
 
     // , 192, 219
 
@@ -117,15 +120,25 @@ export class GameDisplayer {
                 this.player.orb[i].Draw()
             }
         }
-        
-        this.drawUtils.Circle(1000000000000000000000, 1000, 10000, 10000)
         for(let i = 0; i < this.map.sign.signs.length; i++){
             if(this.map.sign.signs[i].interact){
-                this.drawUtils.Rect(0, 700, 10000, 10000, "#555555")
-                for(let j = 0; j < this.map.sign.signs[i].text.length; j++){
-                    this.drawUtils.Text(this.map.sign.signs[i].text[j], 100, 800 + (100 * j))
-                }
+                this.signText = this.map.sign.signs[i].text
+                this.signText[6] = i
+                this.signDisplayPos = ((this.signDisplayPos * 9) + 0 )/ 10
+                this.signTextPos = ((this.signDisplayPos * 12) + 0 )/ 13
+
+            }else if (i == this.signText[6]){
+                
+                this.signDisplayPos = ((this.signDisplayPos * 9) + 800 )/ 10
+                this.signTextPos = ((this.signDisplayPos * 12) + 800 )/ 13
             }
+        }
+
+
+        this.drawUtils.Rect(0, 675 + this.signDisplayPos, 10000, 10000, "#000")
+        this.drawUtils.Rect(0, 700 + this.signDisplayPos, 10000, 10000, "#555555")
+        for(let j = 0; j < 6; j++){
+            this.drawUtils.Text(this.signText[j], 100, (800 + (100 * j)) + this.signTextPos *(j/2 + 1))
         }
 
     }
@@ -155,8 +168,6 @@ export class GameDisplayer {
 
     drawText() { 
         //  this.hitboxes[this.hitboxes.length] = new Hitbox(-1380,-3287,124,74 )
- 
-        this.drawUtils.Text("you found an incomplete secret!", 4424 + this.camera.x,-5049 + this.camera.y, "white", "grey")
         //this.drawUtils.Text("sorry for that lava part, but this is the end for now", -1680 + this.camera.x,-3387 + this.camera.y, "white", "grey")
     }
     
