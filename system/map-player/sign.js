@@ -18,7 +18,7 @@ export class sign{
         this.width = width 
         this.height = height 
         this.sign.src = 'assets/images/sign.png';
-        this.tip.src = 'assets/images/keys/E_key_dark.png';
+        this.tip.src = 'assets/images/keys/E_Key_Dark.png';
     }
     // this.hitboxes[this.hitboxes.length] = new Hitbox(711,411,212,175 )
  
