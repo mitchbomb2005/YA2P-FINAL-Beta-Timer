@@ -227,6 +227,9 @@ export class GameDisplayer {
     enum() {
         for (let i = 0; i < this.map.ground.hitboxes.length; i++) {
             this.drawUtils.Text(i, this.map.ground.hitboxes[i].x + this.camera.x, this.map.ground.hitboxes[i].y + this.camera.y, "white", "#0f0f0f")
+            if(this.debug.extraEnum){
+                this.drawUtils.Text(this.map.ground.hitboxes[i].x + ", " + this.map.ground.hitboxes[i].x, this.map.ground.hitboxes[i].x + this.camera.x + 300, this.map.ground.hitboxes[i].y + this.camera.y, "white", "#0f0f0f")
+            }
         }
         for (let i = 0; i < this.map.lava.hitboxes.length; i++) {
             this.drawUtils.Text(i, this.map.lava.hitboxes[i].x + this.camera.x, this.map.lava.hitboxes[i].y + this.camera.y, "white", "#500000")

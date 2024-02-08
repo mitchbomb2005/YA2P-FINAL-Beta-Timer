@@ -12,6 +12,7 @@ export class Debug {
     cursorCamera = true
     getPos = false
     lag = false
+    extraEnum = false
 
     keyManager;
     game;
@@ -114,7 +115,6 @@ export class Debug {
 
     flipShortsMap(){
         if (this.keyManager.wasKeyJustPressed("KeyS")) {
-            console.log("YT SHORTS")
             this.shortsMap = !this.shortsMap
             if(this.shortsMap == true) {
                 this.game.map.shorts()
@@ -130,7 +130,11 @@ export class Debug {
 
     flipEnum(){
         if (this.keyManager.wasKeyJustPressed("KeyE")) {
-            this.enum = !this.enum
+            if(this.keyManager.isKeyPressed("ShiftLeft")) { 
+                this.extraEnum = !this.extraEnum
+            } else {
+                this.enum = !this.enum
+            }
         }
     }
 
