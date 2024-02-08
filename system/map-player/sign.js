@@ -24,7 +24,7 @@ export class sign{
  
     nDraw(camera, utils) {
         ctx.drawImage(this.sign, this.x + camera.x, this.y + camera.y, this.width, this.height)
-        ctx.drawImage(this.tip, this.x + camera.x + this.width * (4/9) - this.tipSize / 2, this.y + camera.y - this.tipSize / 1, this.tipSize, this.tipSize)
+        ctx.drawImage(this.tip, this.x + camera.x + this.width * (5/9) - this.tipSize / 2, this.y + camera.y - this.tipSize / 1, this.tipSize, this.tipSize)
     }
 
     update(player, keyman) {

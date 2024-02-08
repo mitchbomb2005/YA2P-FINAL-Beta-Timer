@@ -110,16 +110,16 @@ export class Player {
     #updateVelocityNoclip() {
         if (this.keyManager.isKeyPressed("KeyD")) {
             this.velX -= this.noclipVelChange //*18 * (;
-            if (Math.abs(this.velX) > this.maxVelX) {
-                this.velX = -this.maxVelX;
-            }
+            //if (Math.abs(this.velX) > this.maxVelX) {
+            //    this.velX = -this.maxVelX;
+            //}
 
         }
         if (this.keyManager.isKeyPressed("KeyA")) {
               this.velX += this.noclipVelChange //;
-              if (this.velX > this.maxVelX) {
-                this.velX = this.maxVelX;
-            }
+            //  if (this.velX > this.maxVelX) {
+            //    this.velX = this.maxVelX;
+            //}
               
         }
         if (this.keyManager.isKeyPressed("KeyW") || this.keyManager.isKeyPressed("Space")) {

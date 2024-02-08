@@ -8,18 +8,18 @@ export class DrawUtils {
     Bean(x, y, width, height, color) {
 
         ctx.beginPath();
-        ctx.arc(x - 5, (y + 5) - (height / 2), width / 2 +5, 0, ( Math.PI/180 ) * 190, ( Math.PI/180 ) * 180,  false);
-        ctx.fillStyle = "rgba(0, 0, 0, .1)";
+        ctx.arc(x - 10, (y + 10) - (height / 2), width / 2 +5, 0, ( Math.PI/180 ) * 180, ( Math.PI/180 ) * 180,  false);
+        ctx.fillStyle = "rgba(0, 0, 0, .2)";
         ctx.fill();
         ctx.closePath();
 
         ctx.beginPath();
-        ctx.arc(x - 5, (y + (height - (width / 2)) + 5) - (height / 2), width / 2 +5, 0, Math.PI / 1.06, false);
+        ctx.arc(x - 10, (y + (height - (width / 2)) + 10) - (height / 2), width / 2 +5, 0, Math.PI, false);
         ctx.fill();
         ctx.closePath();
 
         ctx.beginPath();
-        ctx.rect((x - 10) - (width / 2), y - (height / 2), width + 10 , height - width / 2 + 10);
+        ctx.rect((x - 15) - (width / 2), y - (height / 2) + 10, width + 10 , height - width / 2 );
         ctx.fill();
         ctx.closePath();    
 
