@@ -5,11 +5,15 @@ export class signMaker {
         this.constructSigns()
     }
     constructSigns(){ 
-        this.signs[0] = new sign(3821,411,["Hello There!", "This Is A Hard, But Fun Game", "If You Can't Beat Something, Try Again Until You Complete it", "", "You Can Do This",  "                                - The Sign Maker"])
-        this.signs[1] = new sign(4604 ,-5138 - 150, ["You Have Successfully Found A Secret!", "However, This Secret Is Not Complete.", "I Will Continue Working On It Until It's Done", "I Hope You Like What You See So Far!", "", "                                - The Sign Maker"])
+        this.signs[0] = new sign(3821,411,["Hello There!", "This Is A Hard, But Fun Game", "If You Can't Beat Something, Try Again Until You Complete it", "", "You Can Do This",  "                                                                              - The Sign Maker"])
+        this.signs[1] = new sign(4604 ,-5138 - 150, ["You Have Successfully Found A Secret!", "However, This Secret Is Not Complete.", "I Will Continue Working On It Until It's Done", "I Hope You Like What You See So Far!", "", "                                                                              - The Sign Maker"])
+        //this.signs[0] = new sign(3821,411,["", "", "", "", "", ""])
+        this.signs[2] = new sign(19636,-5422,["Welcome To The Map Guide Zone", "", "Signs Need To Be 150 Y Up From The Ground", "Use Shift \\ E To See The Coords Of The Ground", "", ""])
+        this.signs[3] = new sign(19636 + 200,-5422,["Make Sure The Player Can Pass What You Make", "The Map Editor Makes Temporary HitBoxes That Go To Your ", "Clipboard", "(Unless You Are On FireFox, Use A Real Browser)", "", "Also, Make Sure The Death Hitboxes Aren't Right By A CheckPoint"])
 
 // this.hitboxes[this.hitboxes.length] = new Hitbox(,424,17,58 )
- 
+// this.hitboxes[this.hitboxes.length] = new Hitbox(,28,13 )
+  
     }
     update(player, keyman) {
         for(let i = 0; i < this.signs.length; i++) {
