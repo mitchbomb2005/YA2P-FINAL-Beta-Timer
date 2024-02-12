@@ -123,7 +123,14 @@ export class Map {
        this.hitboxes[this.hitboxes.length] = new Hitbox(-8381,-5666,79,70 )
        this.hitboxes[this.hitboxes.length] = new Hitbox(-8383,-6141,76,87 )
        this.hitboxes[this.hitboxes.length] = new Hitbox(-10359,-6100,89,63 )
-       this.hitboxes[this.hitboxes.length] = new Hitbox(-10355,-5669,92,142 ) // 99
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-10355,-5669,92,142 ) 
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-15675,-7362,5330,1255 ) // 100
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-13149,-5589,437,100 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-14243,-5621,527,101 )      
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-14890,-6204,115,167 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-15436,-6149,144,118 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-16818,-5727,1007,117 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-16746,-5676,856,3301 )
        
        
              
@@ -140,6 +147,12 @@ export class Map {
         
         
         this.stairs(10860, -2024 + 1, 994, 91, 360, 1) 
+
+        this.hitboxes[this.hitboxes.length] = new Hitbox(-20450,-7934,2391,4702 ) // main path temp block
+        this.hitboxes[this.hitboxes.length] = new Hitbox(-18314,-8384,2738,1673 ) // main path temp block
+        
+        this.hitboxes[this.hitboxes.length] = new Hitbox(2999,-5069 - 800,2055,1597, true) // secret blockage
+ 
         /**/   
     }
 
