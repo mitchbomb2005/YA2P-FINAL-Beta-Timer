@@ -131,6 +131,9 @@ export class Map {
        this.hitboxes[this.hitboxes.length] = new Hitbox(-15436,-6149,144,118 )
        this.hitboxes[this.hitboxes.length] = new Hitbox(-16818,-5727,1007,117 )
        this.hitboxes[this.hitboxes.length] = new Hitbox(-16746,-5676,856,3301 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-3575,-11459,1835,4388 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-8816,-11478,5596,3550 )
+       
        
        
              
@@ -151,8 +154,8 @@ export class Map {
         this.hitboxes[this.hitboxes.length] = new Hitbox(-20450,-7934,2391,4702 ) // main path temp block
         this.hitboxes[this.hitboxes.length] = new Hitbox(-18314,-8384,2738,1673 ) // main path temp block
         
-        this.hitboxes[this.hitboxes.length] = new Hitbox(2999,-5069 - 800,2055,1597, true) // secret blockage
- 
+        this.hitboxes[this.hitboxes.length] = new Hitbox(2999,-5069 - 800,2055,1597) // secret blockage
+
         /**/   
     }
 
