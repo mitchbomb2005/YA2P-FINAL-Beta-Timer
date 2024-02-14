@@ -26,7 +26,8 @@ export class Player {
     stuck = false; death = false; hidden = false;
     playerHitbox = new Array();
 
-    hookHeld = false
+    hookHeld = false; hookHeldII = false
+    change
     orb = new Array(); anim = false; animFrames = 0; orbAlpha = 1
 
     constructor(x, y, keyManager, debug, map, camera, DM, CPM, TPM, extra) {
@@ -93,11 +94,20 @@ export class Player {
             this.orb[this.orb.length] = new Orb(this.x + 1000, this.y+ 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
             this.orbAlpha -= .01
         }
-        if(this.orbAlpha <= 0 && this.anim == true && this.hookHeld == false) {
+
+        if(this.orbAlpha <= 0 && this.anim == true && this.hookHeld == false && this.change == "hook") {
             this.hookHeld = true
             this.game.gameDisplayer.targetR = 167
             this.game.gameDisplayer.targetG = 199
             this.game.gameDisplayer.targetB = 216
+            this.anim = false
+        }
+        
+        if(this.orbAlpha <= 0 && this.anim == true && this.hookHeldII == false && this.change == "hookII") {
+            this.hookHeldII = true
+            this.game.gameDisplayer.targetR = 216
+            this.game.gameDisplayer.targetG = 199
+            this.game.gameDisplayer.targetB = 167
             this.anim = false
         }
 
@@ -220,46 +230,10 @@ export class Player {
 
         if (this.jump == 5) {
             this.velX = this.velX * this.friction
-        }  else if (this.game.hook.enabled == true) {
+        }  else if (this.game.hook.enabled == true || this.game.hookII.enabled == true) {
             this.velX = this.velX * this.hookFriction
         } else {
             this.velX = this.velX * this.airFriction
-        }
-
-        if (this.game.hook.enabled && false) {
-            if 
-            ((  this.keyManager.isKeyPressed("KeyA")    && 
-                !this.keyManager.isKeyPressed("KeyD"))  && 
-                -this.x < this.game.hook.x2             && 
-                -this.y > this.game.hook.y2) 
-                {
-                    this.velY = this.velY + ((this.game.hook.y1 - this.game.hook.y2) / 300) + .1
-            }
-            if 
-            ((  this.keyManager.isKeyPressed("KeyA")    && 
-                !this.keyManager.isKeyPressed("KeyD"))  && 
-                -this.x < this.game.hook.x2             && 
-                -this.y < this.game.hook.y2 ) 
-                {
-                    this.velY = this.velY - ((this.game.hook.y1 - this.game.hook.y2) / 300)
-            }
-            if 
-            ((  this.keyManager.isKeyPressed("KeyD")    && 
-                !this.keyManager.isKeyPressed("KeyA"))  && 
-                -this.x > this.game.hook.x2             && 
-                -this.y > this.game.hook.y2) 
-                {
-                    this.velY = this.velY + ((this.game.hook.y1 - this.game.hook.y2) / 300) + .1
-            }
-            if 
-            ((  this.keyManager.isKeyPressed("KeyD")    && 
-                !this.keyManager.isKeyPressed("KeyA"))  && 
-                -this.x > this.game.hook.x2             && 
-                -this.y < this.game.hook.y2 ) 
-                {
-                    this.velY = this.velY - ((this.game.hook.y1 - this.game.hook.y2) / 300)
-            }
-            this.velY = this.velY * .99
         }
         
         this.velY = this.velY - this.gravity
@@ -274,16 +248,6 @@ export class Player {
         }
 
         this.avgVelY = (this.avgVelY + this.velY + Math.abs(this.velX))/3
-
-        /*
-        if (this.keyManager.isKeyPressed("KeyS")) {
-            this.velY -= this.velChange;
-            if (Math.abs(this.velY) > this.maxVelY) {
-                velY = -maxVelY;
-            }
-        }
-        */
-
 
     }
 
@@ -322,6 +286,16 @@ export class Player {
                 this.anim = true
                 await this.sleep(1500)
                 this.game.audio.powerUpSound()
+                this.change = "hook"
+            }
+        }
+        if(valC == "hookII") {
+            if(this.anim == false && this.hookHeldII != true){
+                this.orbAlpha = 2
+                this.anim = true
+                await this.sleep(1500)
+                this.game.audio.powerUpSound()
+                this.change = "hookII"
             }
         }
     }

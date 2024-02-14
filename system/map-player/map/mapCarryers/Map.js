@@ -157,6 +157,16 @@ export class Map {
         this.hitboxes[this.hitboxes.length] = new Hitbox(2999,-5069 - 800,2055,1597) // secret blockage
 
         /**/   
+
+        // testing zone
+
+        this.hitboxes[this.hitboxes.length] = new Hitbox(89,3267,2945,1002 )
+        this.stairs(416, 3267 + 4, 800, 71, 50, 4)
+        this.stairs(1402, 3267 + 4, 800, 71, 50, 4)
+
+        //this.hitboxes[this.hitboxes.length] = new Hitbox(,3235,38,35 )
+        //this.hitboxes[this.hitboxes.length] = new Hitbox(,3238,29,32 )
+        
     }
 
     stairs(x, y, width, height, step, stepH){

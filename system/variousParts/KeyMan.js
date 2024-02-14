@@ -52,7 +52,7 @@ export class KeyManager {
           } else {
             this.game.audio.breakSound()
           }
-        }else if (event.button == 2 || this.isKeyPressed("ShiftLeft")) {
+        }else if (event.button == 2 && !this.isKeyPressed("ShiftLeft") && this.game.player.hookHeldII) {
           this.game.hookII.visibility = true
           this.game.hookII.enabled = false
           this.game.hookII.motion = true
@@ -89,7 +89,7 @@ export class KeyManager {
           }
         }
         
-        if (event.button == 2 && !this.isKeyPressed("ShiftLeft") && this.game.player.hookHeld) {
+        if (event.button == 2 && !this.isKeyPressed("ShiftLeft") && this.game.player.hookHeldII) {
           if(this.game.hookII.visibility){
             this.game.hookII.visibility = false
             this.game.hookII.enabled = false
