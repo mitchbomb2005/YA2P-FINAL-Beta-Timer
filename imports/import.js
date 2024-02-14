@@ -11,7 +11,8 @@ import { Keys } from "../system/map-player/map/otherParts/Keys.js"
 import { DrawUtils } from "../utils/DrawUtils.js"
 import { Background } from "../system/map-player/map/mapCarryers/Background.js"
 
-import { Hook } from "../system/map-player/player/hook.js"
+import { Hook } from "../system/map-player/player/hookI.js"
+import { Hook as HookII } from "../system/map-player/player/hookII.js"
 
 import { Storage } from "../storage/storage.js"
 import { Sound as Audio } from "../system/map-player/map/otherParts/audio.js" //Checkpoint
@@ -75,6 +76,7 @@ export class Game{
     }
     map = new Map(this);
     hook = new Hook(this)
+    hookII = new HookII(this)
     sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }

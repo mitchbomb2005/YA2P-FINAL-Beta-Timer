@@ -43,29 +43,24 @@ export class KeyManager {
         this.mousePos.x = (((this.mousePos.x) / (rect.width)) * this.canvasShape.width) - this.camX
         this.mousePos.y = (((this.mousePos.y) / (rect.height)) * this.canvasShape.height) - this.camY
         if (event.button == 0 && !this.isKeyPressed("ShiftLeft") && this.game.player.hookHeld) {
-          if (this.game.menu.check) {
-            this.game.hook.visibility = true
-            this.game.hook.enabled = false
-            this.game.hook.motion = true
-            this.game.hook.mouseUpdate()
-            if (this.game.hook.visibility) {
-              this.game.audio.hookSound()
-            } else {
-              this.game.audio.breakSound()
-            }
+          this.game.hook.visibility = true
+          this.game.hook.enabled = false
+          this.game.hook.motion = true
+          this.game.hook.mouseUpdate()
+          if (this.game.hook.visibility) {
+            this.game.audio.hookSound()
+          } else {
+            this.game.audio.breakSound()
           }
-        }/*else if (event.button == 2 || this.isKeyPressed("ShiftLeft")) {
-          if (this.game.menu.check) {
-
-
-
-            this.game.sword.visibility = !this.game.sword.visibility
-            this.game.sword.enabled = false
-            this.game.sword.motion = true
-            this.game.sword.mouseUpdate()
-            
-
-            
+        }else if (event.button == 2 || this.isKeyPressed("ShiftLeft")) {
+          this.game.hookII.visibility = true
+          this.game.hookII.enabled = false
+          this.game.hookII.motion = true
+          this.game.hookII.mouseUpdate()
+          if (this.game.hookII.visibility) {
+            this.game.audio.hookSound()
+          } else {
+            this.game.audio.breakSound()
           }
         }
 
@@ -80,16 +75,33 @@ export class KeyManager {
         event.preventDefault();
       }, false);      
       document.addEventListener("mouseup", (event) => {
-        if(this.game.hook.visibility){
-        this.game.hook.visibility = false
-        this.game.hook.enabled = false
-        this.game.hook.motion = true
-        this.game.hook.mouseUpdate()
-        if (this.game.hook.visibility) {
-          this.game.audio.hookSound()
-        } else {
-          this.game.audio.breakSound()
-        }}
+        if (event.button == 0 && !this.isKeyPressed("ShiftLeft") && this.game.player.hookHeld) {
+          if(this.game.hook.visibility){
+            this.game.hook.visibility = false
+            this.game.hook.enabled = false
+            this.game.hook.motion = true
+            this.game.hook.mouseUpdate()
+            if (this.game.hook.visibility) {
+              this.game.audio.hookSound()
+            } else {
+              this.game.audio.breakSound()
+            }
+          }
+        }
+        
+        if (event.button == 2 && !this.isKeyPressed("ShiftLeft") && this.game.player.hookHeld) {
+          if(this.game.hookII.visibility){
+            this.game.hookII.visibility = false
+            this.game.hookII.enabled = false
+            this.game.hookII.motion = true
+            this.game.hookII.mouseUpdate()
+            if (this.game.hookII.visibility) {
+              this.game.audio.hookSound()
+            } else {
+              this.game.audio.breakSound()
+            }
+          }
+        }
       })
     }
 

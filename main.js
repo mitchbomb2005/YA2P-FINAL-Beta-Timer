@@ -53,6 +53,9 @@ import { Game } from "./imports/import.js"
                     game.audio.menuSound()
                     game.audio.playSongLoop()
                     lastFrameMenu = false
+                    game.gameDisplayer.targetR = 167
+                    game.gameDisplayer.targetG = 167
+                    game.gameDisplayer.targetB = 167
                 }
             } else {
                 game.menu.drawMenu()
@@ -60,6 +63,7 @@ import { Game } from "./imports/import.js"
                     game.menu.fade()
                 }
             }/**/
+            
             game.keyManager.update();
             console.log("Drawing :", DrawTime , "|||  Updating :", Date.now() - now, "|||  Max : 16 :", DrawTime + Date.now() - now, "|||  Delta Time :", deltaTime)
             //lastTime = Date.now()
@@ -88,6 +92,7 @@ import { Game } from "./imports/import.js"
 
 
         game.hook.update(deltaTime);
+        game.hookII.update(deltaTime);
         game.storage.update()
         DeltaTime()
 

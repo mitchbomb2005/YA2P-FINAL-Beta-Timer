@@ -91,11 +91,14 @@ export class Player {
             this.orb[this.orb.length] = new Orb(this.x + 1500, this.y- 0, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
             this.orb[this.orb.length] = new Orb(this.x + 1000, this.y- 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
             this.orb[this.orb.length] = new Orb(this.x + 1000, this.y+ 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
-            this.anim = true
             this.orbAlpha -= .01
         }
-        if(this.orbAlpha <= 0 && this.anim == true) {
+        if(this.orbAlpha <= 0 && this.anim == true && this.hookHeld == false) {
             this.hookHeld = true
+            this.game.gameDisplayer.targetR = 167
+            this.game.gameDisplayer.targetG = 199
+            this.game.gameDisplayer.targetB = 216
+            this.anim = false
         }
 
 
@@ -296,6 +299,8 @@ export class Player {
         this.death = true
         this.game.hook.enabled = false
         this.game.hook.visible = false
+        this.game.hookII.enabled = false
+        this.game.hookII.visible = false
         this.game.audio.hurtSound()
         await this.sleep(500)
         this.x = this.respawnX
@@ -305,18 +310,19 @@ export class Player {
         this.death = false
         this.game.hook.enabled = false
         this.game.hook.visibility = false
+        this.game.hookII.enabled = false
+        this.game.hookII.visibility = false
 
     }
 
     async check(valC, valS) {
         if(valC == "hook") {
-            if(this.anim == false){
+            if(this.anim == false && this.hookHeld != true){
                 this.orbAlpha = 2
                 this.anim = true
                 await this.sleep(1500)
                 this.game.audio.powerUpSound()
             }
-
         }
     }
 

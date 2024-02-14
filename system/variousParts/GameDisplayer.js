@@ -29,9 +29,7 @@ export class GameDisplayer {
     background
 
     
-    hookState = false
-    lastHookState = false
-    hookStateChange = true
+
     r = 167 ; rC = 1; targetR = this.r
     b = 216 ; bC = 0; targetB = this.b
     g = 199 ; gC = ((this.b - this.g) / (this.b - this.r)) * this.rC; targetG = this.g
@@ -55,11 +53,6 @@ export class GameDisplayer {
 
     // methods (functions)
     drawGameFrame() {
-        this.hookState = this.game.player.hookHeld
-        if(this.hookState != this.lastHookState) {
-            this.hookStateChange = true
-        }
-        this.lastHookState = this.game.player.hookHeld
 
         this.resizeCanvasForWindowSize();
         
@@ -68,20 +61,7 @@ export class GameDisplayer {
         this.g += this.gC
         this.b += this.bC
 
-        if(this.hookStateChange == true) {
-            if(this.game.menu.check == true) {
-                if(this.hookState == false) {
-                    this.targetR = 167
-                    this.targetG = 167
-                    this.targetB = 167
-                } else {
-                    this.targetR = 167
-                    this.targetG = 199
-                    this.targetB = 216
-                }
-                this.hookStateChange = false
-            }
-        }
+
         if(!this.debug.backGrid) {
             ctx.fillStyle = `rgb(${this.r}, ${this.g}, ${this.b})`;
             ctx.rect(0, 0, 100000, 10000) 
@@ -114,12 +94,12 @@ export class GameDisplayer {
         
         this.game.keys.drawKeys()
 
-        if(this.player.anim) {
+        //if(this.player.anim) {
             for(let i = 0; i < this.player.orb.length; i++){
                 //this.player.orb[i].update()
                 this.player.orb[i].Draw()
             }
-        }
+        //}
         for(let i = 0; i < this.map.sign.signs.length; i++){
             if(this.map.sign.signs[i].interact){
                 this.signText = this.map.sign.signs[i].text
@@ -221,6 +201,17 @@ export class GameDisplayer {
                 "#A06000", 
                 30 + -this.game.hook.length/70, 
                 true, "#6b4101" )
+        }
+
+        if (this.game.hookII.visibility) {
+            this.drawUtils.Line(
+                this.game.hookII.x1,
+                this.game.hookII.y1,
+                this.game.hookII.x2 + this.camera.x,
+                this.game.hookII.y2 + this.camera.y,/**/
+                "#6b4101", 
+                30 + -this.game.hookII.length/70, 
+                true, "#A06000" )
         }
     }
 
