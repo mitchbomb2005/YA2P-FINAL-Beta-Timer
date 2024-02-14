@@ -265,6 +265,20 @@ export class Background {
         this.layer1[237] = new Hitbox(-7879,-2244,52,258 )
         this.layer1[238] = new Hitbox(-7872,-2036,1143,48 )
         this.layer1[239] = new Hitbox(-7197,-2105,466,101 )
+        this.layer1[240] = new Hitbox(1158,3292,32,784 )
+        this.layer1[241] = new Hitbox(1178,3684,1035,45 )
+        this.layer1[242] = new Hitbox(1460,3149,46,560 )
+        this.layer1[243] = new Hitbox(1169,3806,864,46 )
+        this.layer1[244] = new Hitbox(696,4030,485,49 )
+        this.layer1[245] = new Hitbox(702,4025,44,1952 )
+        this.layer1[246] = new Hitbox(720,4262,1241,51 )
+        this.layer1[247] = new Hitbox(1194,4299,69,325 )
+        this.layer1[248] = new Hitbox(1234,4546,690,78 )
+        this.layer1[249] = new Hitbox(1296,4548,53,1502 )
+        this.layer1[250] = new Hitbox(949,4969,370,69 )
+        this.layer1[251] = new Hitbox(949,4659,72,379 )
+        this.layer1[252] = new Hitbox(726,4659,295,58 )
+        this.layer1[253] = new Hitbox(1337,4815,825,75 )
         
  
         
@@ -472,6 +486,17 @@ export class Background {
         this.layer2[190] = new Hitbox(-2615,-797,77,52 )
         this.layer2[191] = new Hitbox(-7390,-1357,1539,49 )
         this.layer2[192] = new Hitbox(-7630,-1948,1660,43 )
+        this.layer2[193] = new Hitbox(475,2519,2173,66 )
+        this.layer2[194] = new Hitbox(578,2567,53,667 )
+        this.layer2[195] = new Hitbox(612,3158,443,78 )
+        this.layer2[196] = new Hitbox(1003,2843,52,394 )
+        this.layer2[197] = new Hitbox(1003,2843,837,60 )
+        this.layer2[198] = new Hitbox(1327,2540,52,318 )
+        this.layer2[199] = new Hitbox(760,1966,60,569 )
+        this.layer2[200] = new Hitbox(829,3201,84,902 )
+        this.layer2[201] = new Hitbox(873,3712,1744,74 )
+        this.layer2[202] = new Hitbox(1019,3078,373,54 )
+        this.layer2[203] = new Hitbox(1338,3077,55,666 )
         
         // this.hitboxes[this.hitboxes.length] = new Hitbox(-1101,-4960,61,175 )
  
@@ -490,6 +515,15 @@ export class Background {
         this.layer3[1] = new Hitbox(2205,-3594,147,786 )
         this.layer3[2] = new Hitbox(666,-2853,115,165 )
         this.layer3[3] = new Hitbox(-20089,-3238,2028,870 )
+
+        this.layer3[this.layer3.length] = new Hitbox(647,6402,1831,373 )
+        this.layer3[this.layer3.length] = new Hitbox(1690,6257,466,3483 )
+        this.layer3[this.layer3.length] = new Hitbox(578,6444,586,3319 )
+        this.layer3[this.layer3.length] = new Hitbox(963,7109,818,702 )
+        this.layer3[this.layer3.length] = new Hitbox(995,8306,807,398 )
+        this.layer3[this.layer3.length] = new Hitbox(912,9205,891,540 )
+        this.layer3[this.layer3.length] = new Hitbox(2103,8669,1374,1038 )
+        
  
     }
 
