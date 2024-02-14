@@ -25,6 +25,9 @@ export class Teleport {
 
 
             //13133.575513332711,-5208.204502801111
+
+        this.hitboxes[this.hitboxes.length] = new Hitbox(-20131,-3306,198,1075, false )
+ 
             
         
         
