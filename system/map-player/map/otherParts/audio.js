@@ -69,7 +69,7 @@ export class Sound{
     async playSongLoop(v = .2){
 
         while(true){
-            var songNum = Math.floor(Math.random() * 5) + 1
+            var songNum = Math.floor(Math.random() * 6) + 1
             var song = new Audio(`https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/music/song${songNum}.WAV`)
             song.volume = v
             await this.sleep(2000)
