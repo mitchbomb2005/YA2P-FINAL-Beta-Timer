@@ -497,7 +497,9 @@ export class Background {
         this.layer2[201] = new Hitbox(873,3712,1744,74 )
         this.layer2[202] = new Hitbox(1019,3078,373,54 )
         this.layer2[203] = new Hitbox(1338,3077,55,666 )
-        
+        this.layer2[204] = new Hitbox(1827,2839,345,66 )
+ 
+ 
         // this.hitboxes[this.hitboxes.length] = new Hitbox(-1101,-4960,61,175 )
  
         

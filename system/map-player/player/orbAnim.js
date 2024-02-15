@@ -35,7 +35,7 @@ export class Orb{
         if(this.player.y > this.y){
             this.velY -= this.velChange
         }
-        this.velChange += .01
+        this.velChange += .06
         this.velX = this.velX * .97
         this.velY = this.velY * .97
         this.x -= this.velX
