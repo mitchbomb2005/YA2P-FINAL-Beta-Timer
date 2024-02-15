@@ -4,7 +4,8 @@ export class Sound{
         178000,
         145000,
         80000,
-        135000
+        135000,
+        143000
     ]
 
     breakSound(v=.2) {
@@ -75,7 +76,7 @@ export class Sound{
             await this.sleep(2000)
             song.play()
             
-            await this.sleep(this.songLength[songNum])
+            await this.sleep(this.songLength[songNum - 1])
         }
     }
         
