@@ -92,13 +92,13 @@ export class DrawUtils {
 
     }
  
-    Circle(x, y, rad, color = "rgba(255, 0, 0, .5)") {
-        ctx.beginPath();
+    Circle(x, y, rad, color = "rgba(255, 0, 0, .5)", CTX = ctx) {
+        CTX.beginPath();
         //ctx.arc()
-        ctx.arc(x, y, rad, 0, 2 * Math.PI);
-        ctx.fillStyle = color;
-        ctx.fill();
-        ctx.closePath();
+        CTX.arc(x, y, rad, 0, 2 * Math.PI);
+        CTX.fillStyle = color;
+        CTX.fill();
+        CTX.closePath();
         //this.Text("orb", 100, 100)
     }
 

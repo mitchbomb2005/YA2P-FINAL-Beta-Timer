@@ -84,14 +84,22 @@ export class Player {
         //console.log(this.velY)
         this.orbAlpha -= .001
         if(this.anim == true && this.orbAlpha >= 0) {
-            this.orb[this.orb.length] = new Orb(this.x - 1000, this.y+ 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
+            /*this.orb[this.orb.length] = new Orb(this.x - 1000, this.y+ 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
             this.orb[this.orb.length] = new Orb(this.x - 0, this.y+ 1500, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
             this.orb[this.orb.length] = new Orb(this.x - 0, this.y- 1500, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
             this.orb[this.orb.length] = new Orb(this.x - 1000, this.y- 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
             this.orb[this.orb.length] = new Orb(this.x - 1500, this.y- 0, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
             this.orb[this.orb.length] = new Orb(this.x + 1500, this.y- 0, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
             this.orb[this.orb.length] = new Orb(this.x + 1000, this.y- 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
-            this.orb[this.orb.length] = new Orb(this.x + 1000, this.y+ 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
+            this.orb[this.orb.length] = new Orb(this.x + 1000, this.y+ 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)*/
+            this.orb[this.orb.length] = new Orb(this.x - 1000, this.y+ 1000, 20, this, `rgba(255,255,255,1)`)
+            this.orb[this.orb.length] = new Orb(this.x - 0, this.y+ 1500, 20, this, `rgba(255,255,255,1)`)
+            this.orb[this.orb.length] = new Orb(this.x - 0, this.y- 1500, 20, this, `rgba(255,255,255,1)`)
+            this.orb[this.orb.length] = new Orb(this.x - 1000, this.y- 1000, 20, this, `rgba(255,255,255,1)`)
+            this.orb[this.orb.length] = new Orb(this.x - 1500, this.y- 0, 20, this, `rgba(255,255,255,1)`)
+            this.orb[this.orb.length] = new Orb(this.x + 1500, this.y- 0, 20, this, `rgba(255,255,255,1)`)
+            this.orb[this.orb.length] = new Orb(this.x + 1000, this.y- 1000, 20, this, `rgba(255,255,255,1)`)
+            this.orb[this.orb.length] = new Orb(this.x + 1000, this.y+ 1000, 20, this, `rgba(255,255,255,1)`)
             this.orbAlpha -= .01
         }
 
@@ -282,16 +290,17 @@ export class Player {
     async check(valC, valS) {
         if(valC == "hook") {
             if(this.anim == false && this.hookHeld != true){
-                this.orbAlpha = 2
+                this.orbAlpha = 1
                 this.anim = true
-                await this.sleep(1500)
+                await this.sleep(750)
                 this.game.audio.powerUpSound()
+                await this.sleep(750)
                 this.change = "hook"
             }
         }
         if(valC == "hookII") {
             if(this.anim == false && this.hookHeldII != true){
-                this.orbAlpha = 2
+                this.orbAlpha = 1
                 this.anim = true
                 await this.sleep(1500)
                 this.game.audio.powerUpSound()

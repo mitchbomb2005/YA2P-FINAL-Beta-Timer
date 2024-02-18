@@ -15,6 +15,7 @@ export class Keys {
     hookDisabled = new Image();
     hookEnabled = new Image();
     leftClick = new Image()
+    rightClick = new Image()
 
     constructor(cam, root){
         this.camera = cam
@@ -23,6 +24,7 @@ export class Keys {
         this.keyS.src = 'assets/images/keys/S_Key_Dark.png';
         this.keyL.src = 'assets/images/keys/L_Key_Dark.png'; //
         this.leftClick.src = 'assets/images/keys/Mouse_Left_Key_Dark.png';
+        this.rightClick.src = 'assets/images/keys/Mouse_Right_Key_Dark.png';
         this.keySpace.src = 'assets/images/keys/Space_Key_Dark.png';
         this.warnLava.src = 'assets/images/warn.png';
         this.warnGrey.src = 'assets/images/warnGrey.png';
@@ -35,18 +37,24 @@ export class Keys {
 
         if(this.game.debug.shortsMap) {} else {
             this.drawMisc()
-            this.hookTip(5347,-621)
-            this.hookTip(13821,-2632)
+            this.hookTip(5347,-621, "left")
+            this.hookTip(13821,-2632, "left")
             
             this.jump(2273, 642)
             this.jump(5419, 644)
 
             this.jump(8150,188)
             this.jump(7533,-389)
+
+            this.hookTip(4358,7562, "left")
+            this.hookTip(5291,7562, "right")
             
         }
 
     } // 8779, 269
+   // this.hitboxes[this.hitboxes.length] = new Hitbox(4358,7562,31,6 )
+ //   this.hitboxes[this.hitboxes.length] = new Hitbox(5291,7561,15,6 )
+    
  
 
     jump(x, y) {
@@ -55,8 +63,15 @@ export class Keys {
     }
 
     hookTip(x, y, type){
-        ctx.drawImage(this.leftClick, x + this.camera.x, y + this.camera.y)
-        this.hookState(x+100 + this.camera.x, y + this.camera.y)
+        if(type == "left") {
+            ctx.drawImage(this.leftClick, x + this.camera.x, y + this.camera.y)
+            this.hookState(x+100 + this.camera.x, y + this.camera.y)
+        }
+        
+        if(type == "right") {
+            ctx.drawImage(this.rightClick, x + this.camera.x+100, y + this.camera.y)
+            this.hookState(x + this.camera.x, y + this.camera.y)
+        }
     }
     hookState(x, y) {
         if(this.game.player.hookHeld) {

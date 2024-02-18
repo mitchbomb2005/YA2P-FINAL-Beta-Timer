@@ -1,7 +1,9 @@
 'use strict';
 
 const canvas = document.getElementById("game_screen");
-const ctx = canvas.getContext("2d");
+const ctx = canvas.getContext("2d")
+const ballEffect = document.getElementById("balls");
+const bctx = ballEffect.getContext("2d")
 var scaleX = 0;
 var scaleY = 0;
 
@@ -54,7 +56,8 @@ export class GameDisplayer {
     // methods (functions)
     drawGameFrame() {
 
-        this.resizeCanvasForWindowSize();
+        this.resizeCanvasForWindowSize(canvas, ctx);
+        this.resizeCanvasForWindowSize(ballEffect, bctx);
         
         this.bgFade(this.targetR, this.targetG, this.targetB)
         this.r += this.rC
@@ -95,11 +98,21 @@ export class GameDisplayer {
         this.game.keys.drawKeys()
 
         //if(this.player.anim) {
-            for(let i = 0; i < this.player.orb.length; i++){
-                //this.player.orb[i].update()
-                this.player.orb[i].Draw()
-            }
+        //bctx.filter = "blur(30px) contrast(100)"
+            this.orbDraw("old")
         //}
+        this.signDraw()
+
+
+        this.drawUtils.Rect(0, 675 + this.signDisplayPos, 10000, 10000, "#000")
+        this.drawUtils.Rect(0, 700 + this.signDisplayPos, 10000, 10000, "#555555")
+        for(let j = 0; j < 6; j++){
+            this.drawUtils.Text(this.signText[j], 100, (800 + (100 * j)) + this.signTextPos *(j/2 + 1))
+        }
+
+    }
+
+    signDraw() {
         for(let i = 0; i < this.map.sign.signs.length; i++){
             if(this.map.sign.signs[i].interact){
                 this.signText = this.map.sign.signs[i].text
@@ -113,14 +126,26 @@ export class GameDisplayer {
                 this.signTextPos = ((this.signDisplayPos * 12) + 800 )/ 13
             }
         }
+    }
 
+    orbDraw(render = "old") {
+        if(render == "old") { 
+            for(let i = 0; i < this.player.orb.length; i++){
+                //this.player.orb[i].update()
+                this.player.orb[i].Draw(bctx)
+            }
+        } else {
+            for(let i = 0; i < this.player.orb.length; i++){
+                if(!this.player.orb.hidden){
+                    const orbGrd = ctx.createRadialGradient(-this.player.orb[i].x - this.camera.x, -this.player.orb[i].y - this.camera.y, /*this.player.orb[i].size * .5*/10,-this.player.orb[i].x - this.camera.x,-this.player.orb[i].y - this.camera.y,  100/*this.player.orb[i].x * 2*/)
+                    orbGrd.addColorStop(0, "white");
+                    orbGrd.addColorStop(1, "rgba(255,255,255,0)");
+                    ctx.fillStyle = orbGrd
+                    ctx.fillRect(0, 0, 3000, 3000)
 
-        this.drawUtils.Rect(0, 675 + this.signDisplayPos, 10000, 10000, "#000")
-        this.drawUtils.Rect(0, 700 + this.signDisplayPos, 10000, 10000, "#555555")
-        for(let j = 0; j < 6; j++){
-            this.drawUtils.Text(this.signText[j], 100, (800 + (100 * j)) + this.signTextPos *(j/2 + 1))
+                }
+            }
         }
-
     }
 
     bgFade(r,g,b) {
@@ -154,7 +179,7 @@ export class GameDisplayer {
     // don't alter this, just ignore it
     // we don't kow how it works, it just does
     // i tried to alter it, but i failed
-    resizeCanvasForWindowSize() {
+    resizeCanvasForWindowSize(canvas, ctx) {
         var currentWidth = canvas.width;
         var currentHeight = canvas.height;
         var windowWidth = window.innerWidth;

@@ -8,7 +8,7 @@ export class Sound{
         143000
     ]
 
-    breakSound(v=.2) {
+    breakSound(v=.1) {
         var hbreak = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/break.wav')
         hbreak.volume = v
         hbreak.play()
@@ -20,7 +20,7 @@ export class Sound{
         jump.play()
     }
 
-    hookSound(v=.15) {
+    hookSound(v=.1) {
         var hook = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/hook.wav')
         hook.volume = v
         hook.play()
@@ -38,7 +38,7 @@ export class Sound{
         hurt.play();
     }
 
-    menuSound(v=.2) {
+    menuSound(v=.15) {
         var menu = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/menu.wav')
         menu.volume = v
         menu.play();
@@ -58,13 +58,13 @@ export class Sound{
     key = false
 
     playSound(){
-        this.breakSound(0)
-        this.jumpSound(0)
-        this.hookSound(0)
-        this.hookHitSound(0)
-        this.hurtSound(0)
-        this.menuSound(0)
-        this.wallJumpSound(0) 
+        this.breakSound(.01)
+        this.jumpSound(.01)
+        this.hookSound(.01)
+        this.hookHitSound(.01)
+        this.hurtSound(.01)
+        this.menuSound(.01)
+        this.wallJumpSound(.01) 
     }
         
     async playSongLoop(v = .2){

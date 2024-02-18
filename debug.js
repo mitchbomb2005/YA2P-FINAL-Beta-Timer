@@ -31,7 +31,7 @@ export class Debug {
             this.flipMapMaker()
             this.flipGrappleHookTest()
             this.flipBackGrid()
-            this.flipShortsMap()
+            //this.flipShortsMap()
             this.flipEnum()
             this.flipC()
             this.flipGP()

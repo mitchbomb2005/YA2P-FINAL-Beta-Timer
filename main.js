@@ -51,6 +51,7 @@ import { Game } from "./imports/import.js"
                 updateGame();
                 if(lastFrameMenu){
                     game.audio.menuSound()
+                    game.audio.playSound()
                     game.audio.playSongLoop()
                     lastFrameMenu = false
                     game.gameDisplayer.targetR = 167
@@ -63,7 +64,7 @@ import { Game } from "./imports/import.js"
                     game.menu.fade()
                 }
             }/**/
-            
+            //game.audio.playSound()
             game.keyManager.update();
             console.log("Drawing :", DrawTime , "|||  Updating :", Date.now() - now, "|||  Max : 16 :", DrawTime + Date.now() - now, "|||  Delta Time :", deltaTime)
             //lastTime = Date.now()
