@@ -56,7 +56,7 @@ export class KeyManager {
           this.game.hookII.visibility = true
           this.game.hookII.enabled = false
           this.game.hookII.motion = true
-          this.game.hookII.mouseUpdate()
+          this.game.hookII.setup()
           if (this.game.hookII.visibility) {
             this.game.audio.hookSound()
           } else {
@@ -94,7 +94,6 @@ export class KeyManager {
             this.game.hookII.visibility = false
             this.game.hookII.enabled = false
             this.game.hookII.motion = true
-            this.game.hookII.mouseUpdate()
             if (this.game.hookII.visibility) {
               this.game.audio.hookSound()
             } else {
@@ -103,13 +102,21 @@ export class KeyManager {
           }
         }
       })
+      document.addEventListener("mousemove", (event) => {
+        var rect = canvas.getBoundingClientRect()
+        this.mousePos = this.getMousePos(canvas, event);
+        this.mousePos.x = (((this.mousePos.x) / (rect.width)) * this.canvasShape.width) - this.camX
+        this.mousePos.y = (((this.mousePos.y) / (rect.height)) * this.canvasShape.height) - this.camY
+      })
     }
 
 
     mouseSetup() {
       return {
         x: 0,
-        y: 0
+        y: 0,
+        cx:this.camX,
+        cy:this.camY
     };
     }
 

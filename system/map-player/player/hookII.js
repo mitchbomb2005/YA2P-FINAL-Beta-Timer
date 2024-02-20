@@ -31,6 +31,7 @@ export class Hook{
         
         if(this.motion) {
             this.move(this.trajectory.x, this.trajectory.y)
+            this.mouseUpdate()
         }
 
 
@@ -48,17 +49,17 @@ export class Hook{
         }
 
         if (this.length > this.maxLength && this.visibility) {
-            this.enabled = false
-            this.visibility = false
-            this.game.audio.breakSound()
+        //    this.enabled = false
+         //   this.visibility = false
+          //  this.game.audio.breakSound()
         }
 
     }
 
     mouseUpdate(){
 
-        const diffX = this.game.camera.keyMan.mousePos.x + this.game.player.x;
-        const diffY = this.game.camera.keyMan.mousePos.y + this.game.player.y; 
+        const diffX = (this.game.camera.keyMan.mousePos.x + this.game.camera.keyMan.mousePos.cx) + (this.game.player.x - this.game.camera.x);
+        const diffY = (this.game.camera.keyMan.mousePos.y + this.game.camera.keyMan.mousePos.cy) + (this.game.player.y - this.game.camera.y); 
         const mouseDistance = (diffX ** 2 + diffY ** 2) ** 0.5;
 
         this.trajectory.x = mouseDistance < this.threshold ? 0 : diffX / mouseDistance;
@@ -66,11 +67,12 @@ export class Hook{
 
         //this.trajectory.x = (this.game.camera.keyMan.mousePos.x) - (-this.game.player.x)
         //this.trajectory.y = (this.game.camera.keyMan.mousePos.y) - (-this.game.player.y)
+        //this.fixed = false
+    }
+
+    setup(){
         this.x2 = -this.game.player.x
         this.y2 = -this.game.player.y
-        this.fixed = false
-        
-
     }
 
     #collisionCheck(type, i) {
@@ -142,20 +144,16 @@ export class Hook{
     }
 
     move(x, y){
-        var Xstep = this.speed
-        var Ystep = this.speed
+        var Xstep = this.speed * 100
+        var Ystep = this.speed * 100
 
+
+        this.y2 = (this.y2 + (-this.game.player.y + (y* 200)))/2
+        this.x2 = (this.x2 + (-this.game.player.x + (x* 200)))/2 
+        this.colide()
         
         for (let i = 0; i < this.speed && !this.enabled; i++) {
-            if (Xstep != 0) {
-                this.x2 +=x
-                this.Xstep--
-            }
-            if (Ystep != 0) {
-                this.y2 +=y
-                this.Ystep--
-            }
-            this.colide()
+
         }
         
 
