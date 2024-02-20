@@ -96,6 +96,7 @@ import { Game } from "./imports/import.js"
         game.hookII.update(deltaTime);
         game.storage.update()
         DeltaTime()
+        
 
         if (game.keyManager.wasKeyJustPressed("KeyP") && game.menu.checkDos) {
             game.menu.fade("up")
