@@ -42,7 +42,7 @@ export class KeyManager {
         this.mousePos = this.getMousePos(canvas, event);
         this.mousePos.x = (((this.mousePos.x) / (rect.width)) * this.canvasShape.width) - this.camX
         this.mousePos.y = (((this.mousePos.y) / (rect.height)) * this.canvasShape.height) - this.camY
-        if (event.button == 0 && !this.isKeyPressed("ShiftLeft") && this.game.player.hookHeld) {
+        if (event.button == 0 && !this.isKeyPressed("ShiftLeft") && this.game.player.hookHeld && !this.game.hookII.visibility) {
           this.game.hook.visibility = true
           this.game.hook.enabled = false
           this.game.hook.motion = true
@@ -52,7 +52,7 @@ export class KeyManager {
           } else {
             this.game.audio.breakSound()
           }
-        }else if (event.button == 2 && !this.isKeyPressed("ShiftLeft") && this.game.player.hookHeldII) {
+        }else if (event.button == 2 && !this.isKeyPressed("ShiftLeft") && this.game.player.hookHeldII && !this.game.hook.visibility) {
           this.game.hookII.visibility = true
           this.game.hookII.enabled = false
           this.game.hookII.motion = true
