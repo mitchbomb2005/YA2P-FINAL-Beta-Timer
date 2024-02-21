@@ -56,9 +56,9 @@ export class KeyManager {
           this.game.hookII.visibility = true
           this.game.hookII.enabled = false
           this.game.hookII.motion = true
-          this.game.hookII.setup()
           this.mousePos.cx = this.camX
           this.mousePos.cy = this.camY
+          this.game.hookII.setup()
           if (this.game.hookII.visibility) {
             this.game.audio.hookSound()
           } else {

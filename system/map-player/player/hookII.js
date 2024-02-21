@@ -44,10 +44,13 @@ export class Hook{
             this.visibility = false
         }
 
-        if (this.length > this.targetLength && this.enabled) {
-            this.game.player.velX = this.game.player.velX + ((this.x1 - (this.x2 + this.game.camera.x)) / 70)
-            this.game.player.velY = this.game.player.velY + ((this.y1 - (this.y2 + this.game.camera.y)) / 130) + .1
+        if(this.enabled == true) {
+            this.movePlayer()
+
         }
+
+
+
 
         if (this.length > this.maxLength && this.visibility) {
         //    this.enabled = false
@@ -55,6 +58,19 @@ export class Hook{
           //  this.game.audio.breakSound()
         }
 
+    }
+
+    movePlayer() {
+        const diffX = (this.game.camera.keyMan.mousePos.x + this.game.camera.keyMan.mousePos.cx) + (this.game.player.x - this.game.camera.x);
+        const diffY = (this.game.camera.keyMan.mousePos.y + this.game.camera.keyMan.mousePos.cy) + (this.game.player.y - this.game.camera.y); 
+        const mouseDistance = (diffX ** 2 + diffY ** 2) ** 0.5;
+
+        this.trajectory.x = mouseDistance < this.threshold ? 0 : diffX / mouseDistance;
+        this.trajectory.y = mouseDistance < this.threshold ? 0 : diffY / mouseDistance;
+
+        this.game.player.velX = (-(this.game.player.x + (this.x2 - (this.trajectory.x * 200))) + this.game.player.velX * 4) / 7 //this.game.player.velX + ((this.x1 - (this.x2 + this.game.camera.x)) / 70)
+        this.game.player.velY = (-(this.game.player.y + (this.y2 - (this.trajectory.y * 200))) + this.game.player.velY * 4) / 7 //this.game.player.velY + ((this.y1 - (this.y2 + this.game.camera.y)) / 130) + .1
+    
     }
 
     mouseUpdate(){
@@ -74,6 +90,7 @@ export class Hook{
     setup(){
         this.x2 = -this.game.player.x
         this.y2 = -this.game.player.y
+        this.fixed = false
     }
 
     #collisionCheck(type, i) {
