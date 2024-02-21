@@ -50,7 +50,7 @@ export class Keys {
             this.jump(8150,188)
             this.jump(7533,-389)
 
-            this.hookTip(4358,7562, "left")
+            //this.hookTip(4358,7562, "left")
             this.hookTip(5291,7562, "right")
             
         }
