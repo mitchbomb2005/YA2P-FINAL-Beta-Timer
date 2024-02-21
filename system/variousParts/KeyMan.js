@@ -57,6 +57,8 @@ export class KeyManager {
           this.game.hookII.enabled = false
           this.game.hookII.motion = true
           this.game.hookII.setup()
+          this.mousePos.cx = this.camX
+          this.mousePos.cy = this.camY
           if (this.game.hookII.visibility) {
             this.game.audio.hookSound()
           } else {
@@ -107,6 +109,8 @@ export class KeyManager {
         this.mousePos = this.getMousePos(canvas, event);
         this.mousePos.x = (((this.mousePos.x) / (rect.width)) * this.canvasShape.width) - this.camX
         this.mousePos.y = (((this.mousePos.y) / (rect.height)) * this.canvasShape.height) - this.camY
+        this.mousePos.cx = this.camX
+        this.mousePos.cy = this.camY
       })
     }
 

@@ -4,7 +4,7 @@ export class Hook{
     enabled = false ; visibility = false
     x1 ; x2
     y1 ; y2
-    length ; targetLength = 0 ; maxLength = 2000
+    length ; targetLength = 0 ; maxLength = NaN
     trajectory = new Object() ; speed = 80 ; threshold = 5 ; motion
     slope
     hitNum
@@ -24,13 +24,14 @@ export class Hook{
         this.x1 = -this.game.player.x + this.game.camera.x
         this.y1 = -this.game.player.y + this.game.camera.y - 15
 
-        this.length = Math.sqrt( Math.pow( ((this.x2 + this.game.camera.x) - this.x1), 2) + Math.pow( ((this.y2 + this.game.camera.y) - this.y1) , 2) )  //√((x2 – x1)² + (y2 – y1)²)
+        this.length = 20//Math.sqrt( Math.pow( ((this.x2 + this.game.camera.x) - this.x1), 2) + Math.pow( ((this.y2 + this.game.camera.y) - this.y1) , 2) )  //√((x2 – x1)² + (y2 – y1)²)
         
         // console.log((this.game.camera.keyMan.mousePos.x + this.game.camera.x) - (-this.game.player.x + this.game.camera.x))
 
         
         if(this.motion) {
             this.move(this.trajectory.x, this.trajectory.y)
+            console.log(this.trajectory.x, this.trajectory.y)
             this.mouseUpdate()
         }
 

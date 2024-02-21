@@ -66,7 +66,7 @@ import { Game } from "./imports/import.js"
             }/**/
             //game.audio.playSound()
             game.keyManager.update();
-            console.log("Drawing :", DrawTime , "|||  Updating :", Date.now() - now, "|||  Max : 16 :", DrawTime + Date.now() - now, "|||  Delta Time :", deltaTime)
+            //console.log("Drawing :", DrawTime , "|||  Updating :", Date.now() - now, "|||  Max : 16 :", DrawTime + Date.now() - now, "|||  Delta Time :", deltaTime)
             //lastTime = Date.now()
             //await sleep(1000/60);
     }
