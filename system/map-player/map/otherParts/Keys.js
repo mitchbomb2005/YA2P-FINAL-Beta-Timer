@@ -14,6 +14,8 @@ export class Keys {
     redFlag = new Image();
     hookDisabled = new Image();
     hookEnabled = new Image();
+    pickaxeDisabled = new Image();
+    pickaxeEnabled = new Image();
     leftClick = new Image()
     rightClick = new Image()
 
@@ -31,6 +33,8 @@ export class Keys {
         this.redFlag.src = 'assets/images/redFlag.png';
         this.hookDisabled.src = 'assets/images/hookDisabled.png';
         this.hookEnabled.src = 'assets/images/hookEnabled.png';
+        this.pickaxeDisabled.src = 'assets/images/pickaxeDisabled.png';
+        this.pickaxeEnabled.src = 'assets/images/pickaxeEnabled.png';
         this.game = root
     }
     drawKeys() {
@@ -70,7 +74,7 @@ export class Keys {
         
         if(type == "right") {
             ctx.drawImage(this.rightClick, x + this.camera.x+100, y + this.camera.y)
-            this.hookState(x + this.camera.x, y + this.camera.y)
+            this.pickaxeState(x + this.camera.x, y + this.camera.y)
         }
     }
     hookState(x, y) {
@@ -78,6 +82,14 @@ export class Keys {
             ctx.drawImage(this.hookEnabled, x, y)
         } else {
             ctx.drawImage(this.hookDisabled, x, y)
+        }
+    }
+
+    pickaxeState(x, y) {
+        if(this.game.player.hookHeldII) {
+            ctx.drawImage(this.pickaxeEnabled, x, y, 100, 100)
+        } else {
+            ctx.drawImage(this.pickaxeDisabled, x, y, 100, 100)
         }
     }
 
@@ -92,8 +104,13 @@ export class Keys {
        // ctx.drawImage(this.hookEnabled, 8779 + this.camera.x, 269 + this.camera.y)
     }
 
-    drawImage(img, x, y) {
-        ctx.drawImage(img, x +this.camera.x, y + this.camera.y)
+    drawImage(img, x, y, width, height) {
+        if(!width){
+            ctx.drawImage(img, x +this.camera.x, y + this.camera.y)
+
+        } else (
+            ctx.drawImage(img, x +this.camera.x, y + this.camera.y, width, height)
+        )
     }
     
 }

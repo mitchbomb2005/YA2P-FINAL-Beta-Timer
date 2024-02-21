@@ -82,8 +82,8 @@ export class Death {
         this.hitboxes[this.hitboxes.length] = new Hitbox(4639,5982,90,1557 )
         this.hitboxes[this.hitboxes.length] = new Hitbox(5170,5983,167,1541 )
         
-        this.hitboxes[this.hitboxes.length] = new Hitbox(5570,5691,1255,89 )
-        this.hitboxes[this.hitboxes.length] = new Hitbox(5567,4986,1256,95 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(5875,5419,529,106 )
+        this.hitboxes[this.hitboxes.length] = new Hitbox(5567,4986,1256,95, false, true)
         
 
 
@@ -105,17 +105,27 @@ export class Death {
         
     }
 
-    draw(cameraX, cameraY, color = "#500000") {
+    draw(cameraX, cameraY) {
         
         for (let i = 0; i < this.hitboxes.length; i++) {
-            this.hitboxes[i].draw(cameraX, cameraY, color);
+            if(this.hitboxes[i].extraInfoI){
+                this.hitboxes[i].draw(cameraX, cameraY, "#500000");
+            } else {
+                this.hitboxes[i].draw(cameraX, cameraY, "#900000");
+
+            }
         }
 
     }
-    nDraw(camera, color = "#500000") {
+    nDraw(camera) {
         
         for (let i = 0; i < this.hitboxes.length; i++) {
-            this.hitboxes[i].nDraw(camera, color);
+            if(this.hitboxes[i].extraInfoI){
+                this.hitboxes[i].nDraw(camera, "#300000");
+            } else {
+                this.hitboxes[i].nDraw(camera, "#700000");
+
+            }
         }
 
     }

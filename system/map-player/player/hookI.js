@@ -57,8 +57,8 @@ export class Hook{
 
     mouseUpdate(){
 
-        const diffX = this.game.camera.keyMan.mousePos.x + this.game.player.x;
-        const diffY = this.game.camera.keyMan.mousePos.y + this.game.player.y; 
+        const diffX = (this.game.camera.keyMan.mousePos.x + this.game.camera.keyMan.mousePos.cx) + (this.game.player.x - this.game.camera.x);
+        const diffY = (this.game.camera.keyMan.mousePos.y + this.game.camera.keyMan.mousePos.cy) + (this.game.player.y - this.game.camera.y); 
         const mouseDistance = (diffX ** 2 + diffY ** 2) ** 0.5;
 
         this.trajectory.x = mouseDistance < this.threshold ? 0 : diffX / mouseDistance;
@@ -75,11 +75,24 @@ export class Hook{
 
     #collisionCheck(type, i) {
         if (
-            (   this.y2 >= type.hitboxes[i].y                              && 
+            ((   this.y2 >= type.hitboxes[i].y                              && 
                 this.y2 <= type.hitboxes[i].y + type.hitboxes[i].height)   &&
             (   this.x2 >= type.hitboxes[i].x                              && 
-                this.x2 <= type.hitboxes[i].x + type.hitboxes[i].width)
-        ) {this.hitNum = i;return true} else {return false}
+                this.x2 <= type.hitboxes[i].x + type.hitboxes[i].width))
+        ) {this.hitNum = i;
+
+            if(!type.hitboxes[i].extraInfoI){
+                return {A : true,
+                        B : true}
+
+            }
+            if(type.hitboxes[i].extraInfoI){
+                return {A : true,
+                        B : false}
+
+            }
+
+        } else {return false}
     }
 
     fixPos(type, i) {
@@ -120,24 +133,32 @@ export class Hook{
             for (let i = 0; i < this.game.map.ground.hitboxes.length; i++){
                     if(this.#collisionCheck(this.game.map.ground, i)){
                         this.enabled = true
-                       this.motion = false
-
-                        if (!this.fixed) {
-                            this.fixPos(this.game.map.ground, i)
-                            this.game.audio.hookHitSound()
+                        this.motion = false
+                        this.fixPos(this.game.map.ground, i)
+                        this.game.audio.hookHitSound()
                         
-                        }
+                        
                     }
             }
 
             for (let i = 0; i < this.game.map.lava.hitboxes.length; i++){
-                if(this.#collisionCheck(this.game.map.lava, i)){
-                    this.visibility = false
-                    this.enabled = false
-                    this.motion = false
-                    this.game.audio.breakSound()
+                if(this.#collisionCheck(this.game.map.lava, i).A){
+                    if(this.#collisionCheck(this.game.map.lava, i).B){
+                        this.visibility = false
+                        this.enabled = false
+                        this.motion = false
+                        this.game.audio.breakSound()
+                    } else {
+                        this.enabled = true
+                        this.motion = false
+                        this.fixPos(this.game.map.lava, i)
+                        this.game.audio.hookHitSound()
+                         
+                         
+                    }
     
-                }}
+                }
+            }
         }
     }
 

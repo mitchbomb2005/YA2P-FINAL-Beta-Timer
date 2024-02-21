@@ -95,11 +95,24 @@ export class Hook{
 
     #collisionCheck(type, i) {
         if (
-            (   this.y2 >= type.hitboxes[i].y                              && 
+            ((   this.y2 >= type.hitboxes[i].y                              && 
                 this.y2 <= type.hitboxes[i].y + type.hitboxes[i].height)   &&
             (   this.x2 >= type.hitboxes[i].x                              && 
-                this.x2 <= type.hitboxes[i].x + type.hitboxes[i].width)
-        ) {this.hitNum = i;return true} else {return false}
+                this.x2 <= type.hitboxes[i].x + type.hitboxes[i].width))
+        ) {this.hitNum = i;
+
+            if(!type.hitboxes[i].extraInfoI){
+                return {A : true,
+                        B : true}
+
+            }
+            if(type.hitboxes[i].extraInfoI){
+                return {A : true,
+                        B : false}
+
+            }
+
+        } else {return false}
     }
 
     fixPos(type, i) {
@@ -151,13 +164,23 @@ export class Hook{
             }
 
             for (let i = 0; i < this.game.map.lava.hitboxes.length; i++){
-                if(this.#collisionCheck(this.game.map.lava, i)){
-                    this.visibility = false
-                    this.enabled = false
-                    this.motion = false
-                    this.game.audio.breakSound()
+                if(this.#collisionCheck(this.game.map.lava, i).A){
+                    if(this.#collisionCheck(this.game.map.lava, i).B){
+                        this.visibility = false
+                        this.enabled = false
+                        this.motion = false
+                        this.game.audio.breakSound()
+                    } else {
+                        this.enabled = true
+                        this.motion = false
+                        this.fixPos(this.game.map.lava, i)
+                        this.game.audio.hookHitSound()
+                         
+                         
+                    }
     
-                }}
+                }
+            }
         }
     }
 
