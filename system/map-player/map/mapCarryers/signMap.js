@@ -12,10 +12,14 @@ export class signMaker {
         this.signs[3] = new sign(19636 + 200,-5422,["Make Sure The Player Can Pass What You Make", "The Map Editor Makes Temporary HitBoxes That Go To Your ", "Clipboard", "(Unless You Are On FireFox, Use A Real Browser)", "", "Also, Make Sure The Death Hitboxes Aren't Right By A CheckPoint"])
         this.signs[4] = new sign(-16818 + 450,-5727 - 150,["Jump Down, Trust Me", "Nothing Can Possibly Go Wrong With That", "", "              [good luck]", "            [you'll need it]                     [- the travler]", "                                                                              - The Sign Maker"])
         this.signs[5] = new sign(-19077, -2539 - 150,["              [go through that portal on the left]", "                [that will lead you to a pickaxe]", "[that path is much harder than what you have done]", "                                 [good luck]", "", "                                                                              [- the travler]"])
+        this.signs[6] = new sign(4392,9076,["{this is basically the end, there is a little bit more, but it's not done yet}", "{Hold down \\ and one of these keys for different debug features}", "{N; Noclip}", "{C; Coordenets}", "{SHIFT M; full map editor}", "{The Developer}"])
+        
         //-19077, -2539
 // this.hitboxes[this.hitboxes.length] = new Hitbox(,424,17,58 )                                                                             
 // this.hitboxes[this.hitboxes.length] = new Hitbox(,28,13 )
 //this.hitboxes[this.hitboxes.length] = new Hitbox(,,117 )
+// this.hitboxes[this.hitboxes.length] = new Hitbox(4392,9006,79,53 )
+ 
   
     }
     update(player, keyman) {
