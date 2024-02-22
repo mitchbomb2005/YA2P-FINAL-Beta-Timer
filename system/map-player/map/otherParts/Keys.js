@@ -79,9 +79,9 @@ export class Keys {
     }
     hookState(x, y) {
         if(this.game.player.hookHeld) {
-            ctx.drawImage(this.hookEnabled, x, y)
+            ctx.drawImage(this.hookEnabled, x, y, 100, 100)
         } else {
-            ctx.drawImage(this.hookDisabled, x, y)
+            ctx.drawImage(this.hookDisabled, x, y, 100, 100)
         }
     }
 

@@ -108,7 +108,7 @@ export class KeyManager {
       document.addEventListener("mousemove", (event) => {
         var rect = canvas.getBoundingClientRect()
         this.mousePos = this.getMousePos(canvas, event);
-        this.mousePos.x = (((this.mousePos.x) / (rect.width)) * this.canvasShape.width) - this.camX
+        this.mousePos.x = ((((this.mousePos.x) / (rect.width)) * this.canvasShape.width) - this.camX)
         this.mousePos.y = (((this.mousePos.y) / (rect.height)) * this.canvasShape.height) - this.camY
         this.mousePos.cx = this.camX
         this.mousePos.cy = this.camY
@@ -147,6 +147,7 @@ export class KeyManager {
         case "Enter": return !this.keysPressedLastFrame[35] && this.keysCurrentlyPressed[35];
         case "Equal": return !this.keysPressedLastFrame[36] && this.keysCurrentlyPressed[36];
         case "Minus": return !this.keysPressedLastFrame[37] && this.keysCurrentlyPressed[37];
+        case "ControlLeft": return !this.keysPressedLastFrame[38] && this.keysCurrentlyPressed[38];
 
         case "KeyA": return !this.keysPressedLastFrame[0] && this.keysCurrentlyPressed[0];
         case "KeyB": return !this.keysPressedLastFrame[1] && this.keysCurrentlyPressed[1];
@@ -193,6 +194,7 @@ export class KeyManager {
         case "Enter": return this.keysCurrentlyPressed[35];
         case "Equal": return this.keysCurrentlyPressed[36];
         case "Minus": return this.keysCurrentlyPressed[37];
+        case "ControlLeft": return this.keysCurrentlyPressed[38];
 
         case "KeyA": return this.keysCurrentlyPressed[0];
         case "KeyB": return this.keysCurrentlyPressed[1];
@@ -262,6 +264,9 @@ export class KeyManager {
         break;        
         case "Minus":
           this.keyBuffer[37] = pressed;
+        break;
+        case "ControlLeft":
+          this.keyBuffer[38] = pressed;
         break;
         
         case "KeyA":

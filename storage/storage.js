@@ -3,39 +3,45 @@ export class Storage{
     game
     accessible
     Save
+    Data
 
     constructor(game) {
         this.game = game
     }
 
     check() {
-        if (this.accessible == undefined){
-            console.log(undefined)
-            return
-        }
-        if (localStorage.getItem("Save") == "") {
-            this.Save = localStorage.getItem("Save")
-            console.log ("save cloud")
-            this.load()
+    }
+
+    setData(){
+        return{
+            
+            x : this.game.player.x, 
+            y : this.game.player.y,
+            hook : this.game.player.hookHeld,
+            hookII : this.game.player.hookHeldII
+        
         }
     }
 
     update() {
-        if(this.game.keyManager.isKeyPressed("ShiftLeft")){
-            if(this.game.keyManager.wasKeyJustPressed("KeyK")){
+        if(this.game.keyManager.isKeyPressed("ControlLeft")){
+            if(this.game.keyManager.wasKeyJustPressed("KeyC")){
+                this.Data = this.setData().toString()
+                console.log(this.Data)
                 this.save()
             }
-            if(this.game.keyManager.wasKeyJustPressed("KeyL")){
+            if(this.game.keyManager.wasKeyJustPressed("KeyV")){
                 this.load()
             }
         }
     }
 
-    save() {
-        this.Save.playerX = this.game.player.x
-        this.Save.playerY = this.game.player.y
-            console.log("save")
-            localStorage.setItem("Save", this.Save);
+    async save() {
+        this.Data = this.setData().toString()
+        await navigator.clipboard.writeText(
+            this.Data
+        )
+        console.log("save") 
     }
 
     load() {
