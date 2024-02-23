@@ -5,6 +5,9 @@ export class Storage{
     Save
     Data
 
+    saveAlpha = 0
+    loadAlpha = 0
+
     constructor(game) {
         this.game = game
     }
@@ -29,17 +32,27 @@ export class Storage{
         }
     }
 
-    update() {
+    async update() {
         if(this.game.keyManager.isKeyPressed("ControlLeft")){
             if(this.game.keyManager.wasKeyJustPressed("KeyC")){
+                this.saveAlpha = 0
+                this.loadAlpha = 0
                 this.Data = this.setData()
                 console.log(this.Data)
                 this.save()
+
+                this.saveAlpha = 2
+                await this.game.sleep(2000)
             }
             if(this.game.keyManager.wasKeyJustPressed("KeyV")){
+                this.saveAlpha = 0
+                this.loadAlpha = 0
                 this.load()
+                this.loadAlpha = 2
             }
         }
+        this.saveAlpha -= .05
+        this.loadAlpha -= .05
     }
 
     async save() {

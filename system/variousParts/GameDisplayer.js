@@ -171,8 +171,8 @@ export class GameDisplayer {
     }
 
     drawText() { 
-        //  this.hitboxes[this.hitboxes.length] = new Hitbox(-1380,-3287,124,74 )
-        //this.drawUtils.Text("sorry for that lava part, but this is the end for now", -1680 + this.camera.x,-3387 + this.camera.y, "white", "grey")
+        this.drawUtils.Text("saved", 1100, 100, `rgba(0,0,0,${this.game.storage.saveAlpha})`, `rgba(255,255,255,${this.game.storage.saveAlpha})`)
+        this.drawUtils.Text("loaded", 1100, 100, `rgba(0,0,0,${this.game.storage.loadAlpha})`, `rgba(255,255,255,${this.game.storage.loadAlpha})`)
     }
     
     // don't alter this, just ignore it
