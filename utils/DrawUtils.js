@@ -26,7 +26,7 @@ export class DrawUtils {
 
         ctx.beginPath();
         ctx.rect((x - 5) - (width / 2) , (y - 5) - (height / 2), width + 10 , height - width / 2 + 10);
-        ctx.fillStyle = "#000000";
+        ctx.fillStyle = "#33363f";
         ctx.fill();
         ctx.closePath();
 
