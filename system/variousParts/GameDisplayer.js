@@ -4,6 +4,8 @@ const canvas = document.getElementById("game_screen");
 const ctx = canvas.getContext("2d")
 const ballEffect = document.getElementById("balls");
 const bctx = ballEffect.getContext("2d")
+const postEffect = document.getElementById("PostProcessing");
+const ppctx = ballEffect.getContext("2d")
 var scaleX = 0;
 var scaleY = 0;
 
@@ -58,6 +60,7 @@ export class GameDisplayer {
 
         this.resizeCanvasForWindowSize(canvas, ctx);
         this.resizeCanvasForWindowSize(ballEffect, bctx);
+        this.resizeCanvasForWindowSize(postEffect, ppctx);
         
         this.bgFade(this.targetR, this.targetG, this.targetB)
         this.r += this.rC
@@ -90,6 +93,7 @@ export class GameDisplayer {
         this.map.checkpoint.nDraw(this.camera) 
         this.map.ground.nDraw(this.camera);
         this.drawText()
+        this.PostGrad()
 
         this.debugDraw()
 
@@ -128,23 +132,11 @@ export class GameDisplayer {
     }
 
     orbDraw(render = "old") {
-        if(render == "old") { 
             for(let i = 0; i < this.player.orb.length; i++){
                 //this.player.orb[i].update()
                 this.player.orb[i].Draw(bctx)
             }
-        } else {
-            for(let i = 0; i < this.player.orb.length; i++){
-                if(!this.player.orb.hidden){
-                    const orbGrd = ctx.createRadialGradient(-this.player.orb[i].x - this.camera.x, -this.player.orb[i].y - this.camera.y, /*this.player.orb[i].size * .5*/10,-this.player.orb[i].x - this.camera.x,-this.player.orb[i].y - this.camera.y,  100/*this.player.orb[i].x * 2*/)
-                    orbGrd.addColorStop(0, "white");
-                    orbGrd.addColorStop(1, "rgba(255,255,255,0)");
-                    ctx.fillStyle = orbGrd
-                    ctx.fillRect(0, 0, 3000, 3000)
-
-                }
-            }
-        }
+        
     }
 
     bgFade(r,g,b) {
@@ -168,6 +160,14 @@ export class GameDisplayer {
             this.gC = 0
             this.bC = 0
         }
+    }
+
+    PostGrad() {
+        var grad = ppctx.createRadialGradient(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 100, -this.player.x + this.camera.x, -this.player.y + this.camera.y, 2000)
+        grad.addColorStop(0, "rgba(0,0,0,0)");
+        grad.addColorStop(1, "black");
+        ppctx.fillStyle = grad
+        ppctx.fillRect(0, 0, 10000, 100000);
     }
 
     drawText() { 
