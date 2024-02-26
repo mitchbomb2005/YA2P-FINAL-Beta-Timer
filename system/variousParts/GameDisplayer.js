@@ -15,6 +15,11 @@ import { DrawUtils } from "../../utils/DrawUtils.js"
 
 export class GameDisplayer {
 
+    gradX = -350
+    gradY = 0
+    gradMin = 2000
+    gradTarget = 50
+
     // system
     game;
     map;
@@ -163,8 +168,16 @@ export class GameDisplayer {
     }
 
     PostGrad() {
-        var grad = ppctx.createRadialGradient(-this.player.x + this.camera.x, -this.player.y + this.camera.y, 100, -this.player.x + this.camera.x, -this.player.y + this.camera.y, 2000)
+        if(this.game.menu.check){
+            this.gradX = ((this.gradX*12) + this.player.x + 30) / 13
+            this.gradY = ((this.gradY*12) + this.player.y) / 13
+            this.gradMin = ((this.gradMin*12) + this.gradTarget) / 13
+
+        }
+        var grad = ppctx.createRadialGradient(-this.gradX + this.camera.x, -this.gradY + this.camera.y, this.gradMin, -this.gradX + this.camera.x, -this.gradY + this.camera.y, 2000)
         grad.addColorStop(0, "rgba(0,0,0,0)");
+        grad.addColorStop(.05, "rgba(0,0,0,0)");
+        grad.addColorStop(.7, "rgba(0,0,0,.8)");
         grad.addColorStop(1, "black");
         ppctx.fillStyle = grad
         ppctx.fillRect(0, 0, 10000, 100000);
