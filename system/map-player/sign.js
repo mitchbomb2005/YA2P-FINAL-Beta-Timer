@@ -11,9 +11,9 @@ export class sign{
     sign = new Image();
     tip = new Image()
 
-    constructor(x = 0, y = 0, text = ["placeholder", "line 2"], width = 175, height = 175) {
-        this.x = x 
-        this.y = y 
+    constructor(x = 0, y = 0, text = ["placeholder", "line 2"], width = 175 + 25, height = 175 + 25) {
+        this.x = x -13
+        this.y = y -25
         this.text = text 
         this.width = width 
         this.height = height 
@@ -24,7 +24,7 @@ export class sign{
  
     nDraw(camera, utils) {
         ctx.drawImage(this.sign, this.x + camera.x, this.y + camera.y, this.width, this.height)
-        ctx.drawImage(this.tip, this.x + camera.x + this.width * (5/9) - this.tipSize / 2, this.y + camera.y - this.tipSize / 1, this.tipSize, this.tipSize)
+        ctx.drawImage(this.tip, this.x + camera.x + this.width * (1/2) - this.tipSize / 2, this.y + camera.y - this.tipSize / 1.1, this.tipSize, this.tipSize)
     }
 
     update(player, keyman) {
