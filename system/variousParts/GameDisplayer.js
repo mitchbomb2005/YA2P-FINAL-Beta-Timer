@@ -6,6 +6,8 @@ const ballEffect = document.getElementById("balls");
 const bctx = ballEffect.getContext("2d")
 const postEffect = document.getElementById("PostProcessing");
 const ppctx = ballEffect.getContext("2d")
+const userInterface = document.getElementById("UI")
+const uictx = userInterface.getContext("2d")
 var scaleX = 0;
 var scaleY = 0;
 
@@ -66,6 +68,7 @@ export class GameDisplayer {
         this.resizeCanvasForWindowSize(canvas, ctx);
         this.resizeCanvasForWindowSize(ballEffect, bctx);
         this.resizeCanvasForWindowSize(postEffect, ppctx);
+        this.resizeCanvasForWindowSize(userInterface, uictx);
         
         this.bgFade(this.targetR, this.targetG, this.targetB)
         this.r += this.rC
@@ -98,7 +101,6 @@ export class GameDisplayer {
         this.map.checkpoint.nDraw(this.camera) 
         this.map.ground.nDraw(this.camera);
         this.drawText()
-        this.PostGrad()
 
         this.debugDraw()
 
@@ -109,14 +111,12 @@ export class GameDisplayer {
         //bctx.filter = "blur(30px) contrast(100)"
             this.orbDraw("old")
         //}
+
+
+
+        this.PostGrad()
+
         this.signDraw()
-
-
-        this.drawUtils.Rect(0, 675 + this.signDisplayPos, 10000, 10000, "#000")
-        this.drawUtils.Rect(0, 700 + this.signDisplayPos, 10000, 10000, "#555555")
-        for(let j = 0; j < 6; j++){
-            this.drawUtils.Text(this.signText[j], 100, (800 + (100 * j)) + this.signTextPos *(j/2 + 1))
-        }
 
     }
 
@@ -133,6 +133,11 @@ export class GameDisplayer {
                 this.signDisplayPos = ((this.signDisplayPos * 9) + 800 )/ 10
                 this.signTextPos = ((this.signDisplayPos * 12) + 800 )/ 13
             }
+        }
+        this.drawUtils.Rect(0, 675 + this.signDisplayPos, 10000, 10000, "#000", uictx)
+        this.drawUtils.Rect(0, 700 + this.signDisplayPos, 10000, 10000, "#555555", uictx)
+        for(let j = 0; j < 6; j++){
+            this.drawUtils.Text(this.signText[j], 100, (800 + (100 * j)) + this.signTextPos *(j/2 + 1), "white", "black", uictx)
         }
     }
 

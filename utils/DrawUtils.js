@@ -60,35 +60,35 @@ export class DrawUtils {
         
     }
 
-    Text(text, x, y, strokeColor = 'black', fillColor = 'white') {
-        ctx.font = '80px Sans-serif';
-        ctx.strokeStyle = strokeColor;
-        ctx.lineWidth = 8;
-        ctx.lineJoin="miter";
-        ctx.miterLimit=2;
-        ctx.strokeText(text, x, y);
-        ctx.fillStyle = fillColor;
-        ctx.fillText(text, x, y);
+    Text(text, x, y, strokeColor = 'black', fillColor = 'white', drawerForCtxThingieWowICanHaveThisBeLongAndItsFine = ctx) {
+        drawerForCtxThingieWowICanHaveThisBeLongAndItsFine.font = '80px Sans-serif';
+        drawerForCtxThingieWowICanHaveThisBeLongAndItsFine.strokeStyle = strokeColor;
+        drawerForCtxThingieWowICanHaveThisBeLongAndItsFine.lineWidth = 8;
+        drawerForCtxThingieWowICanHaveThisBeLongAndItsFine.lineJoin="miter";
+        drawerForCtxThingieWowICanHaveThisBeLongAndItsFine.miterLimit=2;
+        drawerForCtxThingieWowICanHaveThisBeLongAndItsFine.strokeText(text, x, y);
+        drawerForCtxThingieWowICanHaveThisBeLongAndItsFine.fillStyle = fillColor;
+        drawerForCtxThingieWowICanHaveThisBeLongAndItsFine.fillText(text, x, y);
 
     }
 
-    Line(x1, y1, x2, y2, color, width = 20, outline = true, oColor = "black", weight = 5/* */) {
+    Line(x1, y1, x2, y2, color, width = 20, outline = true, oColor = "black", weight = 5, drawTime = ctx) {
         if(outline) {
-            ctx.beginPath();
-            ctx.moveTo(x1, y1);
-            ctx.lineTo(x2, y2);
-            ctx.lineWidth = width + weight
-            ctx.strokeStyle = oColor;
-            ctx.lineCap = "round";
-            ctx.stroke();
+            drawTime.beginPath();
+            drawTime.moveTo(x1, y1);
+            drawTime.lineTo(x2, y2);
+            drawTime.lineWidth = width + weight
+            drawTime.strokeStyle = oColor;
+            drawTime.lineCap = "round";
+            drawTime.stroke();
         }
-        ctx.beginPath();
-        ctx.moveTo(x1, y1);
-        ctx.lineTo(x2, y2);
-        ctx.lineWidth = width
-        ctx.strokeStyle = color;
-        ctx.lineCap = "round";
-        ctx.stroke();
+        drawTime.beginPath();
+        drawTime.moveTo(x1, y1);
+        drawTime.lineTo(x2, y2);
+        drawTime.lineWidth = width
+        drawTime.strokeStyle = color;
+        drawTime.lineCap = "round";
+        drawTime.stroke();
 
     }
  
@@ -102,12 +102,12 @@ export class DrawUtils {
         //this.Text("orb", 100, 100)
     }
 
-    Rect(x = 0, y = 0, width = 0, height = 0, color = "#000000") {
-        ctx.beginPath();
-        ctx.rect(x, y, width, height) 
-        ctx.fillStyle = color;
-        ctx.fill()
-        ctx.closePath();
+    Rect(x = 0, y = 0, width = 0, height = 0, color = "#000000", drawingTool = ctx) {
+        drawingTool.beginPath();
+        drawingTool.rect(x, y, width, height) 
+        drawingTool.fillStyle = color;
+        drawingTool.fill()
+        drawingTool.closePath();
     }
 
 }

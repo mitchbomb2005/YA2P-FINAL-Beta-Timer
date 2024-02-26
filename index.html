@@ -34,6 +34,9 @@
   <div class = "a">
     <canvas id="PostProcessing" width="2514" height="1377"></canvas>
   </div>
+
+  <canvas id="UI" width="2514" height="1377"></canvas>
+
   <style>
     #balls {
       background: rgba(0, 0, 0, 0);
@@ -45,9 +48,14 @@
       display: block;
       margin: 0 auto; 
     }
+    #UI {
+      background: rgba(0, 0, 0, 0);
+      display: block;
+      margin: 0 auto; 
+    }
     .a {
       display: block;
-      filter: (30px)
+      filter: blur(30px)
     }
     </style>
 <script type="module" src="main.js"></script>
