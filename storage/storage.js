@@ -27,6 +27,7 @@ export class Storage{
             bC : this.game.gameDisplayer.targetB,
             rx : this.game.player.respawnX, 
             ry : this.game.player.respawnY,
+            targetRad : this.game.gameDisplayer.gradTarget 
             //respawnX
         
         }
@@ -66,7 +67,8 @@ export class Storage{
             this.Data.gC+ "\n"+
             this.Data.bC+ "\n"+
             this.Data.rx+ "\n"+
-            this.Data.ry+ "\n"
+            this.Data.ry+ "\n"+
+            this.Data.targetRad+ "\n"
         )
         console.log("save") 
     }
@@ -88,7 +90,7 @@ export class Storage{
         this.game.gameDisplayer.targetB = Number(useData[6])
         this.game.player.respawnX = Number(useData[7])
         this.game.player.respawnY = Number(useData[8])
-
+        this.game.gameDisplayer.gradTarget  = Number(useData[9])
 
         console.log(this.Save)
     }
