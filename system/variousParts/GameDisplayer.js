@@ -35,9 +35,12 @@ export class GameDisplayer {
     // fields
     originalWidth = canvas.width;
     originalHeight = canvas.height;
+    width
+    height
 
     drawUtils = new DrawUtils();
     background
+    UIFixed = false
 
     
 
@@ -49,6 +52,7 @@ export class GameDisplayer {
     signDisplayPos = 800
     signTextPos = 800
     signText = ["","","","","","",100]
+    
 
     // , 192, 219
 
@@ -64,11 +68,11 @@ export class GameDisplayer {
 
     // methods (functions)
     drawGameFrame() {
-
+            this.resizeCanvasForWindowSize(userInterface, uictx);
+        
         this.resizeCanvasForWindowSize(canvas, ctx);
         this.resizeCanvasForWindowSize(ballEffect, bctx);
         this.resizeCanvasForWindowSize(postEffect, ppctx);
-        this.resizeCanvasForWindowSize(userInterface, uictx);
         
         this.bgFade(this.targetR, this.targetG, this.targetB)
         this.r += this.rC
@@ -174,7 +178,7 @@ export class GameDisplayer {
 
     PostGrad() {
         if(this.game.menu.check){
-            this.gradX = ((this.gradX*12) + this.player.x + 30) / 13
+            this.gradX = ((this.gradX*12) + this.player.x - 30) / 13
             this.gradY = ((this.gradY*12) + this.player.y) / 13
             this.gradMin = ((this.gradMin*12) + this.gradTarget) / 13
 
@@ -185,7 +189,7 @@ export class GameDisplayer {
         grad.addColorStop(.7, "rgba(0,0,0,.8)");
         grad.addColorStop(1, "black");
         ppctx.fillStyle = grad
-        ppctx.fillRect(0, 0, 10000, 100000);
+        ppctx.fillRect(0, 0, 10000000, 10000000);
     }
 
     drawText() { 
@@ -208,7 +212,14 @@ export class GameDisplayer {
         canvas.height = desiredHeight;
         scaleX = (desiredWidth / this.originalWidth);
         scaleY = (desiredHeight / this.originalHeight);
-        ctx.setTransform(scaleY * this.game.camera.zoom, 0, 0, scaleX * this.game.camera.zoom, 0, 0)
+            if(ctx == uictx){
+                ctx.setTransform(0.6109785202863961 * this.game.camera.zoom, 0, 0, 0.6109785202863961 * this.game.camera.zoom, 0, 0)
+
+            } else{
+                ctx.setTransform(scaleY * this.game.camera.zoom, 0, 0, scaleX * this.game.camera.zoom, 0, 0)
+
+            }
+        
          currentWidth = canvas.width;
          currentHeight = canvas.height;
         if (currentHeight >= windowHeight) {
@@ -216,10 +227,19 @@ export class GameDisplayer {
            aspectRatio = this.originalWidth / this.originalHeight;
            desiredWidth = desiredHeight * aspectRatio;
           canvas.width = desiredWidth;
+          this.width = desiredWidth
+          this.height = desiredHeight
           canvas.height = desiredHeight;
           scaleX = (desiredWidth / this.originalWidth);
           scaleY = (desiredHeight / this.originalHeight);
-          ctx.setTransform(scaleY * this.game.camera.zoom, 0, 0, scaleX * this.game.camera.zoom, 0, 0)
+          if(ctx == uictx){
+            ctx.setTransform(0.559785202863961, 0, 0, 0.5509785202863961, 0, 0)
+
+        } else{
+            ctx.setTransform(scaleY * this.game.camera.zoom, 0, 0, scaleX * this.game.camera.zoom, 0, 0)
+
+        }
+          
         }
     }
 
