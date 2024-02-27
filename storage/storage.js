@@ -27,7 +27,8 @@ export class Storage{
             bC : this.game.gameDisplayer.targetB,
             rx : this.game.player.respawnX, 
             ry : this.game.player.respawnY,
-            targetRad : this.game.gameDisplayer.gradTarget 
+            targetMinRad : this.game.gameDisplayer.gradMinTarget,
+            targetMaxRad : this.game.gameDisplayer.gradMaxTarget,
             //respawnX
         
         }
@@ -59,16 +60,17 @@ export class Storage{
     async save() {
         this.Data = this.setData()
         await navigator.clipboard.writeText(
-            this.Data.x+ "\n"+
-            this.Data.y+ "\n"+
+            Math.floor(this.Data.x)+ "\n"+
+            Math.floor(this.Data.y)+ "\n"+
             this.Data.hook+ "\n"+
             this.Data.hookII+ "\n"+
             this.Data.rC+ "\n"+
             this.Data.gC+ "\n"+
             this.Data.bC+ "\n"+
-            this.Data.rx+ "\n"+
-            this.Data.ry+ "\n"+
-            this.Data.targetRad+ "\n"
+            Math.floor(this.Data.rx)+ "\n"+
+            Math.floor(this.Data.ry)+ "\n"+
+            this.Data.targetMinRad+ "\n"+
+            this.Data.targetMaxRad+ "\n"
         )
         console.log("save") 
     }
@@ -81,17 +83,56 @@ export class Storage{
 
         console.log(useData, useData[2] == "true")
 
-        this.game.player.x = Number(useData[0])
-        this.game.player.y = Number(useData[1])
+        this.game.player.x = Math.floor(Number(useData[0]))
+        this.game.player.y = Math.floor(Number(useData[1]))
         this.game.player.hookHeld = (useData[2] === "true\r")
         this.game.player.hookHeldII = (useData[3] === "true\r")
         this.game.gameDisplayer.targetR = Number(useData[4])
         this.game.gameDisplayer.targetG = Number(useData[5])
         this.game.gameDisplayer.targetB = Number(useData[6])
-        this.game.player.respawnX = Number(useData[7])
-        this.game.player.respawnY = Number(useData[8])
-        this.game.gameDisplayer.gradTarget  = Number(useData[9])
+        this.game.player.respawnX = Math.floor(Number(useData[7]))
+        this.game.player.respawnY = Math.floor(Number(useData[8]))
+        this.game.gameDisplayer.gradMinTarget  = Number(useData[9])
+        this.game.gameDisplayer.gradMaxTarget  = Number(useData[10])
 
         console.log(this.Save)
     }
 }
+
+
+-10320.137153439802
+1599.4288089210595
+true
+true
+216
+199
+167
+-11433.140395945758
+2432
+700
+2000
+
+
+-4832.970817753494
+-512
+true
+true
+216
+199
+167
+-5224.941717325869
+-350.5466810912339
+700
+2000
+
+-4852
+-512
+true
+true
+167
+199
+216
+-5311
+-351
+300
+1500

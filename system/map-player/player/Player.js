@@ -108,7 +108,8 @@ export class Player {
             this.game.gameDisplayer.targetR = 167
             this.game.gameDisplayer.targetG = 199
             this.game.gameDisplayer.targetB = 216
-            this.game.gameDisplayer.gradTarget = 300
+            this.game.gameDisplayer.gradMinTarget = 300
+            this.game.gameDisplayer.gradMaxTarget = 1500
             this.anim = false
         }
         
@@ -117,7 +118,8 @@ export class Player {
             this.game.gameDisplayer.targetR = 216
             this.game.gameDisplayer.targetG = 199
             this.game.gameDisplayer.targetB = 167
-            this.game.gameDisplayer.gradTarget = 700
+            this.game.gameDisplayer.gradMinTarget = 700
+            this.game.gameDisplayer.gradMaxTarget = 2000
             this.anim = false
         }
 
