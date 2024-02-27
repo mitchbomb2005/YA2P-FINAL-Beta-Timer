@@ -101,7 +101,12 @@ export class Keys {
         this.drawImage(this.warnLava, 5976, -811)
         this.drawImage(this.warnLava, 5976, -1611)
         this.hookState(11302 + this.camera.x, -2227 + this.camera.y)
+        this.pickaxeState(4424 + this.camera.x,9345 + this.camera.y)
+        this.hookTip(5743,9072, "right")
        // ctx.drawImage(this.hookEnabled, 8779 + this.camera.x, 269 + this.camera.y)
+       // this.hitboxes[this.hitboxes.length] = new Hitbox(4374,9345,138,28 )
+       // this.hitboxes[this.hitboxes.length] = new Hitbox(5713,9072,76,20 )
+ 
     }
 
     drawImage(img, x, y, width, height) {

@@ -525,6 +525,8 @@ export class Background {
         this.layer3[this.layer3.length] = new Hitbox(995,8306,807,398 )
         this.layer3[this.layer3.length] = new Hitbox(912,9205,891,540 )
         this.layer3[this.layer3.length] = new Hitbox(2103,5969,3574,4038 )
+        this.layer3[this.layer3.length] = new Hitbox(5556,6976,3136,3030 )
+ 
         
  
     }

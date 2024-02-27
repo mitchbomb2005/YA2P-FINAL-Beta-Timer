@@ -166,7 +166,8 @@ export class Map {
        this.hitboxes[this.hitboxes.length] = new Hitbox(7680,9505,124,147 )
        this.hitboxes[this.hitboxes.length] = new Hitbox(7947,9590,2832,2471 )
        this.hitboxes[this.hitboxes.length] = new Hitbox(8259,6263,1992,3361 )
-       
+       this.hitboxes[this.hitboxes.length] = new Hitbox(5579,8994,522,289 )
+ 
        
  
        
