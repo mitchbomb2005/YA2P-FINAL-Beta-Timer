@@ -215,13 +215,13 @@ export class GameDisplayer {
         canvas.height = desiredHeight;
         scaleX = (desiredWidth / this.originalWidth);
         scaleY = (desiredHeight / this.originalHeight);
-            if(ctx == uictx){
-                ctx.setTransform(0.6109785202863961 * this.game.camera.zoom, 0, 0, 0.6109785202863961 * this.game.camera.zoom, 0, 0)
+            //if(ctx == uictx){
+            //    ctx.setTransform(0.6109785202863961 * this.game.camera.zoom, 0, 0, 0.6109785202863961 * this.game.camera.zoom, 0, 0)
 
-            } else{
+            //} else{
                 ctx.setTransform(scaleY * this.game.camera.zoom, 0, 0, scaleX * this.game.camera.zoom, 0, 0)
 
-            }
+            //}
         
          currentWidth = canvas.width;
          currentHeight = canvas.height;
@@ -235,13 +235,13 @@ export class GameDisplayer {
           canvas.height = desiredHeight;
           scaleX = (desiredWidth / this.originalWidth);
           scaleY = (desiredHeight / this.originalHeight);
-          if(ctx == uictx){
-            ctx.setTransform(0.559785202863961, 0, 0, 0.5509785202863961, 0, 0)
+          //if(ctx == uictx){
+          //  ctx.setTransform(0.559785202863961, 0, 0, 0.5509785202863961, 0, 0)
 
-        } else{
+        //} else{
             ctx.setTransform(scaleY * this.game.camera.zoom, 0, 0, scaleX * this.game.camera.zoom, 0, 0)
 
-        }
+        //}
           
         }
     }
