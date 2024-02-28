@@ -9,7 +9,7 @@ export class Debug {
     backGrid = false
     shortsMap = false
     enum = false
-    cursorCamera = true
+    cursorCamera = false
     getPos = false
     lag = false
     extraEnum = false
@@ -139,7 +139,7 @@ export class Debug {
     }
 
     flipC() {
-        if (this.keyManager.wasKeyJustPressed("KeyC")) {
+        if (this.keyManager.wasKeyJustPressed("KeyY")) {
             this.cursorCamera = !this.cursorCamera
         }
     }

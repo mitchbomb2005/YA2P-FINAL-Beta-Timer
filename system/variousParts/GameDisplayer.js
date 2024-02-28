@@ -180,12 +180,14 @@ export class GameDisplayer {
 
     PostGrad() {
         if(this.game.menu.check){
-            this.gradX = ((this.gradX*12) + this.player.x - 30) / 13
-            this.gradY = ((this.gradY*12) + this.player.y) / 13
+            //
+            this.gradX = ((this.gradX * 4) + (this.player.x + this.camera.mouseX * 1.5)) / 5 // ((this.gradX*12) + this.player.x - 30) / 13
+            this.gradY = ((this.gradY * 4) + (this.player.y + this.camera.mouseY * 1.5)) / 5 // ((this.gradY*12) + this.player.y) / 13
             this.gradMin = ((this.gradMin*12) + this.gradMinTarget) / 13
             this.gradMax = ((this.gradMax*12) + this.gradMaxTarget) / 13
 
         }
+
         var grad = ppctx.createRadialGradient(-this.gradX + this.camera.x, -this.gradY + this.camera.y, this.gradMin, -this.gradX + this.camera.x, -this.gradY + this.camera.y, this.gradMax)
         grad.addColorStop(0, "rgba(0,0,0,0)");
         grad.addColorStop(.05, "rgba(0,0,0,0)");

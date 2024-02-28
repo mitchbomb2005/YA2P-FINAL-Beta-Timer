@@ -8,8 +8,8 @@ export class Camera {
     y;
     debug;
     keyMan;
-    mouseX
-    mouseY
+    mouseX = 0
+    mouseY = 0
     mousePos
     velX
     velY
@@ -36,8 +36,8 @@ export class Camera {
     }
 
     update() {
-        this.mouseX = 0 //-(this.mousePos.x - 1676/2)/3
-        this.mouseY = 0 //-(this.mousePos.y - 918/2)/3
+        this.mouseX = 0 -(this.mousePos.x - 1676/2)/3
+        this.mouseY = 0 -(this.mousePos.y - 918/2)/3
 
         if (this.debug.freeCam) {
             this.freeCamMove()
