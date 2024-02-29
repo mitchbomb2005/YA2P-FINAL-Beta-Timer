@@ -6,15 +6,15 @@ export class Camera {
 
     x;
     y;
-    debug;
-    keyMan;
     mouseX = 0
     mouseY = 0
+    debug;
+    keyMan;
     mousePos
     velX
     velY
-    midX = canvas.offsetWidth / 2
-    midY = canvas.offsetHeight / 2
+    midX = 2514 / 2
+    midY = 1377 / 2
     omidX = this.midX
     omidY = this.midY
     originalCanvas = canvas.getBoundingClientRect()

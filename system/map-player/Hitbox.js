@@ -40,11 +40,7 @@ export class Hitbox {
         }
     }
     nDraw(camera, color) {
-        if(!this.hidden &&
-            this.x + this.width + camera.x > 0 &&
-            this.x + camera.x < camera.originalCanvas.width /* camera.zoom */&&
-            this.y + this.height + camera.y > 0 &&
-            this.y + camera.y < camera.originalCanvas.height //* camera.zoom
+        if(!this.hidden
         ) {
             ctx.fillStyle = color;
             ctx.fillRect(camera.x + this.x, camera.y + this.y, this.width, this.height);
