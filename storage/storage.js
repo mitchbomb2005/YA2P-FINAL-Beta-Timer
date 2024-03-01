@@ -79,14 +79,14 @@ export class Storage{
         var loadData = await navigator.clipboard.readText()
         console.log(loadData)
         var useData = loadData.split('\n')
-        console.log(useData[1])
+        console.log(useData[1]) 
 
         console.log(useData, useData[2] == "true")
 
         this.game.player.x = Math.floor(Number(useData[0]))
         this.game.player.y = Math.floor(Number(useData[1]))
-        this.game.player.hookHeld = (useData[2] === "true\r")
-        this.game.player.hookHeldII = (useData[3] === "true\r")
+        this.game.player.hookHeld = (useData[2] === "true\r" || useData[2] === "true")
+        this.game.player.hookHeldII = (useData[3] === "true\r" || useData[3] === "true")
         this.game.gameDisplayer.targetR = Number(useData[4])
         this.game.gameDisplayer.targetG = Number(useData[5])
         this.game.gameDisplayer.targetB = Number(useData[6])
@@ -136,3 +136,7 @@ true
 -351
 300
 1500
+
+undefined
+
+false
