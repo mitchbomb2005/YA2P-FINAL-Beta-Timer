@@ -190,9 +190,8 @@ export class GameDisplayer {
 
         var grad = ppctx.createRadialGradient(-this.gradX + this.camera.x, -this.gradY + this.camera.y, this.gradMin, -this.gradX + this.camera.x, -this.gradY + this.camera.y, this.gradMax)
         grad.addColorStop(0, "rgba(0,0,0,0)");
-        grad.addColorStop(.05, "rgba(0,0,0,0)");
-        grad.addColorStop(.7, "rgba(0,0,0,.8)");
-        grad.addColorStop(1, "black");
+        grad.addColorStop(.05, "rgba(0,0,5,0)");
+        grad.addColorStop(1, "rgba(	5, 5, 5,.7)");
         ppctx.fillStyle = grad
         ppctx.fillRect(0, 0, 10000000, 10000000);
     }
