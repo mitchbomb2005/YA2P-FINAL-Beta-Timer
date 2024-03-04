@@ -131,14 +131,12 @@ export class Hook{
         if (this.visibility && !this.fixed){
 
             for (let i = 0; i < this.game.map.ground.hitboxes.length; i++){
-                    if(this.#collisionCheck(this.game.map.ground, i)){
-                        this.enabled = true
-                        this.motion = false
-                        this.fixPos(this.game.map.ground, i)
-                        this.game.audio.hookHitSound()
-                        
-                        
-                    }
+                if(this.#collisionCheck(this.game.map.ground, i)){
+                    this.enabled = true
+                    this.motion = false
+                    this.fixPos(this.game.map.ground, i)
+                    this.game.audio.hookHitSound()    
+                }
             }
 
             for (let i = 0; i < this.game.map.lava.hitboxes.length; i++){
@@ -156,7 +154,6 @@ export class Hook{
                          
                          
                     }
-    
                 }
             }
         }
@@ -178,8 +175,5 @@ export class Hook{
             }
             this.colide()
         }
-        
-
     }
-
 }
