@@ -124,7 +124,6 @@ export class Player {
         }
 
 
-
         
     }
 
@@ -155,7 +154,7 @@ export class Player {
             
         }
         
-        if (this.keyManager.isKeyPressed("KeyS") && (!this.keyManager.isKeyPressed("ShiftLeft") && !this.keyManager.isKeyPressed("AltLeft"))) {
+        if (this.keyManager.isKeyPressed("KeyS") && (!this.keyManager.isKeyPressed("ShiftLeft") && !this.keyManager.isKeyPressed("ShiftRight") && !this.keyManager.isKeyPressed("AltLeft"))) {
             this.velY -= this.noclipVelChange //;
             if (Math.abs(this.velY) > this.maxVelY) {
                 this.velY = -this.maxVelY;

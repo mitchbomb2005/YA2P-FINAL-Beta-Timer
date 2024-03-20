@@ -59,7 +59,7 @@ export class Edit {
     async update() {
 
         this.total = this.game.map.ground.hitboxes.length
-        if (this.keyMan.wasKeyJustPressed("KeyS") && this.keyMan.isKeyPressed("AltLeft")) {
+        if (this.keyMan.wasKeyJustPressed("KeyS") && (this.keyMan.isKeyPressed("AltLeft") || this.keyMan.isKeyPressed("ShiftRight"))) {
             this.fix(this.hitNum)
             this.hitNum++
         }

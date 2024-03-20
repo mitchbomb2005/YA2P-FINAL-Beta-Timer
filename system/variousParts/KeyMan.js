@@ -75,7 +75,7 @@ export class KeyManager {
         this.y = event.clientY;/**/
       }, false);
       document.addEventListener('contextmenu', event => {
-        event.preventDefault();
+        //event.preventDefault();
       }, false);      
       document.addEventListener("mouseup", (event) => {
         if (event.button == 0 && !this.isKeyPressed("ShiftLeft") && this.game.player.hookHeld) {
@@ -148,6 +148,7 @@ export class KeyManager {
         case "Equal": return !this.keysPressedLastFrame[36] && this.keysCurrentlyPressed[36];
         case "Minus": return !this.keysPressedLastFrame[37] && this.keysCurrentlyPressed[37];
         case "ControlLeft": return !this.keysPressedLastFrame[38] && this.keysCurrentlyPressed[38];
+        case "ShiftRight": return !this.keysPressedLastFrame[39] && this.keysCurrentlyPressed[39];
 
         case "KeyA": return !this.keysPressedLastFrame[0] && this.keysCurrentlyPressed[0];
         case "KeyB": return !this.keysPressedLastFrame[1] && this.keysCurrentlyPressed[1];
@@ -195,6 +196,7 @@ export class KeyManager {
         case "Equal": return this.keysCurrentlyPressed[36];
         case "Minus": return this.keysCurrentlyPressed[37];
         case "ControlLeft": return this.keysCurrentlyPressed[38];
+        case "ShiftRight": return this.keysCurrentlyPressed[39];
 
         case "KeyA": return this.keysCurrentlyPressed[0];
         case "KeyB": return this.keysCurrentlyPressed[1];
@@ -268,6 +270,12 @@ export class KeyManager {
         case "ControlLeft":
           this.keyBuffer[38] = pressed;
         break;
+        case "ShiftRight":
+          this.keyBuffer[39] = pressed;
+        break;
+
+
+
         
         case "KeyA":
           this.keyBuffer[0] = pressed;
