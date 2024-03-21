@@ -75,7 +75,7 @@ export class KeyManager {
         this.y = event.clientY;/**/
       }, false);
       document.addEventListener('contextmenu', event => {
-        //event.preventDefault();
+        event.preventDefault();
       }, false);      
       document.addEventListener("mouseup", (event) => {
         if (event.button == 0 && !this.isKeyPressed("ShiftLeft") && this.game.player.hookHeld) {
