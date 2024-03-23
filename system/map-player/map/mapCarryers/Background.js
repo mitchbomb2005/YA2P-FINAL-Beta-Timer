@@ -10,12 +10,16 @@ export class Background {
     layer1 = new Array
     layer2 = new Array
     layer3 = new Array
+    layer4 = new Array
+    layer0 = new Array
     camera
 
     constructor(cam) {
         this.createLayer1()
         this.createLayer2()
         this.createLayer3()
+        this.createLayer4()
+        this.createlayer0()
         this.camera = cam
     }
 
@@ -609,6 +613,22 @@ export class Background {
         this.layer2[222] = new Hitbox(2507,1399,46,227 )
         this.layer2[223] = new Hitbox(2091,1573,426,53 )
         this.layer2[224] = new Hitbox(2735,1563,97,90 )
+        this.layer2[225] = new Hitbox(3680,1795,97,101 )
+        this.layer2[226] = new Hitbox(3460,1557,58,297 )
+        this.layer2[227] = new Hitbox(3506,1559,925,50 )
+        this.layer2[228] = new Hitbox(4391,1130,42,481 )
+        this.layer2[229] = new Hitbox(4041,1273,53,312 )
+        this.layer2[230] = new Hitbox(4012,1214,111,98 )
+        this.layer2[231] = new Hitbox(3571,1843,39,271 )
+        this.layer2[232] = new Hitbox(3589,2068,803,44 )
+        this.layer2[233] = new Hitbox(3153,2548,646,72 )
+        this.layer2[234] = new Hitbox(3726,2510,140,146 )
+        this.layer2[235] = new Hitbox(4159,2095,68,1052 )
+        this.layer2[236] = new Hitbox(3679,1150,46,455 )
+        this.layer2[237] = new Hitbox(3265,1151,427,53 )
+        this.layer2[238] = new Hitbox(3212,1122,107,110 )
+        this.layer2[239] = new Hitbox(4350,1830,54,282 )
+        this.layer2[240] = new Hitbox(4324,1780,110,98 )
         
  
         // this.hitboxes[this.hitboxes.length] = new Hitbox(-1101,-4960,61,175 )
@@ -623,34 +643,83 @@ export class Background {
     }
     
 
-    createLayer3() {
-        this.layer3[0] = new Hitbox(3006,-3604,145,815 )
-        this.layer3[1] = new Hitbox(2205,-3594,147,786 )
-        this.layer3[2] = new Hitbox(666,-2853,115,165 )
-        this.layer3[3] = new Hitbox(-20089,-3238,2028,870 )
+    createlayer0() {
+        this.layer0[0] = new Hitbox(3006,-3604,145,815 )
+        this.layer0[1] = new Hitbox(2205,-3594,147,786 )
+        this.layer0[2] = new Hitbox(666,-2853,115,165 )
+        this.layer0[3] = new Hitbox(-20089,-3238,2028,870 )
 
-        this.layer3[this.layer3.length] = new Hitbox(647,6402,1831,373 )
-        this.layer3[this.layer3.length] = new Hitbox(1690,6257,466,3483 )
-        this.layer3[this.layer3.length] = new Hitbox(578,6444,586,3319 )
-        this.layer3[this.layer3.length] = new Hitbox(963,7109,818,702 )
-        this.layer3[this.layer3.length] = new Hitbox(995,8306,807,398 )
-        this.layer3[this.layer3.length] = new Hitbox(912,9205,891,540 )
-        this.layer3[this.layer3.length] = new Hitbox(2103,5969,3574,4038 )
-        this.layer3[this.layer3.length] = new Hitbox(5556,6976,3136,3030 )
+        this.layer0[this.layer0.length] = new Hitbox(647,6402,1831,373 )
+        this.layer0[this.layer0.length] = new Hitbox(1690,6257,466,3483 )
+        this.layer0[this.layer0.length] = new Hitbox(578,6444,586,3319 )
+        this.layer0[this.layer0.length] = new Hitbox(963,7109,818,702 )
+        this.layer0[this.layer0.length] = new Hitbox(995,8306,807,398 )
+        this.layer0[this.layer0.length] = new Hitbox(912,9205,891,540 )
+        this.layer0[this.layer0.length] = new Hitbox(2103,5969,3574,4038 )
+        this.layer0[this.layer0.length] = new Hitbox(5556,6976,3136,3030 )
  
         
  
     }
 
+    createLayer3() {
+        this.layer3[0] = new Hitbox(1747,1203,832,61 )
+        this.layer3[1] = new Hitbox(2522,1203,57,733 )
+        this.layer3[2] = new Hitbox(2561,1873,1123,62 )
+        this.layer3[3] = new Hitbox(3325,1481,74,399 )
+        this.layer3[4] = new Hitbox(2953,1479,402,68 )
+        this.layer3[5] = new Hitbox(2908,1459,83,102 )
+        this.layer3[6] = new Hitbox(3618,1878,64,674 )
+        this.layer3[7] = new Hitbox(3600,2488,97,104 )
+        this.layer3[8] = new Hitbox(2666,1905,49,313 )
+        this.layer3[9] = new Hitbox(1734,2187,981,31 )
+        this.layer3[10] = new Hitbox(1718,2168,61,71 )
+        this.layer3[11] = new Hitbox(3913,1748,64,409 )
+        this.layer3[12] = new Hitbox(3645,2081,331,76 )
+        this.layer3[13] = new Hitbox(3909,892,66,895 )
+        
+    }
+
+    createLayer4() {
+        this.layer4[0] = new Hitbox(3620,972,117,938 )
+        this.layer4[1] = new Hitbox(3019,972,645,113 )
+        this.layer4[2] = new Hitbox(3167,1062,99,511 )
+        this.layer4[3] = new Hitbox(2049,1486,1216,87 )
+        this.layer4[4] = new Hitbox(2055,1490,80,1153 )
+        this.layer4[5] = new Hitbox(2415,973,647,111 )
+        this.layer4[6] = new Hitbox(2420,1066,87,461 )
+        this.layer4[7] = new Hitbox(3709,1793,694,118 )
+        
+    }
+
     Draw() {
-        for (let i = 0; i < this.layer2.length; i++) {
-            this.layer2[i].draw((this.camera.x / 3), (this.camera.y / 3), "#7f7f7f")
+        for (let i = 0; i < this.layer4.length; i++) {
+            this.layer4[i].draw(this.camera.x / 5, this.camera.y / 5, "#5f5f5f")
         }
+        ctx.fillStyle = `rgba(${this.camera.game.gameDisplayer.r}, ${this.camera.game.gameDisplayer.g}, ${this.camera.game.gameDisplayer.b}, .3)`;
+        ctx.rect(0, 0, 100000, 10000) 
+        ctx.fill()
+        for (let i = 0; i < this.layer3.length; i++) {
+            this.layer3[i].draw(this.camera.x / 4, this.camera.y / 4, "#5f5f5f")
+        }
+        ctx.fillStyle = `rgba(${this.camera.game.gameDisplayer.r}, ${this.camera.game.gameDisplayer.g}, ${this.camera.game.gameDisplayer.b}, .3)`;
+        ctx.rect(0, 0, 100000, 10000) 
+        ctx.fill()
+        for (let i = 0; i < this.layer2.length; i++) {
+            this.layer2[i].draw(this.camera.x / 3, this.camera.y / 3, "#5f5f5f")
+        }
+        ctx.fillStyle = `rgba(${this.camera.game.gameDisplayer.r}, ${this.camera.game.gameDisplayer.g}, ${this.camera.game.gameDisplayer.b}, .3)`;
+        ctx.rect(0, 0, 100000, 10000) 
+        ctx.fill()
         for (let i = 0; i < this.layer1.length; i++) {
             this.layer1[i].draw(this.camera.x / 2, this.camera.y / 2, "#5f5f5f")  
         }
-        for (let i = 0; i < this.layer3.length; i++) {
-            this.layer3[i].draw(this.camera.x / 1, this.camera.y / 1, "#3f3f3f")  
+        ctx.fillStyle = `rgba(${this.camera.game.gameDisplayer.r}, ${this.camera.game.gameDisplayer.g}, ${this.camera.game.gameDisplayer.b}, .3)`;
+        ctx.rect(0, 0, 100000, 10000) 
+        ctx.fill()
+
+        for (let i = 0; i < this.layer0.length; i++) {
+            this.layer0[i].draw(this.camera.x / 1, this.camera.y / 1, "#3f3f3f")  
         }
 
 

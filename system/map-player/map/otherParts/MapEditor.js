@@ -109,6 +109,42 @@ export class Edit {
                         Math.round(this.tempHitboxes[i].height)+
                         " )\n "
                     )
+                } else if (this.layer == 3) {
+                    await navigator.clipboard.writeText(this.text+
+                        "this.layer3[" + (this.game.Background.layer3.length) + "] = new Hitbox("+
+                        Math.round(this.tempHitboxes[i].x)+ ","+
+                        Math.round(this.tempHitboxes[i].y)+ ","+
+                        Math.round(this.tempHitboxes[i].width)+ ","+
+                        Math.round(this.tempHitboxes[i].height)+
+                        " )\n "
+                    )
+                } else if (this.layer == 4) {
+                    await navigator.clipboard.writeText(this.text+
+                        "this.layer4[" + (this.game.Background.layer4.length) + "] = new Hitbox("+
+                        Math.round(this.tempHitboxes[i].x)+ ","+
+                        Math.round(this.tempHitboxes[i].y)+ ","+
+                        Math.round(this.tempHitboxes[i].width)+ ","+
+                        Math.round(this.tempHitboxes[i].height)+
+                        " )\n "
+                    )
+                } else if (this.layer == 5) {
+                    await navigator.clipboard.writeText(this.text+
+                        "this.layer4[" + (this.game.Background.layer4.length) + "] = new Hitbox("+
+                        Math.round(this.tempHitboxes[i].x)+ ","+
+                        Math.round(this.tempHitboxes[i].y)+ ","+
+                        Math.round(this.tempHitboxes[i].width)+ ","+
+                        Math.round(this.tempHitboxes[i].height)+
+                        " )\n "
+                    )
+                } else if (this.layer == 6) {
+                    await navigator.clipboard.writeText(this.text+
+                        "this.layer4[" + (this.game.Background.layer4.length) + "] = new Hitbox("+
+                        Math.round(this.tempHitboxes[i].x)+ ","+
+                        Math.round(this.tempHitboxes[i].y)+ ","+
+                        Math.round(this.tempHitboxes[i].width)+ ","+
+                        Math.round(this.tempHitboxes[i].height)+
+                        " )\n "
+                    )
                 }
 
                 this.total++
@@ -120,9 +156,9 @@ export class Edit {
             this.delete("all")
 
         }
-        if (this.keyMan.isKeyPressed("AltLeft") && this.keyMan.wasKeyJustPressed("KeyM")) {
+        if (this.keyMan.wasKeyJustPressed("KeyM") && (this.keyMan.isKeyPressed("AltLeft") || this.keyMan.isKeyPressed("ShiftRight"))) {
             this.layer++
-            if (this.layer == 3) {
+            if (this.layer == 6) {
                 this.layer = 0
             }
         }
@@ -162,6 +198,10 @@ export class Edit {
             this.layerOffset = 2
         } else if (this.layer == 2) {
             this.layerOffset = 3
+        } else if (this.layer == 3) {
+            this.layerOffset = 4
+        } else if (this.layer == 4) {
+            this.layerOffset = 5
         }
     }
 

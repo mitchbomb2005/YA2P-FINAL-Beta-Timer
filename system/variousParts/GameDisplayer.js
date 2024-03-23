@@ -204,6 +204,8 @@ export class GameDisplayer {
     // don't alter this, just ignore it
     // we don't kow how it works, it just does
     // i tried to alter it, but i failed
+    
+    // i altered it and i succeded this time
     resizeCanvasForWindowSize(canvas, ctx) {
         var currentWidth = canvas.width;
         var currentHeight = canvas.height;
