@@ -11,6 +11,8 @@ export class Background {
     layer2 = new Array
     layer3 = new Array
     layer4 = new Array
+    layer5 = new Array
+    layer6 = new Array
     layer0 = new Array
     camera
 
@@ -19,6 +21,8 @@ export class Background {
         this.createLayer2()
         this.createLayer3()
         this.createLayer4()
+        this.createLayer5()
+        this.createLayer6()
         this.createlayer0()
         this.camera = cam
     }
@@ -691,8 +695,36 @@ export class Background {
         this.layer4[7] = new Hitbox(3709,1793,694,118 )
         
     }
+    createLayer5() {
+        this.layer5[0] = new Hitbox(1617,1223,197,1417 )
+        this.layer5[1] = new Hitbox(1617,1223,2563,180 )
+        this.layer5[2] = new Hitbox(2688,1308,403,1281 )
+        
+    }
+
+    createLayer6() {
+        this.layer6[0] = new Hitbox(1921,1203,606,632 )
+        this.layer6[1] = new Hitbox(1221,870,370,523 )
+        this.layer6[2] = new Hitbox(2713,614,745,454 )
+        this.layer6[3] = new Hitbox(1008,1812,567,505 )
+        this.layer6[4] = new Hitbox(2990,1681,549,485 )
+        
+    }
 
     Draw() {
+        
+        for (let i = 0; i < this.layer6.length; i++) {
+            this.layer6[i].draw(this.camera.x / 7, this.camera.y / 7, "#5f5f5f")
+        }
+        ctx.fillStyle = `rgba(${this.camera.game.gameDisplayer.r}, ${this.camera.game.gameDisplayer.g}, ${this.camera.game.gameDisplayer.b}, .3)`;
+        ctx.rect(0, 0, 100000, 10000) 
+        ctx.fill()
+        for (let i = 0; i < this.layer5.length; i++) {
+            this.layer5[i].draw(this.camera.x / 6, this.camera.y / 6, "#5f5f5f")
+        }
+        ctx.fillStyle = `rgba(${this.camera.game.gameDisplayer.r}, ${this.camera.game.gameDisplayer.g}, ${this.camera.game.gameDisplayer.b}, .3)`;
+        ctx.rect(0, 0, 100000, 10000) 
+        ctx.fill()
         for (let i = 0; i < this.layer4.length; i++) {
             this.layer4[i].draw(this.camera.x / 5, this.camera.y / 5, "#5f5f5f")
         }

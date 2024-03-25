@@ -129,7 +129,7 @@ export class Edit {
                     )
                 } else if (this.layer == 5) {
                     await navigator.clipboard.writeText(this.text+
-                        "this.layer4[" + (this.game.Background.layer4.length) + "] = new Hitbox("+
+                        "this.layer5[" + (this.game.Background.layer5.length) + "] = new Hitbox("+
                         Math.round(this.tempHitboxes[i].x)+ ","+
                         Math.round(this.tempHitboxes[i].y)+ ","+
                         Math.round(this.tempHitboxes[i].width)+ ","+
@@ -138,7 +138,7 @@ export class Edit {
                     )
                 } else if (this.layer == 6) {
                     await navigator.clipboard.writeText(this.text+
-                        "this.layer4[" + (this.game.Background.layer4.length) + "] = new Hitbox("+
+                        "this.layer6[" + (this.game.Background.layer6.length) + "] = new Hitbox("+
                         Math.round(this.tempHitboxes[i].x)+ ","+
                         Math.round(this.tempHitboxes[i].y)+ ","+
                         Math.round(this.tempHitboxes[i].width)+ ","+
@@ -158,7 +158,7 @@ export class Edit {
         }
         if (this.keyMan.wasKeyJustPressed("KeyM") && (this.keyMan.isKeyPressed("AltLeft") || this.keyMan.isKeyPressed("ShiftRight"))) {
             this.layer++
-            if (this.layer == 6) {
+            if (this.layer == 7) {
                 this.layer = 0
             }
         }
@@ -202,6 +202,10 @@ export class Edit {
             this.layerOffset = 4
         } else if (this.layer == 4) {
             this.layerOffset = 5
+        } else if (this.layer == 5) {
+            this.layerOffset = 6
+        } else if (this.layer == 6) {
+            this.layerOffset = 7
         }
     }
 
