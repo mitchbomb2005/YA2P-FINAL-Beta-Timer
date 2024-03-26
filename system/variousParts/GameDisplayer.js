@@ -103,6 +103,7 @@ export class GameDisplayer {
         this.drawTheBeanPeople()
 
 
+        this.map.door.nDraw(this.camera);
         this.map.lava.nDraw(this.camera);
         this.map.checkpoint.nDraw(this.camera) 
         this.map.ground.nDraw(this.camera);

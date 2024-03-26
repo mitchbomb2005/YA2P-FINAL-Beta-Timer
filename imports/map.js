@@ -19,7 +19,7 @@ export class Map{
     checkpoint
     Enabler
     sign
-
+    door
 
     constructor(root){
         this.Main()
@@ -41,6 +41,7 @@ export class Map{
         this.checkpoint = new MainCheckpoint() //-438, -509
         this.enabler = new MainEnabler()
         this.sign = new signMaker()
+        this.door = new MainDoor()
 
 
     }
