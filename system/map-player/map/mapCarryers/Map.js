@@ -211,6 +211,15 @@ export class Map {
        this.hitboxes[this.hitboxes.length] = new Hitbox(5334,-10657,4393,953 )
        this.hitboxes[this.hitboxes.length] = new Hitbox(6545,-8122,71,142 )
  
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-3817,-8021,332,430 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-4696,-7593,281,80 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-5286,-7615,156,405 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-5581,-7992,116,371 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-12334,-4991,816,56 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-11830,-5197,48,220 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-13623,-4999,201,77 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-13625,-5233,49,310 )
+       this.hitboxes[this.hitboxes.length] = new Hitbox(-15900,-4982,322,61 )
        
        
        
