@@ -299,6 +299,7 @@ export class Player {
                 this.game.audio.powerUpSound()
                 await this.sleep(750)
                 this.change = "hook"
+                document.getElementsByTagName("body")[0].style.cursor = "url('http://wiki-devel.sugarlabs.org/images/e/e2/Arrow.cur'), auto";
             }
         }
         if(valC == "hookII") {
@@ -308,6 +309,8 @@ export class Player {
                 await this.sleep(1500)
                 this.game.audio.powerUpSound()
                 this.change = "hookII"
+                
+document.getElementsByTagName("body")[0].style.cursor = "url('http://wiki-devel.sugarlabs.org/images/e/e2/Arrow.cur'), auto";
             }
         }
     }

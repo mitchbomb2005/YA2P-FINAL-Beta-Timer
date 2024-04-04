@@ -1,9 +1,11 @@
 'use strict';
 
+
+
 import { Game } from "./imports/import.js"
 
 
-
+document.getElementsByTagName("body")[0].style.cursor = "none";
     const game = new Game(this)
     const perfectFrameTime = 1000 / 60;
     let deltaTime = 0;
