@@ -220,7 +220,8 @@ export class Map {
        this.hitboxes[this.hitboxes.length] = new Hitbox(-13623,-4999,201,77 )
        this.hitboxes[this.hitboxes.length] = new Hitbox(-13625,-5233,49,310 )
        this.hitboxes[this.hitboxes.length] = new Hitbox(-15900,-4982,322,61 )
-       
+       this.hitboxes[this.hitboxes.length] = new Hitbox(13013,357,2587,1854 )
+ 
        
        
 
