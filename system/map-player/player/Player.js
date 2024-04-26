@@ -29,6 +29,7 @@ export class Player {
     hookHeld = false; hookHeldII = false
     change
     orb = new Array(); anim = false; animFrames = 0; orbAlpha = 1
+    mousevis = false
 
     constructor(x, y, keyManager, debug, map, camera, DM, CPM, TPM, extra) {
         this.keyManager = keyManager;
@@ -299,6 +300,7 @@ export class Player {
                 this.game.audio.powerUpSound()
                 await this.sleep(750)
                 this.change = "hook"
+                this.mousevis = true
                 document.getElementsByTagName("body")[0].style.cursor = "url('http://wiki-devel.sugarlabs.org/images/e/e2/Arrow.cur'), auto";
             }
         }
@@ -309,8 +311,8 @@ export class Player {
                 await this.sleep(1500)
                 this.game.audio.powerUpSound()
                 this.change = "hookII"
-                
-document.getElementsByTagName("body")[0].style.cursor = "url('http://wiki-devel.sugarlabs.org/images/e/e2/Arrow.cur'), auto";
+                this.mousevis = true
+                document.getElementsByTagName("body")[0].style.cursor = "url('http://wiki-devel.sugarlabs.org/images/e/e2/Arrow.cur'), auto";
             }
         }
     }

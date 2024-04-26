@@ -26,7 +26,6 @@ export class Debug {
         if (this.keyManager.isKeyPressed("Backslash")) {
             this.hideBean()
             this.flipNoClip()
-            this.flipPlayerHitbox()
             this.flipFreeCam()
             this.flipMapMaker()
             this.flipGrappleHookTest()
@@ -36,6 +35,20 @@ export class Debug {
             this.flipC()
             this.flipGP()
             this.flipL()
+            if(this.keyManager.isKeyPressed("ShiftLeft")){
+                this.flipMouse()
+            } else{
+                this.flipPlayerHitbox()
+
+            }
+        }
+    }
+
+    flipMouse(){
+        console.log("called")
+        if(this.keyManager.wasKeyJustPressed("KeyP")){
+            document.getElementsByTagName("body")[0].style.cursor = "url('http://wiki-devel.sugarlabs.org/images/e/e2/Arrow.cur'), auto";
+
         }
     }
 
