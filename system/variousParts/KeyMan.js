@@ -7,7 +7,7 @@ export class KeyManager {
     keyBuffer;
     keysCurrentlyPressed;
     keysPressedLastFrame;
-    canvasShape = canvas.getBoundingClientRect()
+    canvasShape = this.canvasShapeSet()
     percentX;
     percentY;
     mousePos
@@ -131,6 +131,13 @@ export class KeyManager {
           x: evt.clientX - rect.left,
           y: evt.clientY - rect.top
       };
+    }
+
+    canvasShapeSet(){
+      return{
+          width:2514,
+          height:1377
+      }
     }
 
     wasKeyJustPressed(code) {
