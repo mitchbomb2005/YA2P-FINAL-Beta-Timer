@@ -13,6 +13,10 @@ export class Camera {
     mousePos
     velX
     velY
+    playerSetVelX = 0
+    playerSetVelY = 0
+    speed = 10
+
     midX = 2514 / 2
     midY = 1377 / 2
     omidX = this.midX
@@ -39,24 +43,46 @@ export class Camera {
         this.mouseX = 0 -(this.mousePos.x - 1676/2)/3
         this.mouseY = 0 -(this.mousePos.y - 918/2)/3
 
-        if (this.debug.freeCam) {
-            this.freeCamMove()
-        } else {
+        if (!this.debug.freeCam) {
             this.move()
+        } else {
+            this.velX = 0
+            this.velX = 0   
         }
+        this.playerUpdateVel()
         if (this.keyMan.wasKeyJustPressed("Equal")) {
             this.Zoom("in")
         }
         if (this.keyMan.wasKeyJustPressed("Minus")) {
             this.Zoom("out")
         }
+        this.x -=  this.velX + this.playerSetVelX 
+        this.y -=  this.velY + this.playerSetVelY
         this.keyMan.camY = this.y
         this.keyMan.camX = this.x
 
     }
 
+    playerUpdateVel(){
+        if(this.keyMan.isKeyPressed("KeyI")){
+            this.playerSetVelY -= this.speed
 
-    freeCamMove() {}
+        }
+        if(this.keyMan.isKeyPressed("KeyJ")){
+            this.playerSetVelX -= this.speed
+
+        }
+        if(this.keyMan.isKeyPressed("KeyK")){
+            this.playerSetVelY += this.speed
+
+        }
+        if(this.keyMan.isKeyPressed("KeyL")){
+            this.playerSetVelX += this.speed
+
+        }
+        this.playerSetVelX *= .9
+        this.playerSetVelY *= .9
+    }
 
     move() {
         if(this.debug.cursorCamera) {
@@ -67,8 +93,6 @@ export class Camera {
             this.velY = (((this.y - this.midY) - (this.game.player.y))  /5) //
         }
 
-        this.x -=  this.velX 
-        this.y -=  this.velY 
     }
 
     Zoom(direction) {

@@ -8,7 +8,7 @@ export class Player {
     x; velX = 0; maxVelX = 100;
     y; velY = 0; maxVelY = 50; avgVelY = 0
     noclipVelChange = 10; velChange = 4;
-    friction = .8; airFriction = .85; hookFriction = .95;
+    friction = .8; stopFriction = .5; airFriction = .85; hookFriction = .95;
 
     jump = 0; lastJump = 0; coyoteTime = 5;
     jumpVel = 30 ; float = .35; gravity = 1.5; 
@@ -85,14 +85,6 @@ export class Player {
         //console.log(this.velY)
         this.orbAlpha -= .001
         if(this.anim == true && this.orbAlpha >= 0) {
-            /*this.orb[this.orb.length] = new Orb(this.x - 1000, this.y+ 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
-            this.orb[this.orb.length] = new Orb(this.x - 0, this.y+ 1500, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
-            this.orb[this.orb.length] = new Orb(this.x - 0, this.y- 1500, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
-            this.orb[this.orb.length] = new Orb(this.x - 1000, this.y- 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
-            this.orb[this.orb.length] = new Orb(this.x - 1500, this.y- 0, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
-            this.orb[this.orb.length] = new Orb(this.x + 1500, this.y- 0, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
-            this.orb[this.orb.length] = new Orb(this.x + 1000, this.y- 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)
-            this.orb[this.orb.length] = new Orb(this.x + 1000, this.y+ 1000, 20, this, `rgba(255,255,255,${this.orbAlpha})`)*/
             this.orb[this.orb.length] = new Orb(this.x - 1000, this.y+ 1000, 20, this, `rgba(255,255,255,1)`)
             this.orb[this.orb.length] = new Orb(this.x - 0, this.y+ 1500, 20, this, `rgba(255,255,255,1)`)
             this.orb[this.orb.length] = new Orb(this.x - 0, this.y- 1500, 20, this, `rgba(255,255,255,1)`)
@@ -135,16 +127,12 @@ export class Player {
     #updateVelocityNoclip() {
         if (this.keyManager.isKeyPressed("KeyD")) {
             this.velX -= this.noclipVelChange //*18 * (;
-            //if (Math.abs(this.velX) > this.maxVelX) {
-            //    this.velX = -this.maxVelX;
-            //}
+
 
         }
         if (this.keyManager.isKeyPressed("KeyA")) {
               this.velX += this.noclipVelChange //;
-            //  if (this.velX > this.maxVelX) {
-            //    this.velX = this.maxVelX;
-            //}
+
               
         }
         if (this.keyManager.isKeyPressed("KeyW") || this.keyManager.isKeyPressed("Space")) {
@@ -175,7 +163,9 @@ export class Player {
     }
 
     #updateVelocity() {
+        var check = false
         if (this.keyManager.isKeyPressed("KeyD")) {
+            check = true
             this.velX -= this.velChange;
             if (Math.abs(this.velX) > this.maxVelX) {
                 this.velX = -this.maxVelX;
@@ -187,6 +177,7 @@ export class Player {
         }
         
         if (this.keyManager.isKeyPressed("KeyA")) {
+            check = true
             this.velX += this.velChange;
             if (this.velX > this.maxVelX) {
                 this.velX = this.maxVelX;
@@ -240,10 +231,15 @@ export class Player {
             this.avgVelY += 4
         }
 
-        if (this.jump == 5) {
-            this.velX = this.velX * this.friction
-        }  else if (this.game.hook.enabled == true || this.game.hookII.enabled == true) {
+        if (this.game.hook.enabled == true || this.game.hookII.enabled == true) {
             this.velX = this.velX * this.hookFriction
+        } else if (this.jump == 5) {
+            if(check == true){
+                this.velX = this.velX * this.friction
+                
+            } else{
+                this.velX = this.velX * this.stopFriction
+            }
         } else {
             this.velX = this.velX * this.airFriction
         }
