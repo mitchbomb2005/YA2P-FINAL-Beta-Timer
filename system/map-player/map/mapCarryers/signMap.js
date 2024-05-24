@@ -14,7 +14,9 @@ export class signMaker {
         this.signs[5] = new sign(-19077, -2539 - 150,["              [go through that portal on the left]", "                [that will lead you to a pickaxe]", "[that path is much harder than what you have done]", "                                 [good luck]", "", "                                                                              [- the travler]"])
         //this.signs[6] = new sign(4392,9076,["{this is basically the end, there is a little bit more, but it's not done yet}", "{Hold down \\ and one of these keys for different debug features}", "{N; Noclip}", "{C; Coordinates}", "{SHIFT M; full map editor}", "{The Developer}"])
         this.signs[1] = new sign(3309 + 50,-2153 - 150,["{by the way, you can save and load}", "{CTRL C to save (copy it to a text file)}", "{CTRL V to load}", "{however, if you are on firefox you can't load}", "", "{The Developer}"])
-        
+        this.signs[0] = new sign(16097, 357 - 150,["", "end of demo map", "map overhual coming soon ish", "the end", "goodbye", ""])
+       
+        // 16097 -1839
         //-19077, -2539
 // this.hitboxes[this.hitboxes.length] = new Hitbox(,424,17,58 )                                                                             
 // this.hitboxes[this.hitboxes.length] = new Hitbox(,28,13 )
