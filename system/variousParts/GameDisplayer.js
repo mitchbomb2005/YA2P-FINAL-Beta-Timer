@@ -253,6 +253,12 @@ export class GameDisplayer {
     debugDraw() {
         if(this.debug.enum == true)   {this.enum()}
         if(this.debug.getPos == true) {this.getPos()}
+        if(this.debug.FPS == true) {this.fps()}
+    }
+
+    fps(){
+        this.drawUtils.Text(Math.round(this.debug.fpsCount), 100, 300, "white", "black")
+
     }
 
     getPos() {

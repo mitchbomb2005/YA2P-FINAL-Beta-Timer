@@ -13,7 +13,9 @@ export class Debug {
     getPos = false
     lag = false
     extraEnum = false
+    FPS = false
 
+    fpsCount = 0
     keyManager;
     game;
 
@@ -48,8 +50,7 @@ export class Debug {
     flipFPS(){
         console.log("called")
         if(this.keyManager.wasKeyJustPressed("KeyF")){
-            document.getElementsByTagName("body")[0].style.cursor = "url('http://wiki-devel.sugarlabs.org/images/e/e2/Arrow.cur'), auto";
-
+            this.FPS = !this.FPS
         }
     }
 

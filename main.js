@@ -8,6 +8,7 @@ import { Game } from "./imports/import.js"
 document.getElementsByTagName("body")[0].style.cursor = "none";
     const game = new Game(this)
     const perfectFrameTime = 1000 / 60;
+    var fps = 0
     let deltaTime = 0;
     let lastTimestamp = 0;
     let lastFrameMenu = true
@@ -26,6 +27,8 @@ document.getElementsByTagName("body")[0].style.cursor = "none";
 
     async function tick() {
         //currentTime = Date.now();
+        FPSCalc()
+
         
         if(game.debug.lag){await sleep(Math.random() * 100)}
         requestAnimationFrame(tick);
@@ -111,6 +114,13 @@ document.getElementsByTagName("body")[0].style.cursor = "none";
 
     function DeltaTime(){
 
+    }
+
+    async function FPSCalc(){
+        fps++
+        await sleep(1000)
+        fps--
+        game.debug.fpsCount = fps
     }
 
 startGame();
