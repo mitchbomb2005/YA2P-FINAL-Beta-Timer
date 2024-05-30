@@ -257,7 +257,7 @@ export class GameDisplayer {
     }
 
     fps(){
-        this.drawUtils.Text(Math.round(this.debug.fpsCount), 100, 300, "white", "black")
+        this.drawUtils.Text(Math.round(this.debug.fpsCount), 30, 90, "white", "black")
 
     }
 

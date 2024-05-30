@@ -13,7 +13,7 @@ export class Debug {
     getPos = false
     lag = false
     extraEnum = false
-    FPS = false
+    FPS = true
 
     fpsCount = 0
     keyManager;
