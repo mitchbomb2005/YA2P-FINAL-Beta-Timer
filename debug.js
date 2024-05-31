@@ -40,31 +40,32 @@ export class Debug {
             if(this.keyManager.isKeyPressed("ShiftLeft")){
                 this.flipMouse()
                 this.flipFPS()
-                this.flipMute()
             } else{
                 this.flipPlayerHitbox()
                 this.flipFreeCam()
 
             }
+        } else { 
+            this.flipMute()
         }
     }
 
     flipMute(){
-        console.log("called")
-        if(this.keyManager.wasKeyJustPressed("Key")){
-            this.FPS = !this.FPS
+        if(this.keyManager.wasKeyJustPressed("KeyM")){
+            console.log("mute")
+            this.mute = !this.mute
         } 
     }
 
     flipFPS(){
-        console.log("called")
+        
         if(this.keyManager.wasKeyJustPressed("KeyF")){
             this.FPS = !this.FPS
         }
     }
 
     flipMouse(){
-        console.log("called")
+        
         if(this.keyManager.wasKeyJustPressed("KeyP")){
             document.getElementsByTagName("body")[0].style.cursor = "url('http://wiki-devel.sugarlabs.org/images/e/e2/Arrow.cur'), auto";
 

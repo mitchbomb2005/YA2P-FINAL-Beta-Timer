@@ -1,4 +1,12 @@
 export class Sound{
+    
+    game = 0
+    song = new Audio('https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/break.wav')
+
+    constructor(gmae){
+        this.game = gmae
+    }
+    
     songLength = [
         178000,
         145000,
@@ -73,16 +81,29 @@ export class Sound{
         
     async playSongLoop(v = .2){
 
+
         while(true){
-            var songNum = Math.floor(Math.random() * 10) + 1
-            var song = new Audio(`https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/music/song${songNum}.WAV`)
-            song.volume = v
-            await this.sleep(2000)
-            song.play()
+                var songNum = Math.floor(Math.random() * 10) + 1
+                this.song = new Audio(`https://raw.githubusercontent.com/loglot/yet-another-2d-platformer/main/assets/audio/music/song${songNum}.WAV`)
+                this.song.volume = v
+                await this.sleep(2000)
+                this.song.play()
             
-            await this.sleep(this.songLength[songNum - 1])
+                await this.sleep(this.songLength[songNum - 1])
+            
+            
         }
     }
+
+    songMuteBrains(){
+        if(this.game.debug.mute){
+            this.song.volume = 0
+            console.log("the game is muted")
+        } else{
+            this.song.volume = .2
+        }
+    }
+
         
     sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));

@@ -42,6 +42,7 @@ document.getElementsByTagName("body")[0].style.cursor = "none";
         msPrev = msNow - excessTime
       
         FPSCalc()
+        game.audio.songMuteBrains()
         
         //currentTime = Date.now();
         

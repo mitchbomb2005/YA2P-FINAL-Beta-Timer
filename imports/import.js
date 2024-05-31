@@ -38,7 +38,7 @@ export class Game{
     mapEdit= new Edit(this.camera, this.keyManager, this.drawUtils, this)
     keys = new Keys(this.camera, this)
     Background = new Background(this.camera)
-    audio = new Audio()
+    audio = new Audio(this)
     main 
     enemy
     
