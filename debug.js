@@ -14,6 +14,7 @@ export class Debug {
     lag = false
     extraEnum = false
     FPS = true
+    mute = false
 
     fpsCount = 0
     keyManager;
@@ -39,12 +40,20 @@ export class Debug {
             if(this.keyManager.isKeyPressed("ShiftLeft")){
                 this.flipMouse()
                 this.flipFPS()
+                this.flipMute()
             } else{
                 this.flipPlayerHitbox()
                 this.flipFreeCam()
 
             }
         }
+    }
+
+    flipMute(){
+        console.log("called")
+        if(this.keyManager.wasKeyJustPressed("Key")){
+            this.FPS = !this.FPS
+        } 
     }
 
     flipFPS(){

@@ -12,6 +12,10 @@ document.getElementsByTagName("body")[0].style.cursor = "none";
     let deltaTime = 0;
     let lastTimestamp = 0;
     let lastFrameMenu = true
+    
+    let msPrev = window.performance.now()
+    const targetFPS = 60
+    const msPerFrame = 1000 / targetFPS
 
     async function startGame() {
         if(localStorage) {game.storage.accessible = false} else {game.storage.accessible = true}
@@ -21,17 +25,30 @@ document.getElementsByTagName("body")[0].style.cursor = "none";
         //game.autoDebug()
         //while (true) {
             //game.updateGame();
-            
+
         //}
     } 
 
     async function tick() {
-        //currentTime = Date.now();
+        
+        requestAnimationFrame(tick);
+        
+        const msNow = window.performance.now()
+        const msPassed = msNow - msPrev
+      
+        if (msPassed < msPerFrame) return
+      
+        const excessTime = msPassed % msPerFrame
+        msPrev = msNow - excessTime
+      
         FPSCalc()
+        
+        //currentTime = Date.now();
+        
 
         
         if(game.debug.lag){await sleep(Math.random() * 100)}
-        requestAnimationFrame(tick);
+        
 
         //console.log("frame")
 
@@ -74,6 +91,7 @@ document.getElementsByTagName("body")[0].style.cursor = "none";
             //console.log("Drawing :", DrawTime , "|||  Updating :", Date.now() - now, "|||  Max : 16 :", DrawTime + Date.now() - now, "|||  Delta Time :", deltaTime)
             //lastTime = Date.now()
             //await sleep(1000/60);
+        
     }
 
     async function updateGame() { 
