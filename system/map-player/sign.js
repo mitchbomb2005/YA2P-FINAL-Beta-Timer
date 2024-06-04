@@ -32,6 +32,11 @@ export class sign{
             this.tipSize = (this.tipSize * 9 + 100) /10
             if(keyman.wasKeyJustPressed("KeyE")){
                 this.interact = !this.interact
+                console.log(this.text);
+            }
+            if(keyman.wasKeyJustPressed("KeyE") && this.text.toString().includes("overhual")){
+                stopTimer();
+                console.log(this.text);
             }
         } else {
             this.tipSize = (this.tipSize * 9 + 0) /10

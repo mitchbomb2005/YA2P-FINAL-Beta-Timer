@@ -16,12 +16,41 @@
     display: block;
     margin: 0 auto;
   }
+  #timer-container, #timer-container * {
+            display: block !important;
+            position: fixed !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            z-index: 1000 !important;
+            top: -220px;
+            background-color: rgba(255, 255, 255, 0.0) !important;
+            padding: 10px !important;
+            border-radius: 5px !important;
+            text-align: center !important;
+            margin-top: 0 !important;
+            pointer-events: none;
+            user-select: none;
+
+        }
+
+        #timer {
+            font-size: 2em !important;
+            color: white;
+            pointer-events: none;
+            user-select: none;
+
+        }
 </style>
 
-
+<div id="timer-container">
+  <div id="timer">00:00:00</div>
+</div>
 
 <body style="background-color:rgb(0, 0, 0);"></body>
 
+<script src="./system/variousParts/stopTimer.js"></script>
+
+<script src="./system/variousParts/startTimer.js"></script>
 
   <!----> <canvas id="game_screen" width="2514" height="1377">
     This Game Requires The HTML5 Canvas, And Javascript To Function
@@ -58,4 +87,17 @@
       filter: blur(30px)
     }
     </style>
+    <script>
+      function adjustTimerPosition() {
+          const timerContainer = document.getElementById('timer-container');
+          const screenHeight = window.innerHeight;
+          const timerHeight = timerContainer.offsetHeight;
+          const topPosition = (screenHeight * 0.5) - (0.96 * screenHeight) + 220;
+          timerContainer.style.top = `${topPosition}px`;
+          console.log(timerContainer.style.top);
+      }
+
+      window.addEventListener('resize', adjustTimerPosition);
+      window.addEventListener('load', adjustTimerPosition);
+  </script>
 <script type="module" src="main.js"></script>

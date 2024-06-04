@@ -85,6 +85,7 @@ document.getElementsByTagName("body")[0].style.cursor = "none";
                 game.menu.drawMenu()
                 if(game.keyManager.wasKeyJustPressed("KeyW") && !game.menu.checkDos) {
                     game.menu.fade()
+                    startTimer();
                 }
             }/**/
             //game.audio.playSound()
